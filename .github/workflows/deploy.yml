@@ -9,10 +9,6 @@ jobs:
     name: ${{ github.ref_name == 'main' && 'Production' || 'Preview' }}
     runs-on: ubuntu-latest
 
-    environment:
-      name: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
-      url: ${{ steps.deploy.outputs.url }}
-
     steps:
       - uses: actions/checkout@v4
 
