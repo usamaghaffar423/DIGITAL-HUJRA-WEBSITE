@@ -48,6 +48,7 @@ export function Coverage() {
   return (
     <section
       id="coverage"
+      className="section-pad"
       style={{
         padding: "140px 0",
         borderTop: "1px solid var(--line)",
@@ -56,7 +57,7 @@ export function Coverage() {
         overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 1 }}>
+      <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 1 }}>
         <div className="coverage-grid" style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 80, alignItems: "start" }}>
           <div>
             <SectionHead
@@ -72,6 +73,7 @@ export function Coverage() {
             />
 
             <div
+              className="stats-grid"
               style={{
                 marginTop: 56,
                 display: "grid",
@@ -91,7 +93,7 @@ export function Coverage() {
                   }}
                 >
                   <div
-                    className="display"
+                    className="display stat-number"
                     style={{
                       fontSize: 48,
                       lineHeight: 1,

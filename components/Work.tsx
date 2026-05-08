@@ -45,7 +45,7 @@ export function Work() {
                   <div style={{ position: "absolute", left: 16, top: 16, background: "rgba(10,22,40,0.85)", backdropFilter: "blur(8px)", padding: "5px 12px", borderRadius: 999, fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: 10, letterSpacing: "0.12em", color: "var(--amber)", border: "1px solid rgba(245,163,58,0.3)" }}>
                     📍 {w.city.toUpperCase()}
                   </div>
-                  <div className="display" style={{ position: "absolute", right: 18, bottom: 8, fontSize: big ? 140 : 90, color: "rgba(255,255,255,0.12)", lineHeight: 1, letterSpacing: "-0.04em", fontStyle: "italic", fontFamily: "var(--font-newsreader), serif", fontWeight: 400 }}>
+                  <div className="display work-num" style={{ position: "absolute", right: 18, bottom: 8, fontSize: big ? 140 : 90, color: "rgba(255,255,255,0.12)", lineHeight: 1, letterSpacing: "-0.04em", fontStyle: "italic", fontFamily: "var(--font-newsreader), serif", fontWeight: 400 }}>
                     {String(w.id).padStart(2, "0")}
                   </div>
                 </div>

@@ -15,8 +15,8 @@ export function Testimonials() {
   const t = TESTIMONIALS[idx];
 
   return (
-    <section style={{ padding: "140px 0", position: "relative" }}>
-      <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
+    <section className="section-pad" style={{ padding: "140px 0", position: "relative" }}>
+      <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
         <SectionHead
           eyebrow="Said about us"
           title={
@@ -28,6 +28,7 @@ export function Testimonials() {
         />
 
         <div
+          className="testimonial-pad"
           style={{
             marginTop: 64,
             padding: "56px 64px",

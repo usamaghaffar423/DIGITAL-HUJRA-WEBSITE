@@ -71,7 +71,7 @@ export function Hero() {
         <HujraFortress width={240} />
       </div>
 
-      <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
+      <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
         {/* Top meta row */}
         <div className="hero-meta" style={{
           display: "flex", justifyContent: "space-between", alignItems: "center",
@@ -219,7 +219,7 @@ export function Hero() {
         </div>
 
         {/* Scroll cue */}
-        <div style={{
+        <div className="hero-scroll-cue" style={{
           position: "absolute", left: 36, bottom: 28,
           display: "flex", alignItems: "center", gap: 12, color: "var(--ink-mute)",
         }}>

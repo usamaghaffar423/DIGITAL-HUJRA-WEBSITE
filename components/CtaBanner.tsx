@@ -27,6 +27,7 @@ export function CtaBanner() {
       </div>
 
       <div
+        className="cta-inner wrap-mobile"
         style={{
           maxWidth: 1360,
           margin: "0 auto",

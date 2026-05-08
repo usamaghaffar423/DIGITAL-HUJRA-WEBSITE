@@ -99,99 +99,77 @@ button { font-family: inherit; cursor: pointer; }
 .reveal-d3 { animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) .45s both; }
 .reveal-d4 { animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) .6s both; }
 
+/* ── Nav mobile defaults ────────────────────────────────── */
+.nav-mobile-right { display: none; }
+.nav-mobile-menu { display: none; overflow: hidden; }
+
 /* ============================================================
-   RESPONSIVE — TABLET & MOBILE
+   RESPONSIVE
    ============================================================ */
 
 /* Tablet ≤ 1024px */
 @media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .services-grid > div:first-child {
-    grid-column: span 2 !important;
-  }
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .work-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .work-grid > a:first-child {
-    grid-column: span 2 !important;
-    grid-row: auto !important;
-  }
-  .coverage-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr 1fr 1fr !important;
-  }
+  .hero-grid        { grid-template-columns: 1fr !important; }
+  .services-header  { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .services-header > p { display: none !important; }
+  .services-grid    { grid-template-columns: repeat(2, 1fr) !important; }
+  .services-grid > div:first-child { grid-column: span 2 !important; }
+  .process-grid     { grid-template-columns: repeat(2, 1fr) !important; }
+  .work-grid        { grid-template-columns: repeat(2, 1fr) !important; }
+  .work-grid > a:first-child { grid-column: span 2 !important; grid-row: auto !important; }
+  .coverage-grid    { grid-template-columns: 1fr !important; }
+  .footer-grid      { grid-template-columns: 1fr 1fr 1fr !important; }
 }
 
 /* Mobile ≤ 768px */
 @media (max-width: 768px) {
-  .nav-links { display: none !important; }
-  .nav-cta-text { display: none !important; }
 
-  .hero-grid {
-    grid-template-columns: 1fr !important;
-  }
+  /* ── Nav ── */
+  .nav-links        { display: none !important; }
+  .nav-cta-desktop  { display: none !important; }
+  .nav-mobile-right { display: flex !important; }
+  .nav-mobile-menu  { display: block !important; }
+
+  /* ── Hero ── */
+  .hero-grid        { grid-template-columns: 1fr !important; }
   .hero-chart-panel { display: none !important; }
+  .hero-scroll-cue  { display: none !important; }
 
-  .services-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .services-grid > div:first-child {
-    grid-column: span 1 !important;
-  }
+  /* ── Services ── */
+  .services-header  { grid-template-columns: 1fr !important; }
+  .services-header > p { display: none !important; }
+  .services-grid    { grid-template-columns: 1fr !important; }
+  .services-grid > div:first-child { grid-column: span 1 !important; }
 
-  .process-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .process-grid > div {
-    margin-top: 0 !important;
-  }
+  /* ── Process ── */
+  .process-grid     { grid-template-columns: 1fr !important; }
+  .process-grid > div { margin-top: 0 !important; }
+  .process-connector { display: none !important; }
 
-  .work-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .work-grid > a:first-child {
-    grid-column: span 1 !important;
-    grid-row: auto !important;
-  }
+  /* ── Work ── */
+  .work-grid        { grid-template-columns: 1fr !important; }
+  .work-grid > a:first-child { grid-column: span 1 !important; grid-row: auto !important; }
+  .work-num         { font-size: 72px !important; }
 
-  .coverage-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .stats-grid > div {
-    border-right: none !important;
-    border-bottom: 1px solid var(--line);
-  }
+  /* ── Coverage ── */
+  .coverage-grid    { grid-template-columns: 1fr !important; }
+  .stats-grid       { grid-template-columns: repeat(2, 1fr) !important; }
+  .stats-grid > div { border-right: none !important; border-bottom: 1px solid var(--line) !important; }
+  .stat-number      { font-size: 38px !important; }
 
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-  }
+  /* ── Footer ── */
+  .footer-grid      { grid-template-columns: 1fr !important; }
 
-  .cta-head { font-size: clamp(40px, 12vw, 80px) !important; }
+  /* ── Testimonials ── */
+  .testimonial-pad  { padding: 36px 22px !important; }
 
-  .testimonial-pad {
-    padding: 36px 24px !important;
-  }
+  /* ── CTA Banner ── */
+  .cta-head         { font-size: clamp(38px, 11vw, 72px) !important; }
+  .cta-inner        { padding: 80px 20px 100px !important; }
 
-  .section-pad {
-    padding: 80px 0 !important;
-  }
-
-  .wrap-mobile {
-    padding: 0 20px !important;
-  }
+  /* ── Global layout ── */
+  .section-pad      { padding: 80px 0 !important; }
+  .wrap-mobile      { padding: 0 20px !important; }
 }
 
 /* Wide screens ≥ 1600px */

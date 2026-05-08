@@ -7,6 +7,7 @@ export function Process() {
   return (
     <section
       id="process"
+      className="section-pad"
       style={{
         position: "relative",
         padding: "140px 0",
@@ -14,7 +15,7 @@ export function Process() {
         background: "linear-gradient(180deg, var(--night-2), var(--night))",
       }}
     >
-      <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
+      <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
         <SectionHead
           eyebrow="How we work · 4 steps"
           title={
@@ -28,6 +29,7 @@ export function Process() {
         <div style={{ marginTop: 80, position: "relative" }}>
           {/* Connecting dashed path */}
           <svg
+            className="process-connector"
             viewBox="0 0 1280 200"
             preserveAspectRatio="none"
             style={{
@@ -52,6 +54,7 @@ export function Process() {
           </svg>
 
           <div
+            className="process-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",

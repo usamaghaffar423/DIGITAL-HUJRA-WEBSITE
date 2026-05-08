@@ -6,6 +6,7 @@ import { NAV_ITEMS } from "@/lib/data";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
@@ -22,7 +23,7 @@ export function Nav() {
         right: 0,
         zIndex: 60,
         padding: scrolled ? "12px 0" : "20px 0",
-        background: scrolled ? "rgba(10,22,40,0.78)" : "transparent",
+        background: scrolled ? "rgba(10,22,40,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
@@ -30,7 +31,7 @@ export function Nav() {
       }}
     >
       <div
-        className="wrap"
+        className="wrap-mobile"
         style={{
           maxWidth: 1360,
           margin: "0 auto",
@@ -56,7 +57,9 @@ export function Nav() {
           </div>
         </a>
 
+        {/* Desktop nav pill */}
         <nav
+          className="nav-links"
           style={{
             display: "flex",
             alignItems: "center",
@@ -94,11 +97,9 @@ export function Nav() {
           ))}
         </nav>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <span
-            className="mono"
-            style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.1em" }}
-          >
+        {/* Desktop CTA */}
+        <div className="nav-cta-desktop" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <span className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.1em" }}>
             <span
               style={{
                 display: "inline-block",
@@ -116,6 +117,110 @@ export function Nav() {
           <a href="#contact" className="btn btn-amber">
             Start a project <Arrow />
           </a>
+        </div>
+
+        {/* Mobile right: compact CTA + hamburger */}
+        <div className="nav-mobile-right" style={{ alignItems: "center", gap: 10 }}>
+          <a href="#contact" className="btn btn-amber" style={{ padding: "10px 16px", fontSize: 13 }}>
+            Get started
+          </a>
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid var(--line-2)",
+              borderRadius: 10,
+              width: 42,
+              height: 42,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              padding: 0,
+              color: menuOpen ? "var(--amber)" : "var(--ink)",
+              transition: "color .25s, background .25s",
+            }}
+          >
+            {menuOpen ? (
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            ) : (
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+                <line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile dropdown */}
+      <div
+        className="nav-mobile-menu"
+        style={{
+          maxHeight: menuOpen ? 480 : 0,
+          transition: "max-height .35s cubic-bezier(.2,.7,.2,1)",
+          background: "rgba(5,11,23,0.97)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderTop: menuOpen ? "1px solid var(--line)" : "none",
+        }}
+      >
+        <div style={{ padding: "12px 20px 24px", display: "flex", flexDirection: "column" }}>
+          {NAV_ITEMS.map((n) => (
+            <a
+              key={n.l}
+              href={n.h}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                padding: "15px 8px",
+                fontSize: 17,
+                fontWeight: 500,
+                color: "var(--ink-soft)",
+                borderBottom: "1px solid var(--line)",
+                transition: "color .2s",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--amber)")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--ink-soft)")}
+            >
+              {n.l}
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="btn btn-amber"
+            style={{ marginTop: 16, justifyContent: "center", fontSize: 15 }}
+          >
+            Start a project <Arrow />
+          </a>
+          <div
+            className="mono"
+            style={{ marginTop: 16, fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.15em", textAlign: "center" }}
+          >
+            <span
+              style={{
+                display: "inline-block",
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: "#5BD68A",
+                marginRight: 7,
+                verticalAlign: 1,
+                boxShadow: "0 0 0 3px rgba(91,214,138,0.18)",
+              }}
+            />
+            ACCEPTING WORK · BATKHELA · KP
+          </div>
         </div>
       </div>
     </header>

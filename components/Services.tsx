@@ -22,7 +22,7 @@ export function Services() {
   return (
     <section id="services" className="section-pad" style={{ position: "relative", padding: "140px 0" }}>
       <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }} className="wrap-mobile">
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 60, alignItems: "end", marginBottom: 72 }}>
+        <div className="services-header" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 60, alignItems: "end", marginBottom: 72 }}>
           <div>
             <p className="eyebrow section-eyebrow" style={{ color: "var(--amber)", marginBottom: 16 }}>Our practice · 7 services</p>
             <h2 className="display section-title" style={{ fontSize: "clamp(40px, 5.4vw, 76px)", lineHeight: 1.02, margin: 0 }}>
