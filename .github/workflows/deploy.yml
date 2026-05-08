@@ -23,33 +23,26 @@ jobs:
       - name: Type-check
         run: npx tsc --noEmit
 
+      - name: Build
+        run: npm run build
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
-
-      - name: Pull Vercel environment
-        run: vercel pull --yes --environment=${{ github.ref_name == 'main' && 'production' || 'preview' }} --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
-      - name: Build project
-        run: vercel build ${{ github.ref_name == 'main' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel
         id: deploy
         run: |
-          URL=$(vercel deploy --prebuilt ${{ github.ref_name == 'main' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
+          URL=$(vercel deploy --prebuilt \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --yes \
+            ${{ github.ref_name == 'main' && '--prod' || '' }})
           echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "Deployed → $URL"
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
-      - name: Comment preview URL on commit
-        if: github.ref_name != 'main'
+      - name: Summary
         run: |
-          echo "### Preview deployed" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ${{ github.ref_name == 'main' && 'Production' || 'Preview' }} deployed" >> $GITHUB_STEP_SUMMARY
           echo "${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
