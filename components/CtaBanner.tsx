@@ -67,7 +67,7 @@ export function CtaBanner() {
           </p>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 48 }}>
             <a
-              href="https://wa.me/923000000000"
+              href="https://wa.me/923715868088"
               className="btn btn-amber"
               style={{ padding: "18px 28px", fontSize: 15 }}
             >
@@ -83,8 +83,8 @@ export function CtaBanner() {
             >
               hello@digitalhujra.pk <Arrow />
             </a>
-            <a href="tel:+923000000000" className="btn btn-ghost" style={{ padding: "18px 28px", fontSize: 15 }}>
-              +92 300 000 0000
+            <a href="tel:+923715868088" className="btn btn-ghost" style={{ padding: "18px 28px", fontSize: 15 }}>
+              +92 371 5868088
             </a>
           </div>
 

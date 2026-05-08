@@ -67,7 +67,7 @@ export function Footer() {
               l: ["POS Systems", "E-commerce", "Branding", "Social Media", "Photography", "Video", "Graphics"],
             },
             { t: "Studio", l: ["About", "Process", "Work", "Coverage", "Careers"] },
-            { t: "Contact", l: ["WhatsApp", "hello@digitalhujra.pk", "+92 300 000 0000", "Book a session"] },
+            { t: "Contact", l: ["WhatsApp", "hello@digitalhujra.pk", "+92 371 5868088", "Book a session"] },
             { t: "Connect", l: ["Instagram", "Facebook", "TikTok", "LinkedIn", "YouTube"] },
           ].map((col) => (
             <div key={col.t}>
