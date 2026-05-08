@@ -23,19 +23,22 @@ jobs:
       - name: Type-check
         run: npx tsc --noEmit
 
-      - name: Build
-        run: npm run build
-
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-      - name: Deploy to Vercel
+      - name: Build
+        run: vercel build ${{ github.ref_name == 'main' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Deploy
         id: deploy
         run: |
           URL=$(vercel deploy --prebuilt \
+            ${{ github.ref_name == 'main' && '--prod' || '' }} \
             --token=${{ secrets.VERCEL_TOKEN }} \
-            --yes \
-            ${{ github.ref_name == 'main' && '--prod' || '' }})
+            --yes)
           echo "url=$URL" >> $GITHUB_OUTPUT
           echo "Deployed → $URL"
         env:
