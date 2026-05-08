@@ -17,10 +17,9 @@ export default function Home() {
     const initGsap = async () => {
       const { gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      const { SplitText } = await import("gsap/SplitText");
       gsap.registerPlugin(ScrollTrigger);
 
-      // --- Section head reveals ---
+      // Section head reveals
       document.querySelectorAll<HTMLElement>(".section-eyebrow").forEach((el) => {
         gsap.from(el, {
           x: -20, opacity: 0, duration: 0.7, ease: "power2.out",
@@ -35,7 +34,7 @@ export default function Home() {
         });
       });
 
-      // --- Card grid stagger ---
+      // Card grid stagger
       document.querySelectorAll<HTMLElement>(".card-grid").forEach((grid) => {
         const cards = grid.querySelectorAll<HTMLElement>(".card");
         gsap.from(cards, {
@@ -44,7 +43,7 @@ export default function Home() {
         });
       });
 
-      // --- Work items ---
+      // Work items
       document.querySelectorAll<HTMLElement>(".work-item").forEach((el, i) => {
         gsap.from(el, {
           y: 40, opacity: 0, duration: 0.8, delay: i * 0.06, ease: "power3.out",
@@ -52,7 +51,7 @@ export default function Home() {
         });
       });
 
-      // --- Stats count panel ---
+      // Stats panel
       const statPanel = document.querySelector(".stats-panel");
       if (statPanel) {
         gsap.from(statPanel, {
@@ -61,7 +60,7 @@ export default function Home() {
         });
       }
 
-      // --- District tags stagger ---
+      // District tags stagger
       document.querySelectorAll<HTMLElement>(".district-tag").forEach((el, i) => {
         gsap.from(el, {
           scale: 0.85, opacity: 0, duration: 0.5, delay: i * 0.03, ease: "back.out(1.4)",
@@ -69,7 +68,7 @@ export default function Home() {
         });
       });
 
-      // --- Testimonial card ---
+      // Testimonial card
       const testimonialCard = document.querySelector(".testimonial-card");
       if (testimonialCard) {
         gsap.from(testimonialCard, {
@@ -78,7 +77,7 @@ export default function Home() {
         });
       }
 
-      // --- CTA banner text ---
+      // CTA banner text
       const ctaHead = document.querySelector(".cta-head");
       if (ctaHead) {
         gsap.from(ctaHead, {
@@ -87,7 +86,7 @@ export default function Home() {
         });
       }
 
-      // --- Marquee glow on hover ---
+      // Marquee scale on hover
       const marqueeSection = document.querySelector(".marquee-section");
       if (marqueeSection) {
         (marqueeSection as HTMLElement).addEventListener("mouseenter", () => {
@@ -99,21 +98,27 @@ export default function Home() {
       }
     };
 
-    initGsap();
+    // Only run animations when motion is allowed
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      initGsap();
+    }
   }, []);
 
   return (
-    <main style={{ minHeight: "100vh" }}>
+    <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Nav />
-      <Hero />
-      <Marquee />
-      <Services />
-      <Process />
-      <Work />
-      <Coverage />
-      <Testimonials />
-      <CtaBanner />
+      <main id="main-content" aria-label="Digital Hujra — KP digital studio">
+        <Hero />
+        <Marquee />
+        <Services />
+        <Process />
+        <Work />
+        <Coverage />
+        <Testimonials />
+        <CtaBanner />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

@@ -37,7 +37,7 @@ function CountUp({ value }: { value: string }) {
   }, [target]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} aria-label={`${target}${tail}`} aria-live="polite">
       {n}
       {tail}
     </span>
@@ -49,6 +49,7 @@ export function Coverage() {
     <section
       id="coverage"
       className="section-pad"
+      aria-label="Coverage across KP"
       style={{
         padding: "140px 0",
         borderTop: "1px solid var(--line)",
@@ -74,6 +75,8 @@ export function Coverage() {
 
             <div
               className="stats-grid"
+              role="list"
+              aria-label="Studio statistics"
               style={{
                 marginTop: 56,
                 display: "grid",
@@ -86,6 +89,7 @@ export function Coverage() {
               {STATS.map((s, i) => (
                 <div
                   key={i}
+                  role="listitem"
                   style={{
                     padding: "28px 22px",
                     borderRight: i < STATS.length - 1 ? "1px solid var(--line)" : "none",
@@ -142,6 +146,7 @@ export function Coverage() {
                   COVERAGE · 18 DISTRICTS
                 </div>
                 <span
+                  aria-hidden="true"
                   style={{
                     fontSize: 11,
                     padding: "3px 10px",
@@ -168,9 +173,9 @@ export function Coverage() {
                 </span>
               </h3>
 
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              <ul style={{ display: "flex", flexWrap: "wrap", gap: 8, listStyle: "none", margin: 0, padding: 0 }}>
                 {DISTRICTS.map((d, i) => (
-                  <span
+                  <li
                     key={d}
                     className="district-tag"
                     style={{
@@ -189,15 +194,17 @@ export function Coverage() {
                   >
                     {i < 6 && (
                       <span
+                        aria-hidden="true"
                         style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--blue-2)" }}
                       />
                     )}
                     {d}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <div
+                aria-hidden="true"
                 style={{
                   marginTop: 24,
                   paddingTop: 20,

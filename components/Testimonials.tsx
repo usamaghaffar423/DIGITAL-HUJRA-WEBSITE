@@ -15,7 +15,7 @@ export function Testimonials() {
   const t = TESTIMONIALS[idx];
 
   return (
-    <section className="section-pad" style={{ padding: "140px 0", position: "relative" }}>
+    <section className="section-pad" aria-label="Client testimonials" style={{ padding: "140px 0", position: "relative" }}>
       <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
         <SectionHead
           eyebrow="Said about us"
@@ -28,7 +28,7 @@ export function Testimonials() {
         />
 
         <div
-          className="testimonial-pad"
+          className="testimonial-pad testimonial-card"
           style={{
             marginTop: 64,
             padding: "56px 64px",
@@ -40,8 +40,9 @@ export function Testimonials() {
             margin: "64px auto 0",
           }}
         >
-          {/* Quote glyph */}
+          {/* Decorative quote glyph */}
           <div
+            aria-hidden="true"
             style={{
               position: "absolute",
               top: -28,
@@ -64,19 +65,22 @@ export function Testimonials() {
             &ldquo;
           </div>
 
-          <p
-            key={idx}
-            className="serif-italic"
-            style={{
-              fontSize: "clamp(22px, 2.4vw, 32px)",
-              lineHeight: 1.4,
-              margin: "16px 0 32px",
-              color: "var(--ink)",
-              animation: "fadeIn .5s ease both",
-            }}
-          >
-            {t.q}
-          </p>
+          {/* Live region so screen readers announce changes */}
+          <div aria-live="polite" aria-atomic="true">
+            <p
+              key={idx}
+              className="serif-italic"
+              style={{
+                fontSize: "clamp(22px, 2.4vw, 32px)",
+                lineHeight: 1.4,
+                margin: "16px 0 32px",
+                color: "var(--ink)",
+                animation: "fadeIn .5s ease both",
+              }}
+            >
+              {t.q}
+            </p>
+          </div>
 
           <div
             style={{
@@ -91,6 +95,7 @@ export function Testimonials() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div
+                aria-label={t.name}
                 style={{
                   width: 48,
                   height: 48,
@@ -104,11 +109,13 @@ export function Testimonials() {
                   color: "#fff",
                 }}
               >
-                {t.name
-                  .split(" ")
-                  .map((s) => s[0])
-                  .slice(0, 2)
-                  .join("")}
+                <span aria-hidden="true">
+                  {t.name
+                    .split(" ")
+                    .map((s) => s[0])
+                    .slice(0, 2)
+                    .join("")}
+                </span>
               </div>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16 }}>{t.name}</div>
@@ -118,12 +125,14 @@ export function Testimonials() {
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-              {TESTIMONIALS.map((_, i) => (
+            <div role="group" aria-label="Testimonial navigation" style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              {TESTIMONIALS.map((item, i) => (
                 <button
                   key={i}
+                  type="button"
                   onClick={() => setIdx(i)}
-                  aria-label={`Testimonial ${i + 1}`}
+                  aria-label={`Show testimonial from ${item.name}`}
+                  aria-pressed={i === idx}
                   style={{
                     width: i === idx ? 28 : 8,
                     height: 8,

@@ -2,6 +2,16 @@
 
 import { HujraMark } from "@/components/atoms";
 
+const FOOTER_COLS = [
+  {
+    t: "Services",
+    l: ["POS Systems", "E-commerce", "Branding", "Social Media", "Photography", "Video", "Graphics"],
+  },
+  { t: "Studio", l: ["About", "Process", "Work", "Coverage", "Careers"] },
+  { t: "Contact", l: ["WhatsApp", "hello@digitalhujra.pk", "+92 371 5868088", "Book a session"] },
+  { t: "Connect", l: ["Instagram", "Facebook", "TikTok", "LinkedIn", "YouTube"] },
+];
+
 export function Footer() {
   return (
     <footer
@@ -22,8 +32,9 @@ export function Footer() {
             borderBottom: "1px solid var(--line)",
           }}
         >
+          {/* Brand column */}
           <div>
-            <a href="#top" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
+            <a href="#top" aria-label="Digital Hujra — back to top" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
               <HujraMark size={36} />
               <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
                 <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: "-0.02em" }}>
@@ -50,7 +61,7 @@ export function Footer() {
               A small, honest digital studio bringing KP businesses online — POS, e-commerce, branding,
               social, shoots and edits, all under one roof.
             </p>
-            <div style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.7 }}>
+            <address style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.7, fontStyle: "normal" }}>
               <div
                 className="mono"
                 style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.15em", marginBottom: 6 }}
@@ -60,18 +71,12 @@ export function Footer() {
               Main Bazaar · Batkhela
               <br />
               District Malakand · KP, Pakistan
-            </div>
+            </address>
           </div>
-          {[
-            {
-              t: "Services",
-              l: ["POS Systems", "E-commerce", "Branding", "Social Media", "Photography", "Video", "Graphics"],
-            },
-            { t: "Studio", l: ["About", "Process", "Work", "Coverage", "Careers"] },
-            { t: "Contact", l: ["WhatsApp", "hello@digitalhujra.pk", "+92 371 5868088", "Book a session"] },
-            { t: "Connect", l: ["Instagram", "Facebook", "TikTok", "LinkedIn", "YouTube"] },
-          ].map((col) => (
-            <div key={col.t}>
+
+          {/* Nav columns */}
+          {FOOTER_COLS.map((col) => (
+            <nav key={col.t} aria-label={`${col.t} links`}>
               <div
                 className="mono"
                 style={{
@@ -88,7 +93,7 @@ export function Footer() {
                 {col.l.map((x) => (
                   <li key={x}>
                     <a
-                      href="#"
+                      href={x === "hello@digitalhujra.pk" ? "mailto:hello@digitalhujra.pk" : x === "+92 371 5868088" ? "tel:+923715868088" : x === "WhatsApp" ? "https://wa.me/923715868088" : "#"}
                       style={{ fontSize: 13.5, color: "var(--ink-soft)", transition: "color .25s" }}
                       onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--amber)")}
                       onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--ink-soft)")}
@@ -98,7 +103,7 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
 
@@ -112,14 +117,14 @@ export function Footer() {
             flexWrap: "wrap",
           }}
         >
-          <div className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em" }}>
+          <p className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", margin: 0 }}>
             © 2026 DIGITAL HUJRA · BATKHELA · MALAKAND · KP · PAKISTAN
-          </div>
-          <div style={{ display: "flex", gap: 24, fontSize: 12, color: "var(--ink-mute)" }}>
+          </p>
+          <nav aria-label="Legal links" style={{ display: "flex", gap: 24, fontSize: 12, color: "var(--ink-mute)" }}>
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
             <a href="#">Sitemap</a>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

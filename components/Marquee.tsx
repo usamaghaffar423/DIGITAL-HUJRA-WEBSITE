@@ -7,6 +7,8 @@ export function Marquee() {
 
   return (
     <section
+      aria-hidden="true"
+      className="marquee-section"
       style={{
         background: "linear-gradient(180deg, var(--night-2), var(--night))",
         borderTop: "1px solid var(--line)",
@@ -17,6 +19,7 @@ export function Marquee() {
       }}
     >
       <div
+        className="marquee-strip"
         style={{
           display: "flex",
           whiteSpace: "nowrap",
@@ -42,7 +45,7 @@ export function Marquee() {
             >
               {w}
             </span>
-            <svg width="14" height="14" viewBox="0 0 14 14">
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
               <circle cx="7" cy="7" r="3" fill="var(--amber)" />
             </svg>
           </span>

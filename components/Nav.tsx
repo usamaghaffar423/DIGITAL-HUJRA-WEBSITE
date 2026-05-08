@@ -9,9 +9,13 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 24);
+    let raf: number;
+    const fn = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setScrolled(window.scrollY > 24));
+    };
     window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
+    return () => { window.removeEventListener("scroll", fn); cancelAnimationFrame(raf); };
   }, []);
 
   return (
@@ -125,8 +129,11 @@ export function Nav() {
             Get started
           </a>
           <button
+            type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
             style={{
               background: "rgba(255,255,255,0.06)",
               border: "1px solid var(--line-2)",
@@ -143,11 +150,11 @@ export function Nav() {
             }}
           >
             {menuOpen ? (
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                 <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
             ) : (
-              <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
                 <line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 <line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 <line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -159,7 +166,9 @@ export function Nav() {
 
       {/* Mobile dropdown */}
       <div
+        id="mobile-nav"
         className="nav-mobile-menu"
+        aria-hidden={!menuOpen}
         style={{
           maxHeight: menuOpen ? 480 : 0,
           transition: "max-height .35s cubic-bezier(.2,.7,.2,1)",

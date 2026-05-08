@@ -34,12 +34,22 @@ export function NetworkField({ count = 34 }: { count?: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Skip animation entirely when user prefers reduced motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const canvas = ref.current;
     if (!canvas) return;
 
     const dpr = window.devicePixelRatio || 1;
+    // Throttle to ~30fps on mobile to save battery
+    const isMobile = window.innerWidth < 768;
+    const FRAME_MS = isMobile ? 1000 / 30 : 0;
+    let lastFrameTime = 0;
+
     let W = canvas.offsetWidth;
     let H = canvas.offsetHeight;
+
+    const ctx = canvas.getContext("2d")!;
 
     const resize = () => {
       W = canvas.offsetWidth;
@@ -48,8 +58,6 @@ export function NetworkField({ count = 34 }: { count?: number }) {
       canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-
-    const ctx = canvas.getContext("2d")!;
     resize();
 
     // Seeded RNG — only for initial layout so positions are stable on first paint
@@ -82,7 +90,6 @@ export function NetworkField({ count = 34 }: { count?: number }) {
     });
 
     const packets: Packet[] = [];
-    // edgeActivity[i][j] = brightness boost (0-1), decays each frame
     const edgeAct: Map<string, number> = new Map();
     let frame = 0;
     let raf: number;
@@ -108,7 +115,13 @@ export function NetworkField({ count = 34 }: { count?: number }) {
       }
     };
 
-    const tick = () => {
+    const tick = (ts: number) => {
+      raf = requestAnimationFrame(tick);
+
+      // Frame throttle for mobile
+      if (FRAME_MS > 0 && ts - lastFrameTime < FRAME_MS) return;
+      lastFrameTime = ts;
+
       frame++;
       const now = performance.now() / 1000;
       const C = CONNECT();
@@ -125,13 +138,11 @@ export function NetworkField({ count = 34 }: { count?: number }) {
         if (spd > max) { n.vx = (n.vx / spd) * max; n.vy = (n.vy / spd) * max; }
         n.x += n.vx;
         n.y += n.vy;
-        // Soft wrap so nodes re-enter from opposite edge
         const pad = 40;
         if (n.x < -pad) n.x = W + pad;
         if (n.x > W + pad) n.x = -pad;
         if (n.y < -pad) n.y = H + pad;
         if (n.y > H + pad) n.y = -pad;
-        // Advance hub ping ring
         if (n.hub) { n.pingT += 0.0055; if (n.pingT > 1) n.pingT = 0; }
       }
 
@@ -146,12 +157,10 @@ export function NetworkField({ count = 34 }: { count?: number }) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
           if (dist > C) continue;
-
           const proximity = 1 - dist / C;
           const base  = proximity * 0.22 * nodes[i].depth * nodes[j].depth;
           const boost = edgeAct.get(eKey(i, j)) ?? 0;
           const alpha = base + boost * 0.4;
-
           const c = nodes[i].hub || nodes[j].hub ? AMBER : BLUE;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -168,18 +177,15 @@ export function NetworkField({ count = 34 }: { count?: number }) {
         const na = nodes[p.a], nb = nodes[p.b];
         const edgeDist = Math.hypot(na.x - nb.x, na.y - nb.y);
         if (edgeDist > C * 1.3) { packets.splice(i, 1); continue; }
-
         p.t += p.speed;
         if (p.t >= 1) { packets.splice(i, 1); continue; }
 
-        // Boost the edge it's on
         const k = eKey(p.a, p.b);
         edgeAct.set(k, Math.min(1, (edgeAct.get(k) ?? 0) + 0.45));
 
         const px = na.x + (nb.x - na.x) * p.t;
         const py = na.y + (nb.y - na.y) * p.t;
 
-        // Trail
         p.trail.push({ x: px, y: py });
         if (p.trail.length > 20) p.trail.shift();
 
@@ -194,7 +200,6 @@ export function NetworkField({ count = 34 }: { count?: number }) {
           ctx.stroke();
         }
 
-        // Outer glow
         const g = ctx.createRadialGradient(px, py, 0, px, py, 9);
         g.addColorStop(0, rgba(p.color, 0.55));
         g.addColorStop(1, rgba(p.color, 0));
@@ -203,7 +208,6 @@ export function NetworkField({ count = 34 }: { count?: number }) {
         ctx.fillStyle = g;
         ctx.fill();
 
-        // Core dot
         ctx.beginPath();
         ctx.arc(px, py, 1.9, 0, Math.PI * 2);
         ctx.fillStyle = rgba(p.color, 1);
@@ -227,7 +231,6 @@ export function NetworkField({ count = 34 }: { count?: number }) {
         const pulse = 0.82 + 0.18 * Math.sin(now * 1.5 + n.phase);
         const alpha = n.depth;
 
-        // Glow halo
         const gr = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.glowR * pulse);
         gr.addColorStop(0, rgba(n.color, 0.3 * alpha * pulse));
         gr.addColorStop(0.5, rgba(n.color, 0.1 * alpha));
@@ -237,23 +240,19 @@ export function NetworkField({ count = 34 }: { count?: number }) {
         ctx.fillStyle = gr;
         ctx.fill();
 
-        // Core fill
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r * pulse, 0, Math.PI * 2);
         ctx.fillStyle = rgba(n.color, 0.88 * alpha);
         ctx.fill();
 
-        // Specular highlight (tiny bright top-left arc)
         ctx.beginPath();
         ctx.arc(n.x - n.r * 0.26, n.y - n.r * 0.3, n.r * 0.38, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${(0.45 * alpha).toFixed(3)})`;
         ctx.fill();
       }
-
-      raf = requestAnimationFrame(tick);
     };
 
-    tick();
+    raf = requestAnimationFrame(tick);
 
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
@@ -267,6 +266,8 @@ export function NetworkField({ count = 34 }: { count?: number }) {
   return (
     <canvas
       ref={ref}
+      role="img"
+      aria-label="Animated network visualization showing connected data nodes"
       style={{
         position: "absolute",
         inset: 0,

@@ -11,12 +11,13 @@ export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const init = async () => {
       const { gsap } = await import("gsap");
-
       const tl = gsap.timeline({ delay: 0.1 });
       tl.from(".hero-eyebrow", { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" })
-        .from(".hero-h1", { y: 40, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.4")
+        // h1 animates transform only — opacity stays 1 so LCP registers immediately
+        .from(".hero-h1", { y: 40, duration: 1, ease: "power3.out" }, "-=0.4")
         .from(".hero-desc", { y: 24, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.5")
         .from(".hero-ctas", { y: 20, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
         .from(".hero-chips", { y: 16, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
@@ -30,6 +31,7 @@ export function Hero() {
     <section
       id="top"
       ref={heroRef}
+      aria-label="Hero — Digital Hujra KP digital studio"
       style={{
         position: "relative",
         minHeight: "100vh",
@@ -38,36 +40,35 @@ export function Hero() {
         background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
       }}
     >
-      {/* Amber moon glow */}
-      <div style={{
+      {/* Decorative glows */}
+      <div aria-hidden="true" style={{
         position: "absolute", right: "-12vw", top: "-10vw",
         width: "60vw", height: "60vw", borderRadius: "50%",
         background: "radial-gradient(circle, rgba(245,163,58,0.26) 0%, rgba(245,163,58,0.08) 35%, rgba(245,163,58,0) 65%)",
         pointerEvents: "none",
       }} />
-      {/* Blue glow */}
-      <div style={{
+      <div aria-hidden="true" style={{
         position: "absolute", left: "-10vw", bottom: "10vh",
         width: "44vw", height: "44vw", borderRadius: "50%",
         background: "radial-gradient(circle, rgba(42,157,244,0.22) 0%, rgba(42,157,244,0.05) 40%, rgba(42,157,244,0) 70%)",
         pointerEvents: "none",
       }} />
-      {/* Grid bg */}
-      <div className="grid-bg" style={{
+      {/* Decorative grid */}
+      <div aria-hidden="true" className="grid-bg" style={{
         position: "absolute", inset: 0, opacity: 0.5, pointerEvents: "none",
         maskImage: "radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%)",
         WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%)",
       }} />
-      {/* Network field */}
-      <div style={{ position: "absolute", inset: 0, opacity: 0.55 }}>
+      {/* Animated network — decorative */}
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, opacity: 0.55 }}>
         <NetworkField count={38} />
       </div>
-      {/* Mountains */}
-      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "44vh", maxHeight: 480, pointerEvents: "none" }}>
+      {/* Decorative mountains */}
+      <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "44vh", maxHeight: 480, pointerEvents: "none" }}>
         <MountainRange height="100%" />
       </div>
-      {/* Fortress */}
-      <div className="animate-float-y" style={{ position: "absolute", right: "6vw", bottom: "20vh", opacity: 0.55, pointerEvents: "none" }}>
+      {/* Decorative fortress */}
+      <div aria-hidden="true" className="animate-float-y" style={{ position: "absolute", right: "6vw", bottom: "20vh", opacity: 0.55, pointerEvents: "none" }}>
         <HujraFortress width={240} />
       </div>
 
@@ -96,14 +97,14 @@ export function Hero() {
               padding: "8px 14px", border: "1px solid rgba(42,157,244,0.4)",
               borderRadius: 999, background: "rgba(42,157,244,0.08)", marginBottom: 28,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--blue-2)", animation: "pulse 2s ease-in-out infinite" }} />
+              <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--blue-2)", animation: "pulse 2s ease-in-out infinite" }} />
               <span style={{ fontSize: 12, color: "var(--blue-soft)", fontWeight: 500, letterSpacing: "0.04em" }}>
                 Bringing KP business to the digital world
               </span>
             </div>
 
             <h1 className="display hero-h1" style={{
-              fontSize: "clamp(64px, 9.5vw, 156px)", lineHeight: 0.92,
+              fontSize: "clamp(56px, 9.5vw, 156px)", lineHeight: 0.92,
               margin: "0 0 28px", letterSpacing: "-0.035em",
             }}>
               <span style={{ color: "var(--blue-2)" }}>Digital</span>
@@ -148,7 +149,7 @@ export function Hero() {
                     display: "inline-flex", alignItems: "center", gap: 8,
                     padding: "6px 14px", fontSize: 13, fontWeight: 500, color: "var(--ink)",
                   }}>
-                    <span style={{
+                    <span aria-hidden="true" style={{
                       width: 22, height: 22, borderRadius: "50%",
                       background: i % 2 === 0 ? "rgba(42,157,244,0.18)" : "rgba(245,163,58,0.18)",
                       color: i % 2 === 0 ? "var(--blue-2)" : "var(--amber)",
@@ -158,7 +159,7 @@ export function Hero() {
                     {c.l}
                   </span>
                   {i < arr.length - 1 && (
-                    <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--amber)", opacity: 0.7 }} />
+                    <span aria-hidden="true" style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--amber)", opacity: 0.7 }} />
                   )}
                 </span>
               ))}
@@ -181,7 +182,7 @@ export function Hero() {
                     <span style={{ fontSize: 14, color: "var(--ink-mute)", fontWeight: 500, marginLeft: 10 }}>avg. online sales lift</span>
                   </div>
                 </div>
-                <div style={{
+                <div aria-hidden="true" style={{
                   fontSize: 11, padding: "4px 10px", borderRadius: 4,
                   background: "rgba(91,214,138,0.15)", color: "#5BD68A",
                   fontFamily: "var(--font-jetbrains-mono), monospace",
@@ -191,10 +192,12 @@ export function Hero() {
                   TRENDING
                 </div>
               </div>
-              <GrowthArrow width="100%" />
+              <div role="img" aria-label="Growth arrow chart showing 247% average online sales lift">
+                <GrowthArrow width="100%" />
+              </div>
 
-              {/* Floating stat cards */}
-              <div style={{
+              {/* Floating stat cards — decorative */}
+              <div aria-hidden="true" style={{
                 position: "absolute", left: -32, top: -28,
                 padding: "12px 16px", background: "rgba(10,22,40,0.92)",
                 border: "1px solid rgba(245,163,58,0.4)", borderRadius: 12,
@@ -204,7 +207,7 @@ export function Hero() {
                 <div className="mono" style={{ fontSize: 9, letterSpacing: "0.15em", color: "var(--ink-mute)" }}>KHAN PHARMACY</div>
                 <div style={{ fontSize: 18, fontWeight: 700, color: "var(--amber)", marginTop: 2 }}>↗ ₨ 1.2M / mo</div>
               </div>
-              <div style={{
+              <div aria-hidden="true" style={{
                 position: "absolute", right: -20, bottom: 32,
                 padding: "12px 16px", background: "rgba(10,22,40,0.92)",
                 border: "1px solid rgba(42,157,244,0.4)", borderRadius: 12,
@@ -218,14 +221,14 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll cue */}
-        <div className="hero-scroll-cue" style={{
+        {/* Scroll cue — decorative */}
+        <div aria-hidden="true" className="hero-scroll-cue" style={{
           position: "absolute", left: 36, bottom: 28,
           display: "flex", alignItems: "center", gap: 12, color: "var(--ink-mute)",
         }}>
           <span style={{ width: 32, height: 1, background: "var(--ink-mute)" }} />
           <span className="mono" style={{ fontSize: 10, letterSpacing: "0.2em" }}>SCROLL TO EXPLORE</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" style={{ animation: "float-y 1.8s ease-in-out infinite" }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" style={{ animation: "float-y 1.8s ease-in-out infinite" }}>
             <path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>

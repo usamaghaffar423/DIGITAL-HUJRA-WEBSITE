@@ -17,10 +17,14 @@
   --line: rgba(255,255,255,0.08);
   --line-2: rgba(255,255,255,0.14);
   --green: #5BD68A;
+  --nav-height: 72px;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);  /* offset anchor jumps for fixed nav */
+}
 body {
   background: var(--night);
   color: var(--ink);
@@ -80,6 +84,10 @@ button { font-family: inherit; cursor: pointer; }
 .card:hover .svc-arrow { transform: translate(4px, -4px); color: var(--amber); }
 .rule { height: 1px; background: var(--line); border: 0; }
 
+/* GPU-promoted animation layers */
+.animate-float-y { will-change: transform; }
+.animate-scroll-x { will-change: transform; }
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes pulse { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
@@ -98,6 +106,22 @@ button { font-family: inherit; cursor: pointer; }
 .reveal-d2 { animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) .3s both; }
 .reveal-d3 { animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) .45s both; }
 .reveal-d4 { animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) .6s both; }
+
+/* ── Skip-to-content link ────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 16px;
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--amber);
+  color: var(--night);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 0 0 8px 8px;
+  transition: top .2s;
+}
+.skip-link:focus { top: 0; }
 
 /* ── Nav mobile defaults ────────────────────────────────── */
 .nav-mobile-right { display: none; }
@@ -175,4 +199,22 @@ button { font-family: inherit; cursor: pointer; }
 /* Wide screens ≥ 1600px */
 @media (min-width: 1600px) {
   body { font-size: 17px; }
+}
+
+/* ── Reduce motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .animate-float-y,
+  .animate-pulse-dot,
+  .animate-scroll-x,
+  .reveal, .reveal-d1, .reveal-d2, .reveal-d3, .reveal-d4 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

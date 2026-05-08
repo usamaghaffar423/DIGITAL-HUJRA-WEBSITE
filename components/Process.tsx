@@ -8,6 +8,7 @@ export function Process() {
     <section
       id="process"
       className="section-pad"
+      aria-label="Our process"
       style={{
         position: "relative",
         padding: "140px 0",
@@ -27,9 +28,10 @@ export function Process() {
         />
 
         <div style={{ marginTop: 80, position: "relative" }}>
-          {/* Connecting dashed path */}
+          {/* Decorative connecting path */}
           <svg
             className="process-connector"
+            aria-hidden="true"
             viewBox="0 0 1280 200"
             preserveAspectRatio="none"
             style={{
@@ -53,7 +55,7 @@ export function Process() {
             />
           </svg>
 
-          <div
+          <ol
             className="process-grid"
             style={{
               display: "grid",
@@ -61,10 +63,13 @@ export function Process() {
               gap: 24,
               position: "relative",
               zIndex: 1,
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
             }}
           >
             {PROCESS.map((p, i) => (
-              <div
+              <li
                 key={p.n}
                 className="card"
                 style={{
@@ -77,6 +82,7 @@ export function Process() {
                 }}
               >
                 <div
+                  aria-hidden="true"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -94,15 +100,15 @@ export function Process() {
                 >
                   {p.n}
                 </div>
-                <h4 style={{ fontSize: 22, fontWeight: 700, margin: 0, letterSpacing: "-0.015em" }}>
+                <h3 style={{ fontSize: 22, fontWeight: 700, margin: 0, letterSpacing: "-0.015em" }}>
                   {p.t}
-                </h4>
+                </h3>
                 <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.55, color: "var(--ink-soft)" }}>
                   {p.d}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     </section>
