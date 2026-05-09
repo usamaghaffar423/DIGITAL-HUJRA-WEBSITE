@@ -21,8 +21,7 @@ export function Hero() {
         .from(".hero-desc", { y: 24, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.5")
         .from(".hero-ctas", { y: 20, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
         .from(".hero-chips", { y: 16, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
-        .from(".hero-chart", { x: 40, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
-        .from(".hero-meta", { opacity: 0, duration: 0.8, ease: "power2.out" }, "-=1.2");
+        .from(".hero-chart", { x: 40, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8");
     };
     init();
   }, []);
@@ -73,21 +72,6 @@ export function Hero() {
       </div>
 
       <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-        {/* Top meta row */}
-        <div className="hero-meta" style={{
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          paddingBottom: 36, borderBottom: "1px solid var(--line)", marginBottom: 56,
-          gap: 24, flexWrap: "wrap",
-        }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.18em" }}>[ DH/001 ]</span>
-            <span style={{ fontSize: 13, color: "var(--ink-soft)" }}>A digital studio in Batkhela — for businesses across Khyber Pakhtunkhwa.</span>
-          </div>
-          <div className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.15em" }}>
-            34.6166° N&nbsp;·&nbsp;71.9711° E&nbsp;·&nbsp;EST 2020
-          </div>
-        </div>
-
         {/* Title + chart */}
         <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", gap: 60, alignItems: "start" }}>
           {/* LEFT */}
