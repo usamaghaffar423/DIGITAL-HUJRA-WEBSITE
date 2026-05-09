@@ -27,7 +27,7 @@ export function Process() {
           kicker="A hujra is a guest room. You're invited in, you're listened to, you're served well. Same with our process — old manners, modern tools."
         />
 
-        <div style={{ marginTop: 80, position: "relative" }}>
+        <div className="process-inner" style={{ marginTop: 80, position: "relative" }}>
           {/* Decorative connecting path */}
           <svg
             className="process-connector"

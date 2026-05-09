@@ -8,7 +8,7 @@ export function Work() {
   return (
     <section id="work" className="section-pad" aria-label="Selected work" style={{ padding: "140px 0", position: "relative" }}>
       <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }} className="wrap-mobile">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, gap: 40, flexWrap: "wrap" }}>
+        <div className="work-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, gap: 40, flexWrap: "wrap" }}>
           <SectionHead
             eyebrow="Selected work · across KP"
             title={<>Real businesses, <span style={{ color: "var(--blue-2)" }}>real growth.</span></>}

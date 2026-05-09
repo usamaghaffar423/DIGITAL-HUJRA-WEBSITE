@@ -23,7 +23,7 @@
 * { box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);  /* offset anchor jumps for fixed nav */
+  scroll-padding-top: var(--nav-height);
 }
 body {
   background: var(--night);
@@ -128,24 +128,33 @@ button { font-family: inherit; cursor: pointer; }
 .nav-mobile-menu { display: none; overflow: hidden; }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — TABLET ≤ 1024px
    ============================================================ */
-
-/* Tablet ≤ 1024px */
 @media (max-width: 1024px) {
   .hero-grid        { grid-template-columns: 1fr !important; }
+
   .services-header  { grid-template-columns: 1fr !important; gap: 20px !important; }
   .services-header > p { display: none !important; }
+  /* NOTE: elements are <article>, not <div> */
   .services-grid    { grid-template-columns: repeat(2, 1fr) !important; }
-  .services-grid > div:first-child { grid-column: span 2 !important; }
+  .services-grid > article:first-child { grid-column: span 2 !important; }
+
   .process-grid     { grid-template-columns: repeat(2, 1fr) !important; }
+  /* NOTE: elements are <li>, not <div> */
+  .process-grid > li:nth-child(odd)  { margin-top: 0 !important; }
+  .process-grid > li:nth-child(even) { margin-top: 40px !important; }
+
   .work-grid        { grid-template-columns: repeat(2, 1fr) !important; }
   .work-grid > a:first-child { grid-column: span 2 !important; grid-row: auto !important; }
-  .coverage-grid    { grid-template-columns: 1fr !important; }
+
+  .coverage-grid    { grid-template-columns: 1fr !important; gap: 56px !important; }
+
   .footer-grid      { grid-template-columns: 1fr 1fr 1fr !important; }
 }
 
-/* Mobile ≤ 768px */
+/* ============================================================
+   RESPONSIVE — MOBILE ≤ 768px
+   ============================================================ */
 @media (max-width: 768px) {
 
   /* ── Nav ── */
@@ -158,50 +167,73 @@ button { font-family: inherit; cursor: pointer; }
   .hero-grid        { grid-template-columns: 1fr !important; }
   .hero-chart-panel { display: none !important; }
   .hero-scroll-cue  { display: none !important; }
+  /* Make CTA buttons full-width for easier tapping */
+  .hero-ctas        { flex-direction: column !important; }
+  .hero-ctas .btn   { width: 100% !important; justify-content: center !important; }
+  /* Chip pill row wraps naturally — reduce size */
+  .hero-chips       { flex-wrap: wrap !important; gap: 0 !important; }
 
   /* ── Services ── */
-  .services-header  { grid-template-columns: 1fr !important; }
+  .services-header  { grid-template-columns: 1fr !important; margin-bottom: 36px !important; }
   .services-header > p { display: none !important; }
-  .services-grid    { grid-template-columns: 1fr !important; }
-  .services-grid > div:first-child { grid-column: span 1 !important; }
+  /* All cards stack single-column */
+  .services-grid    { grid-template-columns: 1fr !important; gap: 14px !important; }
+  /* FIX: elements are <article>, not <div> — this was the core bug */
+  .services-grid > article:first-child { grid-column: span 1 !important; }
+  /* Override inline minHeight and padding on all service cards */
+  .services-grid article { min-height: 0 !important; padding: 22px 18px 18px !important; }
+  /* Give featured card a slight visual lift without extra height */
+  .services-grid > article:first-child {
+    background: linear-gradient(135deg, rgba(245,163,58,0.07), rgba(10,22,40,0.3)) !important;
+    border-color: rgba(245,163,58,0.25) !important;
+  }
 
   /* ── Process ── */
-  .process-grid     { grid-template-columns: 1fr !important; }
-  .process-grid > div { margin-top: 0 !important; }
+  .process-grid     { grid-template-columns: 1fr !important; gap: 14px !important; }
+  /* FIX: elements are <li>, not <div> */
+  .process-grid > li { margin-top: 0 !important; }
   .process-connector { display: none !important; }
+  .process-inner    { margin-top: 44px !important; }
 
   /* ── Work ── */
-  .work-grid        { grid-template-columns: 1fr !important; }
+  .work-grid        { grid-template-columns: 1fr !important; gap: 16px !important; }
   .work-grid > a:first-child { grid-column: span 1 !important; grid-row: auto !important; }
-  .work-num         { font-size: 72px !important; }
+  .work-num         { font-size: 64px !important; }
+  .work-header      { margin-bottom: 36px !important; }
 
   /* ── Coverage ── */
-  .coverage-grid    { grid-template-columns: 1fr !important; }
-  .stats-grid       { grid-template-columns: repeat(2, 1fr) !important; }
-  .stats-grid > div { border-right: none !important; border-bottom: 1px solid var(--line) !important; }
-  .stat-number      { font-size: 38px !important; }
-
-  /* ── Footer ── */
-  .footer-grid      { grid-template-columns: 1fr !important; }
+  .coverage-grid    { grid-template-columns: 1fr !important; gap: 44px !important; }
+  .stats-grid       { grid-template-columns: repeat(2, 1fr) !important; margin-top: 36px !important; }
+  .stats-grid > div { border-right: none !important; border-bottom: 1px solid var(--line) !important; padding: 20px 16px !important; }
+  .stat-number      { font-size: 36px !important; }
 
   /* ── Testimonials ── */
-  .testimonial-pad  { padding: 36px 22px !important; }
+  .testimonial-pad  { padding: 40px 22px 28px !important; }
 
   /* ── CTA Banner ── */
-  .cta-head         { font-size: clamp(38px, 11vw, 72px) !important; }
-  .cta-inner        { padding: 80px 20px 100px !important; }
+  .cta-head         { font-size: clamp(36px, 11vw, 68px) !important; }
+  .cta-inner        { padding: 80px 20px 96px !important; }
+  /* Full-width CTA buttons on mobile */
+  .cta-inner .btn   { width: 100% !important; justify-content: center !important; }
+
+  /* ── Footer ── */
+  .footer-grid      { grid-template-columns: 1fr !important; gap: 32px !important; }
 
   /* ── Global layout ── */
-  .section-pad      { padding: 80px 0 !important; }
+  .section-pad      { padding: 72px 0 !important; }
   .wrap-mobile      { padding: 0 20px !important; }
 }
 
-/* Wide screens ≥ 1600px */
+/* ============================================================
+   WIDE ≥ 1600px
+   ============================================================ */
 @media (min-width: 1600px) {
   body { font-size: 17px; }
 }
 
-/* ── Reduce motion ───────────────────────────────────────── */
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
