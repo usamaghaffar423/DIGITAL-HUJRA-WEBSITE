@@ -112,10 +112,61 @@ export const MARQUEE_WORDS = [
   "Local-first", "Honest", "Accessible", "Growth-minded",
 ];
 
+export const TEAM = [
+  {
+    name: "Usman Khan",
+    role: "Founder & Creative Director",
+    bio: "Started Digital Hujra in 2020 after seeing Batkhela's best businesses go unnoticed online. Has personally overseen 120+ digital launches across KP.",
+    since: "Est. 2020",
+    initials: "UK",
+    color: "#2A9DF4",
+  },
+  {
+    name: "Hira Gul",
+    role: "Lead Designer & Brand Strategist",
+    bio: "Turns local businesses into recognisable brands. Specialises in bilingual identity systems that look as good on a shop sign as on a smartphone screen.",
+    since: "Since 2021",
+    initials: "HG",
+    color: "#F5A33A",
+  },
+  {
+    name: "Zubair Ahmed",
+    role: "Web Developer & POS Specialist",
+    bio: "Builds fast, reliable POS installations and e-commerce stores. Has deployed 40+ POS systems in KP pharmacies, marts, and restaurants.",
+    since: "Since 2021",
+    initials: "ZA",
+    color: "#5BD68A",
+  },
+  {
+    name: "Sara Bibi",
+    role: "Social Media Manager",
+    bio: "Runs content calendars, Meta ad campaigns, and community management for a dozen KP brands at once — always on deadline, always on-brand.",
+    since: "Since 2022",
+    initials: "SB",
+    color: "#4FB3FF",
+  },
+  {
+    name: "Bilal Yousafzai",
+    role: "Photographer & Videographer",
+    bio: "Studio and on-location shooter based in Batkhela. Edits brand films, reels, and product catalogs that actually convert.",
+    since: "Since 2022",
+    initials: "BY",
+    color: "#F5A33A",
+  },
+  {
+    name: "Noman Khan",
+    role: "Graphic Designer",
+    bio: "Designs menus, packaging, banners, and signage. Tight relationships with local print presses mean print-ready files arrive on time, every time.",
+    since: "Since 2023",
+    initials: "NK",
+    color: "#2A9DF4",
+  },
+];
+
 export const NAV_ITEMS = [
-  { l: "Services", h: "#services" },
-  { l: "Work", h: "#work" },
-  { l: "Process", h: "#process" },
-  { l: "Coverage", h: "#coverage" },
-  { l: "Contact", h: "#contact" },
+  { l: "Services", h: "/services" },
+  { l: "Work", h: "/#work" },
+  { l: "About", h: "/about" },
+  { l: "Team", h: "/team" },
+  { l: "Contact", h: "/contact" },
 ];

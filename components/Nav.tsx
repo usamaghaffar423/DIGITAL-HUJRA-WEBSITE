@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { HujraMark, Arrow } from "@/components/atoms";
 import { NAV_ITEMS } from "@/lib/data";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     let raf: number;
@@ -45,7 +47,7 @@ export function Nav() {
           justifyContent: "space-between",
         }}
       >
-        <a href="#top" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <a href="/" style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <HujraMark size={36} />
           <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
             <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: "-0.02em" }}>
@@ -75,30 +77,40 @@ export function Nav() {
             backdropFilter: "blur(8px)",
           }}
         >
-          {NAV_ITEMS.map((n) => (
-            <a
-              key={n.l}
-              href={n.h}
-              style={{
-                padding: "8px 16px",
-                fontSize: 13.5,
-                fontWeight: 500,
-                borderRadius: 999,
-                color: "var(--ink-soft)",
-                transition: "all .25s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
-                (e.currentTarget as HTMLElement).style.color = "var(--ink)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "transparent";
-                (e.currentTarget as HTMLElement).style.color = "var(--ink-soft)";
-              }}
-            >
-              {n.l}
-            </a>
-          ))}
+          {NAV_ITEMS.map((n) => {
+            const isActive = n.h.startsWith("/") && !n.h.includes("#")
+              ? pathname === n.h
+              : pathname === "/";
+            return (
+              <a
+                key={n.l}
+                href={n.h}
+                style={{
+                  padding: "8px 16px",
+                  fontSize: 13.5,
+                  fontWeight: isActive ? 600 : 500,
+                  borderRadius: 999,
+                  color: isActive ? "var(--ink)" : "var(--ink-soft)",
+                  background: isActive ? "rgba(255,255,255,0.09)" : "transparent",
+                  transition: "all .25s",
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
+                    (e.currentTarget as HTMLElement).style.color = "var(--ink)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    (e.currentTarget as HTMLElement).style.background = "transparent";
+                    (e.currentTarget as HTMLElement).style.color = "var(--ink-soft)";
+                  }
+                }}
+              >
+                {n.l}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA */}
@@ -118,14 +130,14 @@ export function Nav() {
             />
             ACCEPTING WORK
           </span>
-          <a href="#contact" className="btn btn-amber">
+          <a href="/contact" className="btn btn-amber">
             Start a project <Arrow />
           </a>
         </div>
 
         {/* Mobile right: compact CTA + hamburger */}
         <div className="nav-mobile-right" style={{ alignItems: "center", gap: 10 }}>
-          <a href="#contact" className="btn btn-amber" style={{ padding: "10px 16px", fontSize: 13 }}>
+          <a href="/contact" className="btn btn-amber" style={{ padding: "10px 16px", fontSize: 13 }}>
             Get started
           </a>
           <button
@@ -205,7 +217,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/contact"
             onClick={() => setMenuOpen(false)}
             className="btn btn-amber"
             style={{ marginTop: 16, justifyContent: "center", fontSize: 15 }}
