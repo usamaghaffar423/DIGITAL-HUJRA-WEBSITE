@@ -37,7 +37,7 @@ export function Footer() {
               <img
                 src="/logo.png"
                 alt="Digital Hujra"
-                style={{ height: 36, width: "auto", display: "block" }}
+                style={{ height: 56, width: "auto", display: "block" }}
               />
             </a>
             <p
