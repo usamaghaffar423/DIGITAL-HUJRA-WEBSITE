@@ -51,46 +51,108 @@ export default function AboutPage() {
           style={{
             position: "relative",
             paddingTop: "calc(var(--nav-height) + 80px)",
-            paddingBottom: 100,
+            paddingBottom: 0,
             background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
             overflow: "hidden",
           }}
         >
+          {/* Amber glow center-left */}
           <div aria-hidden="true" style={{
-            position: "absolute", left: "-8vw", top: "-6vw",
-            width: "50vw", height: "50vw", borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(245,163,58,0.18) 0%, transparent 65%)",
+            position: "absolute", left: "5%", top: "15%",
+            width: "45vw", height: "45vw", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(245,163,58,0.12) 0%, transparent 65%)",
+            pointerEvents: "none",
+          }} />
+          {/* Blue glow center-right */}
+          <div aria-hidden="true" style={{
+            position: "absolute", right: "5%", top: "5%",
+            width: "35vw", height: "35vw", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(42,157,244,0.10) 0%, transparent 65%)",
             pointerEvents: "none",
           }} />
           <div aria-hidden="true" className="grid-bg" style={{
-            position: "absolute", inset: 0, opacity: 0.4, pointerEvents: "none",
-            maskImage: "radial-gradient(ellipse at 40% 40%, black 20%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at 40% 40%, black 20%, transparent 70%)",
+            position: "absolute", inset: 0, opacity: 0.35, pointerEvents: "none",
+            maskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)",
           }} />
-          <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+
+          <div className="wrap-mobile" style={{ maxWidth: 900, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
+            {/* Breadcrumb */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
               <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>ABOUT</span>
             </div>
+
+            {/* Est badge */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.35)", borderRadius: 999, background: "rgba(245,163,58,0.07)", marginBottom: 28 }}>
+              <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--amber)", display: "inline-block" }} />
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>EST. 2020 · BATKHELA, MALAKAND</span>
+            </div>
+
             <h1
               className="display"
               style={{
-                fontSize: "clamp(52px, 8vw, 120px)",
-                lineHeight: 0.95,
+                fontSize: "clamp(48px, 8vw, 118px)",
+                lineHeight: 0.93,
                 margin: "0 0 28px",
-                letterSpacing: "-0.035em",
-                maxWidth: 900,
+                letterSpacing: "-0.038em",
               }}
             >
               <span style={{ color: "var(--amber)" }}>Where mountains</span>
               <br />
               <span style={{ color: "var(--ink)" }}>meet the modern web.</span>
             </h1>
-            <p style={{ maxWidth: 580, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 0 44px" }}>
+
+            <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 44px" }}>
               We&apos;re a digital studio from Batkhela, Malakand — born out of a simple observation: KP has incredible businesses, and almost none of them are online.
             </p>
-            <a href="/team" className="btn btn-ghost">Meet the team <Arrow /></a>
+
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 72 }}>
+              <a href="/team" className="btn btn-ghost">Meet the team <Arrow /></a>
+              <a href="/contact" className="btn btn-primary">Start a project <Arrow /></a>
+            </div>
+          </div>
+
+          {/* Stats bar — unique to About hero */}
+          <div
+            style={{
+              borderTop: "1px solid var(--line)",
+              background: "rgba(255,255,255,0.015)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            <div style={{
+              maxWidth: 1360,
+              margin: "0 auto",
+              padding: "0 36px",
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+            }}>
+              {STATS.map((s, i) => (
+                <div
+                  key={s.l}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 6,
+                    padding: "32px 16px",
+                    borderRight: i < STATS.length - 1 ? "1px solid var(--line)" : "none",
+                    textAlign: "center",
+                  }}
+                >
+                  <span
+                    className="display"
+                    style={{ fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 800, letterSpacing: "-0.03em", color: i % 2 === 0 ? "var(--amber)" : "var(--blue-2)", lineHeight: 1 }}
+                  >
+                    {s.v}
+                  </span>
+                  <span style={{ fontSize: 13, color: "var(--ink-mute)" }}>{s.l}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

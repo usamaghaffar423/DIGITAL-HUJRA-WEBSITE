@@ -88,47 +88,109 @@ export default function ServicesPage() {
           style={{
             position: "relative",
             paddingTop: "calc(var(--nav-height) + 80px)",
-            paddingBottom: 100,
+            paddingBottom: 0,
             background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
             overflow: "hidden",
           }}
         >
+          {/* Glow left */}
           <div aria-hidden="true" style={{
-            position: "absolute", right: "-8vw", top: "-8vw",
-            width: "50vw", height: "50vw", borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(42,157,244,0.18) 0%, transparent 65%)",
+            position: "absolute", left: "10%", top: "20%",
+            width: "40vw", height: "40vw", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(42,157,244,0.14) 0%, transparent 65%)",
+            pointerEvents: "none",
+          }} />
+          {/* Glow right */}
+          <div aria-hidden="true" style={{
+            position: "absolute", right: "10%", top: "10%",
+            width: "30vw", height: "30vw", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(245,163,58,0.10) 0%, transparent 65%)",
             pointerEvents: "none",
           }} />
           <div aria-hidden="true" className="grid-bg" style={{
-            position: "absolute", inset: 0, opacity: 0.4, pointerEvents: "none",
-            maskImage: "radial-gradient(ellipse at 60% 40%, black 20%, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at 60% 40%, black 20%, transparent 70%)",
+            position: "absolute", inset: 0, opacity: 0.35, pointerEvents: "none",
+            maskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)",
           }} />
-          <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+
+          <div className="wrap-mobile" style={{ maxWidth: 1100, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
+            {/* Breadcrumb */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32, justifyContent: "center" }}>
               <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>SERVICES</span>
             </div>
+
+            {/* Badge */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(42,157,244,0.35)", borderRadius: 999, background: "rgba(42,157,244,0.07)", marginBottom: 28 }}>
+              <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--blue-2)", display: "inline-block" }} />
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--blue-soft)" }}>7 SERVICES · ONE ROOF</span>
+            </div>
+
             <h1
               className="display"
               style={{
-                fontSize: "clamp(52px, 8vw, 120px)",
-                lineHeight: 0.95,
+                fontSize: "clamp(52px, 8.5vw, 130px)",
+                lineHeight: 0.93,
                 margin: "0 0 28px",
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.038em",
               }}
             >
               <span style={{ color: "var(--blue-2)" }}>Seven services,</span>
               <br />
               <span style={{ color: "var(--ink)" }}>one studio.</span>
             </h1>
-            <p style={{ maxWidth: 580, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 0 44px" }}>
+
+            <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 44px" }}>
               From the till in your shop to the reel on your customer&apos;s feed — we cover the whole digital journey of a KP business, under one warm roof in Batkhela.
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginBottom: 72 }}>
               <a href="/contact" className="btn btn-amber">Book a free consultation <Arrow /></a>
-              <a href="tel:+923715868088" className="btn btn-ghost">Call us: +92 371 5868088</a>
+              <a href="tel:+923715868088" className="btn btn-ghost">Call: +92 371 5868088</a>
+            </div>
+          </div>
+
+          {/* Service chip strip — unique to this page */}
+          <div
+            aria-hidden="true"
+            style={{
+              borderTop: "1px solid var(--line)",
+              background: "rgba(255,255,255,0.015)",
+              backdropFilter: "blur(8px)",
+              padding: "0",
+              overflow: "hidden",
+            }}
+          >
+            <div style={{
+              maxWidth: 1360,
+              margin: "0 auto",
+              padding: "0 36px",
+              display: "grid",
+              gridTemplateColumns: "repeat(7, 1fr)",
+            }}>
+              {SERVICES.map((s, i) => {
+                const accentColor = s.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
+                return (
+                  <div
+                    key={s.n}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "24px 12px",
+                      borderRight: i < SERVICES.length - 1 ? "1px solid var(--line)" : "none",
+                      transition: "background .25s",
+                    }}
+                  >
+                    <div style={{ color: accentColor }}>
+                      <ServiceIcon kind={s.icon} color={accentColor} />
+                    </div>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "var(--ink-soft)", textAlign: "center", letterSpacing: "-0.01em" }}>{s.name}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

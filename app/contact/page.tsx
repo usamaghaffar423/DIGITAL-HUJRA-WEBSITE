@@ -112,44 +112,160 @@ export default function ContactPage() {
           style={{
             position: "relative",
             paddingTop: "calc(var(--nav-height) + 80px)",
-            paddingBottom: 80,
+            paddingBottom: 0,
             background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
             overflow: "hidden",
           }}
         >
+          {/* Amber glow center */}
           <div aria-hidden="true" style={{
-            position: "absolute", left: "-8vw", bottom: "-4vw",
-            width: "44vw", height: "44vw", borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(42,157,244,0.16) 0%, transparent 65%)",
+            position: "absolute", left: "50%", top: "0%", transform: "translateX(-50%)",
+            width: "60vw", height: "50vw", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(245,163,58,0.10) 0%, transparent 60%)",
             pointerEvents: "none",
           }} />
-          <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+          {/* Blue glow bottom */}
+          <div aria-hidden="true" style={{
+            position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%)",
+            width: "40vw", height: "20vw", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(42,157,244,0.10) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }} />
+          <div aria-hidden="true" className="grid-bg" style={{
+            position: "absolute", inset: 0, opacity: 0.35, pointerEvents: "none",
+            maskImage: "radial-gradient(ellipse at 50% 45%, black 25%, transparent 72%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 50% 45%, black 25%, transparent 72%)",
+          }} />
+
+          <div className="wrap-mobile" style={{ maxWidth: 860, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
+            {/* Breadcrumb */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
               <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>CONTACT</span>
             </div>
+
+            {/* Badge */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(91,214,138,0.3)", borderRadius: 999, background: "rgba(91,214,138,0.07)", marginBottom: 28 }}>
+              <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "#5BD68A", display: "inline-block", boxShadow: "0 0 0 4px rgba(91,214,138,0.2)" }} />
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "#5BD68A" }}>FREE CONSULTATION · NO COMMITMENT</span>
+            </div>
+
             <h1
               className="display"
               style={{
-                fontSize: "clamp(52px, 8vw, 120px)",
-                lineHeight: 0.95,
+                fontSize: "clamp(52px, 8.5vw, 128px)",
+                lineHeight: 0.93,
                 margin: "0 0 28px",
-                letterSpacing: "-0.035em",
+                letterSpacing: "-0.038em",
               }}
             >
               <span style={{ color: "var(--amber)" }}>Let&apos;s sit</span>
               <br />
               <span style={{ color: "var(--ink)" }}>and talk.</span>
             </h1>
-            <p style={{ maxWidth: 520, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: 0 }}>
+
+            <p style={{ maxWidth: 520, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 44px" }}>
               No pitch, no pressure. Tell us about your business and we&apos;ll tell you what&apos;s possible. First consultation is always free.
             </p>
+
+            {/* Primary CTA cluster */}
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 72 }}>
+              <a
+                href="https://wa.me/923715868088"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ background: "#25D366", color: "#fff", border: "none", gap: 10, boxShadow: "0 8px 28px -8px rgba(37,211,102,0.45)", fontSize: 15 }}
+              >
+                <WhatsAppIcon />
+                Chat on WhatsApp
+              </a>
+              <a href="#contact-form" className="btn btn-primary">Fill the form below <Arrow /></a>
+            </div>
+          </div>
+
+          {/* Contact chips strip — unique to Contact hero */}
+          <div
+            style={{
+              borderTop: "1px solid var(--line)",
+              background: "rgba(255,255,255,0.015)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            <div style={{
+              maxWidth: 1360,
+              margin: "0 auto",
+              padding: "0 36px",
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+            }}>
+              {[
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  ),
+                  label: "Main Bazaar, Batkhela",
+                  sub: "District Malakand, KP",
+                  color: "var(--amber)",
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012.86 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.64a16 16 0 006.29 6.29l1-.99a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                  ),
+                  label: "+92 371 5868088",
+                  sub: "Mon – Sat, 9am – 6pm",
+                  color: "var(--blue-2)",
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                  ),
+                  label: "hello@digitalhujra.pk",
+                  sub: "Reply within 24 hours",
+                  color: "var(--amber)",
+                },
+                {
+                  icon: <WhatsAppIcon />,
+                  label: "WhatsApp",
+                  sub: "wa.me/923715868088",
+                  color: "#5BD68A",
+                },
+              ].map((item, i) => (
+                <div
+                  key={item.label}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "28px 16px",
+                    borderRight: i < 3 ? "1px solid var(--line)" : "none",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ width: 40, height: 40, borderRadius: "50%", background: "rgba(255,255,255,0.05)", border: "1px solid var(--line-2)", display: "flex", alignItems: "center", justifyContent: "center", color: item.color }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)" }}>{item.label}</div>
+                    <div style={{ fontSize: 12, color: "var(--ink-mute)", marginTop: 2 }}>{item.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* ── Main contact section ───────────────────────── */}
         <section
+          id="contact-form"
           aria-label="Contact form and details"
           style={{
             padding: "80px 0 120px",
