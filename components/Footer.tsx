@@ -1,6 +1,5 @@
 "use client";
 
-import { HujraMark } from "@/components/atoms";
 
 const FOOTER_COLS = [
   {
@@ -34,20 +33,12 @@ export function Footer() {
         >
           {/* Brand column */}
           <div>
-            <a href="#top" aria-label="Digital Hujra — back to top" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
-              <HujraMark size={36} />
-              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
-                <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: "-0.02em" }}>
-                  <span style={{ color: "var(--blue-2)" }}>Digital</span>
-                  <span style={{ color: "var(--amber)" }}>Hujra</span>
-                </span>
-                <span
-                  className="mono"
-                  style={{ fontSize: 9, letterSpacing: "0.18em", color: "var(--ink-mute)", marginTop: 4 }}
-                >
-                  EST · 2020
-                </span>
-              </div>
+            <a href="/" aria-label="Digital Hujra — back to top" style={{ display: "inline-flex", marginBottom: 18 }}>
+              <img
+                src="/logo.png"
+                alt="Digital Hujra"
+                style={{ height: 36, width: "auto", display: "block" }}
+              />
             </a>
             <p
               style={{

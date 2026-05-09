@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { HujraMark, Arrow } from "@/components/atoms";
+import { Arrow } from "@/components/atoms";
 import { NAV_ITEMS } from "@/lib/data";
 
 export function Nav() {
@@ -47,20 +47,12 @@ export function Nav() {
           justifyContent: "space-between",
         }}
       >
-        <a href="/" style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <HujraMark size={36} />
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
-            <span style={{ fontWeight: 800, fontSize: 19, letterSpacing: "-0.02em" }}>
-              <span style={{ color: "var(--blue-2)" }}>Digital</span>
-              <span style={{ color: "var(--amber)" }}>Hujra</span>
-            </span>
-            <span
-              className="mono"
-              style={{ fontSize: 9, letterSpacing: "0.18em", color: "var(--ink-mute)", marginTop: 4 }}
-            >
-              BATKHELA · MALAKAND · KP
-            </span>
-          </div>
+        <a href="/" aria-label="Digital Hujra — home" style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src="/logo.png"
+            alt="Digital Hujra"
+            style={{ height: 40, width: "auto", display: "block" }}
+          />
         </a>
 
         {/* Desktop nav pill */}
