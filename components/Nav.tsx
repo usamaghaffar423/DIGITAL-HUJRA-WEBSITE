@@ -51,7 +51,7 @@ export function Nav() {
           <img
             src="/logo.png"
             alt="Digital Hujra"
-            style={{ height: 64, width: "auto", display: "block" }}
+            style={{ height: 96, width: "auto", display: "block" }}
           />
         </a>
 
