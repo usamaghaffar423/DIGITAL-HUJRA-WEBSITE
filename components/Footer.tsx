@@ -37,7 +37,8 @@ export function Footer() {
               <img
                 src="/logo.png"
                 alt="Digital Hujra"
-                style={{ height: 120, width: "auto", display: "block" }}
+                className="footer-logo"
+                style={{ height: 44, width: "auto", display: "block", maxWidth: "180px" }}
               />
             </a>
             <p

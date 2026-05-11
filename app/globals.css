@@ -218,6 +218,7 @@ button { font-family: inherit; cursor: pointer; }
 
   /* ── Footer ── */
   .footer-grid      { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .footer-logo      { height: 36px !important; max-width: 140px !important; }
 
   /* ── Global layout ── */
   .section-pad      { padding: 72px 0 !important; }
