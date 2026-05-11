@@ -17,7 +17,7 @@
   --line: rgba(255,255,255,0.08);
   --line-2: rgba(255,255,255,0.14);
   --green: #5BD68A;
-  --nav-height: 100px;
+  --nav-height: 72px;
 }
 
 * { box-sizing: border-box; }
