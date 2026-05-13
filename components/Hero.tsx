@@ -172,14 +172,15 @@ export function Hero() {
                 gap: 12, pointerEvents: "none",
               }}>
                 <div style={{
-                  width: 80, height: 80, borderRadius: "50%",
+                  padding: "14px 28px",
+                  borderRadius: 16,
                   background: "rgba(10,22,40,0.92)",
                   border: "2px solid var(--amber)",
                   boxShadow: "0 0 40px rgba(245,163,58,0.35), inset 0 0 20px rgba(245,163,58,0.08)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   animation: "pulseGlow 3s ease-in-out infinite",
                 }}>
-                  <img src="/logo.png" alt="" style={{ height: 44, width: "auto", display: "block" }} />
+                  <img src="/logo.png" alt="" style={{ height: 52, width: "auto", display: "block", maxWidth: 160 }} />
                 </div>
                 <div style={{
                   background: "rgba(10,22,40,0.88)",
