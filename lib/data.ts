@@ -28,14 +28,44 @@ export const TEAM = [
 
 export const PORTFOLIO = [
   {
+    id: 'classyfitters',
+    client: 'Classyfitters',
+    service: 'Branding & Social Media',
+    location: 'Batkhela, KP',
+    tagline: 'Premium fashion brand identity for Classyfitters',
+    coverEmoji: '👗',
+    coverImage: '',
+    featured: true,
+  },
+  {
+    id: 'edenrobe-batkhela',
+    client: 'Edenrobe Batkhela Amandara',
+    service: 'Social Media & Photography',
+    location: 'Amandara, Batkhela, KP',
+    tagline: 'Digital presence for Edenrobe Batkhela franchise',
+    coverEmoji: '🏪',
+    coverImage: '',
+    featured: false,
+  },
+  {
     id: 'raazina-essence',
     client: 'Raazina Essence',
     service: 'Product Photography',
-    location: 'Swat, KP',
+    location: 'Shamozo, Swat, KP',
     tagline: '50+ premium mockup images — Raazina Ice perfume',
-    coverEmoji: ':crescent_moon:',
+    coverEmoji: '🌙',
     coverImage: '',
-    featured: true,
+    featured: false,
+  },
+  {
+    id: 'al-ansar-abaya',
+    client: 'Al Ansar Abaya',
+    service: 'Branding & Photography',
+    location: 'Chakdara, KP',
+    tagline: 'Elegant brand identity for Al Ansar Abaya collection',
+    coverEmoji: '🤍',
+    coverImage: '',
+    featured: false,
   },
 ]
 
@@ -88,11 +118,10 @@ export const SERVICES = [
 ]
 
 export const WORK = [
-  { id: 1, name: 'Raazina Essence',   cat: 'Product Photography', city: 'Swat',     swatch: 'rgba(120,60,180,0.6)'  },
-  { id: 2, name: 'Khan Pharmacy',     cat: 'POS System',          city: 'Batkhela', swatch: 'rgba(42,157,244,0.5)'  },
-  { id: 3, name: 'Malakand Mart',     cat: 'E-commerce',          city: 'Mardan',   swatch: 'rgba(91,214,138,0.5)'  },
-  { id: 4, name: 'Local Brand Co.',   cat: 'Branding',            city: 'Dir',      swatch: 'rgba(245,163,58,0.5)'  },
-  { id: 5, name: 'Swat Eats',         cat: 'Social Media',        city: 'Swat',     swatch: 'rgba(244,63,94,0.5)'   },
+  { id: 1, name: 'Classyfitters',            cat: 'Branding & Social Media',    city: 'Batkhela',  swatch: 'rgba(245,163,58,0.6)'  },
+  { id: 2, name: 'Edenrobe Batkhela',        cat: 'Social Media & Photography', city: 'Amandara',  swatch: 'rgba(42,157,244,0.5)'  },
+  { id: 3, name: 'Raazina Essence',          cat: 'Product Photography',        city: 'Swat',      swatch: 'rgba(120,60,180,0.6)'  },
+  { id: 4, name: 'Al Ansar Abaya',           cat: 'Branding & Photography',     city: 'Chakdara',  swatch: 'rgba(91,214,138,0.5)'  },
 ]
 
 export const PROCESS = [

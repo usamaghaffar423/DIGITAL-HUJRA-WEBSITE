@@ -8,7 +8,7 @@ import { Arrow } from "@/components/atoms";
 export const metadata: Metadata = {
   title: "About Us — Digital Hujra | Digital Studio in Batkhela, KP",
   description:
-    "Founded in 2020 in Batkhela, Malakand — Digital Hujra helps local KP businesses get online. Our story, values, and the team behind every project.",
+    "Founded in 2026 in Batkhela, Malakand — Digital Hujra helps local KP businesses get online. Our story, values, and the team behind every project.",
 };
 
 const VALUES = [
@@ -87,7 +87,7 @@ export default function AboutPage() {
             {/* Est badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.35)", borderRadius: 999, background: "rgba(245,163,58,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--amber)", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>EST. 2020 · BATKHELA, MALAKAND</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>EST. 2026 · BATKHELA, MALAKAND</span>
             </div>
 
             <h1
@@ -170,14 +170,14 @@ export default function AboutPage() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
                   <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
-                  <span className="eyebrow" style={{ color: "var(--amber)" }}>Our story · Est. 2020</span>
+                  <span className="eyebrow" style={{ color: "var(--amber)" }}>Our story · Est. 2026</span>
                 </div>
                 <h2 className="display" style={{ fontSize: "clamp(36px, 4.5vw, 64px)", lineHeight: 1.02, margin: "0 0 28px", letterSpacing: "-0.025em" }}>
                   Started in a <span style={{ color: "var(--amber)" }}>hujra</span>,<br />
                   built for the bazaar.
                 </h2>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 20px" }}>
-                  Digital Hujra was founded in 2020 in Main Bazaar, Batkhela by Osama Ghaffar — a local web developer who kept seeing the same problem: brilliant family-run businesses with no web presence, no POS, no social media. Business done purely on trust and word-of-mouth.
+                  Digital Hujra was founded in 2026 in Main Bazaar, Batkhela by Osama Ghaffar — a local web developer who kept seeing the same problem: brilliant family-run businesses with no web presence, no POS, no social media. Business done purely on trust and word-of-mouth.
                 </p>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 20px" }}>
                   The pandemic made it urgent. Shops that couldn&apos;t take orders online had no fallback. That&apos;s when Usman turned his small studio into a proper agency — hiring designers, developers, photographers, and social media managers from the local talent pool.
