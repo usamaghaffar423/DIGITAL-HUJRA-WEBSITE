@@ -177,7 +177,7 @@ export default function AboutPage() {
                   built for the bazaar.
                 </h2>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 20px" }}>
-                  Digital Hujra was founded in 2020 in Main Bazaar, Batkhela by Usman Khan — a local web developer who kept seeing the same problem: brilliant family-run businesses with no web presence, no POS, no social media. Business done purely on trust and word-of-mouth.
+                  Digital Hujra was founded in 2020 in Main Bazaar, Batkhela by Osama Ghaffar — a local web developer who kept seeing the same problem: brilliant family-run businesses with no web presence, no POS, no social media. Business done purely on trust and word-of-mouth.
                 </p>
                 <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 20px" }}>
                   The pandemic made it urgent. Shops that couldn&apos;t take orders online had no fallback. That&apos;s when Usman turned his small studio into a proper agency — hiring designers, developers, photographers, and social media managers from the local talent pool.
