@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { MountainRange } from "@/components/atoms/MountainRange";
 import { HujraFortress } from "@/components/atoms/HujraFortress";
 import { NetworkField } from "@/components/atoms/NetworkField";
-import { GrowthArrow } from "@/components/atoms/GrowthArrow";
 import { Arrow } from "@/components/atoms";
 
 export function Hero() {
@@ -150,56 +149,98 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — growth chart panel */}
-          <div className="hero-chart hero-chart-panel" style={{ position: "relative", paddingTop: 40 }}>
+          {/* RIGHT — Digital Hujra network infographic */}
+          <div className="hero-chart hero-chart-panel" aria-hidden="true" style={{ position: "relative", paddingTop: 40 }}>
             <div style={{
-              position: "relative", padding: "28px 28px 16px",
+              position: "relative",
               border: "1px solid var(--line-2)", borderRadius: 20,
-              background: "linear-gradient(180deg, rgba(42,157,244,0.06), rgba(10,22,40,0.4))",
+              background: "linear-gradient(180deg, rgba(10,22,40,0.7), rgba(5,11,23,0.95))",
               backdropFilter: "blur(8px)",
+              overflow: "hidden",
+              height: 420,
             }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                <div>
-                  <div className="mono" style={{ fontSize: 10, letterSpacing: "0.18em", color: "var(--ink-mute)" }}>LIVE · CLIENT GROWTH</div>
-                  <div style={{ fontSize: 22, fontWeight: 700, marginTop: 4 }}>
-                    +<span style={{ color: "var(--blue-2)" }}>247%</span>
-                    <span style={{ fontSize: 14, color: "var(--ink-mute)", fontWeight: 500, marginLeft: 10 }}>avg. online sales lift</span>
-                  </div>
-                </div>
-                <div aria-hidden="true" style={{
-                  fontSize: 11, padding: "4px 10px", borderRadius: 4,
-                  background: "rgba(91,214,138,0.15)", color: "#5BD68A",
-                  fontFamily: "var(--font-jetbrains-mono), monospace",
-                  display: "flex", alignItems: "center", gap: 6,
-                }}>
-                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#5BD68A", animation: "pulse 1.6s ease-in-out infinite" }} />
-                  TRENDING
-                </div>
-              </div>
-              <div role="img" aria-label="Growth arrow chart showing 247% average online sales lift">
-                <GrowthArrow width="100%" />
+              {/* Live network canvas fills the card */}
+              <div style={{ position: "absolute", inset: 0, opacity: 0.85 }}>
+                <NetworkField count={28} />
               </div>
 
-              {/* Floating stat cards — decorative */}
-              <div aria-hidden="true" style={{
-                position: "absolute", left: -32, top: -28,
-                padding: "12px 16px", background: "rgba(10,22,40,0.92)",
-                border: "1px solid rgba(245,163,58,0.4)", borderRadius: 12,
-                animation: "float-y 5s ease-in-out infinite",
-                boxShadow: "0 12px 40px -10px rgba(245,163,58,0.3)",
+              {/* Central hub — Digital Hujra brand node */}
+              <div style={{
+                position: "absolute", inset: 0,
+                display: "flex", flexDirection: "column",
+                alignItems: "center", justifyContent: "center",
+                gap: 12, pointerEvents: "none",
               }}>
-                <div className="mono" style={{ fontSize: 9, letterSpacing: "0.15em", color: "var(--ink-mute)" }}>KHAN PHARMACY</div>
-                <div style={{ fontSize: 18, fontWeight: 700, color: "var(--amber)", marginTop: 2 }}>↗ ₨ 1.2M / mo</div>
+                <div style={{
+                  width: 80, height: 80, borderRadius: "50%",
+                  background: "rgba(10,22,40,0.92)",
+                  border: "2px solid var(--amber)",
+                  boxShadow: "0 0 40px rgba(245,163,58,0.35), inset 0 0 20px rgba(245,163,58,0.08)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  animation: "pulseGlow 3s ease-in-out infinite",
+                }}>
+                  <img src="/logo.png" alt="" style={{ height: 44, width: "auto", display: "block" }} />
+                </div>
+                <div style={{
+                  background: "rgba(10,22,40,0.88)",
+                  border: "1px solid var(--line-2)",
+                  borderRadius: 8, padding: "4px 14px",
+                }}>
+                  <span className="mono" style={{ fontSize: 10, letterSpacing: "0.18em", color: "var(--amber)" }}>DIGITAL HUJRA · KP</span>
+                </div>
               </div>
-              <div aria-hidden="true" style={{
-                position: "absolute", right: -20, bottom: 32,
-                padding: "12px 16px", background: "rgba(10,22,40,0.92)",
-                border: "1px solid rgba(42,157,244,0.4)", borderRadius: 12,
-                animation: "float-y 6s ease-in-out 1s infinite",
-                boxShadow: "0 12px 40px -10px rgba(42,157,244,0.3)",
+
+              {/* Service pills — float around the hub */}
+              {[
+                { label: "Branding",     color: "var(--amber)",  top: "12%",  left: "8%"  },
+                { label: "Photography",  color: "var(--blue-2)", top: "10%",  right: "8%" },
+                { label: "Social Media", color: "var(--blue-2)", bottom: "22%", left: "6%" },
+                { label: "POS Systems",  color: "var(--amber)",  bottom: "18%", right: "6%" },
+                { label: "E-commerce",   color: "var(--blue-2)", top: "44%",  left: "4%"  },
+                { label: "Video",        color: "var(--amber)",  top: "44%",  right: "4%" },
+              ].map((pill, i) => (
+                <div
+                  key={pill.label}
+                  style={{
+                    position: "absolute",
+                    top: pill.top, bottom: pill.bottom,
+                    left: pill.left, right: pill.right,
+                    padding: "6px 12px",
+                    background: "rgba(10,22,40,0.88)",
+                    border: `1px solid ${pill.color}55`,
+                    borderRadius: 999,
+                    animation: `float-y ${5 + i * 0.6}s ease-in-out ${i * 0.4}s infinite`,
+                    pointerEvents: "none",
+                  }}
+                >
+                  <span className="mono" style={{ fontSize: 9, letterSpacing: "0.12em", color: pill.color, whiteSpace: "nowrap" }}>
+                    {pill.label.toUpperCase()}
+                  </span>
+                </div>
+              ))}
+
+              {/* Stats strip at bottom */}
+              <div style={{
+                position: "absolute", bottom: 0, left: 0, right: 0,
+                display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+                borderTop: "1px solid var(--line)",
+                background: "rgba(5,11,23,0.88)",
+                backdropFilter: "blur(8px)",
               }}>
-                <div className="mono" style={{ fontSize: 9, letterSpacing: "0.15em", color: "var(--ink-mute)" }}>MALAKAND MART</div>
-                <div style={{ fontSize: 18, fontWeight: 700, color: "var(--blue-2)", marginTop: 2 }}>342 orders / wk</div>
+                {[
+                  { v: "6+",   l: "Services"   },
+                  { v: "5+",   l: "Cities"     },
+                  { v: "48h",  l: "Delivery"   },
+                  { v: "100%", l: "Satisfaction"},
+                ].map((s, i) => (
+                  <div key={s.l} style={{
+                    padding: "14px 10px", textAlign: "center",
+                    borderRight: i < 3 ? "1px solid var(--line)" : "none",
+                  }}>
+                    <div className="display" style={{ fontSize: 20, fontWeight: 800, color: i % 2 === 0 ? "var(--amber)" : "var(--blue-2)", lineHeight: 1 }}>{s.v}</div>
+                    <div className="mono" style={{ fontSize: 8, letterSpacing: "0.12em", color: "var(--ink-mute)", marginTop: 4 }}>{s.l.toUpperCase()}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
