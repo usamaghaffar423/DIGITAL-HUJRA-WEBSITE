@@ -1,172 +1,115 @@
-export const SERVICES = [
-  {
-    n: "01",
-    name: "POS Systems",
-    blurb: "Modern point-of-sale for shops, restaurants & pharmacies — receipts, stock, daily reports.",
-    bullets: ["Cash + card-ready", "Daily Z-reports", "Stock & expiry alerts", "Urdu/Pashto receipts"],
-    icon: "pos" as const,
-    accent: "blue" as const,
-  },
-  {
-    n: "02",
-    name: "E-commerce Stores",
-    blurb: "Beautiful online stores that take orders day and night — Shopify, WooCommerce or custom.",
-    bullets: ["Cash on delivery", "WhatsApp checkout", "Local courier integrations", "Bilingual UI"],
-    icon: "cart" as const,
-    accent: "amber" as const,
-  },
-  {
-    n: "03",
-    name: "Branding & Identity",
-    blurb: "Logos, colors and brand books that make a small KP business look like a household name.",
-    bullets: ["Logo + wordmark", "Color & type system", "Stationery & signage", "Brand guidelines"],
-    icon: "brand" as const,
-    accent: "blue" as const,
-  },
-  {
-    n: "04",
-    name: "Social Media Marketing",
-    blurb: "Monthly content, ads and community work — Facebook, Instagram, TikTok, the works.",
-    bullets: ["Content calendars", "Reels & stories", "Targeted Meta ads", "Monthly reports"],
-    icon: "social" as const,
-    accent: "amber" as const,
-  },
-  {
-    n: "05",
-    name: "Product Photography",
-    blurb: "Studio + on-location product shoots that make catalogs and feeds genuinely sell.",
-    bullets: ["Studio shoots", "Lifestyle scenes", "Edited cutouts", "Catalog-ready"],
-    icon: "camera" as const,
-    accent: "blue" as const,
-  },
-  {
-    n: "06",
-    name: "Video Editing",
-    blurb: "Reels, ads, brand films and explainers — color, sound, motion, all in-house.",
-    bullets: ["Short-form reels", "Ad cuts", "Brand films", "Captions & motion"],
-    icon: "video" as const,
-    accent: "amber" as const,
-  },
-  {
-    n: "07",
-    name: "Graphic Design",
-    blurb: "Posters, menus, flyers, packaging — print-ready files for the local press, on time.",
-    bullets: ["Menus & flyers", "Packaging", "Banners & shop signs", "Print-ready files"],
-    icon: "grid" as const,
-    accent: "blue" as const,
-  },
-];
-
-export const PROCESS = [
-  { n: "01", t: "Hujra session", d: "We sit, we listen, we drink chai. Tell us about your business — no pitch, no jargon." },
-  { n: "02", t: "Plan & estimate", d: "A clear, plain-language plan with a fixed price and timeline. No surprises later." },
-  { n: "03", t: "Design & build", d: "Our team designs, builds and shoots — with check-ins on WhatsApp every step." },
-  { n: "04", t: "Launch & support", d: "We launch, train your staff, and stay around for the first 90 days. We don't disappear." },
-];
+export const SITE = {
+  name: 'Digital Hujra',
+  tagline: 'Bringing KP Business to the Digital World',
+  phone: '+92 371 5868088',
+  whatsapp: '923715868088',
+  email: 'info@digitalhujra.com',
+  address: 'Popular Shopping Mall Plaza, Near Gul Rang Khadi Hall, Amandara Batkhela, KP',
+  addressShort: 'Amandara Batkhela, KP',
+  instagram: '',
+  facebook: '',
+  tiktok: '',
+  youtube: '',
+} as const
 
 export const STATS = [
-  { v: "120+", l: "KP businesses online" },
-  { v: "08", l: "Districts served" },
-  { v: "06", l: "Years in Batkhela" },
-  { v: "98%", l: "Client retention" },
-];
+  { value: 6,   suffix: '+', label: 'Services Offered',  sub: 'Photography to POS — all under one roof',   v: '6+',   l: 'Services Offered' },
+  { value: 5,   suffix: '+', label: 'Cities in KP',      sub: 'Batkhela · Swat · Dir · Mardan · Peshawar', v: '5+',   l: 'Cities in KP'     },
+  { value: 48,  suffix: 'h', label: 'Avg. Delivery',     sub: 'Fast turnaround on every project',          v: '48h',  l: 'Avg. Delivery'    },
+  { value: 100, suffix: '%', label: 'Satisfaction',       sub: "We don't stop until you're happy",          v: '100%', l: 'Satisfaction'     },
+]
 
-export const WORK = [
-  { id: 1, name: "Malakand Mart", cat: "E-commerce + POS", city: "Batkhela", swatch: "#1B3656" },
-  { id: 2, name: "Khan Pharmacy", cat: "POS + Branding", city: "Mardan", swatch: "#2C4A2E" },
-  { id: 3, name: "Swat Honey Co.", cat: "Brand + Shoot", city: "Mingora", swatch: "#5C3920" },
-  { id: 4, name: "Zaiqa Restaurant", cat: "Social + Menus", city: "Peshawar", swatch: "#5A1F2A" },
-  { id: 5, name: "Karak Threads", cat: "Store + Social", city: "Kohat", swatch: "#3B3B6A" },
-  { id: 6, name: "Hujra Builders", cat: "Brand + Web", city: "Charsadda", swatch: "#1F4747" },
-];
+export const TEAM = [
+  { initials: 'DH', name: 'Founder',    role: 'Founder & CEO',          bio: 'Started Digital Hujra to bring professional digital services to local KP businesses.',    since: '2026', color: '#F5A33A' },
+  { initials: 'DH', name: 'CO-FOUNDER', role: 'CO-FOUNDER',             bio: 'Expert in software development, and leading the whole department.',                       since: '2026', color: '#2A9DF4' },
+  { initials: 'HB', name: 'Haseeb',     role: 'Lead Designer',          bio: 'Expert in brand identity, logo design, and visual communication for KP businesses.',      since: '2026', color: '#5BD68A' },
+  { initials: 'MZ', name: 'Muzamil',    role: 'Brand & Visual Designer', bio: 'Specializes in social media design, print materials, and digital brand assets.',         since: '2026', color: '#4FB3FF' },
+]
 
-export const DISTRICTS = [
-  "Malakand", "Swat", "Buner", "Dir Lower", "Dir Upper", "Mardan",
-  "Charsadda", "Peshawar", "Nowshera", "Swabi", "Kohat", "Karak",
-  "Bannu", "Abbottabad", "Mansehra", "Haripur", "Chitral", "Bajaur",
-];
+export const PORTFOLIO = [
+  {
+    id: 'raazina-essence',
+    client: 'Raazina Essence',
+    service: 'Product Photography',
+    location: 'Swat, KP',
+    tagline: '50+ premium mockup images — Raazina Ice perfume',
+    coverEmoji: ':crescent_moon:',
+    coverImage: '',
+    featured: true,
+  },
+]
 
 export const TESTIMONIALS = [
   {
-    q: "Pehle hum pen aur register pe sab kuch likhte the. Ab ek tap pe sab pata chal jata hai. Sales bhi 40% barhi hain.",
-    name: "Sajjad Khan",
-    role: "Owner, Malakand Mart",
-    city: "Batkhela",
+    id: 'raazina',
+    client: 'Raazina Essence',
+    business: 'Raazina Essence',
+    location: 'Shamozo, Swat, KP',
+    service: 'Product Photography',
+    review: 'Digital Hujra ne hamare Raazina Ice perfume ke liye jo shoot kiya — woh hamari expectations se kahin behtar tha. Professional, fast, aur bilkul woh feel jo hum chahte the.',
+    rating: 5,
+    // component-compatibility aliases
+    q: 'Digital Hujra ne hamare Raazina Ice perfume ke liye jo shoot kiya — woh hamari expectations se kahin behtar tha. Professional, fast, aur bilkul woh feel jo hum chahte the.',
+    name: 'Raazina Essence',
+    role: 'Product Photography Client',
+    city: 'Swat, KP',
   },
-  {
-    q: "They built our store, shot the products, and ran our Instagram for the first three months. Honest team — they explain everything in Pashto if you want.",
-    name: "Dr. Imran Ali",
-    role: "Founder, Khan Pharmacy",
-    city: "Mardan",
-  },
-  {
-    q: "Sirf ek logo nahi banaya — pura brand book diya. Ab humari packaging Karachi tak ja rahi hai.",
-    name: "Bushra Yousafzai",
-    role: "Founder, Swat Honey Co.",
-    city: "Mingora",
-  },
-];
+]
 
-export const MARQUEE_WORDS = [
-  "POS", "Stores", "Brand", "Social", "Shoot", "Edit", "Design",
-  "Local-first", "Honest", "Accessible", "Growth-minded",
-];
+export const WA_MESSAGES: Record<string, string> = {
+  default:   'Assalam o Alaikum! Digital Hujra se contact kar raha hoon. Mujhe services ke baare mein baat karni thi.',
+  pos:       'Assalam o Alaikum! POS system ke baare mein maloomat chahiye.',
+  ecommerce: 'Assalam o Alaikum! E-commerce website banwani hai.',
+  branding:  'Assalam o Alaikum! Brand identity ke baare mein baat karni thi.',
+  social:    'Assalam o Alaikum! Social media management ke baare mein enquire karna tha.',
+  photo:     'Assalam o Alaikum! Product photography ke baare mein enquire karna tha.',
+  video:     'Assalam o Alaikum! Video editing ke baare mein enquire karna tha.',
+  graphic:   'Assalam o Alaikum! Graphic design ke liye inquiry karna chahta hoon.',
+}
 
-export const TEAM = [
-  {
-    name: "Usman Khan",
-    role: "Founder & Creative Director",
-    bio: "Started Digital Hujra in 2020 after seeing Batkhela's best businesses go unnoticed online. Has personally overseen 120+ digital launches across KP.",
-    since: "Est. 2020",
-    initials: "UK",
-    color: "#2A9DF4",
-  },
-  {
-    name: "Hira Gul",
-    role: "Lead Designer & Brand Strategist",
-    bio: "Turns local businesses into recognisable brands. Specialises in bilingual identity systems that look as good on a shop sign as on a smartphone screen.",
-    since: "Since 2021",
-    initials: "HG",
-    color: "#F5A33A",
-  },
-  {
-    name: "Zubair Ahmed",
-    role: "Web Developer & POS Specialist",
-    bio: "Builds fast, reliable POS installations and e-commerce stores. Has deployed 40+ POS systems in KP pharmacies, marts, and restaurants.",
-    since: "Since 2021",
-    initials: "ZA",
-    color: "#5BD68A",
-  },
-  {
-    name: "Sara Bibi",
-    role: "Social Media Manager",
-    bio: "Runs content calendars, Meta ad campaigns, and community management for a dozen KP brands at once — always on deadline, always on-brand.",
-    since: "Since 2022",
-    initials: "SB",
-    color: "#4FB3FF",
-  },
-  {
-    name: "Bilal Yousafzai",
-    role: "Photographer & Videographer",
-    bio: "Studio and on-location shooter based in Batkhela. Edits brand films, reels, and product catalogs that actually convert.",
-    since: "Since 2022",
-    initials: "BY",
-    color: "#F5A33A",
-  },
-  {
-    name: "Noman Khan",
-    role: "Graphic Designer",
-    bio: "Designs menus, packaging, banners, and signage. Tight relationships with local print presses mean print-ready files arrive on time, every time.",
-    since: "Since 2023",
-    initials: "NK",
-    color: "#2A9DF4",
-  },
-];
+// ── Component-compatibility exports ──────────────────────────────────────────
 
 export const NAV_ITEMS = [
-  { l: "Services", h: "/services" },
-  { l: "Work", h: "/#work" },
-  { l: "About", h: "/about" },
-  { l: "Team", h: "/team" },
-  { l: "Contact", h: "/contact" },
-];
+  { l: 'Services', h: '/services' },
+  { l: 'Work',     h: '/#work'    },
+  { l: 'About',    h: '/about'    },
+  { l: 'Team',     h: '/team'     },
+  { l: 'Contact',  h: '/contact'  },
+]
+
+export const SERVICES = [
+  { n: '01', name: 'POS Systems',          icon: 'pos',    accent: 'amber', blurb: 'Modern point-of-sale for pharmacies, marts, and restaurants — installed, configured, and staff-trained.',         bullets: ['Inventory tracking', 'Daily Z-reports', 'Urdu/Pashto receipts', 'Works offline', 'Staff training', 'Remote support'] },
+  { n: '02', name: 'E-commerce Stores',    icon: 'cart',   accent: 'blue',  blurb: 'Online shops with Cash on Delivery, WhatsApp checkout, and local courier integrations — ready in weeks.',            bullets: ['Cash on Delivery', 'WhatsApp checkout', 'Courier integration', 'Bilingual UI'] },
+  { n: '03', name: 'Branding & Identity',  icon: 'brand',  accent: 'amber', blurb: 'Logo, color system, typography, and brand book — identities that hold together across print and screen.',            bullets: ['Logo + variants', 'Color & type system', 'Stationery', 'Brand guidelines'] },
+  { n: '04', name: 'Social Media',         icon: 'social', accent: 'blue',  blurb: 'Monthly content calendars, Reels, Stories, and targeted Meta ads — with plain-language performance reports.',        bullets: ['Content calendar', 'Reels & Stories', 'Meta & TikTok ads', 'Monthly report'] },
+  { n: '05', name: 'Product Photography',  icon: 'camera', accent: 'amber', blurb: 'Studio and on-location shoots with 48-hour delivery. Catalog-ready cutouts and lifestyle scenes.',                  bullets: ['Studio shoots', 'On-location', 'Product cutouts', '48h turnaround'] },
+  { n: '06', name: 'Video Editing',        icon: 'video',  accent: 'blue',  blurb: 'Reels, brand films, ad cuts, and explainers — color graded, captioned, and delivered to your phone.',               bullets: ['Short-form Reels', 'Brand films', 'Ad cuts', 'Motion graphics'] },
+  { n: '07', name: 'Graphic Design',       icon: 'grid',   accent: 'amber', blurb: 'Menus, packaging, banners, and signage — all in print-ready formats, sent to your local press.',                   bullets: ['Menus & print', 'Packaging', 'Banners & signage', 'Print-ready files'] },
+]
+
+export const WORK = [
+  { id: 1, name: 'Raazina Essence',   cat: 'Product Photography', city: 'Swat',     swatch: 'rgba(120,60,180,0.6)'  },
+  { id: 2, name: 'Khan Pharmacy',     cat: 'POS System',          city: 'Batkhela', swatch: 'rgba(42,157,244,0.5)'  },
+  { id: 3, name: 'Malakand Mart',     cat: 'E-commerce',          city: 'Mardan',   swatch: 'rgba(91,214,138,0.5)'  },
+  { id: 4, name: 'Local Brand Co.',   cat: 'Branding',            city: 'Dir',      swatch: 'rgba(245,163,58,0.5)'  },
+  { id: 5, name: 'Swat Eats',         cat: 'Social Media',        city: 'Swat',     swatch: 'rgba(244,63,94,0.5)'   },
+]
+
+export const PROCESS = [
+  { n: '01', t: 'Discovery',  d: 'We sit with you — in the hujra or on a call — and listen. Your business, your customers, your goals. No forms, no jargon.' },
+  { n: '02', t: 'Proposal',   d: 'A fixed-price quote in plain language. Scope, timeline, and deliverables — all agreed before a single pixel is moved.' },
+  { n: '03', t: 'Build',      d: 'Design, develop, shoot, or install — depending on the service. You get regular updates and can give feedback at every stage.' },
+  { n: '04', t: 'Handover',   d: 'We deliver, train your team, and stay available for 90 days. You own everything — files, accounts, passwords.' },
+]
+
+export const DISTRICTS = [
+  'Peshawar', 'Mardan', 'Swat', 'Malakand', 'Dir Upper', 'Dir Lower',
+  'Batkhela', 'Buner', 'Shangla', 'Kohistan', 'Mansehra', 'Abbottabad',
+  'Haripur', 'Nowshera', 'Charsadda', 'Kohat', 'Karak', 'Bannu',
+]
+
+export const MARQUEE_WORDS = [
+  'POS Systems', 'E-commerce', 'Branding', 'Social Media',
+  'Photography', 'Video Editing', 'Graphic Design', 'Digital Hujra',
+  'Batkhela', 'KP Business', 'Local-first', 'Growth',
+]
