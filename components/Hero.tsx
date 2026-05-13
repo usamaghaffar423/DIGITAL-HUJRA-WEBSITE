@@ -246,17 +246,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll cue — decorative */}
-        <div aria-hidden="true" className="hero-scroll-cue" style={{
-          position: "absolute", left: 36, bottom: 28,
-          display: "flex", alignItems: "center", gap: 12, color: "var(--ink-mute)",
-        }}>
-          <span style={{ width: 32, height: 1, background: "var(--ink-mute)" }} />
-          <span className="mono" style={{ fontSize: 10, letterSpacing: "0.2em" }}>SCROLL TO EXPLORE</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" style={{ animation: "float-y 1.8s ease-in-out infinite" }}>
-            <path d="M7 2v9M3 8l4 4 4-4" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
       </div>
     </section>
   );
