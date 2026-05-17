@@ -109,7 +109,7 @@ export default function Home() {
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <Nav />
-      <main id="main-content" aria-label="Digital Hujra — KP digital studio">
+      <main id="main-content" aria-label="Digital Hujra — Batkhela, KP">
         <Hero />
         <Marquee />
         <Services />

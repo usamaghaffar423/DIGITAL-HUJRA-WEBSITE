@@ -6,18 +6,18 @@ import { WhatsAppFAB } from "@/components/WhatsAppFAB";
 export const metadata: Metadata = {
   title: "Digital Hujra — Bringing KP Business to the Digital World",
   description:
-    "A digital studio in Batkhela, Malakand — helping local KP businesses with POS systems, e-commerce, branding, social media, product photography, video editing, and graphic design.",
+    "Digital Hujra, based in Batkhela, Malakand — helping local KP businesses with POS systems, e-commerce, branding, social media, product photography, video editing, and graphic design.",
   openGraph: {
-    title: "Digital Hujra — KP Digital Studio",
+    title: "Digital Hujra — KP Digital Agency",
     description:
-      "A digital studio in Batkhela, KP. POS systems, e-commerce, branding, social media, photography and video — all under one roof.",
+      "Digital Hujra in Batkhela, KP. POS systems, e-commerce, branding, social media, photography and video — all under one roof.",
     type: "website",
     locale: "en_PK",
     siteName: "Digital Hujra",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Hujra — KP Digital Studio",
+    title: "Digital Hujra — KP Digital Agency",
     description:
       "POS, e-commerce, branding, social media — all under one roof in Batkhela, Malakand.",
   },

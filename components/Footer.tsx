@@ -50,8 +50,8 @@ export function Footer() {
                 margin: "0 0 20px",
               }}
             >
-              A small, honest digital studio bringing KP businesses online — POS, e-commerce, branding,
-              social, shoots and edits, all under one roof.
+              Digital Hujra — bringing KP businesses online. POS, e-commerce, branding,
+              social media, shoots and edits, all under one roof.
             </p>
             <address style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.7, fontStyle: "normal" }}>
               <div

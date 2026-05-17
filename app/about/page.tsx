@@ -6,7 +6,7 @@ import { STATS, DISTRICTS } from "@/lib/data";
 import { Arrow } from "@/components/atoms";
 
 export const metadata: Metadata = {
-  title: "About Us — Digital Hujra | Digital Studio in Batkhela, KP",
+  title: "About Us — Digital Hujra | Batkhela, KP",
   description:
     "Founded in 2026 in Batkhela, Malakand — Digital Hujra helps local KP businesses get online. Our story, values, and the team behind every project.",
 };
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </h1>
 
             <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 44px" }}>
-              We&apos;re a digital studio from Batkhela, Malakand — born out of a simple observation: KP has incredible businesses, and almost none of them are online.
+              We&apos;re Digital Hujra — from Batkhela, Malakand, born out of a simple observation: KP has incredible businesses, and almost none of them are online.
             </p>
 
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 72 }}>

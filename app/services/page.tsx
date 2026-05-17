@@ -9,7 +9,7 @@ import { Arrow } from "@/components/atoms";
 export const metadata: Metadata = {
   title: "Services — Digital Hujra | POS, E-commerce, Branding & More",
   description:
-    "Full-service digital studio in Batkhela, KP. POS systems, e-commerce stores, branding, social media marketing, product photography, video editing, and graphic design.",
+    "Digital Hujra — full-service agency in Batkhela, KP. POS systems, e-commerce stores, branding, social media marketing, product photography, video editing, and graphic design.",
 };
 
 function ServiceIcon({ kind, color }: { kind: string; color?: string }) {

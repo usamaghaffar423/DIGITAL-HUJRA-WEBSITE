@@ -29,7 +29,7 @@ export function Hero() {
     <section
       id="top"
       ref={heroRef}
-      aria-label="Hero — Digital Hujra KP digital studio"
+      aria-label="Hero — Digital Hujra, Batkhela KP"
       style={{
         position: "relative",
         minHeight: "100vh",
