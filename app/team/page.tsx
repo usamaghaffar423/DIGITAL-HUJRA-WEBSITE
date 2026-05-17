@@ -66,9 +66,9 @@ export default function TeamPage() {
                 letterSpacing: "-0.038em",
               }}
             >
-              <span style={{ color: "var(--ink)" }}>The people</span>
+              <span style={{ color: "var(--ink)" }}>The People Behind</span>
               <br />
-              <span style={{ color: "var(--blue-2)" }}>behind the work.</span>
+              <span style={{ color: "var(--blue-2)" }}>Digital Hujra</span>
             </h1>
 
             <p style={{ maxWidth: 520, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 44px" }}>
