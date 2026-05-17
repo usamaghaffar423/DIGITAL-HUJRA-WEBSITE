@@ -84,7 +84,7 @@ export default function ContactPage() {
   const FAQ = [
     {
       q: "Do I need to come to your office?",
-      a: "No — we can handle everything over WhatsApp, phone, or video call. But you're always welcome at Main Bazaar, Batkhela. Chai is on us.",
+      a: "No — we can handle everything over WhatsApp, phone, or video call. But you're always welcome at our studio in Amandara, Batkhela. Chai is on us.",
     },
     {
       q: "How long does a project take?",
@@ -207,8 +207,8 @@ export default function ContactPage() {
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                     </svg>
                   ),
-                  label: "Main Bazaar, Batkhela",
-                  sub: "District Malakand, KP",
+                  label: "Popular Shopping Mall Plaza",
+                  sub: "Near Gul Rang Khadi Hall, Amandara Batkhela, KP",
                   color: "var(--amber)",
                 },
                 {
@@ -426,7 +426,7 @@ export default function ContactPage() {
                     <HujraMark size={36} />
                     <div>
                       <div style={{ fontWeight: 700, fontSize: 17 }}>Digital Hujra Studio</div>
-                      <div className="mono" style={{ fontSize: 9, letterSpacing: "0.18em", color: "var(--ink-mute)", marginTop: 3 }}>MAIN BAZAAR · BATKHELA</div>
+                      <div className="mono" style={{ fontSize: 9, letterSpacing: "0.18em", color: "var(--ink-mute)", marginTop: 3 }}>AMANDARA · BATKHELA</div>
                     </div>
                   </div>
                   <hr className="rule" />
@@ -438,8 +438,8 @@ export default function ContactPage() {
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                           </svg>
                         ),
-                        label: "Main Bazaar, Batkhela",
-                        sub: "District Malakand, KP, Pakistan",
+                        label: "Popular Shopping Mall Plaza",
+                        sub: "Near Gul Rang Khadi Hall, Amandara Batkhela, KP",
                         href: undefined,
                       },
                       {

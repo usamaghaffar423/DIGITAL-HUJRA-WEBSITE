@@ -60,9 +60,9 @@ export function Footer() {
               >
                 STUDIO
               </div>
-              Main Bazaar · Batkhela
+              Popular Shopping Mall Plaza
               <br />
-              District Malakand · KP, Pakistan
+              Near Gul Rang Khadi Hall, Amandara Batkhela, KP
             </address>
           </div>
 
