@@ -9,6 +9,7 @@ import { Process } from "@/components/Process";
 import { Work } from "@/components/Work";
 import { Coverage } from "@/components/Coverage";
 import { Testimonials } from "@/components/Testimonials";
+import { Pricing } from "@/components/Pricing";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Footer } from "@/components/Footer";
 
@@ -114,6 +115,7 @@ export default function Home() {
         <Services />
         <Process />
         <Work />
+        <Pricing />
         <Coverage />
         <Testimonials />
         <CtaBanner />

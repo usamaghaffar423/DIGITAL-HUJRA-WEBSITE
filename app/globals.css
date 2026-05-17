@@ -84,6 +84,9 @@ button { font-family: inherit; cursor: pointer; }
 .card:hover .svc-arrow { transform: translate(4px, -4px); color: var(--amber); }
 .rule { height: 1px; background: var(--line); border: 0; }
 
+.pricing-tabs { scrollbar-width: none; }
+.pricing-tabs::-webkit-scrollbar { display: none; }
+
 /* GPU-promoted animation layers */
 .animate-float-y { will-change: transform; }
 .animate-scroll-x { will-change: transform; }
@@ -150,6 +153,9 @@ button { font-family: inherit; cursor: pointer; }
   .coverage-grid    { grid-template-columns: 1fr !important; gap: 56px !important; }
 
   .footer-grid      { grid-template-columns: 1fr 1fr 1fr !important; }
+
+  .pricing-grid     { grid-template-columns: repeat(2, 1fr) !important; }
+  .pricing-grid > article:nth-child(3) { grid-column: span 2 !important; max-width: 520px !important; margin: 0 auto !important; width: 100% !important; }
 }
 
 /* ============================================================
@@ -215,6 +221,11 @@ button { font-family: inherit; cursor: pointer; }
   .cta-inner        { padding: 80px 20px 96px !important; }
   /* Full-width CTA buttons on mobile */
   .cta-inner .btn   { width: 100% !important; justify-content: center !important; }
+
+  /* ── Pricing ── */
+  .pricing-grid     { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .pricing-grid > article:nth-child(3) { grid-column: span 1 !important; max-width: 100% !important; margin: 0 !important; }
+  .pricing-tabs     { gap: 6px !important; }
 
   /* ── Footer ── */
   .footer-grid      { grid-template-columns: 1fr !important; gap: 32px !important; }
