@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { manrope, newsreader, jetbrainsMono } from "./fonts";
+import { WhatsAppFAB } from "@/components/WhatsAppFAB";
 
 export const metadata: Metadata = {
   title: "Digital Hujra — Bringing KP Business to the Digital World",
@@ -35,7 +36,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${manrope.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
-      <body>{children}</body>
+      <body>{children}<WhatsAppFAB /></body>
     </html>
   );
 }
