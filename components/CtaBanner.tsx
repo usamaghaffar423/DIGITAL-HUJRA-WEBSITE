@@ -80,11 +80,11 @@ export function CtaBanner() {
               WhatsApp us
             </a>
             <a
-              href="mailto:hello@digitalhujra.pk"
+              href="mailto:info@digitalhujra.com"
               className="btn btn-primary"
               style={{ padding: "18px 28px", fontSize: 15 }}
             >
-              hello@digitalhujra.pk <Arrow />
+              info@digitalhujra.com <Arrow />
             </a>
             <a href="tel:+923715868088" className="btn btn-ghost" style={{ padding: "18px 28px", fontSize: 15 }}>
               +92 371 5868088

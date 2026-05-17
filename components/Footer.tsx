@@ -7,7 +7,7 @@ const FOOTER_COLS = [
     l: ["POS Systems", "E-commerce", "Branding", "Social Media", "Photography", "Video", "Graphics"],
   },
   { t: "Studio", l: ["About", "Process", "Work", "Coverage", "Careers"] },
-  { t: "Contact", l: ["WhatsApp", "hello@digitalhujra.pk", "+92 371 5868088", "Book a session"] },
+  { t: "Contact", l: ["WhatsApp", "info@digitalhujra.com", "+92 371 5868088", "Book a session"] },
   { t: "Connect", l: ["Instagram", "Facebook", "TikTok", "LinkedIn", "YouTube"] },
 ];
 
@@ -85,7 +85,7 @@ export function Footer() {
                 {col.l.map((x) => (
                   <li key={x}>
                     <a
-                      href={x === "hello@digitalhujra.pk" ? "mailto:hello@digitalhujra.pk" : x === "+92 371 5868088" ? "tel:+923715868088" : x === "WhatsApp" ? "https://wa.me/923715868088" : "#"}
+                      href={x === "info@digitalhujra.com" ? "mailto:info@digitalhujra.com" : x === "+92 371 5868088" ? "tel:+923715868088" : x === "WhatsApp" ? "https://wa.me/923715868088" : "#"}
                       style={{ fontSize: 13.5, color: "var(--ink-soft)", transition: "color .25s" }}
                       onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--amber)")}
                       onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--ink-soft)")}
