@@ -154,6 +154,10 @@ button { font-family: inherit; cursor: pointer; }
 
   .footer-grid      { grid-template-columns: 1fr 1fr 1fr !important; }
 
+  .team-cards-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  .team-strip-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  .culture-grid     { grid-template-columns: 1fr !important; gap: 48px !important; }
+
   .pricing-grid     { grid-template-columns: repeat(2, 1fr) !important; }
   .pricing-grid > article:nth-child(3) { grid-column: span 2 !important; max-width: 520px !important; margin: 0 auto !important; width: 100% !important; }
 }
@@ -221,6 +225,10 @@ button { font-family: inherit; cursor: pointer; }
   .cta-inner        { padding: 80px 20px 96px !important; }
   /* Full-width CTA buttons on mobile */
   .cta-inner .btn   { width: 100% !important; justify-content: center !important; }
+
+  /* ── Team ── */
+  .team-cards-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
+  .team-strip-grid  { grid-template-columns: repeat(2, 1fr) !important; }
 
   /* ── Pricing ── */
   .pricing-grid     { grid-template-columns: 1fr !important; gap: 14px !important; }

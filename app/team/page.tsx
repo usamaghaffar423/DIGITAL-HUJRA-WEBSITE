@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { CtaBanner } from "@/components/CtaBanner";
 import { TEAM } from "@/lib/data";
 import { Arrow } from "@/components/atoms";
+import { TeamMemberImage } from "@/components/TeamMemberImage";
 
 export const metadata: Metadata = {
   title: "Our Team — Digital Hujra | The People Behind Every Project",
@@ -45,7 +46,7 @@ export default function TeamPage() {
           <div className="wrap-mobile" style={{ maxWidth: 900, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
             {/* Breadcrumb */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
-              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
+              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>TEAM</span>
             </div>
@@ -53,7 +54,7 @@ export default function TeamPage() {
             {/* Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(91,214,138,0.3)", borderRadius: 999, background: "rgba(91,214,138,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "#5BD68A", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "#5BD68A" }}>6 SPECIALISTS · BATKHELA-BORN</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "#5BD68A" }}>LOCAL TEAM · BATKHELA-BORN</span>
             </div>
 
             <h1
@@ -79,7 +80,7 @@ export default function TeamPage() {
             </div>
           </div>
 
-          {/* Team avatar strip — unique to Team hero */}
+          {/* Team photo strip */}
           <div
             style={{
               borderTop: "1px solid var(--line)",
@@ -92,8 +93,10 @@ export default function TeamPage() {
               margin: "0 auto",
               padding: "0 36px",
               display: "grid",
-              gridTemplateColumns: "repeat(6, 1fr)",
-            }}>
+              gridTemplateColumns: `repeat(${TEAM.length}, 1fr)`,
+            }}
+              className="team-strip-grid"
+            >
               {TEAM.map((member, i) => (
                 <div
                   key={member.name}
@@ -107,25 +110,14 @@ export default function TeamPage() {
                     textAlign: "center",
                   }}
                 >
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: "50%",
-                      background: `${member.color}22`,
-                      border: `1px solid ${member.color}55`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 16,
-                      fontWeight: 800,
-                      color: member.color,
-                      fontFamily: "var(--font-manrope), system-ui, sans-serif",
-                    }}
-                  >
-                    {member.initials}
-                  </div>
+                  <TeamMemberImage
+                    src={member.image}
+                    alt={member.name}
+                    initials={member.initials}
+                    color={member.color}
+                    variant="circle"
+                    size={56}
+                  />
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.01em" }}>{member.name}</div>
                     <div className="mono" style={{ fontSize: 9, letterSpacing: "0.12em", color: "var(--ink-mute)", marginTop: 3 }}>{member.role.split(" ")[0].toUpperCase()}</div>
@@ -152,53 +144,57 @@ export default function TeamPage() {
                 margin: 0,
                 padding: 0,
                 display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: 24,
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: 20,
               }}
+              className="team-cards-grid"
               aria-label="Team member cards"
             >
               {TEAM.map((member) => (
-                <li key={member.name} className="card" style={{ padding: "36px 28px", display: "flex", flexDirection: "column", gap: 20 }}>
-                  {/* Avatar */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                    <div
-                      aria-hidden="true"
-                      style={{
-                        width: 64,
-                        height: 64,
-                        borderRadius: "50%",
-                        background: `${member.color}22`,
-                        border: `1px solid ${member.color}55`,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontFamily: "var(--font-manrope), system-ui, sans-serif",
-                        fontSize: 20,
-                        fontWeight: 800,
-                        color: member.color,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {member.initials}
-                    </div>
+                <li
+                  key={member.name}
+                  className="card"
+                  style={{ padding: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}
+                >
+                  {/* Portrait photo */}
+                  <TeamMemberImage
+                    src={member.image}
+                    alt={`${member.name} — ${member.role}`}
+                    initials={member.initials}
+                    color={member.color}
+                    variant="portrait"
+                  />
+
+                  {/* Card content */}
+                  <div style={{ padding: "22px 22px 18px", display: "flex", flexDirection: "column", gap: 14, flexGrow: 1 }}>
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: "-0.015em" }}>{member.name}</div>
-                      <div className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--ink-mute)", marginTop: 4 }}>
-                        {member.role.toUpperCase()}
+                      <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 5 }}>
+                        {member.name}
+                      </div>
+                      <div className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: member.color, textTransform: "uppercase" }}>
+                        {member.role}
                       </div>
                     </div>
-                  </div>
 
-                  <hr className="rule" />
+                    <hr className="rule" style={{ margin: 0 }} />
 
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: "var(--ink-soft)", flexGrow: 1 }}>
-                    {member.bio}
-                  </p>
+                    <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.65, color: "var(--ink-soft)", flexGrow: 1 }}>
+                      {member.bio}
+                    </p>
 
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <span className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: member.color }}>{member.since.toUpperCase()}</span>
-                    <div style={{ width: 28, height: 28, borderRadius: "50%", background: `${member.color}18`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ color: member.color, lineHeight: 0 }} aria-hidden="true"><Arrow size={12} rotate={-45} /></span>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4 }}>
+                      <span className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--ink-mute)" }}>
+                        SINCE {member.since}
+                      </span>
+                      <div style={{
+                        width: 28, height: 28, borderRadius: "50%",
+                        background: `${member.color}18`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                      }}>
+                        <span style={{ color: member.color, lineHeight: 0 }} aria-hidden="true">
+                          <Arrow size={12} rotate={-45} />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -217,7 +213,9 @@ export default function TeamPage() {
           }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}
+              className="culture-grid"
+            >
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
                   <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
@@ -239,7 +237,7 @@ export default function TeamPage() {
                 {[
                   { label: "Languages spoken", value: "Pashto, Urdu, English" },
                   { label: "Studio location", value: "Main Bazaar, Batkhela" },
-                  { label: "Team size", value: "6 full-time specialists" },
+                  { label: "Team size", value: "4 full-time specialists" },
                   { label: "Client comms", value: "WhatsApp + email" },
                   { label: "Remote work", value: "Available across KP" },
                 ].map((row) => (

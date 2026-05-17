@@ -20,10 +20,10 @@ export const STATS = [
 ]
 
 export const TEAM = [
-  { initials: 'DH', name: 'Founder',    role: 'Founder & CEO',          bio: 'Started Digital Hujra to bring professional digital services to local KP businesses.',    since: '2026', color: '#F5A33A' },
-  { initials: 'DH', name: 'CO-FOUNDER', role: 'CO-FOUNDER',             bio: 'Expert in software development, and leading the whole department.',                       since: '2026', color: '#2A9DF4' },
-  { initials: 'HB', name: 'Haseeb',     role: 'Lead Designer',          bio: 'Expert in brand identity, logo design, and visual communication for KP businesses.',      since: '2026', color: '#5BD68A' },
-  { initials: 'MZ', name: 'Muzamil',    role: 'Brand & Visual Designer', bio: 'Specializes in social media design, print materials, and digital brand assets.',         since: '2026', color: '#4FB3FF' },
+  { initials: 'OG', name: 'Osama Ghaffar', role: 'Founder & CEO',           bio: 'Started Digital Hujra to bring professional digital services to local KP businesses.',  since: '2026', color: '#F5A33A', image: '/team/osama.jpg'      },
+  { initials: 'DH', name: 'Co-Founder',    role: 'Co-Founder',              bio: 'Expert in software development, and leading the whole department.',                     since: '2026', color: '#2A9DF4', image: '/team/cofounder.jpg'  },
+  { initials: 'HB', name: 'Haseeb',        role: 'Lead Designer',           bio: 'Expert in brand identity, logo design, and visual communication for KP businesses.',    since: '2026', color: '#5BD68A', image: '/team/haseeb.jpg'     },
+  { initials: 'MZ', name: 'Muzamil',       role: 'Brand & Visual Designer', bio: 'Specializes in social media design, print materials, and digital brand assets.',       since: '2026', color: '#4FB3FF', image: '/team/muzamil.jpg'    },
 ]
 
 export const PORTFOLIO = [
