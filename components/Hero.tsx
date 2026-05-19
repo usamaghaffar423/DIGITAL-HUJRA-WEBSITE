@@ -149,97 +149,219 @@ export function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — Digital Hujra network infographic */}
+          {/* RIGHT — Digital Hujra Dokan display */}
           <div className="hero-chart hero-chart-panel" aria-hidden="true" style={{ position: "relative", paddingTop: 40 }}>
             <div style={{
               position: "relative",
-              border: "1px solid var(--line-2)", borderRadius: 20,
-              background: "linear-gradient(180deg, rgba(10,22,40,0.7), rgba(5,11,23,0.95))",
-              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(245,163,58,0.22)",
+              borderRadius: 22,
+              background: "linear-gradient(160deg, rgba(15,27,48,0.65) 0%, rgba(5,11,23,0.93) 100%)",
+              backdropFilter: "blur(14px)",
               overflow: "hidden",
-              height: 420,
+              height: 460,
             }}>
-              {/* Live network canvas fills the card */}
-              <div style={{ position: "absolute", inset: 0, opacity: 0.85 }}>
-                <NetworkField count={28} />
+              {/* Ambient network field */}
+              <div style={{ position: "absolute", inset: 0, opacity: 0.5 }}>
+                <NetworkField count={22} />
               </div>
 
-              {/* Central hub — Digital Hujra brand node */}
+              {/* Warm overhead amber lamp — dokan light */}
               <div style={{
-                position: "absolute", inset: 0,
-                display: "flex", flexDirection: "column",
-                alignItems: "center", justifyContent: "center",
-                gap: 12, pointerEvents: "none",
+                position: "absolute", top: -70, left: "50%", transform: "translateX(-50%)",
+                width: 320, height: 200,
+                background: "radial-gradient(ellipse, rgba(245,163,58,0.14) 0%, transparent 68%)",
+                pointerEvents: "none",
+              }} />
+              <div style={{
+                position: "absolute", bottom: -30, right: -30,
+                width: 180, height: 180,
+                background: "radial-gradient(circle, rgba(42,157,244,0.1) 0%, transparent 70%)",
+                pointerEvents: "none",
+              }} />
+
+              {/* ── Dokan signboard ── */}
+              <div style={{
+                position: "absolute", top: 16, left: "50%", transform: "translateX(-50%)",
+                zIndex: 10, display: "flex", alignItems: "center", gap: 9,
+                padding: "7px 18px",
+                background: "rgba(8,17,30,0.9)",
+                border: "1px solid rgba(245,163,58,0.5)",
+                borderRadius: 10,
+                animation: "sign-glow 3.5s ease-in-out infinite",
+                whiteSpace: "nowrap",
+              }}>
+                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--amber)", animation: "pulse 1.8s ease-in-out infinite", display: "block" }} />
+                <img src="/logo.png" alt="" style={{ height: 22, width: "auto" }} />
+                <span className="mono" style={{ fontSize: 9, letterSpacing: "0.16em", color: "var(--amber)", opacity: 0.85 }}>OPEN · ہر وقت</span>
+                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--amber)", animation: "pulse 1.8s ease-in-out 0.9s infinite", display: "block" }} />
+              </div>
+
+              {/* ── Website mockup card — top-left, slightly tilted ── */}
+              <div style={{
+                position: "absolute", top: 68, left: 14,
+                animation: "drift-a 13s ease-in-out 0s infinite",
               }}>
                 <div style={{
-                  padding: "14px 28px",
-                  borderRadius: 16,
-                  background: "rgba(10,22,40,0.92)",
-                  border: "2px solid var(--amber)",
-                  boxShadow: "0 0 40px rgba(245,163,58,0.35), inset 0 0 20px rgba(245,163,58,0.08)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  animation: "pulseGlow 3s ease-in-out infinite",
+                  width: 138, transform: "rotate(-1.5deg)",
+                  background: "rgba(7,16,29,0.84)",
+                  border: "1px solid rgba(42,157,244,0.3)",
+                  borderRadius: 10, overflow: "hidden",
+                  boxShadow: "0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(42,157,244,0.06)",
                 }}>
-                  <img src="/logo.png" alt="" style={{ height: 52, width: "auto", display: "block", maxWidth: 160 }} />
-                </div>
-                <div style={{
-                  background: "rgba(10,22,40,0.88)",
-                  border: "1px solid var(--line-2)",
-                  borderRadius: 8, padding: "4px 14px",
-                }}>
-                  <span className="mono" style={{ fontSize: 10, letterSpacing: "0.18em", color: "var(--amber)" }}>DIGITAL HUJRA · KP</span>
+                  <div style={{ padding: "5px 8px", background: "rgba(42,157,244,0.1)", display: "flex", alignItems: "center", gap: 4 }}>
+                    {["rgba(255,80,80,0.55)","rgba(255,190,0,0.55)","rgba(60,200,60,0.55)"].map((c,i) => (
+                      <span key={i} style={{ width: 5, height: 5, borderRadius: "50%", background: c, display: "block" }} />
+                    ))}
+                    <div style={{ flex: 1, height: 3, background: "rgba(255,255,255,0.07)", borderRadius: 2, marginLeft: 4 }} />
+                  </div>
+                  <div style={{ padding: "8px 10px" }}>
+                    <div style={{ height: 3, background: "var(--amber)", width: "52%", borderRadius: 2, marginBottom: 5 }} />
+                    <div style={{ height: 30, background: "linear-gradient(135deg,rgba(42,157,244,0.1),rgba(245,163,58,0.06))", borderRadius: 5, marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <img src="/logo.png" alt="" style={{ height: 14, width: "auto", opacity: 0.6 }} />
+                    </div>
+                    <div style={{ height: 2, background: "rgba(255,255,255,0.1)", width: "90%", borderRadius: 2, marginBottom: 3 }} />
+                    <div style={{ height: 2, background: "rgba(255,255,255,0.07)", width: "68%", borderRadius: 2 }} />
+                  </div>
+                  <div style={{ padding: "2px 10px 7px" }}>
+                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)", opacity: 0.8 }}>WEB DESIGN</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Service pills — float around the hub */}
-              {[
-                { label: "Branding",     color: "var(--amber)",  top: "12%",  left: "8%"  },
-                { label: "Photography",  color: "var(--blue-2)", top: "10%",  right: "8%" },
-                { label: "Social Media", color: "var(--blue-2)", bottom: "22%", left: "6%" },
-                { label: "POS Systems",  color: "var(--amber)",  bottom: "18%", right: "6%" },
-                { label: "E-commerce",   color: "var(--blue-2)", top: "44%",  left: "4%"  },
-                { label: "Video",        color: "var(--amber)",  top: "44%",  right: "4%" },
-              ].map((pill, i) => (
-                <div
-                  key={pill.label}
-                  style={{
-                    position: "absolute",
-                    top: pill.top, bottom: pill.bottom,
-                    left: pill.left, right: pill.right,
-                    padding: "6px 12px",
-                    background: "rgba(10,22,40,0.88)",
-                    border: `1px solid ${pill.color}55`,
-                    borderRadius: 999,
-                    animation: `float-y ${5 + i * 0.6}s ease-in-out ${i * 0.4}s infinite`,
-                    pointerEvents: "none",
-                  }}
-                >
-                  <span className="mono" style={{ fontSize: 9, letterSpacing: "0.12em", color: pill.color, whiteSpace: "nowrap" }}>
-                    {pill.label.toUpperCase()}
-                  </span>
+              {/* ── Social media card — top-right, opposite tilt ── */}
+              <div style={{
+                position: "absolute", top: 58, right: 10,
+                animation: "drift-b 10s ease-in-out 1.6s infinite",
+              }}>
+                <div style={{
+                  width: 110, transform: "rotate(1.8deg)",
+                  background: "rgba(7,16,29,0.8)",
+                  border: "1px solid rgba(245,163,58,0.22)",
+                  borderRadius: 12, padding: "10px",
+                  boxShadow: "0 6px 22px rgba(0,0,0,0.3)",
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 5, marginBottom: 7 }}>
+                    <div style={{ width: 16, height: 16, borderRadius: "50%", background: "linear-gradient(135deg,#f5a33a,#e0174a)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontSize: 7, color: "#fff", fontWeight: 700 }}>ig</span>
+                    </div>
+                    <div>
+                      <div style={{ height: 2, width: 36, background: "rgba(255,255,255,0.22)", borderRadius: 2, marginBottom: 2 }} />
+                      <div style={{ height: 2, width: 22, background: "rgba(255,255,255,0.1)", borderRadius: 2 }} />
+                    </div>
+                  </div>
+                  <div style={{ height: 52, background: "linear-gradient(135deg,rgba(245,163,58,0.1),rgba(42,157,244,0.07))", borderRadius: 7, marginBottom: 6, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, opacity: 0.6 }}>📸</div>
+                  <div style={{ display: "flex", gap: 8, marginBottom: 5 }}>
+                    {["♥ 24","💬 3"].map(t => <span key={t} style={{ fontSize: 7, fontFamily: "monospace", color: "rgba(255,255,255,0.3)" }}>{t}</span>)}
+                  </div>
+                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--amber)", opacity: 0.85 }}>SOCIAL MEDIA</span>
                 </div>
-              ))}
+              </div>
 
-              {/* Stats strip at bottom */}
+              {/* ── Brand hub — center, deliberately off-axis ── */}
+              <div style={{
+                position: "absolute", top: "40%", left: "50%",
+                transform: "translate(-55%, -50%)",
+                animation: "drift-c 15s ease-in-out 0.5s infinite",
+                zIndex: 6,
+              }}>
+                <div style={{
+                  width: 106,
+                  background: "rgba(7,16,29,0.94)",
+                  border: "2px solid rgba(245,163,58,0.55)",
+                  borderRadius: 16, padding: "14px 10px 10px", textAlign: "center",
+                  boxShadow: "0 0 34px rgba(245,163,58,0.16), 0 8px 28px rgba(0,0,0,0.45)",
+                }}>
+                  <img src="/logo.png" alt="" style={{ height: 32, width: "auto", display: "block", margin: "0 auto 8px" }} />
+                  <div style={{ height: 1, background: "rgba(245,163,58,0.35)", margin: "0 0 7px" }} />
+                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.14em", color: "var(--amber)" }}>BRANDING</span>
+                </div>
+              </div>
+
+              {/* ── POS system card — lower-left, slight CW tilt ── */}
+              <div style={{
+                position: "absolute", bottom: 60, left: 12,
+                animation: "drift-b 14s ease-in-out 3.2s infinite",
+              }}>
+                <div style={{
+                  width: 128, transform: "rotate(1.2deg)",
+                  background: "rgba(5,12,22,0.9)",
+                  border: "1px solid rgba(91,214,138,0.28)",
+                  borderRadius: 10, overflow: "hidden",
+                  boxShadow: "0 6px 22px rgba(0,0,0,0.32)",
+                }}>
+                  <div style={{ background: "rgba(91,214,138,0.1)", padding: "5px 9px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--green)" }}>POS SYSTEM</span>
+                    <span style={{ fontSize: 8, color: "var(--green)" }}>●</span>
+                  </div>
+                  <div style={{ padding: "7px 9px" }}>
+                    {[["Nihari","₨180"],["Chapli","₨120"],["Pulao","₨160"]].map(([n,p]) => (
+                      <div key={n} style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
+                        <span className="mono" style={{ fontSize: 7, color: "rgba(255,255,255,0.4)" }}>{n}</span>
+                        <span className="mono" style={{ fontSize: 7, color: "var(--amber)" }}>{p}</span>
+                      </div>
+                    ))}
+                    <div style={{ marginTop: 5, height: 14, background: "rgba(91,214,138,0.15)", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span className="mono" style={{ fontSize: 7, color: "var(--green)", letterSpacing: "0.06em" }}>TOTAL ₨460</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Video / photography card — lower-right, opposite tilt ── */}
+              <div style={{
+                position: "absolute", bottom: 56, right: 10,
+                animation: "drift-a 11s ease-in-out 5s infinite",
+              }}>
+                <div style={{
+                  width: 108, transform: "rotate(-2deg)",
+                  background: "rgba(7,16,29,0.82)",
+                  border: "1px solid rgba(42,157,244,0.2)",
+                  borderRadius: 10, overflow: "hidden",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.28)",
+                }}>
+                  <div style={{ height: 54, background: "linear-gradient(135deg,rgba(42,157,244,0.12),rgba(7,16,29,0.5))", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(42,157,244,0.22)", border: "1px solid rgba(42,157,244,0.45)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontSize: 9, marginLeft: 2, color: "var(--blue-soft)" }}>▶</span>
+                    </div>
+                    <span className="mono" style={{ position: "absolute", top: 5, right: 7, fontSize: 7, color: "rgba(255,255,255,0.3)" }}>01:24</span>
+                    <span className="mono" style={{ position: "absolute", bottom: 5, left: 7, fontSize: 7, color: "rgba(255,255,255,0.25)" }}>HD</span>
+                  </div>
+                  <div style={{ padding: "6px 9px" }}>
+                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)" }}>VIDEO PROD.</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Floating micro-badges — scattered freely ── */}
+              <div style={{ position: "absolute", top: "37%", left: 5, animation: "drift-c 8s ease-in-out 2s infinite", zIndex: 5 }}>
+                <div style={{ padding: "4px 9px", background: "rgba(7,16,29,0.76)", border: "1px solid rgba(42,157,244,0.2)", borderRadius: 99 }}>
+                  <span className="mono" style={{ fontSize: 8, color: "var(--blue-soft)", letterSpacing: "0.1em" }}>🛒 E-COMMERCE</span>
+                </div>
+              </div>
+              <div style={{ position: "absolute", top: "28%", right: 5, animation: "drift-a 7s ease-in-out 4s infinite", zIndex: 5 }}>
+                <div style={{ padding: "4px 9px", background: "rgba(7,16,29,0.72)", border: "1px solid rgba(245,163,58,0.18)", borderRadius: 99 }}>
+                  <span className="mono" style={{ fontSize: 8, color: "var(--amber-soft)", letterSpacing: "0.1em" }}>📍 KP LOCAL</span>
+                </div>
+              </div>
+              <div style={{ position: "absolute", top: "54%", right: 12, animation: "drift-b 9s ease-in-out 1s infinite", zIndex: 5 }}>
+                <div style={{ padding: "4px 9px", background: "rgba(7,16,29,0.7)", border: "1px solid rgba(91,214,138,0.18)", borderRadius: 99 }}>
+                  <span className="mono" style={{ fontSize: 8, color: "var(--green)", letterSpacing: "0.1em", opacity: 0.85 }}>48h DELIVERY</span>
+                </div>
+              </div>
+
+              {/* ── Thin stats strip — translucent at bottom ── */}
               <div style={{
                 position: "absolute", bottom: 0, left: 0, right: 0,
-                display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-                borderTop: "1px solid var(--line)",
-                background: "rgba(5,11,23,0.88)",
-                backdropFilter: "blur(8px)",
+                display: "flex", justifyContent: "space-around", alignItems: "center",
+                padding: "10px 16px",
+                borderTop: "1px solid rgba(255,255,255,0.05)",
+                background: "rgba(5,11,23,0.78)",
+                backdropFilter: "blur(10px)",
               }}>
-                {[
-                  { v: "6+",   l: "Services"   },
-                  { v: "5+",   l: "Cities"     },
-                  { v: "48h",  l: "Delivery"   },
-                  { v: "100%", l: "Satisfaction"},
-                ].map((s, i) => (
-                  <div key={s.l} style={{
-                    padding: "14px 10px", textAlign: "center",
-                    borderRight: i < 3 ? "1px solid var(--line)" : "none",
-                  }}>
-                    <div className="display" style={{ fontSize: 20, fontWeight: 800, color: i % 2 === 0 ? "var(--amber)" : "var(--blue-2)", lineHeight: 1 }}>{s.v}</div>
-                    <div className="mono" style={{ fontSize: 8, letterSpacing: "0.12em", color: "var(--ink-mute)", marginTop: 4 }}>{s.l.toUpperCase()}</div>
+                {[["6+","Services"],["5+","Cities"],["48h","Delivery"],["✓","Trusted"]].map(([v,l]) => (
+                  <div key={l} style={{ textAlign: "center" }}>
+                    <div className="display" style={{ fontSize: 14, fontWeight: 800, color: "var(--amber)", lineHeight: 1 }}>{v}</div>
+                    <div className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--ink-mute)", marginTop: 2 }}>{l.toUpperCase()}</div>
                   </div>
                 ))}
               </div>
