@@ -285,7 +285,7 @@ export default function TeamPage() {
                 {[
                   { label: "Languages spoken", value: "Pashto, Urdu, English" },
                   { label: "Studio location", value: "Main Bazaar, Batkhela" },
-                  { label: "Team size", value: "4 full-time specialists" },
+                  { label: "Team size", value: "3 full-time specialists" },
                   { label: "Client comms", value: "WhatsApp + email" },
                   { label: "Remote work", value: "Available across KP" },
                 ].map((row) => (
