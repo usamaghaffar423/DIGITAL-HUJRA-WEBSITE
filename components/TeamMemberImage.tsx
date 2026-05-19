@@ -59,7 +59,7 @@ export function TeamMemberImage({ src, alt, initials, color, variant = "portrait
     <div
       style={{
         position: "relative",
-        aspectRatio: "3 / 4",
+        aspectRatio: "4 / 3",
         overflow: "hidden",
         background: `linear-gradient(160deg, ${color}14 0%, ${color}06 100%)`,
       }}

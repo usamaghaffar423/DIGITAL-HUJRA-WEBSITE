@@ -145,7 +145,7 @@ export default function TeamPage() {
                 margin: 0,
                 padding: 0,
                 display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
+                gridTemplateColumns: "repeat(3, 1fr)",
                 gap: 20,
               }}
               className="team-cards-grid"

@@ -158,8 +158,8 @@ button { font-family: inherit; cursor: pointer; }
 
   .footer-grid      { grid-template-columns: 1fr 1fr 1fr !important; }
 
-  .team-cards-grid  { grid-template-columns: repeat(2, 1fr) !important; }
-  .team-strip-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  .team-cards-grid  { grid-template-columns: repeat(3, 1fr) !important; }
+  .team-strip-grid  { grid-template-columns: repeat(3, 1fr) !important; }
   .culture-grid     { grid-template-columns: 1fr !important; gap: 48px !important; }
 
   .pricing-grid     { grid-template-columns: repeat(2, 1fr) !important; }
