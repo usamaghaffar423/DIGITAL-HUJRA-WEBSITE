@@ -27,6 +27,7 @@ function WhatsAppIcon() {
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
+    email: "",
     business: "",
     city: "",
     phone: "",
@@ -34,28 +35,48 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleWhatsApp = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const lines = [
-      `*New enquiry from Digital Hujra website*`,
-      ``,
-      `*Name:* ${form.name}`,
-      `*Business:* ${form.business}`,
-      `*City:* ${form.city}`,
-      `*Phone:* ${form.phone}`,
-      `*Service needed:* ${form.service}`,
-      ``,
-      `*Message:*`,
+    setLoading(true);
+    setApiError(null);
+
+    const fullMessage = [
       form.message,
-    ];
-    const text = encodeURIComponent(lines.join("\n"));
-    window.open(`https://wa.me/923715868088?text=${text}`, "_blank", "noopener,noreferrer");
-    setSubmitted(true);
+      form.business && `Business: ${form.business}`,
+      form.city     && `City: ${form.city}`,
+    ].filter(Boolean).join("\n");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name:    form.name,
+          email:   form.email,
+          phone:   form.phone   || undefined,
+          service: form.service || undefined,
+          message: fullMessage,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error ? JSON.stringify(data.error) : `Server error ${res.status}`);
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setApiError(err instanceof Error ? err.message : "Something went wrong. Please try WhatsApp instead.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -293,9 +314,9 @@ export default function ContactPage() {
                     borderColor: "rgba(91,214,138,0.3)",
                   }}>
                     <div style={{ fontSize: 48, marginBottom: 16 }} aria-hidden="true">✓</div>
-                    <h3 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 12px", color: "#5BD68A" }}>Message sent!</h3>
+                    <h3 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 12px", color: "#5BD68A" }}>Message received!</h3>
                     <p style={{ fontSize: 15, color: "var(--ink-soft)", margin: "0 0 24px" }}>
-                      WhatsApp will open with your details pre-filled. We&apos;ll respond within a few hours.
+                      We&apos;ve got your details and will reply within a few hours. You can also reach us instantly on WhatsApp.
                     </p>
                     <button
                       type="button"
@@ -307,7 +328,7 @@ export default function ContactPage() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleWhatsApp} noValidate style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
                       <div>
                         <label htmlFor="name" style={labelStyle}>Your name *</label>
@@ -325,14 +346,44 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="business" style={labelStyle}>Business name *</label>
+                        <label htmlFor="email" style={labelStyle}>Email address *</label>
+                        <input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          placeholder="e.g. zubair@example.com"
+                          value={form.email}
+                          onChange={handleChange}
+                          style={inputStyle}
+                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
+                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+                      <div>
+                        <label htmlFor="business" style={labelStyle}>Business name</label>
                         <input
                           id="business"
                           name="business"
                           type="text"
-                          required
                           placeholder="e.g. Khan Pharmacy"
                           value={form.business}
+                          onChange={handleChange}
+                          style={inputStyle}
+                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
+                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="phone" style={labelStyle}>Phone / WhatsApp</label>
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          placeholder="+92 3XX XXXXXXX"
+                          value={form.phone}
                           onChange={handleChange}
                           style={inputStyle}
                           onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
@@ -356,37 +407,22 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="phone" style={labelStyle}>Phone / WhatsApp *</label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          required
-                          placeholder="+92 3XX XXXXXXX"
-                          value={form.phone}
+                        <label htmlFor="service" style={labelStyle}>Service you need</label>
+                        <select
+                          id="service"
+                          name="service"
+                          value={form.service}
                           onChange={handleChange}
-                          style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
-                        />
+                          style={{ ...inputStyle, cursor: "pointer" }}
+                          onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = "var(--blue-2)"; }}
+                          onBlur={(e) => { (e.target as HTMLSelectElement).style.borderColor = "var(--line-2)"; }}
+                        >
+                          <option value="">Select a service...</option>
+                          {SERVICES_LIST.map((s) => (
+                            <option key={s} value={s} style={{ background: "#0A1628", color: "#F4F7FB" }}>{s}</option>
+                          ))}
+                        </select>
                       </div>
-                    </div>
-                    <div>
-                      <label htmlFor="service" style={labelStyle}>Service you need</label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={form.service}
-                        onChange={handleChange}
-                        style={{ ...inputStyle, cursor: "pointer" }}
-                        onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = "var(--blue-2)"; }}
-                        onBlur={(e) => { (e.target as HTMLSelectElement).style.borderColor = "var(--line-2)"; }}
-                      >
-                        <option value="">Select a service...</option>
-                        {SERVICES_LIST.map((s) => (
-                          <option key={s} value={s} style={{ background: "#0A1628", color: "#F4F7FB" }}>{s}</option>
-                        ))}
-                      </select>
                     </div>
                     <div>
                       <label htmlFor="message" style={labelStyle}>Tell us about your business</label>
@@ -404,14 +440,17 @@ export default function ContactPage() {
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-amber"
+                      disabled={loading}
+                      className="btn btn-primary"
                       style={{ alignSelf: "flex-start", gap: 12 }}
                     >
-                      <WhatsAppIcon />
-                      Send via WhatsApp <Arrow />
+                      {loading ? "Sending…" : <>Send enquiry <Arrow /></>}
                     </button>
+                    {apiError && (
+                      <p style={{ fontSize: 13, color: "#ff6b6b", margin: 0 }}>{apiError}</p>
+                    )}
                     <p style={{ fontSize: 12, color: "var(--ink-mute)", margin: 0 }}>
-                      Clicking send opens WhatsApp with your message pre-filled. No data is stored on our servers.
+                      We&apos;ll reply within a few hours. Your data is never shared.
                     </p>
                   </form>
                 )}
