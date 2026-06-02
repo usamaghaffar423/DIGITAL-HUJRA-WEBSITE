@@ -62,8 +62,8 @@ export default function RaazinaEssencePage() {
           <div aria-hidden="true" style={{ position: "absolute", left: "10%", bottom: "10%", width: "30vw", height: "30vw", borderRadius: "50%", background: "radial-gradient(circle, rgba(42,157,244,0.08) 0%, transparent 65%)", pointerEvents: "none" }} />
           <div aria-hidden="true" className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.3, pointerEvents: "none", maskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)", WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)" }} />
 
-          <div className="wrap-mobile" style={{ maxWidth: 960, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 40 }}>
+          <div className="wrap-mobile" style={{ maxWidth: 960, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 40, justifyContent: "center" }}>
               <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <a href="/#work" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>WORK</a>
@@ -83,17 +83,17 @@ export default function RaazinaEssencePage() {
               Raazina Essence
             </h1>
 
-            <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 0 36px" }}>
+            <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 auto 36px" }}>
               A Swat-based perfume brand with a premium product that deserved premium visuals. We delivered two complete product shoots — over 50 images total — and ongoing weekly social media posts that keep Raazina Essence consistently in front of their audience.
             </p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48, justifyContent: "center" }}>
               {["Product Photography", "50+ Images", "2 Shoot Groups", "Weekly Social Media"].map(tag => (
                 <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(245,163,58,0.1)", border: "1px solid rgba(245,163,58,0.25)", color: "var(--amber-soft)" }}>{tag}</span>
               ))}
             </div>
 
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <div className="cs-hero-ctas">
               <a href="/contact" className="btn btn-primary">Book a product shoot <Arrow /></a>
               <a href="/#work" className="btn btn-ghost">View all work <Arrow /></a>
             </div>
@@ -134,7 +134,7 @@ export default function RaazinaEssencePage() {
               The shoot, <span style={{ color: "var(--blue-2)" }}>in full.</span>
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+            <div className="cs-gallery-grid">
               {GALLERY.map((g) => (
                 <div
                   key={g.label}

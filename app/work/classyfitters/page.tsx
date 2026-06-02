@@ -67,8 +67,8 @@ export default function ClassyfittersPage() {
           <div aria-hidden="true" style={{ position: "absolute", left: "5%", top: "10%", width: "50vw", height: "50vw", borderRadius: "50%", background: "radial-gradient(circle, rgba(245,163,58,0.10) 0%, transparent 65%)", pointerEvents: "none" }} />
           <div aria-hidden="true" className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.3, pointerEvents: "none", maskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)", WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)" }} />
 
-          <div className="wrap-mobile" style={{ maxWidth: 960, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 40 }}>
+          <div className="wrap-mobile" style={{ maxWidth: 960, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 40, justifyContent: "center" }}>
               <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <a href="/#work" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>WORK</a>
@@ -88,17 +88,17 @@ export default function ClassyfittersPage() {
               Classyfitters
             </h1>
 
-            <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 0 36px" }}>
+            <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 auto 36px" }}>
               A Batkhela fashion brand that needed a complete digital launch. We delivered an e-commerce store, a full product shoot, WhatsApp Business setup, and Google Business profile — all in one engagement, all fully live.
             </p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48, justifyContent: "center" }}>
               {["E-commerce Store", "Product Shoot", "WhatsApp Business", "Google Business"].map(tag => (
                 <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(245,163,58,0.1)", border: "1px solid rgba(245,163,58,0.25)", color: "var(--amber-soft)" }}>{tag}</span>
               ))}
             </div>
 
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <div className="cs-hero-ctas">
               <a href="/contact" className="btn btn-primary">Start a similar project <Arrow /></a>
               <a href="/#work" className="btn btn-ghost">View all work <Arrow /></a>
             </div>
@@ -139,7 +139,7 @@ export default function ClassyfittersPage() {
               The work, <span style={{ color: "var(--blue-2)" }}>in full.</span>
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+            <div className="cs-gallery-grid">
               {GALLERY.map((g) => (
                 <div
                   key={g.label}

@@ -248,6 +248,27 @@ button { font-family: inherit; cursor: pointer; }
   .wrap-mobile      { padding: 0 20px !important; }
 }
 
+/* ── Case Study pages ──────────────────────────────────── */
+.cs-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.cs-hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 1024px) {
+  .cs-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .cs-gallery-grid { grid-template-columns: 1fr; gap: 12px; }
+  .cs-hero-ctas { flex-direction: column; }
+  .cs-hero-ctas .btn { width: 100%; justify-content: center; }
+}
+
 /* ============================================================
    WIDE ≥ 1600px
    ============================================================ */
