@@ -32,7 +32,7 @@ const SERVICES = [
 ];
 
 const GALLERY: { label: string; emoji: string; swatch: string; image?: string }[] = [
-  { label: "Product Shoot · Group 1 · Perfume Hero",  emoji: "🌙", swatch: "rgba(120,60,180,0.55)", image: "/work/raazina-essence/gallery-1.jpg" },
+  { label: "Product Shoot · Group 1 · Perfume Hero",  emoji: "🌙", swatch: "rgba(120,60,180,0.55)", image: "/work/raazina-essence/RAAZINA-01.png" },
   { label: "Product Shoot · Group 1 · Flat Lay",      emoji: "💜", swatch: "rgba(120,60,180,0.40)" },
   { label: "Product Shoot · Group 2 · Lifestyle",     emoji: "✨", swatch: "rgba(120,60,180,0.45)" },
   { label: "Product Shoot · Group 2 · Detail & Glass",emoji: "💎", swatch: "rgba(42,157,244,0.35)"  },
