@@ -22,7 +22,7 @@ export function Work() {
             return (
               <a
                 key={w.id}
-                href="#contact"
+                href={`/work/${w.slug}`}
                 className="work-item"
                 aria-label={`${w.name} — ${w.cat}, ${w.city}`}
                 style={{

@@ -29,29 +29,19 @@ export const PORTFOLIO = [
   {
     id: 'classyfitters',
     client: 'Classyfitters',
-    service: 'Branding & Social Media',
+    service: 'E-commerce · Product Shoot · WhatsApp Business · Google Business',
     location: 'Batkhela, KP',
-    tagline: 'Premium fashion brand identity for Classyfitters',
+    tagline: 'Full digital launch — online store, product shoot, WhatsApp & Google Business setup',
     coverEmoji: '👗',
     coverImage: '',
     featured: true,
   },
   {
-    id: 'edenrobe-batkhela',
-    client: 'Edenrobe Batkhela Amandara',
-    service: 'Social Media & Photography',
-    location: 'Amandara, Batkhela, KP',
-    tagline: 'Digital presence for Edenrobe Batkhela franchise',
-    coverEmoji: '🏪',
-    coverImage: '',
-    featured: false,
-  },
-  {
     id: 'raazina-essence',
     client: 'Raazina Essence',
-    service: 'Product Photography',
+    service: 'Product Photography · Social Media Management',
     location: 'Shamozo, Swat, KP',
-    tagline: '50+ premium mockup images — Raazina Ice perfume',
+    tagline: '50+ perfume product shots across two shoots + ongoing weekly social media posts',
     coverEmoji: '🌙',
     coverImage: '',
     featured: false,
@@ -59,9 +49,9 @@ export const PORTFOLIO = [
   {
     id: 'al-ansar-abaya',
     client: 'Al Ansar Abaya',
-    service: 'Branding & Photography',
+    service: 'E-commerce · Photography · WhatsApp · Social Media · Google Business',
     location: 'Chakdara, KP',
-    tagline: 'Elegant brand identity for Al Ansar Abaya collection',
+    tagline: 'Complete digital presence — store, shoot, WhatsApp verified, social media & Google',
     coverEmoji: '🤍',
     coverImage: '',
     featured: false,
@@ -117,10 +107,9 @@ export const SERVICES = [
 ]
 
 export const WORK = [
-  { id: 1, name: 'Classyfitters',            cat: 'Branding & Social Media',    city: 'Batkhela',  swatch: 'rgba(245,163,58,0.6)'  },
-  { id: 2, name: 'Edenrobe Batkhela',        cat: 'Social Media & Photography', city: 'Amandara',  swatch: 'rgba(42,157,244,0.5)'  },
-  { id: 3, name: 'Raazina Essence',          cat: 'Product Photography',        city: 'Swat',      swatch: 'rgba(120,60,180,0.6)'  },
-  { id: 4, name: 'Al Ansar Abaya',           cat: 'Branding & Photography',     city: 'Chakdara',  swatch: 'rgba(91,214,138,0.5)'  },
+  { id: 1, slug: 'classyfitters',   name: 'Classyfitters',   cat: 'E-commerce · Product Shoot · WhatsApp · Google', city: 'Batkhela', swatch: 'rgba(245,163,58,0.6)' },
+  { id: 2, slug: 'raazina-essence', name: 'Raazina Essence', cat: 'Product Photography · Social Media',             city: 'Swat',     swatch: 'rgba(120,60,180,0.6)' },
+  { id: 3, slug: 'al-ansar-abaya',  name: 'Al Ansar Abaya',  cat: 'E-commerce · Photography · WhatsApp · Social',  city: 'Chakdara', swatch: 'rgba(91,214,138,0.5)' },
 ]
 
 export const PROCESS = [
