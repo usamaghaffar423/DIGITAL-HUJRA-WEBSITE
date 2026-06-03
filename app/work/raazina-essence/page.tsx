@@ -151,6 +151,7 @@ export default function RaazinaEssencePage() {
                     <img
                       src={g.image}
                       alt={g.label}
+                      loading="lazy"
                       style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
                     />
                   ) : (

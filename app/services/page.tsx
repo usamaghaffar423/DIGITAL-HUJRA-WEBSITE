@@ -278,6 +278,7 @@ export default function ServicesPage() {
                           <img
                             src={SERVICE_IMAGES[s.n]}
                             alt={s.name}
+                            loading="lazy"
                             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
                           />
                         ) : (

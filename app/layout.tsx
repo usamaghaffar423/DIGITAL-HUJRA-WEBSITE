@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { manrope, newsreader, jetbrainsMono } from "./fonts";
 import { WhatsAppFAB } from "@/components/WhatsAppFAB";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitalhujra.com"),
@@ -93,7 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}<WhatsAppFAB /></body>
+      <body>{children}<WhatsAppFAB /><Analytics /></body>
     </html>
   );
 }

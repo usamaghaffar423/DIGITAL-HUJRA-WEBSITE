@@ -53,6 +53,7 @@ export function Footer() {
               <img
                 src="/logo.png"
                 alt="Digital Hujra"
+                loading="lazy"
                 className="footer-logo"
                 style={{ height: 44, width: "auto", display: "block", maxWidth: "180px" }}
               />
