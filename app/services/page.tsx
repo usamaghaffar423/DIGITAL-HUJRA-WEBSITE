@@ -76,13 +76,13 @@ const SERVICE_EXTRAS: Record<string, { tagline: string; details: string; callout
 };
 
 const SERVICE_IMAGES: Record<string, string> = {
-  "01": "/services/pos/pos%20System%20Service.png",
-  // "02": "/services/ecommerce/<filename>",
-  // "03": "/services/branding/<filename>",
-  // "04": "/services/social-media/<filename>",
-  // "05": "/services/photography/<filename>",
-  // "06": "/services/video/<filename>",
-  // "07": "/services/graphic-design/<filename>",
+  "01": "/services/pos/pos%20System%20Service.webp",
+  "02": "/services/ecommerce/E-Commerce%20Service.webp",
+  "03": "/services/branding/Brand%20%26%20Identity%20Service.webp",
+  "04": "/services/social-media/Social%20Media%20Service.webp",
+  "05": "/services/photography/Product%20Photography.webp",
+  "06": "/services/video/Video%20Editing%20Service.webp",
+  "07": "/services/graphic-design/Graphic%20Design%20Service.webp",
 };
 
 export default function ServicesPage() {
