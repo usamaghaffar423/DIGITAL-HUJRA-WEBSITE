@@ -202,7 +202,7 @@ export default function PackagesPage() {
               aria-label={`${cat.tab} packages`}
               ref={gridRef}
               style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}
-              className="pkg-grid"
+              className="pricing-grid"
             >
               {cat.packages.map((pkg) => {
                 const isPopular = pkg.popular;
@@ -306,9 +306,11 @@ export default function PackagesPage() {
             </div>
 
             {/* Footer note */}
-            <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginTop: 36, letterSpacing: "0.12em", textAlign: "center", textTransform: "uppercase" }}>
-              All prices in PKR · VAT not included · Custom quotes available on request
-            </p>
+            <div style={{ marginTop: 56, paddingTop: 24, borderTop: "1px solid var(--line)" }}>
+              <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: 0, letterSpacing: "0.12em", textAlign: "center", textTransform: "uppercase" }}>
+                All prices in PKR · VAT not included · Custom quotes available on request
+              </p>
+            </div>
           </div>
         </section>
 
