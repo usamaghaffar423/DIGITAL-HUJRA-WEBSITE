@@ -107,8 +107,8 @@ export const SERVICES = [
 ]
 
 export const WORK = [
-  { id: 1, slug: 'classyfitters',   name: 'Classyfitters',   cat: 'E-commerce · Product Shoot · WhatsApp · Google', city: 'Batkhela', swatch: 'rgba(245,163,58,0.6)' },
-  { id: 2, slug: 'raazina-essence', name: 'Raazina Essence', cat: 'Product Photography · Social Media',             city: 'Swat',     swatch: 'rgba(120,60,180,0.6)', preview: '/work/raazina-essence/Raazina%20Preview%20Image.webp' },
+  { id: 1, slug: 'raazina-essence', name: 'Raazina Essence', cat: 'Product Photography · Social Media',             city: 'Swat',     swatch: 'rgba(120,60,180,0.6)', preview: '/work/raazina-essence/Raazina%20Preview%20Image.webp' },
+  { id: 2, slug: 'classyfitters',   name: 'Classyfitters',   cat: 'E-commerce · Product Shoot · WhatsApp · Google', city: 'Batkhela', swatch: 'rgba(245,163,58,0.6)' },
   { id: 3, slug: 'al-ansar-abaya',  name: 'Al Ansar Abaya',  cat: 'E-commerce · Photography · WhatsApp · Social',  city: 'Chakdara', swatch: 'rgba(91,214,138,0.5)', preview: '/work/al-ansar-abaya/Preview%20Image%20Al%20Ansar%20Abaya.webp' },
 ]
 
