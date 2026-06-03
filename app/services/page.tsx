@@ -75,6 +75,16 @@ const SERVICE_EXTRAS: Record<string, { tagline: string; details: string; callout
   },
 };
 
+const SERVICE_IMAGES: Record<string, string> = {
+  "01": "/services/pos/pos%20System%20Service.png",
+  // "02": "/services/ecommerce/<filename>",
+  // "03": "/services/branding/<filename>",
+  // "04": "/services/social-media/<filename>",
+  // "05": "/services/photography/<filename>",
+  // "06": "/services/video/<filename>",
+  // "07": "/services/graphic-design/<filename>",
+};
+
 export default function ServicesPage() {
   return (
     <>
@@ -264,24 +274,34 @@ export default function ServicesPage() {
                         position: "relative",
                         overflow: "hidden",
                       }}>
-                        <div aria-hidden="true" style={{
-                          position: "absolute", inset: 0,
-                          backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 6px, transparent 6px 14px)",
-                        }} />
-                        <div aria-hidden="true" style={{
-                          width: 100, height: 100, borderRadius: "50%",
-                          background: accentBg,
-                          border: `1px solid ${accentColor}33`,
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          position: "relative",
-                        }}>
-                          <ServiceIcon kind={s.icon} color={accentColor} />
-                        </div>
-                        <div style={{ textAlign: "center", position: "relative" }}>
-                          <div className="display" style={{ fontSize: "clamp(52px, 7vw, 96px)", color: "rgba(255,255,255,0.06)", lineHeight: 1, letterSpacing: "-0.04em" }}>
-                            {s.n}
-                          </div>
-                        </div>
+                        {SERVICE_IMAGES[s.n] ? (
+                          <img
+                            src={SERVICE_IMAGES[s.n]}
+                            alt={s.name}
+                            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                          />
+                        ) : (
+                          <>
+                            <div aria-hidden="true" style={{
+                              position: "absolute", inset: 0,
+                              backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 6px, transparent 6px 14px)",
+                            }} />
+                            <div aria-hidden="true" style={{
+                              width: 100, height: 100, borderRadius: "50%",
+                              background: accentBg,
+                              border: `1px solid ${accentColor}33`,
+                              display: "flex", alignItems: "center", justifyContent: "center",
+                              position: "relative",
+                            }}>
+                              <ServiceIcon kind={s.icon} color={accentColor} />
+                            </div>
+                            <div style={{ textAlign: "center", position: "relative" }}>
+                              <div className="display" style={{ fontSize: "clamp(52px, 7vw, 96px)", color: "rgba(255,255,255,0.06)", lineHeight: 1, letterSpacing: "-0.04em" }}>
+                                {s.n}
+                              </div>
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                   </article>
