@@ -11,17 +11,22 @@ const schema = z.object({
 
 async function notifySlack(data: { name: string; email: string; phone?: string; service?: string; message: string }) {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  if (!webhookUrl) {
+    console.error("[Slack] SLACK_WEBHOOK_URL is not set");
+    return;
+  }
+
   const serviceEmoji: Record<string, string> = {
-    "pos-systems":     "🖥",
-    "ecommerce-stores":"🌐",
-    "branding":        "🎨",
-    "social-media":    "📱",
-    "photography":     "📸",
-    "video-editing":   "🎬",
-    "graphic-design":  "🖨",
+    "POS System":             "🖥",
+    "E-commerce Store":       "🌐",
+    "Branding & Identity":    "🎨",
+    "Social Media Marketing": "📱",
+    "Product Photography":    "📸",
+    "Video Editing":          "🎬",
+    "Graphic Design":         "🖨",
   };
-  await fetch(webhookUrl, {
+
+  const res = await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -38,6 +43,11 @@ async function notifySlack(data: { name: string; email: string; phone?: string; 
       ],
     }),
   });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Slack webhook returned ${res.status}: ${text}`);
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -53,7 +63,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: result.error.flatten().fieldErrors }, { status: 422 });
   }
 
-  notifySlack(result.data).catch(console.error);
+  await notifySlack(result.data).catch((err) => console.error("[Slack]", err));
 
   return NextResponse.json({ ok: true });
 }
