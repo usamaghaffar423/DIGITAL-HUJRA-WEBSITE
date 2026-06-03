@@ -55,13 +55,13 @@ const SERVICES = [
   },
 ];
 
-const GALLERY = [
-  { label: "E-commerce Store · Homepage",       emoji: "🛒", swatch: "rgba(91,214,138,0.45)"  },
-  { label: "Product Shoot · Abaya Collection",  emoji: "🤍", swatch: "rgba(91,214,138,0.35)"  },
-  { label: "WhatsApp · Verified Badge & Channel",emoji: "✅", swatch: "rgba(91,214,138,0.30)"  },
-  { label: "Social Media · Profile & Feed",      emoji: "📱", swatch: "rgba(42,157,244,0.35)"  },
-  { label: "Google Business · Live Profile",     emoji: "🗺️", swatch: "rgba(42,157,244,0.28)"  },
-  { label: "E-commerce · Product Detail Pages",  emoji: "🧕", swatch: "rgba(91,214,138,0.25)"  },
+const GALLERY: { label: string; emoji: string; swatch: string; image?: string }[] = [
+  { label: "E-commerce Store · Website",         emoji: "🛒", swatch: "rgba(91,214,138,0.45)",  image: "/work/al-ansar-abaya/Website.webp"                        },
+  { label: "Product Shoot · Collection 1",        emoji: "🤍", swatch: "rgba(91,214,138,0.35)",  image: "/work/al-ansar-abaya/products%20shoot.webp"               },
+  { label: "Product Shoot · Collection 2",        emoji: "🤍", swatch: "rgba(91,214,138,0.30)",  image: "/work/al-ansar-abaya/Product%20Shoot%202.webp"            },
+  { label: "WhatsApp Business · Profile",         emoji: "✅", swatch: "rgba(42,157,244,0.35)",  image: "/work/al-ansar-abaya/Whatsapp%20Businesss.webp"           },
+  { label: "Google Business & TikTok",            emoji: "🗺️", swatch: "rgba(42,157,244,0.28)",  image: "/work/al-ansar-abaya/Google%20Business%20%26%20Tiktok.webp" },
+  { label: "E-commerce · Admin Panel",            emoji: "🧕", swatch: "rgba(91,214,138,0.25)",  image: "/work/al-ansar-abaya/Admin%20Panel.webp"                  },
 ];
 
 export default function AlAnsarAbayaPage() {
@@ -171,10 +171,16 @@ export default function AlAnsarAbayaPage() {
                     border: "1px solid var(--line)",
                   }}
                 >
-                  <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 18px)" }} />
-                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ fontSize: 52 }}>{g.emoji}</span>
-                  </div>
+                  {g.image ? (
+                    <img src={g.image} alt={g.label} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    <>
+                      <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 18px)" }} />
+                      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <span style={{ fontSize: 52 }}>{g.emoji}</span>
+                      </div>
+                    </>
+                  )}
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 14px 12px", background: "linear-gradient(transparent, rgba(5,11,23,0.9))" }}>
                     <span className="mono" style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-soft)", letterSpacing: "0.08em" }}>{g.label}</span>
                   </div>
