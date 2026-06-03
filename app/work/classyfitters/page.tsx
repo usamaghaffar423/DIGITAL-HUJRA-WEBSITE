@@ -37,13 +37,13 @@ const SERVICES = [
   },
 ];
 
-const GALLERY = [
-  { label: "E-commerce Store · Homepage",       emoji: "🛒", swatch: "rgba(245,163,58,0.45)", aspect: "16/9" },
-  { label: "E-commerce Store · Product Listing", emoji: "👗", swatch: "rgba(245,163,58,0.30)", aspect: "4/3"  },
-  { label: "Product Shoot · Fashion Collection", emoji: "📷", swatch: "rgba(245,163,58,0.35)", aspect: "4/3"  },
-  { label: "Product Shoot · Detail Shots",       emoji: "✨", swatch: "rgba(42,157,244,0.30)",  aspect: "4/3"  },
-  { label: "WhatsApp Business · Profile",        emoji: "💬", swatch: "rgba(91,214,138,0.30)", aspect: "4/3"  },
-  { label: "Google Business · Live Profile",     emoji: "🗺️", swatch: "rgba(91,214,138,0.25)", aspect: "4/3"  },
+const GALLERY: { label: string; emoji: string; swatch: string; aspect: string; image?: string }[] = [
+  { label: "E-commerce Store · Hero Section",   emoji: "🛒", swatch: "rgba(245,163,58,0.45)", aspect: "16/9", image: "/work/classyfitters/Hero%20Section.webp"  },
+  { label: "E-commerce Store · Products",       emoji: "👗", swatch: "rgba(245,163,58,0.30)", aspect: "4/3",  image: "/work/classyfitters/Products.webp"         },
+  { label: "E-commerce Store · Categories",     emoji: "🗂️", swatch: "rgba(245,163,58,0.35)", aspect: "4/3",  image: "/work/classyfitters/Category.webp"         },
+  { label: "E-commerce Store · Contact Page",   emoji: "📞", swatch: "rgba(42,157,244,0.30)", aspect: "4/3",  image: "/work/classyfitters/Contact%20Page.webp"   },
+  { label: "E-commerce Store · Login Page",     emoji: "🔐", swatch: "rgba(42,157,244,0.28)", aspect: "4/3",  image: "/work/classyfitters/Login%20Page.webp"     },
+  { label: "E-commerce · Admin Panel",          emoji: "⚙️", swatch: "rgba(91,214,138,0.25)", aspect: "4/3",  image: "/work/classyfitters/Admin%20Pannel.webp"   },
 ];
 
 export default function ClassyfittersPage() {
@@ -152,10 +152,16 @@ export default function ClassyfittersPage() {
                     border: "1px solid var(--line)",
                   }}
                 >
-                  <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 18px)" }} />
-                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ fontSize: 52 }}>{g.emoji}</span>
-                  </div>
+                  {g.image ? (
+                    <img src={g.image} alt={g.label} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    <>
+                      <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 18px)" }} />
+                      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <span style={{ fontSize: 52 }}>{g.emoji}</span>
+                      </div>
+                    </>
+                  )}
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 14px 12px", background: "linear-gradient(transparent, rgba(5,11,23,0.9))" }}>
                     <span className="mono" style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-soft)", letterSpacing: "0.08em" }}>{g.label}</span>
                   </div>
