@@ -10,7 +10,7 @@ export function Work() {
       <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }} className="wrap-mobile">
         <div className="work-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, gap: 40, flexWrap: "wrap" }}>
           <SectionHead
-            eyebrow="Selected work · across KP"
+            eyebrow="Already Worked With Businesses"
             title={<>Real businesses, <span style={{ color: "var(--blue-2)" }}>real growth.</span></>}
           />
           <a href="#contact" className="btn btn-ghost">View full archive <Arrow /></a>
