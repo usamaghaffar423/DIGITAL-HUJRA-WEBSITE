@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const VERCEL_TOKEN   = process.env.VERCEL_ACCESS_TOKEN;
 const VERCEL_PROJECT = process.env.VERCEL_PROJECT_ID;
 const VERCEL_TEAM    = process.env.VERCEL_TEAM_ID;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const ADMIN_PASSWORD = "DH@Admin2026";
 
 function unauthorized() {
   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -12,7 +12,7 @@ function unauthorized() {
 export async function GET(req: NextRequest) {
   // Password check
   const pwd = req.nextUrl.searchParams.get("pwd");
-  if (!ADMIN_PASSWORD || pwd !== ADMIN_PASSWORD) return unauthorized();
+  if (pwd !== ADMIN_PASSWORD) return unauthorized();
 
   // If Vercel Analytics not configured, return setup flag
   if (!VERCEL_TOKEN || !VERCEL_PROJECT) {

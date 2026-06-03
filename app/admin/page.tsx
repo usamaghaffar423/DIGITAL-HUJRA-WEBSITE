@@ -79,13 +79,12 @@ function SetupGuide() {
       <div style={{ fontSize: 48, marginBottom: 20 }}>📊</div>
       <h2 className="display" style={{ fontSize: 32, margin: "0 0 16px", letterSpacing: "-0.02em" }}>Connect your analytics</h2>
       <p style={{ color: "var(--ink-soft)", lineHeight: 1.7, marginBottom: 40, fontSize: 15 }}>
-        Your site is already being tracked via Vercel Analytics. To view the data here, add these 3 environment variables in your Vercel project settings.
+        Your site is already being tracked via Vercel Analytics. To view the data here, add these 2 environment variables in your Vercel project settings.
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: 12, textAlign: "left", marginBottom: 36 }}>
         {[
-          { key: "VERCEL_ACCESS_TOKEN",  hint: "Vercel → Settings → Tokens → Create Token" },
-          { key: "VERCEL_PROJECT_ID",    hint: "Vercel → Project Settings → General → Project ID" },
-          { key: "ADMIN_PASSWORD",       hint: "Any password you choose for this dashboard" },
+          { key: "VERCEL_ACCESS_TOKEN",  hint: "Vercel → Account Settings → Tokens → Create Token" },
+          { key: "VERCEL_PROJECT_ID",    hint: "Vercel → Project → Settings → General → Project ID" },
         ].map(v => (
           <div key={v.key} className="card" style={{ padding: "16px 20px" }}>
             <code style={{ fontSize: 13, color: "var(--amber)", fontFamily: "var(--font-jetbrains-mono), monospace" }}>{v.key}</code>
