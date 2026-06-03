@@ -44,10 +44,16 @@ export function Work() {
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--blue-2)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--line)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
                 >
-                  <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 8px, transparent 8px 18px)" }} />
-                  <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "55%", opacity: 0.7 }}>
-                    <MountainRange height="100%" />
-                  </div>
+                  {w.preview ? (
+                    <img src={w.preview} alt={w.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }} />
+                  ) : (
+                    <>
+                      <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 8px, transparent 8px 18px)" }} />
+                      <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "55%", opacity: 0.7 }}>
+                        <MountainRange height="100%" />
+                      </div>
+                    </>
+                  )}
                   <div aria-hidden="true" style={{ position: "absolute", left: 16, top: 16, background: "rgba(10,22,40,0.85)", backdropFilter: "blur(8px)", padding: "5px 12px", borderRadius: 999, fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: 10, letterSpacing: "0.12em", color: "var(--amber)", border: "1px solid rgba(245,163,58,0.3)" }}>
                     📍 {w.city.toUpperCase()}
                   </div>
