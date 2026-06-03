@@ -13,7 +13,7 @@ export function Work() {
             eyebrow="Already Worked With Businesses"
             title={<>Real businesses, <span style={{ color: "var(--blue-2)" }}>real growth.</span></>}
           />
-          <a href="#contact" className="btn btn-ghost">View full archive <Arrow /></a>
+          <a href="/contact" className="btn btn-ghost">View full archive <Arrow /></a>
         </div>
 
         <div className="work-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>

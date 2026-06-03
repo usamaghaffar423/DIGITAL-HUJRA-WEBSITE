@@ -111,8 +111,8 @@ export function Hero() {
             </p>
 
             <div className="hero-ctas" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 44 }}>
-              <a href="#contact" className="btn btn-primary">Book a free hujra session <Arrow /></a>
-              <a href="#services" className="btn btn-ghost">See what we do</a>
+              <a href="/contact" className="btn btn-primary">Book a free hujra session <Arrow /></a>
+              <a href="/services" className="btn btn-ghost">See what we do</a>
             </div>
 
             {/* Pill chips */}
