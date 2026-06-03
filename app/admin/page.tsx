@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 /* ── types ───────────────────────────────────── */
-interface Metric  { value: number; label: string; change?: number; color: string }
+interface Metric  { value: string; label: string; color: string; sub?: string }
 interface Row     { page?: string; referrer?: string; visitors: number; percentage?: number }
 interface Point   { date: string; visits: number }
 interface ApiData {
@@ -202,7 +202,7 @@ export default function AdminPage() {
           <>
             {/* Metric cards */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 32 }}>
-              {metrics.map(m => <StatCard key={m.label} label={m.label} value={m.value} color={m.color} sub={(m as any).sub} />)}
+              {metrics.map(m => <StatCard key={m.label} label={m.label} value={m.value} color={m.color} sub={m.sub} />)}
             </div>
 
             {/* Chart + tables */}
