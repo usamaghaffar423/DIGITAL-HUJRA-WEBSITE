@@ -89,8 +89,8 @@ export const WA_MESSAGES: Record<string, string> = {
 // ── Component-compatibility exports ──────────────────────────────────────────
 
 export const NAV_ITEMS = [
-  { l: 'Services', h: '/services' },
-  { l: 'Work',     h: '/#work'    },
+  { l: 'Services', h: '/services'  },
+  { l: 'Packages', h: '/packages' },
   { l: 'About',    h: '/about'    },
   { l: 'Team',     h: '/team'     },
   { l: 'Contact',  h: '/contact'  },
