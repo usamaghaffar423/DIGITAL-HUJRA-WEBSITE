@@ -29,21 +29,35 @@ export async function GET(req: NextRequest) {
 
   try {
     const [metricsRes, pagesRes, referrersRes, timeseriesRes] = await Promise.all([
-      fetch(`${base}/metrics?${range}`,     { headers }),
+      fetch(`${base}/metrics?${range}`,            { headers }),
       fetch(`${base}/pages?${range}&limit=5`,      { headers }),
       fetch(`${base}/referrers?${range}&limit=5`,  { headers }),
-      fetch(`${base}/timeseries?${range}`,  { headers }),
+      fetch(`${base}/timeseries?${range}`,         { headers }),
     ]);
 
-    const [metrics, pages, referrers, timeseries] = await Promise.all([
+    const [rawMetrics, rawPages, rawReferrers, rawTimeseries] = await Promise.all([
       metricsRes.json(),
       pagesRes.json(),
       referrersRes.json(),
       timeseriesRes.json(),
     ]);
 
-    return NextResponse.json({ configured: true, metrics, pages, referrers, timeseries });
-  } catch {
-    return NextResponse.json({ configured: false, error: "Failed to fetch analytics" });
+    // Normalise — Vercel may nest under .data or return flat
+    const m = rawMetrics?.data ?? rawMetrics;
+
+    const metrics = {
+      totalPageviews: m?.pageViews   ?? m?.pageviews   ?? m?.views        ?? m?.totalPageviews ?? 0,
+      uniqueVisitors: m?.visitors    ?? m?.uniqueUsers  ?? m?.uniqueVisitors ?? 0,
+      avgDuration:    m?.avgDuration ?? m?.averageDuration ?? m?.avgVisitDuration ?? m?.sessionDuration ?? 0,
+      bounceRate:     m?.bounceRate  ?? m?.bounce       ?? 0,
+    };
+
+    const pages      = (rawPages?.data      ?? rawPages      ?? []).slice(0, 5);
+    const referrers  = (rawReferrers?.data  ?? rawReferrers  ?? []).slice(0, 5);
+    const timeseries = (rawTimeseries?.data ?? rawTimeseries ?? []);
+
+    return NextResponse.json({ configured: true, metrics, pages, referrers, timeseries, _raw: rawMetrics });
+  } catch (err) {
+    return NextResponse.json({ configured: false, error: String(err) });
   }
 }

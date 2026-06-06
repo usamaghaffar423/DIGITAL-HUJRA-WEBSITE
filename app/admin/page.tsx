@@ -10,6 +10,7 @@ interface ApiData {
   configured: boolean;
   metrics?:   { totalPageviews: number; uniqueVisitors: number; avgDuration: number; bounceRate: number };
   pages?:     Row[];
+  _raw?:      unknown;
   referrers?: Row[];
   timeseries?: Point[];
 }
@@ -231,6 +232,18 @@ export default function AdminPage() {
                 </div>
               )}
             </div>
+
+            {/* Raw API debug panel */}
+            {data._raw && (
+              <details style={{ marginTop: 24 }}>
+                <summary className="mono" style={{ fontSize: 10, letterSpacing: "0.15em", color: "var(--ink-mute)", cursor: "pointer", textTransform: "uppercase" }}>
+                  Raw API response (debug)
+                </summary>
+                <pre style={{ marginTop: 12, padding: 20, background: "rgba(255,255,255,0.03)", border: "1px solid var(--line)", borderRadius: 12, fontSize: 11, color: "var(--ink-soft)", overflowX: "auto", lineHeight: 1.6 }}>
+                  {JSON.stringify(data._raw, null, 2)}
+                </pre>
+              </details>
+            )}
           </>
         )}
       </main>
