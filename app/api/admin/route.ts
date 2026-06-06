@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const VERCEL_TOKEN   = process.env.VERCEL_ACCESS_TOKEN;
-const VERCEL_PROJECT = process.env.VERCEL_PROJECT_ID;
-const VERCEL_TEAM    = process.env.VERCEL_TEAM_ID;
+const VERCEL_PROJECT = process.env.VERCEL_PROJECT_ID;   // must start with prj_
+const VERCEL_TEAM    = process.env.VERCEL_TEAM_ID;      // starts with team_
 const ADMIN_PASSWORD = "DH@Admin2026";
 
 function unauthorized() {
