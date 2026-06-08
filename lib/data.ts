@@ -22,7 +22,7 @@ export const STATS = [
 export const TEAM = [
   { initials: 'OG', name: 'Osama Ghaffar', role: 'Founder & CEO',           bio: 'Software engineer with 5+ years of experience and permanent employee at Precision Data Strategies LLC, California, USA. Founded Digital Hujra to bring world-class digital services to his hometown in KP.',  since: '2026', color: '#F5A33A', image: '/team/Osama.webp',    website: 'https://osamaghaffar.pro', linkedin: 'https://www.linkedin.com/in/osama-ghaffar423' },
   { initials: 'HB', name: 'Haseeb Ullah',  role: 'Lead Designer',           bio: 'Expert in brand identity, logo design, and visual communication for KP businesses.',    since: '2026', color: '#5BD68A', image: '/team/Haseeb.webp'    },
-  { initials: 'MZ', name: 'Muzamil',       role: 'Brand & Visual Designer', bio: 'Specializes in social media design, print materials, and digital brand assets.',       since: '2026', color: '#4FB3FF', image: '/team/Muzammil.webp'  },
+  { initials: 'MZ', name: 'Muzamil',       role: 'Social Media Expert',     bio: 'Manages social media presence, content strategy, and audience engagement for Digital Hujra clients across KP.',  since: '2026', color: '#4FB3FF', image: '/team/Muzammil.webp'  },
 ]
 
 export const PORTFOLIO = [
