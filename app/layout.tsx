@@ -5,7 +5,7 @@ import { WhatsAppFAB } from "@/components/WhatsAppFAB";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://digitalhujra.com"),
+  metadataBase: new URL("https://www.digitalhujra.com"),
   title: {
     default: "Digital Hujra — Bringing KP Business to the Digital World",
     template: "%s — Digital Hujra",
