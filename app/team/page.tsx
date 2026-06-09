@@ -188,9 +188,9 @@ export default function TeamPage() {
                         SINCE {member.since}
                       </span>
                       <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        {"linkedin" in member && member.linkedin && (
+                        {member.linkedin && (
                           <a
-                            href={member.linkedin as string}
+                            href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
                             title="LinkedIn"
@@ -209,9 +209,9 @@ export default function TeamPage() {
                             <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.04em", fontFamily: "var(--font-manrope)" }}>LinkedIn</span>
                           </a>
                         )}
-                        {"website" in member && member.website && (
+                        {member.website && (
                           <a
-                            href={member.website as string}
+                            href={member.website}
                             target="_blank"
                             rel="noopener noreferrer"
                             title="Portfolio"
@@ -230,17 +230,6 @@ export default function TeamPage() {
                             </svg>
                             <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.04em", fontFamily: "var(--font-manrope)" }}>Portfolio</span>
                           </a>
-                        )}
-                        {!("linkedin" in member) && !("website" in member) && (
-                          <div style={{
-                            width: 28, height: 28, borderRadius: "50%",
-                            background: `${member.color}18`,
-                            display: "flex", alignItems: "center", justifyContent: "center",
-                          }}>
-                            <span style={{ color: member.color, lineHeight: 0 }} aria-hidden="true">
-                              <Arrow size={12} rotate={-45} />
-                            </span>
-                          </div>
                         )}
                       </div>
                     </div>
