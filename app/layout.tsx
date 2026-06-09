@@ -94,7 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}<WhatsAppFAB /><Analytics /></body>
+      <body>
+        {children}
+        <WhatsAppFAB />
+        <Analytics />
+      </body>
     </html>
   );
 }
