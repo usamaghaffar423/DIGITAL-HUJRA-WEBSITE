@@ -39,10 +39,6 @@ export const metadata: Metadata = {
       "POS, e-commerce, branding, social media — all under one roof in Batkhela, Malakand.",
     images: ["/cover.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
 };
 
 export const viewport: Viewport = {
