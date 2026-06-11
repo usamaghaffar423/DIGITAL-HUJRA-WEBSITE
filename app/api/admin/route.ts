@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
   const teamParam = VERCEL_TEAM ? `&teamId=${VERCEL_TEAM}` : "";
   const now   = new Date();
   const from  = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-  const base  = `https://vercel.com/api/web-analytics/v1`;
+  const base  = `https://api.vercel.com/v1/web-analytics`;
   const range = `projectId=${VERCEL_PROJECT}${teamParam}&from=${from.toISOString()}&to=${now.toISOString()}`;
   const headers = { Authorization: `Bearer ${VERCEL_TOKEN}` };
 
