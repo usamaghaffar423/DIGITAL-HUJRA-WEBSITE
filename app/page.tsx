@@ -11,6 +11,7 @@ import { Coverage } from "@/components/Coverage";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { CtaBanner } from "@/components/CtaBanner";
+import { WhatsAppChannel } from "@/components/WhatsAppChannel";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -118,6 +119,7 @@ export default function Home() {
         <Pricing />
         <Coverage />
         <Testimonials />
+        <WhatsAppChannel />
         <CtaBanner />
       </main>
       <Footer />

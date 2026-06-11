@@ -126,6 +126,19 @@ export function Footer() {
           <nav aria-label="Social media links">
             <div className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--ink-mute)", marginBottom: 14, textTransform: "uppercase" }}>Connect</div>
             <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+              <li>
+                <a
+                  href="https://whatsapp.com/channel/0029VbCk0ip4yltSewi6Li3W"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: 13.5, color: "#25D366", fontWeight: 600, transition: "opacity .25s", display: "flex", alignItems: "center", gap: 6 }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+                >
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#25D366", display: "inline-block", flexShrink: 0 }} />
+                  WhatsApp Channel
+                </a>
+              </li>
               {SOCIAL_LINKS.map((x) => (
                 <li key={x.label}>
                   <a
