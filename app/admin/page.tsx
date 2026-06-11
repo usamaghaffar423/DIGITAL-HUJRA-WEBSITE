@@ -13,6 +13,7 @@ interface ApiData {
   _raw?:      unknown;
   referrers?: Row[];
   timeseries?: Point[];
+  debug?:     Record<string, unknown>;
 }
 
 /* ── helpers ─────────────────────────────────── */
@@ -74,26 +75,57 @@ function Table({ rows, keyField }: { rows: Row[]; keyField: "page" | "referrer" 
   );
 }
 
-function SetupGuide() {
+function SetupGuide({ debug }: { debug?: Record<string, unknown> }) {
+  const hasToken   = !!debug?.hasToken;
+  const hasProject = !!debug?.hasProject;
+  const apiStatus  = debug?.apiStatus as number | undefined;
+  const apiBody    = debug?.apiBody   as string | undefined;
+  const allSet     = hasToken && hasProject;
+
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center", padding: "60px 0" }}>
-      <div style={{ fontSize: 48, marginBottom: 20 }}>📊</div>
-      <h2 className="display" style={{ fontSize: 32, margin: "0 0 16px", letterSpacing: "-0.02em" }}>Connect your analytics</h2>
-      <p style={{ color: "var(--ink-soft)", lineHeight: 1.7, marginBottom: 40, fontSize: 15 }}>
-        Your site is already being tracked via Vercel Analytics. To view the data here, add these 2 environment variables in your Vercel project settings.
-      </p>
-      <div style={{ display: "flex", flexDirection: "column", gap: 12, textAlign: "left", marginBottom: 36 }}>
+    <div style={{ maxWidth: 640, margin: "0 auto", padding: "60px 0" }}>
+      <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <div style={{ fontSize: 48, marginBottom: 20 }}>📊</div>
+        <h2 className="display" style={{ fontSize: 32, margin: "0 0 16px", letterSpacing: "-0.02em" }}>Connect your analytics</h2>
+        <p style={{ color: "var(--ink-soft)", lineHeight: 1.7, fontSize: 15 }}>
+          Your site is already being tracked via Vercel Analytics. To view the data here, add these 2 environment variables in your Vercel project settings.
+        </p>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 36 }}>
         {[
-          { key: "VERCEL_ACCESS_TOKEN",  hint: "Vercel → Account Settings → Tokens → Create Token" },
-          { key: "VERCEL_PROJECT_ID",    hint: "Vercel → Project → Settings → General → Project ID" },
+          { key: "VERCEL_ACCESS_TOKEN", hint: "Vercel → Account Settings → Tokens → Create Token",    ok: !!hasToken },
+          { key: "VERCEL_PROJECT_ID",   hint: "Vercel → Project → Settings → General → Project ID",   ok: !!hasProject },
         ].map(v => (
-          <div key={v.key} className="card" style={{ padding: "16px 20px" }}>
-            <code style={{ fontSize: 13, color: "var(--amber)", fontFamily: "var(--font-jetbrains-mono), monospace" }}>{v.key}</code>
-            <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--ink-mute)" }}>{v.hint}</p>
+          <div key={v.key} className="card" style={{ padding: "16px 20px", display: "flex", alignItems: "center", gap: 14, borderColor: debug ? (v.ok ? "rgba(91,214,138,0.4)" : "rgba(248,113,113,0.4)") : undefined }}>
+            <span style={{ fontSize: 18, flexShrink: 0 }}>{debug ? (v.ok ? "✅" : "❌") : "⬜"}</span>
+            <div>
+              <code style={{ fontSize: 13, color: v.ok ? "#5BD68A" : "var(--amber)", fontFamily: "var(--font-jetbrains-mono), monospace" }}>{v.key}</code>
+              <p style={{ margin: "4px 0 0", fontSize: 12, color: "var(--ink-mute)" }}>{v.hint}</p>
+            </div>
           </div>
         ))}
       </div>
-      <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.12em" }}>
+
+      {/* API error details */}
+      {allSet && apiStatus && (
+        <div className="card" style={{ padding: "16px 20px", borderColor: "rgba(248,113,113,0.4)", marginBottom: 24 }}>
+          <code style={{ fontSize: 12, color: "#f87171", fontFamily: "var(--font-jetbrains-mono), monospace" }}>
+            Vercel API returned HTTP {apiStatus}
+          </code>
+          {apiBody && (
+            <pre style={{ margin: "8px 0 0", fontSize: 11, color: "var(--ink-mute)", whiteSpace: "pre-wrap", wordBreak: "break-all" }}>{apiBody}</pre>
+          )}
+        </div>
+      )}
+
+      {allSet && !apiStatus && (
+        <div className="card" style={{ padding: "14px 20px", borderColor: "rgba(91,214,138,0.3)", marginBottom: 24, textAlign: "center" }}>
+          <span style={{ fontSize: 13, color: "#5BD68A" }}>✅ Both env vars detected — waiting for first deploy to apply them</span>
+        </div>
+      )}
+
+      <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.12em", textAlign: "center" }}>
         OPTIONALLY: ADD VERCEL_TEAM_ID IF ON A TEAM PLAN
       </p>
     </div>
@@ -198,7 +230,7 @@ export default function AdminPage() {
 
       <main style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 36px" }}>
         {!data?.configured ? (
-          <SetupGuide />
+          <SetupGuide debug={data?.debug} />
         ) : (
           <>
             {/* Metric cards */}
