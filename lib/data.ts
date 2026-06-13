@@ -56,6 +56,16 @@ export const PORTFOLIO = [
     coverImage: '',
     featured: false,
   },
+  {
+    id: 'bayan-cafe',
+    client: 'Bayan Cafe',
+    service: 'Branding & Identity · Logo Design · Social Media Kit · Print & Stationery',
+    location: 'Batkhela, KP',
+    tagline: 'Complete brand identity — logo, color system, typography, guidelines, social kit & print',
+    coverEmoji: '☕',
+    coverImage: '',
+    featured: false,
+  },
 ]
 
 export const TESTIMONIALS = [
@@ -110,6 +120,7 @@ export const WORK = [
   { id: 1, slug: 'raazina-essence', name: 'Raazina Essence', cat: 'Product Photography · Social Media',             city: 'Swat',     swatch: 'rgba(120,60,180,0.6)', preview: '/work/raazina-essence/Raazina%20Preview%20Image.webp' },
   { id: 2, slug: 'classyfitters',   name: 'Classyfitters',   cat: 'E-commerce · Product Shoot · WhatsApp · Google', city: 'Batkhela', swatch: 'rgba(245,163,58,0.6)', preview: '/work/classyfitters/Main%20Preview%20Image.webp' },
   { id: 3, slug: 'al-ansar-abaya',  name: 'Al Ansar Abaya',  cat: 'E-commerce · Photography · WhatsApp · Social',  city: 'Chakdara', swatch: 'rgba(91,214,138,0.5)', preview: '/work/al-ansar-abaya/Preview%20Image%20Al%20Ansar%20Abaya.webp' },
+  { id: 4, slug: 'bayan-cafe',      name: 'Bayan Cafe',      cat: 'Branding · Logo · Social Media Kit · Print',    city: 'Batkhela', swatch: 'rgba(180,120,60,0.6)', preview: '/work/bayan-cafe/Preview%20Image.webp' },
 ]
 
 export const PROCESS = [
