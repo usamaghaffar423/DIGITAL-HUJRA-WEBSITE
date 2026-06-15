@@ -144,7 +144,7 @@ button { font-family: inherit; cursor: pointer; }
   .services-header > p { display: none !important; }
   /* NOTE: elements are <article>, not <div> */
   .services-grid    { grid-template-columns: repeat(2, 1fr) !important; }
-  .services-grid > article:first-child { grid-column: span 2 !important; }
+  .services-grid > article:first-child { grid-column: span 1 !important; }
 
   .process-grid     { grid-template-columns: repeat(2, 1fr) !important; }
   /* NOTE: elements are <li>, not <div> */

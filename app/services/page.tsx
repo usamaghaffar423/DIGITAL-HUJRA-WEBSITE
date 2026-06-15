@@ -7,9 +7,9 @@ import { SERVICES } from "@/lib/data";
 import { Arrow } from "@/components/atoms";
 
 export const metadata: Metadata = {
-  title: "Services — Digital Hujra | POS, E-commerce, Branding & More",
+  title: "Services — Digital Hujra | POS, E-commerce, Software & Photography",
   description:
-    "Digital Hujra — full-service agency in Batkhela, KP. POS systems, e-commerce stores, branding, social media marketing, product photography, video editing, and graphic design.",
+    "Digital Hujra — focused digital studio in Batkhela, KP. POS systems, e-commerce stores, custom software, and product photography for local businesses across KP.",
 };
 
 function ServiceIcon({ kind, color }: { kind: string; color?: string }) {
@@ -28,11 +28,8 @@ function ServiceIcon({ kind, color }: { kind: string; color?: string }) {
   switch (kind) {
     case "pos":    return <svg {...common}><rect x="6" y="10" width="32" height="22" rx="2"/><line x1="6" y1="16" x2="38" y2="16"/><rect x="10" y="20" width="6" height="3"/><rect x="18" y="20" width="6" height="3"/><rect x="26" y="20" width="6" height="3"/><rect x="10" y="26" width="6" height="3"/><rect x="18" y="26" width="6" height="3"/><rect x="26" y="26" width="6" height="3" fill={c}/></svg>;
     case "cart":   return <svg {...common}><path d="M5 8h4l3 18h20l3-12H12"/><circle cx="14" cy="34" r="2.5"/><circle cx="32" cy="34" r="2.5"/><path d="M22 14v6M19 17h6" stroke={c}/></svg>;
-    case "brand":  return <svg {...common}><circle cx="22" cy="22" r="14"/><path d="M16 28L22 12l6 16M18 23h8"/></svg>;
-    case "social": return <svg {...common}><circle cx="11" cy="14" r="4"/><circle cx="33" cy="14" r="4"/><circle cx="22" cy="32" r="4"/><line x1="14" y1="16" x2="20" y2="29"/><line x1="30" y1="16" x2="24" y2="29"/><line x1="15" y1="14" x2="29" y2="14"/></svg>;
+    case "code":   return <svg {...common}><rect x="4" y="8" width="36" height="28" rx="2"/><path d="M13 20l-5 4 5 4"/><path d="M31 20l5 4-5 4"/><line x1="26" y1="13" x2="18" y2="33"/></svg>;
     case "camera": return <svg {...common}><rect x="4" y="12" width="36" height="22" rx="2"/><circle cx="22" cy="23" r="6"/><circle cx="22" cy="23" r="2.5" fill={c}/><path d="M14 12l3-4h10l3 4"/></svg>;
-    case "video":  return <svg {...common}><rect x="4" y="12" width="26" height="20" rx="2"/><path d="M30 18l10-4v16l-10-4z" fill={c} fillOpacity="0.3"/><path d="M14 19v6l6-3z" fill={c}/></svg>;
-    case "grid":   return <svg {...common}><rect x="6" y="6" width="14" height="14" rx="1"/><rect x="24" y="6" width="14" height="14" rx="1"/><rect x="6" y="24" width="14" height="14" rx="1"/><rect x="24" y="24" width="14" height="14" rx="1" fill={c} fillOpacity="0.2"/></svg>;
     default: return null;
   }
 }
@@ -49,40 +46,21 @@ const SERVICE_EXTRAS: Record<string, { tagline: string; details: string; callout
     callouts: ["Cash on Delivery", "WhatsApp checkout", "Local courier integrations", "Bilingual (Urdu / Pashto)"],
   },
   "03": {
-    tagline: "Look the part — everywhere",
-    details: "We build identities that hold together: from your first business card to your shop's façade signage. A proper brand book means every future designer you hire stays on-brand — even years down the line.",
-    callouts: ["Logo + wordmark variants", "Color & typography system", "Stationery & print templates", "Detailed brand guidelines"],
+    tagline: "Software that fits your business exactly",
+    details: "Off-the-shelf software always needs workarounds. We build tools that match how your business actually operates — from billing and inventory to booking platforms and internal CRMs. Fully installed, trained, and supported.",
+    callouts: ["Desktop & web applications", "Inventory & billing systems", "Booking & CRM tools", "Training + 90-day support"],
   },
   "04": {
-    tagline: "Content that converts, not just impresses",
-    details: "We plan, create, and publish a full month of content — Reels, Stories, carousels, and targeted Meta ads. Monthly performance reports in plain language, no jargon.",
-    callouts: ["Monthly content calendar", "Reels & Stories production", "Targeted Meta & TikTok ads", "Monthly analytics report"],
-  },
-  "05": {
     tagline: "Products that sell themselves",
     details: "Studio shoots in Batkhela or on-location anywhere in Malakand Division. Edited cutouts, lifestyle scenes, and catalog-ready galleries. Shoot-day turnaround is 48 hours.",
     callouts: ["Studio + on-location shoots", "Product cutouts & lifestyle", "48-hour turnaround", "Catalog-ready delivery"],
-  },
-  "06": {
-    tagline: "Video that works on every screen",
-    details: "Short-form Reels, long-form brand films, ad cuts, and product explainers. Color grading, sound design, captions, and motion graphics — all produced in-house, all delivered to your phone.",
-    callouts: ["Short-form Reels & TikToks", "Brand films", "Ad cuts", "Captions & motion graphics"],
-  },
-  "07": {
-    tagline: "Print that gets noticed",
-    details: "Menus, flyers, packaging, banners, and shop signage — all designed in print-ready formats and sent directly to your preferred local press. We have standing relationships with printers across KP.",
-    callouts: ["Menus & restaurant prints", "Packaging design", "Banners & shop signs", "Print-ready file delivery"],
   },
 };
 
 const SERVICE_IMAGES: Record<string, string> = {
   "01": "/services/pos/pos%20System%20Service.webp",
   "02": "/services/ecommerce/E-Commerce%20Service.webp",
-  "03": "/services/branding/Brand%20%26%20Identity%20Service.webp",
-  "04": "/services/social-media/Social%20Media%20Service.webp",
-  "05": "/services/photography/Product%20Photography.webp",
-  "06": "/services/video/Video%20Editing%20Service.webp",
-  "07": "/services/graphic-design/Graphic%20Design%20Service.webp",
+  "04": "/services/photography/Product%20Photography.webp",
 };
 
 export default function ServicesPage() {
@@ -134,7 +112,7 @@ export default function ServicesPage() {
             {/* Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(42,157,244,0.35)", borderRadius: 999, background: "rgba(42,157,244,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--blue-2)", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--blue-soft)" }}>7 SERVICES · ONE ROOF</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--blue-soft)" }}>4 SERVICES · ONE ROOF</span>
             </div>
 
             <h1
@@ -146,7 +124,7 @@ export default function ServicesPage() {
                 letterSpacing: "-0.038em",
               }}
             >
-              <span style={{ color: "var(--blue-2)" }}>Seven services,</span>
+              <span style={{ color: "var(--blue-2)" }}>Four services,</span>
               <br />
               <span style={{ color: "var(--ink)" }}>one studio.</span>
             </h1>
@@ -177,7 +155,7 @@ export default function ServicesPage() {
               margin: "0 auto",
               padding: "0 36px",
               display: "grid",
-              gridTemplateColumns: "repeat(7, 1fr)",
+              gridTemplateColumns: "repeat(4, 1fr)",
             }}>
               {SERVICES.map((s, i) => {
                 const accentColor = s.accent === "amber" ? "var(--amber)" : "var(--blue-2)";

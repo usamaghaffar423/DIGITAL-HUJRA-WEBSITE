@@ -14,7 +14,7 @@ const SECTIONS = [
   },
   {
     title: "Services & Scope",
-    body: `Digital Hujra provides POS system installation, e-commerce development, branding, social media management, product photography, video editing, and graphic design services. The exact deliverables, timeline, and price are agreed upon before work begins and do not change without mutual written agreement.`,
+    body: `Digital Hujra provides POS system installation, e-commerce development, custom software, and product photography services. The exact deliverables, timeline, and price are agreed upon before work begins and do not change without mutual written agreement.`,
   },
   {
     title: "Payment",

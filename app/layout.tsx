@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     template: "%s — Digital Hujra",
   },
   description:
-    "Digital Hujra, based in Batkhela, Malakand — helping local KP businesses with POS systems, e-commerce, branding, social media, product photography, video editing, and graphic design.",
+    "Digital Hujra, based in Batkhela, Malakand — helping local KP businesses with POS systems, e-commerce stores, custom software, and product photography.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Digital Hujra — KP Digital Agency",
     description:
-      "Digital Hujra in Batkhela, KP. POS systems, e-commerce, branding, social media, photography and video — all under one roof.",
+      "Digital Hujra in Batkhela, KP. POS systems, e-commerce stores, custom software, and product photography — all under one roof.",
     type: "website",
     url: "https://digitalhujra.com",
     locale: "en_PK",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Digital Hujra — KP Digital Agency",
     description:
-      "POS, e-commerce, branding, social media — all under one roof in Batkhela, Malakand.",
+      "POS systems, e-commerce, custom software, photography — all under one roof in Batkhela, Malakand.",
     images: ["/cover.png"],
   },
 };
@@ -51,7 +51,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Digital Hujra",
-  "description": "Full-service digital agency in Batkhela, KP — POS systems, e-commerce, branding, social media, product photography, video editing, and graphic design.",
+  "description": "Digital studio in Batkhela, KP — POS systems, e-commerce stores, custom software, and product photography for local businesses.",
   "url": "https://digitalhujra.com",
   "logo": "https://digitalhujra.com/logo.png",
   "image": "https://digitalhujra.com/cover.png",

@@ -3,13 +3,10 @@
 import { SITE } from "@/lib/data";
 
 const SERVICES_LINKS = [
-  { label: "POS Systems",    href: "/services" },
-  { label: "E-commerce",     href: "/services" },
-  { label: "Branding",       href: "/services" },
-  { label: "Social Media",   href: "/services" },
-  { label: "Photography",    href: "/services" },
-  { label: "Video Editing",  href: "/services" },
-  { label: "Graphic Design", href: "/services" },
+  { label: "POS Systems",       href: "/services" },
+  { label: "E-commerce",        href: "/services" },
+  { label: "Custom Software",   href: "/services" },
+  { label: "Photography",       href: "/services" },
 ];
 
 const STUDIO_LINKS = [
@@ -59,8 +56,8 @@ export function Footer() {
               />
             </a>
             <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 320, margin: "0 0 20px" }}>
-              Digital Hujra — bringing KP businesses online. POS, e-commerce, branding,
-              social media, shoots and edits, all under one roof.
+              Digital Hujra — bringing KP businesses online. POS systems, e-commerce stores,
+              custom software, and product photography for local businesses.
             </p>
             <address style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.7, fontStyle: "normal" }}>
               <div className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.15em", marginBottom: 6 }}>STUDIO</div>

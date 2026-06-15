@@ -17,13 +17,10 @@ async function notifySlack(data: { name: string; email: string; phone?: string; 
   }
 
   const serviceEmoji: Record<string, string> = {
-    "POS System":             "🖥",
-    "E-commerce Store":       "🌐",
-    "Branding & Identity":    "🎨",
-    "Social Media Marketing": "📱",
-    "Product Photography":    "📸",
-    "Video Editing":          "🎬",
-    "Graphic Design":         "🖨",
+    "POS System":          "🖥",
+    "E-commerce Store":    "🌐",
+    "Custom Software":     "💻",
+    "Product Photography": "📸",
   };
 
   const res = await fetch(webhookUrl, {

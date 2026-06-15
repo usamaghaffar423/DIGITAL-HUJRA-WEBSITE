@@ -8,11 +8,8 @@ import { Arrow, HujraMark } from "@/components/atoms";
 const SERVICES_LIST = [
   "POS System",
   "E-commerce Store",
-  "Branding & Identity",
-  "Social Media Marketing",
+  "Custom Software",
   "Product Photography",
-  "Video Editing",
-  "Graphic Design",
   "Not sure yet",
 ];
 
