@@ -60,6 +60,7 @@ const SERVICE_EXTRAS: Record<string, { tagline: string; details: string; callout
 const SERVICE_IMAGES: Record<string, string> = {
   "01": "/services/pos/pos%20System%20Service.webp",
   "02": "/services/ecommerce/E-Commerce%20Service.webp",
+  "03": "/services/custom-softwares/Custom%20Softwares.webp",
   "04": "/services/photography/Product%20Photography.webp",
 };
 
