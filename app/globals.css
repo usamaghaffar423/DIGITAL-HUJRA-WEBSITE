@@ -158,7 +158,7 @@ button { font-family: inherit; cursor: pointer; }
 
   .footer-grid      { grid-template-columns: 1fr 1fr 1fr !important; }
 
-  .team-cards-grid  { grid-template-columns: repeat(3, 1fr) !important; }
+  .team-cards-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
   .team-strip-grid  { grid-template-columns: repeat(3, 1fr) !important; }
   .culture-grid     { grid-template-columns: 1fr !important; gap: 48px !important; }
 
@@ -231,8 +231,10 @@ button { font-family: inherit; cursor: pointer; }
   .cta-inner .btn   { width: 100% !important; justify-content: center !important; }
 
   /* ── Team ── */
-  .team-cards-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
-  .team-strip-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  .team-cards-grid  { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .team-strip-grid  { grid-template-columns: repeat(3, 1fr) !important; }
+  .team-card-body   { padding: 18px 18px 14px !important; }
+  .team-hero-cta    { width: 100% !important; justify-content: center !important; }
 
   /* ── Pricing ── */
   .pricing-grid     { grid-template-columns: 1fr !important; gap: 14px !important; }

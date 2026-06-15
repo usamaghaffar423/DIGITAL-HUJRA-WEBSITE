@@ -77,7 +77,7 @@ export default function TeamPage() {
             </p>
 
             <div style={{ marginBottom: 72 }}>
-              <a href="/contact" className="btn btn-primary">Work with us <Arrow /></a>
+              <a href="/contact" className="btn btn-primary team-hero-cta">Work with us <Arrow /></a>
             </div>
           </div>
 
@@ -167,7 +167,7 @@ export default function TeamPage() {
                   />
 
                   {/* Card content */}
-                  <div style={{ padding: "22px 22px 18px", display: "flex", flexDirection: "column", gap: 14, flexGrow: 1 }}>
+                  <div className="team-card-body" style={{ padding: "22px 22px 18px", display: "flex", flexDirection: "column", gap: 14, flexGrow: 1 }}>
                     <div>
                       <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 5 }}>
                         {member.name}
@@ -183,7 +183,7 @@ export default function TeamPage() {
                       {member.bio}
                     </p>
 
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4 }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4, flexWrap: "wrap", gap: 10 }}>
                       <span className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--ink-mute)" }}>
                         SINCE {member.since}
                       </span>
