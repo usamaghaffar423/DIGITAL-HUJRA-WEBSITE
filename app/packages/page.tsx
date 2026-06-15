@@ -99,32 +99,9 @@ export default function PackagesPage() {
               <span style={{ color: "var(--amber)" }}>Zero surprises.</span>
             </h1>
 
-            <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 44px" }}>
+            <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 0" }}>
               Every package is a flat rate — quoted in PKR, no hidden fees, no locked-in retainers. Pick what you need and we get started.
             </p>
-
-            {/* Service category quick-jump pills */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
-              {PRICING.map((c, i) => (
-                <button
-                  key={c.id}
-                  onClick={() => { setActiveTab(i); setTimeout(() => document.getElementById("pkg-grid")?.scrollIntoView({ behavior: "smooth", block: "start" }), 80); }}
-                  style={{
-                    padding: "8px 18px",
-                    borderRadius: 999,
-                    fontSize: 13,
-                    fontWeight: 500,
-                    background: activeTab === i ? (c.accent === "amber" ? "var(--amber)" : "var(--blue-2)") : "rgba(255,255,255,0.05)",
-                    color: activeTab === i ? (c.accent === "amber" ? "var(--night)" : "#fff") : "var(--ink-soft)",
-                    border: `1px solid ${activeTab === i ? (c.accent === "amber" ? "var(--amber)" : "var(--blue-2)") : "var(--line-2)"}`,
-                    cursor: "pointer",
-                    transition: "all .22s",
-                  }}
-                >
-                  {SERVICE_ICONS[c.icon]} {c.tab}
-                </button>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -135,6 +112,46 @@ export default function PackagesPage() {
           style={{ padding: "100px 0", borderTop: "1px solid var(--line)", background: "linear-gradient(180deg, var(--night-2) 0%, var(--night) 100%)" }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
+
+            {/* Tab bar */}
+            <div
+              role="tablist"
+              aria-label="Service categories"
+              className="pricing-tabs"
+              style={{ display: "flex", gap: 8, marginBottom: 52, overflowX: "auto", paddingBottom: 4 }}
+            >
+              {PRICING.map((c, i) => {
+                const isActive = i === activeTab;
+                const tabAccent = c.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
+                return (
+                  <button
+                    key={c.id}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`pkg-panel-${c.id}`}
+                    onClick={() => { setActiveTab(i); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }); }}
+                    className="mono"
+                    style={{
+                      padding: "10px 20px",
+                      borderRadius: 999,
+                      fontSize: 11,
+                      letterSpacing: "0.1em",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      background: isActive ? tabAccent : "rgba(255,255,255,0.04)",
+                      color: isActive ? (c.accent === "amber" ? "var(--night)" : "#fff") : "var(--ink-mute)",
+                      border: `1px solid ${isActive ? tabAccent : "var(--line-2)"}`,
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
+                      flexShrink: 0,
+                      transition: "background 0.22s, color 0.22s, border-color 0.22s",
+                    }}
+                  >
+                    {SERVICE_ICONS[c.icon]}&nbsp; {c.tab}
+                  </button>
+                );
+              })}
+            </div>
 
             {/* Active category header */}
             <div style={{ marginBottom: 40 }}>
