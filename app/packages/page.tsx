@@ -29,18 +29,14 @@ function periodSuffix(p: string) {
 const SERVICE_ICONS: Record<string, string> = {
   pos:    "🖥️",
   cart:   "🛒",
-  brand:  "🎨",
-  social: "📱",
+  code:   "💻",
   camera: "📷",
-  video:  "🎬",
-  grid:   "✏️",
 };
 
 export default function PackagesPage() {
   const [activeTab, setActiveTab] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
-  const tabsRef = useRef<HTMLDivElement>(null);
 
   const cat = PRICING[activeTab];
   const accentVar = cat.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
@@ -62,10 +58,6 @@ export default function PackagesPage() {
     run();
   }, [activeTab]);
 
-  function switchTab(i: number) {
-    setActiveTab(i);
-    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }
 
   return (
     <>
@@ -99,7 +91,7 @@ export default function PackagesPage() {
             {/* Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.35)", borderRadius: 999, background: "rgba(245,163,58,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--amber)", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>TRANSPARENT PRICING · 18 PACKAGES · PKR</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>TRANSPARENT PRICING · 12 PACKAGES · PKR</span>
             </div>
 
             <h1 className="display" style={{ fontSize: "clamp(48px, 8vw, 108px)", lineHeight: 0.93, margin: "0 0 28px", letterSpacing: "-0.038em" }}>
@@ -143,46 +135,6 @@ export default function PackagesPage() {
           style={{ padding: "100px 0", borderTop: "1px solid var(--line)", background: "linear-gradient(180deg, var(--night-2) 0%, var(--night) 100%)" }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
-
-            {/* Tab bar */}
-            <div
-              ref={tabsRef}
-              role="tablist"
-              aria-label="Service categories"
-              style={{ display: "flex", gap: 8, marginBottom: 52, overflowX: "auto", paddingBottom: 4 }}
-            >
-              {PRICING.map((c, i) => {
-                const isActive = i === activeTab;
-                const tabAccent = c.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
-                return (
-                  <button
-                    key={c.id}
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`pkg-panel-${c.id}`}
-                    onClick={() => switchTab(i)}
-                    className="mono"
-                    style={{
-                      padding: "10px 20px",
-                      borderRadius: 999,
-                      fontSize: 11,
-                      letterSpacing: "0.1em",
-                      fontWeight: 600,
-                      textTransform: "uppercase",
-                      background: isActive ? tabAccent : "rgba(255,255,255,0.04)",
-                      color: isActive ? (c.accent === "amber" ? "var(--night)" : "#fff") : "var(--ink-mute)",
-                      border: `1px solid ${isActive ? tabAccent : "var(--line-2)"}`,
-                      cursor: "pointer",
-                      whiteSpace: "nowrap",
-                      flexShrink: 0,
-                      transition: "background 0.22s, color 0.22s, border-color 0.22s",
-                    }}
-                  >
-                    {SERVICE_ICONS[c.icon]}&nbsp; {c.tab}
-                  </button>
-                );
-              })}
-            </div>
 
             {/* Active category header */}
             <div style={{ marginBottom: 40 }}>
