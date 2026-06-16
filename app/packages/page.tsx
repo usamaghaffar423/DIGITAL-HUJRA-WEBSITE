@@ -173,6 +173,15 @@ export default function PackagesPage() {
               </h2>
             </div>
 
+            {/* Section note — shown for categories that carry one (e.g. E-Commerce COD model) */}
+            {(cat as { sectionNote?: string }).sectionNote && (
+              <div style={{ marginBottom: 40, padding: "14px 20px", background: accentBg, border: `1px solid ${accentVar}28`, borderRadius: 10 }}>
+                <p style={{ margin: 0, fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.65 }}>
+                  {(cat as { sectionNote?: string }).sectionNote}
+                </p>
+              </div>
+            )}
+
             {/* Cards */}
             <div
               id={`pkg-panel-${cat.id}`}
@@ -188,6 +197,7 @@ export default function PackagesPage() {
                   features: string[]; waKey: string; originalPrice?: number;
                   originalPriceDisplay?: string; priceDisplay?: string; monthlyFee?: number;
                   paymentNote?: string; saleBadge?: string; notIncluded?: string[];
+                  photoSubLabel?: string; perPhotoLabel?: string;
                 };
                 const isPopular = pkg.popular;
                 const waMsg = encodeURIComponent(
@@ -268,6 +278,14 @@ export default function PackagesPage() {
                       {pkg.period === "one-time" && (
                         <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>one-time setup fee</p>
                       )}
+                      {pkg.photoSubLabel && (
+                        <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>{pkg.photoSubLabel}</p>
+                      )}
+                      {pkg.perPhotoLabel && (
+                        <div style={{ display: "inline-flex", alignItems: "center", marginTop: 8, padding: "3px 10px", borderRadius: 999, background: accentBg, border: `1px solid ${accentVar}28` }}>
+                          <span className="mono" style={{ fontSize: 10, color: accentVar, letterSpacing: "0.08em", fontWeight: 700 }}>{pkg.perPhotoLabel}</span>
+                        </div>
+                      )}
                       {pkg.monthlyFee && (
                         <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "8px 0 0" }}>
                           + <strong>{fmtPKR(pkg.monthlyFee)}</strong><span style={{ color: "var(--ink-mute)" }}>/month</span>
@@ -326,7 +344,7 @@ export default function PackagesPage() {
             {/* Footer note */}
             <div style={{ marginTop: 56, paddingTop: 24, borderTop: "1px solid var(--line)" }}>
               <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: 0, letterSpacing: "0.12em", textAlign: "center", textTransform: "uppercase" }}>
-                All prices in PKR · VAT not included · Custom quotes available on request
+                {(cat as { footerNote?: string }).footerNote ?? "All prices in PKR · VAT not included · Custom quotes available on request"}
               </p>
             </div>
           </div>
