@@ -16,6 +16,15 @@ function CheckIcon() {
   );
 }
 
+function XIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <circle cx="7" cy="7" r="6" fill="rgba(255,80,80,0.12)" />
+      <path d="M4.5 4.5l5 5M9.5 4.5l-5 5" stroke="rgba(255,100,100,0.7)" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function fmtPKR(n: number) {
   return "PKR " + n.toLocaleString();
 }
@@ -173,7 +182,13 @@ export default function PackagesPage() {
               style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}
               className="pricing-grid"
             >
-              {cat.packages.map((pkg) => {
+              {cat.packages.map((_pkg) => {
+                const pkg = _pkg as {
+                  name: string; price: number; period: string; popular: boolean; tagline: string;
+                  features: string[]; waKey: string; originalPrice?: number;
+                  originalPriceDisplay?: string; priceDisplay?: string; monthlyFee?: number;
+                  paymentNote?: string; saleBadge?: string; notIncluded?: string[];
+                };
                 const isPopular = pkg.popular;
                 const waMsg = encodeURIComponent(
                   `Assalam o Alaikum! ${pkg.name} (${cat.tab}) package ke baare mein enquire karna tha. Pricing: ${fmtPKR(pkg.price)}.`
@@ -206,10 +221,19 @@ export default function PackagesPage() {
                     {/* Ambient glow */}
                     <div aria-hidden="true" style={{ position: "absolute", top: -50, right: -50, width: 180, height: 180, borderRadius: "50%", background: `radial-gradient(circle, ${accentGlow} 0%, transparent 70%)`, pointerEvents: "none" }} />
 
-                    {/* Popular badge */}
-                    {isPopular && (
-                      <div className="mono" style={{ position: "absolute", top: 20, right: 20, background: accentVar, color: cat.accent === "amber" ? "var(--night)" : "#fff", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                        Most Popular
+                    {/* Badges */}
+                    {(isPopular || pkg.saleBadge) && (
+                      <div style={{ position: "absolute", top: 20, right: 20, display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+                        {isPopular && (
+                          <div className="mono" style={{ background: accentVar, color: cat.accent === "amber" ? "var(--night)" : "#fff", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                            Most Popular
+                          </div>
+                        )}
+                        {pkg.saleBadge && (
+                          <div className="mono" style={{ background: "rgba(91,214,138,0.12)", color: "#5BD68A", border: "1px solid rgba(91,214,138,0.25)", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                            {pkg.saleBadge}
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -229,14 +253,28 @@ export default function PackagesPage() {
 
                     {/* Price */}
                     <div style={{ marginBottom: 28 }}>
+                      {pkg.originalPrice && (
+                        <p style={{ fontSize: 13, color: "var(--ink-mute)", margin: "0 0 6px", display: "flex", alignItems: "center", gap: 8 }}>
+                          <span style={{ textDecoration: "line-through" }}>{pkg.originalPriceDisplay || fmtPKR(pkg.originalPrice)}</span>
+                          <span style={{ fontSize: 10, color: "#5BD68A", fontWeight: 700, background: "rgba(91,214,138,0.1)", padding: "2px 7px", borderRadius: 999 }}>Launch Price</span>
+                        </p>
+                      )}
                       <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-                        <span className="display" style={{ fontSize: 34, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}>{fmtPKR(pkg.price)}</span>
+                        <span className="display" style={{ fontSize: 34, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}>{pkg.priceDisplay || fmtPKR(pkg.price)}</span>
                         {pkg.period !== "one-time" && (
                           <span style={{ fontSize: 14, color: "var(--ink-mute)" }}>{periodSuffix(pkg.period)}</span>
                         )}
                       </div>
                       {pkg.period === "one-time" && (
-                        <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>one-time payment</p>
+                        <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>one-time setup fee</p>
+                      )}
+                      {pkg.monthlyFee && (
+                        <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "8px 0 0" }}>
+                          + <strong>{fmtPKR(pkg.monthlyFee)}</strong><span style={{ color: "var(--ink-mute)" }}>/month</span>
+                        </p>
+                      )}
+                      {pkg.paymentNote && (
+                        <p className="mono" style={{ fontSize: 10, color: accentVar, margin: "8px 0 0", letterSpacing: "0.06em", lineHeight: 1.5 }}>{pkg.paymentNote}</p>
                       )}
                     </div>
 
@@ -248,6 +286,17 @@ export default function PackagesPage() {
                           {f}
                         </li>
                       ))}
+                      {pkg.notIncluded && pkg.notIncluded.length > 0 && (
+                        <>
+                          <li style={{ height: 1, background: "var(--line)", margin: "4px 0" }} />
+                          {pkg.notIncluded.map((f) => (
+                            <li key={`x-${f}`} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13, color: "var(--ink-mute)", lineHeight: 1.4 }}>
+                              <span style={{ flexShrink: 0, marginTop: 1 }}><XIcon /></span>
+                              {f}
+                            </li>
+                          ))}
+                        </>
+                      )}
                     </ul>
 
                     {/* CTA */}
@@ -279,6 +328,32 @@ export default function PackagesPage() {
               <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: 0, letterSpacing: "0.12em", textAlign: "center", textTransform: "uppercase" }}>
                 All prices in PKR · VAT not included · Custom quotes available on request
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── How Payment Works ────────────────────────────── */}
+        <section aria-label="How payment works" style={{ padding: "80px 0", borderTop: "1px solid var(--line)", background: "var(--night)" }}>
+          <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
+              <span className="eyebrow" style={{ color: "var(--amber)" }}>How payment works</span>
+            </div>
+            <h2 className="display" style={{ fontSize: "clamp(32px, 4vw, 58px)", lineHeight: 1.05, margin: "0 0 48px", letterSpacing: "-0.025em" }}>
+              Simple. <span style={{ color: "var(--amber)" }}>Flexible.</span>
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
+              {[
+                { n: "01", title: "50% Advance", body: "Pay half upfront to confirm your project. We start work the same day — no delays, no waiting.", color: "var(--amber)" },
+                { n: "02", title: "Monthly Support Fee", body: "Small monthly fee for WhatsApp support, system updates, and remote monitoring throughout the year.", color: "var(--blue-2)" },
+                { n: "03", title: "50% After 3 Months", body: "Once you're fully satisfied — pay the remaining 50%. No pressure, just results you're happy with.", color: "var(--amber)" },
+              ].map((item) => (
+                <article key={item.n} className="card" style={{ padding: "32px 28px", display: "flex", flexDirection: "column", gap: 16 }}>
+                  <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: item.color }}>{item.n}</span>
+                  <h3 className="display" style={{ fontSize: 26, margin: 0, letterSpacing: "-0.02em", color: item.color }}>{item.title}</h3>
+                  <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, color: "var(--ink-soft)" }}>{item.body}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
