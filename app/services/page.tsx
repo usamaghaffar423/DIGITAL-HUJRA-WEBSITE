@@ -41,14 +41,14 @@ const SERVICE_EXTRAS: Record<string, { tagline: string; details: string; callout
     callouts: ["Same-day installation available", "Staff training included", "Remote support for 90 days", "Works offline too"],
   },
   "02": {
-    tagline: "Open for business — 24 hours a day",
-    details: "A well-built online store turns your WhatsApp catalogue into a proper shop that runs itself. We handle Shopify, WooCommerce, or custom builds — with Cash on Delivery, WhatsApp checkout, and local courier integrations already set up.",
-    callouts: ["Cash on Delivery", "WhatsApp checkout", "Local courier integrations", "Bilingual (Urdu / Pashto)"],
-  },
-  "03": {
     tagline: "Software that fits your business exactly",
     details: "Off-the-shelf software always needs workarounds. We build tools that match how your business actually operates — from billing and inventory to booking platforms and internal CRMs. Fully installed, trained, and supported.",
     callouts: ["Desktop & web applications", "Inventory & billing systems", "Booking & CRM tools", "Training + 90-day support"],
+  },
+  "03": {
+    tagline: "Open for business — 24 hours a day",
+    details: "A well-built online store turns your WhatsApp catalogue into a proper shop that runs itself. We handle Shopify, WooCommerce, or custom builds — with Cash on Delivery, WhatsApp checkout, and local courier integrations already set up.",
+    callouts: ["Cash on Delivery", "WhatsApp checkout", "Local courier integrations", "Bilingual (Urdu / Pashto)"],
   },
   "04": {
     tagline: "Products that sell themselves",
@@ -59,8 +59,8 @@ const SERVICE_EXTRAS: Record<string, { tagline: string; details: string; callout
 
 const SERVICE_IMAGES: Record<string, string> = {
   "01": "/services/pos/pos%20System%20Service.webp",
-  "02": "/services/ecommerce/E-Commerce%20Service.webp",
-  "03": "/services/custom-softwares/Custom%20Softwares.webp",
+  "02": "/services/custom-softwares/Custom%20Softwares.webp",
+  "03": "/services/ecommerce/E-Commerce%20Service.webp",
   "04": "/services/photography/Product%20Photography.webp",
 };
 

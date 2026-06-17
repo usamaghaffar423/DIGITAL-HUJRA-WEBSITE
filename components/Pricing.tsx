@@ -13,8 +13,17 @@ function CheckIcon() {
   );
 }
 
+function XIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <circle cx="7" cy="7" r="6" fill="rgba(255,90,90,0.12)" />
+      <path d="M4.5 4.5l5 5M9.5 4.5l-5 5" stroke="#ff6b6b" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function fmtPKR(n: number) {
-  return "PKR " + n.toLocaleString();
+  return "PKR " + n.toLocaleString();
 }
 
 function periodSuffix(p: string) {
@@ -34,8 +43,8 @@ export function Pricing() {
     cat.accent === "amber"
       ? "rgba(245,163,58,0.18)"
       : "rgba(42,157,244,0.18)";
+  const catEx = cat as typeof cat & { sectionNote?: string; footerNote?: string };
 
-  // Animate cards on tab switch (initial scroll-in handled by page.tsx GSAP)
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -72,7 +81,7 @@ export function Pricing() {
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
           <p className="eyebrow section-eyebrow" style={{ color: "var(--amber)", marginBottom: 16 }}>
-            Transparent pricing · 18 packages
+            Transparent pricing · 12 packages
           </p>
           <h2
             className="display section-title"
@@ -132,6 +141,22 @@ export function Pricing() {
           })}
         </div>
 
+        {/* Section note */}
+        {catEx.sectionNote && (
+          <div style={{
+            background: "rgba(42,157,244,0.07)",
+            border: "1px solid rgba(42,157,244,0.2)",
+            borderRadius: 12,
+            padding: "14px 20px",
+            marginBottom: 28,
+            fontSize: 13.5,
+            color: "var(--ink-soft)",
+            lineHeight: 1.55,
+          }}>
+            {catEx.sectionNote}
+          </div>
+        )}
+
         {/* Package cards */}
         <div
           id={`pricing-panel-${cat.id}`}
@@ -141,7 +166,18 @@ export function Pricing() {
           className="card-grid pricing-grid"
           style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}
         >
-          {cat.packages.map((pkg) => {
+          {cat.packages.map((_pkg) => {
+            const pkg = _pkg as typeof _pkg & {
+              originalPrice?: number;
+              priceDisplay?: string;
+              originalPriceDisplay?: string;
+              monthlyFee?: number;
+              paymentNote?: string;
+              saleBadge?: string;
+              notIncluded?: string[];
+              photoSubLabel?: string;
+              perPhotoLabel?: string;
+            };
             const isPopular = pkg.popular;
             const waMsg = encodeURIComponent(
               `Assalam o Alaikum! ${pkg.name} (${cat.tab}) package ke baare mein enquire karna tha. Pricing: ${fmtPKR(pkg.price)}.`
@@ -177,27 +213,43 @@ export function Pricing() {
                   }}
                 />
 
-                {/* Popular badge */}
-                {isPopular && (
-                  <div
-                    className="mono"
-                    style={{
-                      position: "absolute",
-                      top: 18,
-                      right: 18,
-                      background: accentVar,
-                      color: cat.accent === "amber" ? "var(--night)" : "#fff",
-                      padding: "3px 10px",
-                      borderRadius: 999,
-                      fontSize: 9,
-                      fontWeight: 700,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Popular
-                  </div>
-                )}
+                {/* Badges */}
+                <div style={{ position: "absolute", top: 18, right: 18, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+                  {isPopular && (
+                    <div
+                      className="mono"
+                      style={{
+                        background: accentVar,
+                        color: cat.accent === "amber" ? "var(--night)" : "#fff",
+                        padding: "3px 10px",
+                        borderRadius: 999,
+                        fontSize: 9,
+                        fontWeight: 700,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Most Popular
+                    </div>
+                  )}
+                  {pkg.saleBadge && (
+                    <div
+                      className="mono"
+                      style={{
+                        background: "#5BD68A",
+                        color: "#0A1628",
+                        padding: "3px 10px",
+                        borderRadius: 999,
+                        fontSize: 9,
+                        fontWeight: 700,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {pkg.saleBadge}
+                    </div>
+                  )}
+                </div>
 
                 {/* Category label */}
                 <p
@@ -240,12 +292,22 @@ export function Pricing() {
 
                 {/* Price */}
                 <div style={{ marginBottom: 26 }}>
+                  {pkg.originalPrice && (
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                      <span style={{ fontSize: 13, color: "var(--ink-mute)", textDecoration: "line-through" }}>
+                        {pkg.originalPriceDisplay ?? fmtPKR(pkg.originalPrice)}
+                      </span>
+                      <span className="mono" style={{ fontSize: 9, padding: "2px 8px", borderRadius: 999, background: "rgba(91,214,138,0.15)", color: "#5BD68A", letterSpacing: "0.1em" }}>
+                        LAUNCH PRICE
+                      </span>
+                    </div>
+                  )}
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
                     <span
                       className="display"
                       style={{ fontSize: 32, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}
                     >
-                      {fmtPKR(pkg.price)}
+                      {pkg.priceDisplay ?? fmtPKR(pkg.price)}
                     </span>
                     {pkg.period !== "one-time" && (
                       <span style={{ fontSize: 14, color: "var(--ink-mute)" }}>
@@ -258,7 +320,27 @@ export function Pricing() {
                       className="mono"
                       style={{ fontSize: 10, color: "var(--ink-mute)", margin: "5px 0 0", letterSpacing: "0.1em" }}
                     >
-                      one-time payment
+                      one-time setup fee
+                    </p>
+                  )}
+                  {pkg.photoSubLabel && (
+                    <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "3px 0 0", letterSpacing: "0.1em" }}>
+                      {pkg.photoSubLabel}
+                    </p>
+                  )}
+                  {pkg.perPhotoLabel && (
+                    <span className="mono" style={{ display: "inline-block", marginTop: 6, fontSize: 9, padding: "2px 10px", borderRadius: 999, background: "rgba(245,163,58,0.12)", color: "var(--amber)", letterSpacing: "0.1em" }}>
+                      {pkg.perPhotoLabel}
+                    </span>
+                  )}
+                  {pkg.monthlyFee && (
+                    <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "8px 0 0" }}>
+                      + PKR {pkg.monthlyFee.toLocaleString()} / month support fee
+                    </p>
+                  )}
+                  {pkg.paymentNote && (
+                    <p className="mono" style={{ fontSize: 10, color: "var(--amber)", margin: "6px 0 0", letterSpacing: "0.06em" }}>
+                      {pkg.paymentNote}
                     </p>
                   )}
                 </div>
@@ -293,6 +375,21 @@ export function Pricing() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Not included */}
+                {pkg.notIncluded && pkg.notIncluded.length > 0 && (
+                  <>
+                    <hr style={{ margin: "16px 0 12px", border: "none", borderTop: "1px solid var(--line)", opacity: 0.5 }} />
+                    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+                      {pkg.notIncluded.map((f) => (
+                        <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13, color: "var(--ink-mute)", lineHeight: 1.4 }}>
+                          <span style={{ flexShrink: 0, marginTop: 1 }}><XIcon /></span>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
 
                 {/* CTA */}
                 <a
@@ -334,7 +431,7 @@ export function Pricing() {
             textTransform: "uppercase",
           }}
         >
-          All prices in PKR · VAT not included · Custom quotes available on request
+          {catEx.footerNote ?? "All prices in PKR · VAT not included · Custom quotes available on request"}
         </p>
       </div>
     </section>

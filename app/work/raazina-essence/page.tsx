@@ -7,7 +7,7 @@ import { Arrow } from "@/components/atoms";
 export const metadata: Metadata = {
   title: "Raazina Essence Case Study — Digital Hujra",
   description:
-    "How Digital Hujra delivered 50+ professional perfume product shots across two shoots and ongoing weekly social media posts for Raazina Essence, Swat, KP.",
+    "How Digital Hujra delivered 50+ professional perfume product shots across two studio shoot sessions for Raazina Essence, Swat, KP.",
 };
 
 const SERVICES = [
@@ -23,12 +23,6 @@ const SERVICES = [
     desc: "Second shoot: 25+ additional images including lifestyle setups, glass detail shots, and varied backdrops — over 50 images total.",
     accent: "var(--blue-2)",
   },
-  {
-    icon: "📲",
-    name: "Social Media Posts",
-    desc: "Weekly designed posts for Instagram and Facebook — consistent, on-brand content delivered every week to keep the audience engaged.",
-    accent: "var(--amber)",
-  },
 ];
 
 const GALLERY: { label: string; emoji: string; swatch: string; image?: string }[] = [
@@ -36,8 +30,8 @@ const GALLERY: { label: string; emoji: string; swatch: string; image?: string }[
   { label: "Product Shoot · Group 1 · Flat Lay",      emoji: "💜", swatch: "rgba(120,60,180,0.40)", image: "/work/raazina-essence/Raazina%20Essence%2002.webp" },
   { label: "Product Shoot · Group 2 · Lifestyle",     emoji: "✨", swatch: "rgba(120,60,180,0.45)", image: "/work/raazina-essence/Raazina%20Essence%2003.webp" },
   { label: "Product Shoot · Group 2 · Detail & Glass",emoji: "💎", swatch: "rgba(42,157,244,0.35)",  image: "/work/raazina-essence/Raazina%20Essence%2004.webp" },
-  { label: "Social Media · Weekly Post",               emoji: "📲", swatch: "rgba(245,163,58,0.30)", image: "/work/raazina-essence/Raazina%20Essence%2005.webp" },
-  { label: "Social Media · Reel Cover",               emoji: "🎞️", swatch: "rgba(245,163,58,0.25)", image: "/work/raazina-essence/Raazina%20Essence%2006.webp" },
+  { label: "Product Shoot · Group 2 · Angle Shot",    emoji: "📲", swatch: "rgba(245,163,58,0.30)", image: "/work/raazina-essence/Raazina%20Essence%2005.webp" },
+  { label: "Product Shoot · Group 2 · Final Gallery", emoji: "🎞️", swatch: "rgba(245,163,58,0.25)", image: "/work/raazina-essence/Raazina%20Essence%2006.webp" },
 ];
 
 export default function RaazinaEssencePage() {
@@ -84,11 +78,11 @@ export default function RaazinaEssencePage() {
             </h1>
 
             <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 auto 36px" }}>
-              A Swat-based perfume brand with a premium product that deserved premium visuals. We delivered two complete product shoots — over 50 images total — and ongoing weekly social media posts that keep Raazina Essence consistently in front of their audience.
+              A Swat-based perfume brand with a premium product that deserved premium visuals. We delivered two complete product shoots — over 50 studio images total — hero shots, flat lays, lifestyle setups, and glass detail photography.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48, justifyContent: "center" }}>
-              {["Product Photography", "50+ Images", "2 Shoot Groups", "Weekly Social Media"].map(tag => (
+              {["Product Photography", "50+ Images", "2 Shoot Groups", "Studio Shoots"].map(tag => (
                 <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(245,163,58,0.1)", border: "1px solid rgba(245,163,58,0.25)", color: "var(--amber-soft)" }}>{tag}</span>
               ))}
             </div>
@@ -105,7 +99,7 @@ export default function RaazinaEssencePage() {
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
-              <span className="eyebrow" style={{ color: "var(--amber)" }}>What we delivered · 3 services</span>
+              <span className="eyebrow" style={{ color: "var(--amber)" }}>What we delivered · 2 shoot sessions</span>
             </div>
             <h2 className="display" style={{ fontSize: "clamp(32px, 4vw, 60px)", lineHeight: 1.05, margin: "0 0 56px", letterSpacing: "-0.025em" }}>
               50+ images, <span style={{ color: "var(--amber)" }}>zero compromise.</span>

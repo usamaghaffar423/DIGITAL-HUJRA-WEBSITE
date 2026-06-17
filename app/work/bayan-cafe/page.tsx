@@ -7,14 +7,14 @@ import { Arrow } from "@/components/atoms";
 export const metadata: Metadata = {
   title: "Bayan Cafe Case Study — Digital Hujra",
   description:
-    "How Digital Hujra built a complete brand identity for Bayan Cafe — logo design, color system, typography, brand guidelines, social media kit, stationery, and print collateral.",
+    "How Digital Hujra built a complete visual identity for Bayan Cafe — color system, typography, brand guidelines, stationery, and print collateral.",
 };
 
 const SERVICES = [
   {
     icon: "✏️",
-    name: "Logo Design",
-    desc: "A distinctive logo mark crafted to reflect Bayan Cafe's character — versatile across digital screens, print menus, and cafe signage.",
+    name: "Visual Identity",
+    desc: "A distinctive identity crafted to reflect Bayan Cafe's character — logo mark, versatile across digital screens, print menus, and cafe signage.",
     accent: "var(--amber)",
   },
   {
@@ -34,12 +34,6 @@ const SERVICES = [
     name: "Brand Guidelines",
     desc: "A complete brand book covering logo usage, color rules, spacing, do's and don'ts — everything the cafe needs to stay consistent as they grow.",
     accent: "var(--blue-2)",
-  },
-  {
-    icon: "📱",
-    name: "Social Media Kit",
-    desc: "Ready-to-use post templates, story frames, and highlight covers — designed so Bayan Cafe can publish on-brand content without a designer.",
-    accent: "var(--amber)",
   },
   {
     icon: "🖨️",
@@ -95,7 +89,7 @@ export default function BayanCafePage() {
 
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.35)", borderRadius: 999, background: "rgba(245,163,58,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--amber)", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>☕ BATKHELA, KP · BRANDING KIT DELIVERED</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>☕ BATKHELA, KP · DESIGN KIT DELIVERED</span>
             </div>
 
             {/* Logo */}
@@ -115,11 +109,11 @@ export default function BayanCafePage() {
             </h1>
 
             <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 auto 36px" }}>
-              A Batkhela cafe that needed an identity as inviting as their space. We designed a complete branding kit — logo, color system, typography, brand guidelines, social media templates, and print collateral — all delivered and ready to use.
+              A Batkhela cafe that needed an identity as inviting as their space. We designed a complete design kit — visual identity, color system, typography, brand guidelines, and print collateral — all delivered and ready to use.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48, justifyContent: "center" }}>
-              {["Logo Design", "Color System", "Typography", "Brand Guidelines", "Social Media Kit", "Print & Stationery"].map(tag => (
+              {["Visual Identity", "Color System", "Typography", "Brand Guidelines", "Print & Stationery"].map(tag => (
                 <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(180,120,60,0.12)", border: "1px solid rgba(180,120,60,0.3)", color: "var(--amber)" }}>{tag}</span>
               ))}
             </div>
@@ -136,7 +130,7 @@ export default function BayanCafePage() {
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
-              <span className="eyebrow" style={{ color: "var(--amber)" }}>What we delivered · 6 brand deliverables</span>
+              <span className="eyebrow" style={{ color: "var(--amber)" }}>What we delivered · 5 brand deliverables</span>
             </div>
             <h2 className="display" style={{ fontSize: "clamp(32px, 4vw, 60px)", lineHeight: 1.05, margin: "0 0 56px", letterSpacing: "-0.025em" }}>
               An identity built to last, <span style={{ color: "var(--amber)" }}>not just look good.</span>
@@ -209,7 +203,7 @@ export default function BayanCafePage() {
               Bayan Cafe now has a brand identity that looks the same on a menu, an Instagram post, or a business card.
             </p>
             <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 580, margin: "0 auto 48px", lineHeight: 1.65 }}>
-              Six deliverables, all in one engagement — every file handed over in print-ready and digital formats. Bayan Cafe can now print, post, and grow without needing a designer for every piece of content.
+              Five deliverables, all in one engagement — every file handed over in print-ready and digital formats. Bayan Cafe can now print, post, and grow without needing a designer for every piece of content.
             </p>
             <a href="/contact" className="btn btn-primary">Start your project <Arrow /></a>
           </div>

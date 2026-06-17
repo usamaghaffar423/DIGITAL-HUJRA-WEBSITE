@@ -107,7 +107,7 @@ export function Hero() {
             }}>
               We help local KP businesses get online, look professional, and{" "}
               <span style={{ color: "var(--amber)", fontWeight: 600 }}>grow</span>.
-              POS, e-commerce, branding, social, shoots, edits — under one warm roof in Batkhela.
+              POS systems, custom software, e-commerce, photography — all under one warm roof in Batkhela.
             </p>
 
             <div className="hero-ctas" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 44 }}>
@@ -223,7 +223,7 @@ export function Hero() {
                     <div style={{ height: 2, background: "rgba(255,255,255,0.07)", width: "68%", borderRadius: 2 }} />
                   </div>
                   <div style={{ padding: "2px 10px 7px" }}>
-                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)", opacity: 0.8 }}>WEB DESIGN</span>
+                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)", opacity: 0.8 }}>E-COMMERCE</span>
                   </div>
                 </div>
               </div>
@@ -253,7 +253,7 @@ export function Hero() {
                   <div style={{ display: "flex", gap: 8, marginBottom: 5 }}>
                     {["♥ 24","💬 3"].map(t => <span key={t} style={{ fontSize: 7, fontFamily: "monospace", color: "rgba(255,255,255,0.3)" }}>{t}</span>)}
                   </div>
-                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--amber)", opacity: 0.85 }}>SOCIAL MEDIA</span>
+                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--amber)", opacity: 0.85 }}>PHOTOGRAPHY</span>
                 </div>
               </div>
 
@@ -273,7 +273,7 @@ export function Hero() {
                 }}>
                   <img src="/logo.png" alt="" style={{ height: 32, width: "auto", display: "block", margin: "0 auto 8px" }} />
                   <div style={{ height: 1, background: "rgba(245,163,58,0.35)", margin: "0 0 7px" }} />
-                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.14em", color: "var(--amber)" }}>BRANDING</span>
+                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.14em", color: "var(--amber)" }}>DIGITAL HUJRA</span>
                 </div>
               </div>
 
@@ -327,7 +327,7 @@ export function Hero() {
                     <span className="mono" style={{ position: "absolute", bottom: 5, left: 7, fontSize: 7, color: "rgba(255,255,255,0.25)" }}>HD</span>
                   </div>
                   <div style={{ padding: "6px 9px" }}>
-                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)" }}>VIDEO PROD.</span>
+                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)" }}>CUSTOM SOFTWARE</span>
                   </div>
                 </div>
               </div>

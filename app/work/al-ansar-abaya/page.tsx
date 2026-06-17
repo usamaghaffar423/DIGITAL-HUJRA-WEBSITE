@@ -7,7 +7,7 @@ import { Arrow } from "@/components/atoms";
 export const metadata: Metadata = {
   title: "Al Ansar Abaya Case Study — Digital Hujra",
   description:
-    "How Digital Hujra delivered a complete digital presence for Al Ansar Abaya in Chakdara — e-commerce store, product shoot, WhatsApp verified badge, social media management, and Google Business.",
+    "How Digital Hujra delivered a complete digital presence for Al Ansar Abaya in Chakdara — e-commerce store, product shoot, WhatsApp verified badge, and Google Business.",
 };
 
 const SERVICES = [
@@ -40,12 +40,6 @@ const SERVICES = [
     name: "WhatsApp Verified Badge",
     desc: "Official WhatsApp green tick verification obtained — giving Al Ansar Abaya instant credibility with every customer they contact.",
     accent: "var(--amber)",
-  },
-  {
-    icon: "📱",
-    name: "Social Media Setup & Management",
-    desc: "Instagram and Facebook profiles fully set up and branded. Ongoing social media management with regular posts and audience engagement.",
-    accent: "var(--blue-2)",
   },
   {
     icon: "🗺️",
@@ -108,11 +102,11 @@ export default function AlAnsarAbayaPage() {
             </h1>
 
             <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 640, margin: "0 auto 36px" }}>
-              A Chakdara abaya brand that needed a complete digital presence — from scratch. We delivered 7 services in one engagement: an e-commerce store, product shoot, WhatsApp Business, WhatsApp Channel, WhatsApp verified badge, social media setup and management, and Google Business. All live. Client very satisfied.
+              A Chakdara abaya brand that needed a complete digital presence — from scratch. We delivered 6 services in one engagement: an e-commerce store, product shoot, WhatsApp Business, WhatsApp Channel, WhatsApp verified badge, and Google Business. All live. Client very satisfied.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48, justifyContent: "center" }}>
-              {["E-commerce Store", "Product Shoot", "WhatsApp Verified ✅", "Social Media", "Google Business"].map(tag => (
+              {["E-commerce Store", "Product Shoot", "WhatsApp Verified ✅", "Google Business"].map(tag => (
                 <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(91,214,138,0.1)", border: "1px solid rgba(91,214,138,0.25)", color: "var(--green, #5BD68A)" }}>{tag}</span>
               ))}
             </div>
@@ -129,7 +123,7 @@ export default function AlAnsarAbayaPage() {
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
-              <span className="eyebrow" style={{ color: "var(--amber)" }}>What we delivered · 7 services</span>
+              <span className="eyebrow" style={{ color: "var(--amber)" }}>What we delivered · 6 services</span>
             </div>
             <h2 className="display" style={{ fontSize: "clamp(32px, 4vw, 60px)", lineHeight: 1.05, margin: "0 0 56px", letterSpacing: "-0.025em" }}>
               Complete digital presence, <span style={{ color: "var(--amber)" }}>top to bottom.</span>
@@ -202,7 +196,7 @@ export default function AlAnsarAbayaPage() {
               Al Ansar Abaya went from zero digital presence to fully live — store, social, WhatsApp verified, and Google — in one engagement.
             </p>
             <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 580, margin: "0 auto 48px", lineHeight: 1.65 }}>
-              Seven services delivered, every one fully operational and handed over with training. Al Ansar Abaya now runs their full digital presence independently — and their customers can find, contact, and order from them on every major platform. They were very satisfied with the results.
+              Six services delivered, every one fully operational and handed over with training. Al Ansar Abaya now runs their full digital presence independently — and their customers can find, contact, and order from them on every major platform. They were very satisfied with the results.
             </p>
             <a href="/contact" className="btn btn-primary">Start your project <Arrow /></a>
           </div>

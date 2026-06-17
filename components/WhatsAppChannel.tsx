@@ -182,9 +182,9 @@ export function WhatsAppChannel() {
               {/* Preview messages */}
               <div style={{ padding: "20px 20px", display: "flex", flexDirection: "column", gap: 12 }}>
                 {[
-                  { msg: "🚀 Naya tip: Social media pe apni dukaan ka time-lapse video post karo — engagement 3x hoti hai!", time: "9:00 AM" },
+                  { msg: "🚀 Naya tip: Apne products ki professional photos website aur store pe lagao — customers ka trust 3x hota hai!", time: "9:00 AM" },
                   { msg: "📸 Aaj hamare studio mein Khan Pharmacy ka product shoot hua. Results kal share karein ge!", time: "2:30 PM" },
-                  { msg: "🎯 Is hafte sirf 2 slots baqi hain branding projects ke liye. Jaldi contact karo!", time: "5:00 PM" },
+                  { msg: "🎯 Is hafte sirf 2 slots baqi hain product photography ke liye. Jaldi contact karo!", time: "5:00 PM" },
                 ].map((item, i) => (
                   <div key={i} style={{
                     background: i === 2 ? "rgba(37,211,102,0.12)" : "rgba(255,255,255,0.05)",
