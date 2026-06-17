@@ -74,8 +74,8 @@ const SERVICE_IMAGES: Record<string, string> = {
   "02": "/services/custom-softwares/Custom%20Softwares.webp",
   "03": "/services/ecommerce/E-Commerce%20Service.webp",
   "04": "/services/photography/Product%20Photography.webp",
-  "05": "/services/Whatsapp-Business/1st%20Image.png",
-  "06": "/services/Google-Business/1st%20Image.png",
+  "05": "/services/Whatsapp-Business/Whatapp%20Website%20Image%2001.webp",
+  "06": "/services/Google-Business/Google%20Busines%20%281%29.webp",
 };
 
 export default function ServicesPage() {
