@@ -336,7 +336,7 @@ export const PRICING = [
         period: 'one-time',
         popular: false,
         tagline: 'For small shops going online for the first time',
-        paymentNote: 'Pay PKR 9,000 today · PKR 9,000 on delivery',
+        pricePrefix: 'Starting From',
         features: [
           'Up to 30 products listed',
           'Mobile-first responsive design',
@@ -358,7 +358,7 @@ export const PRICING = [
         period: 'one-time',
         popular: true,
         tagline: 'For clothing brands, pharmacies & product sellers',
-        paymentNote: 'Pay PKR 16,000 today · PKR 16,000 on delivery',
+        pricePrefix: 'Starting From',
         features: [
           'Up to 100 products with categories',
           'Custom branded design (your logo & colors)',
@@ -381,7 +381,7 @@ export const PRICING = [
         period: 'one-time',
         popular: false,
         tagline: 'For scaling brands with full online operations',
-        paymentNote: 'Pay PKR 27,500 today · PKR 27,500 on delivery',
+        pricePrefix: 'Starting From',
         features: [
           'Unlimited products & categories',
           'Custom branded design (matches logo & colors)',
