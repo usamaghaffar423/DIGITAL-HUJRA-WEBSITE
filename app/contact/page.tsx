@@ -236,7 +236,7 @@ export default function ContactPage() {
                     </svg>
                   ),
                   label: "+92 371 5868088",
-                  sub: "Mon – Sat, 9am – 6pm",
+                  sub: "Sat – Thu, 9am – 6pm",
                   color: "var(--blue-2)",
                 },
                 {
@@ -485,7 +485,7 @@ export default function ContactPage() {
                           </svg>
                         ),
                         label: "+92 371 5868088",
-                        sub: "Mon – Sat, 9am – 6pm",
+                        sub: "Sat – Thu, 9am – 6pm",
                         href: "tel:+923715868088",
                       },
                       {
@@ -528,8 +528,8 @@ export default function ContactPage() {
                 <div className="card" style={{ padding: "28px 28px" }}>
                   <div className="mono" style={{ fontSize: 10, letterSpacing: "0.18em", color: "var(--ink-mute)", marginBottom: 16 }}>OFFICE HOURS</div>
                   {[
-                    { d: "Monday – Saturday", t: "9:00 am – 6:00 pm" },
-                    { d: "Sunday", t: "Closed" },
+                    { d: "Saturday – Thursday", t: "9:00 am – 6:00 pm" },
+                    { d: "Friday", t: "Closed" },
                     { d: "WhatsApp", t: "Always available" },
                   ].map((row) => (
                     <div key={row.d} style={{ display: "flex", justifyContent: "space-between", padding: "12px 0", borderBottom: "1px solid var(--line)", fontSize: 14 }}>

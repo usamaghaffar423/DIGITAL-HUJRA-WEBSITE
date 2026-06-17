@@ -217,8 +217,8 @@ export default function AboutPage() {
                     <div className="mono" style={{ fontSize: 10, letterSpacing: "0.18em", color: "var(--ink-mute)", marginBottom: 12 }}>OFFICE HOURS</div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                       {[
-                        { d: "Mon – Sat", t: "9:00 am – 6:00 pm" },
-                        { d: "Sunday", t: "Closed" },
+                        { d: "Sat – Thu", t: "9:00 am – 6:00 pm" },
+                        { d: "Friday", t: "Closed" },
                         { d: "WhatsApp", t: "Always available" },
                       ].map((row) => (
                         <div key={row.d} style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
