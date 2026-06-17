@@ -10,7 +10,9 @@ function ServiceIcon({ kind, color }: { kind: string; color?: string }) {
     case "pos": return <svg {...common}><rect x="6" y="10" width="32" height="22" rx="2"/><line x1="6" y1="16" x2="38" y2="16"/><rect x="10" y="20" width="6" height="3"/><rect x="18" y="20" width="6" height="3"/><rect x="26" y="20" width="6" height="3"/><rect x="10" y="26" width="6" height="3"/><rect x="18" y="26" width="6" height="3"/><rect x="26" y="26" width="6" height="3" fill={c}/></svg>;
     case "cart": return <svg {...common}><path d="M5 8h4l3 18h20l3-12H12"/><circle cx="14" cy="34" r="2.5"/><circle cx="32" cy="34" r="2.5"/><path d="M22 14v6M19 17h6" stroke={c}/></svg>;
     case "code": return <svg {...common}><rect x="4" y="8" width="36" height="28" rx="2"/><path d="M13 20l-5 4 5 4"/><path d="M31 20l5 4-5 4"/><line x1="26" y1="13" x2="18" y2="33"/></svg>;
-    case "camera": return <svg {...common}><rect x="4" y="12" width="36" height="22" rx="2"/><circle cx="22" cy="23" r="6"/><circle cx="22" cy="23" r="2.5" fill={c}/><path d="M14 12l3-4h10l3 4"/></svg>;
+    case "camera":   return <svg {...common}><rect x="4" y="12" width="36" height="22" rx="2"/><circle cx="22" cy="23" r="6"/><circle cx="22" cy="23" r="2.5" fill={c}/><path d="M14 12l3-4h10l3 4"/></svg>;
+    case "whatsapp": return <svg {...common}><path d="M22 8C14.3 8 8 14.3 8 22c0 2.8.8 5.4 2.1 7.6L8 36l6.6-1.9A13.9 13.9 0 0022 36c7.7 0 14-6.3 14-14S29.7 8 22 8z"/><path d="M18 20.5c0-.3-.2-.9.3-1.7s1.8-1.5 1.8-1.5 .6-.2.9.5l.8 1.7c.2.4 0 .8-.3 1l-.5.5c-.2.2-.2.4 0 .7.5.7 1.5 1.9 3.2 2.8.3.2.5.1.7-.1l.4-.5c.3-.3.7-.5 1.2-.2l1.7.9c.7.3.6 1 .6 1s-.5 1.2-1.5 1.8-2 .2-2 .2c-2.6-.9-4.9-3.2-5.7-5.4-.3-.7-.6-2-.6-2z" fill={c} stroke="none"/></svg>;
+    case "google":   return <svg {...common}><path d="M22 8c-5.5 0-10 4.5-10 10 0 7.5 10 18 10 18s10-10.5 10-18c0-5.5-4.5-10-10-10z"/><circle cx="22" cy="18" r="3.5" fill={c} stroke="none"/></svg>;
     default: return null;
   }
 }
@@ -21,7 +23,7 @@ export function Services() {
       <div style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }} className="wrap-mobile">
         <div className="services-header" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 60, alignItems: "end", marginBottom: 72 }}>
           <div>
-            <p className="eyebrow section-eyebrow" style={{ color: "var(--amber)", marginBottom: 16 }}>Our practice · 4 services</p>
+            <p className="eyebrow section-eyebrow" style={{ color: "var(--amber)", marginBottom: 16 }}>Our practice · 6 services</p>
             <h2 className="display section-title" style={{ fontSize: "clamp(40px, 5.4vw, 76px)", lineHeight: 1.02, margin: 0 }}>
               What we do, <span style={{ color: "var(--blue-2)" }}>under one roof.</span>
             </h2>
@@ -33,7 +35,7 @@ export function Services() {
 
         <div className="card-grid services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 18 }}>
           {SERVICES.map((s) => {
-            const accentColor = s.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
+            const accentColor = s.accent === "amber" ? "var(--amber)" : s.accent === "green" ? "var(--green)" : "var(--blue-2)";
             return (
               <article key={s.n} className="card" style={{
                 padding: "32px 28px 28px",
@@ -42,7 +44,7 @@ export function Services() {
                 position: "relative", overflow: "hidden",
               }}>
                 <div aria-hidden="true" style={{ position: "absolute", top: -40, right: -40, width: 140, height: 140, borderRadius: "50%",
-                  background: `radial-gradient(circle, ${s.accent === "amber" ? "rgba(245,163,58,0.18)" : "rgba(42,157,244,0.18)"} 0%, transparent 70%)`,
+                  background: `radial-gradient(circle, ${s.accent === "amber" ? "rgba(245,163,58,0.18)" : s.accent === "green" ? "rgba(91,214,138,0.18)" : "rgba(42,157,244,0.18)"} 0%, transparent 70%)`,
                   pointerEvents: "none" }} />
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative" }}>
                   <div className="svc-icon" style={{ color: accentColor }}><ServiceIcon kind={s.icon} color={accentColor} /></div>

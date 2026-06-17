@@ -38,10 +38,12 @@ export function Pricing() {
   const isFirstRender = useRef(true);
 
   const cat = PRICING[activeTab];
-  const accentVar = cat.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
+  const accentVar = cat.accent === "amber" ? "var(--amber)" : cat.accent === "green" ? "var(--green)" : "var(--blue-2)";
   const accentGlow =
     cat.accent === "amber"
       ? "rgba(245,163,58,0.18)"
+      : cat.accent === "green"
+      ? "rgba(91,214,138,0.18)"
       : "rgba(42,157,244,0.18)";
   const catEx = cat as typeof cat & { sectionNote?: string; footerNote?: string };
 
@@ -81,7 +83,7 @@ export function Pricing() {
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
           <p className="eyebrow section-eyebrow" style={{ color: "var(--amber)", marginBottom: 16 }}>
-            Transparent pricing · 12 packages
+            Transparent pricing · 18 packages
           </p>
           <h2
             className="display section-title"
@@ -126,7 +128,7 @@ export function Pricing() {
                   color: isActive
                     ? c.accent === "amber"
                       ? "var(--night)"
-                      : "#fff"
+                      : c.accent === "green" ? "#0A1628" : "#fff"
                     : "var(--ink-mute)",
                   border: `1px solid ${isActive ? tabAccent : "var(--line-2)"}`,
                   cursor: "pointer",
@@ -221,7 +223,7 @@ export function Pricing() {
                       className="mono"
                       style={{
                         background: accentVar,
-                        color: cat.accent === "amber" ? "var(--night)" : "#fff",
+                        color: cat.accent === "amber" ? "var(--night)" : cat.accent === "green" ? "#0A1628" : "#fff",
                         padding: "3px 10px",
                         borderRadius: 999,
                         fontSize: 9,
@@ -409,7 +411,7 @@ export function Pricing() {
                     color: isPopular
                       ? cat.accent === "amber"
                         ? "var(--night)"
-                        : "#fff"
+                        : cat.accent === "green" ? "#0A1628" : "#fff"
                       : "var(--ink)",
                     border: `1px solid ${isPopular ? accentVar : "var(--line-2)"}`,
                     justifyContent: "center",

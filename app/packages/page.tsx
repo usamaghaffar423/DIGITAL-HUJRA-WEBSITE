@@ -36,10 +36,12 @@ function periodSuffix(p: string) {
 }
 
 const SERVICE_ICONS: Record<string, string> = {
-  pos:    "🖥️",
-  cart:   "🛒",
-  code:   "💻",
-  camera: "📷",
+  pos:      "🖥️",
+  cart:     "🛒",
+  code:     "💻",
+  camera:   "📷",
+  whatsapp: "💬",
+  google:   "📍",
 };
 
 export default function PackagesPage() {
@@ -48,9 +50,9 @@ export default function PackagesPage() {
   const isFirstRender = useRef(true);
 
   const cat = PRICING[activeTab];
-  const accentVar = cat.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
-  const accentGlow = cat.accent === "amber" ? "rgba(245,163,58,0.18)" : "rgba(42,157,244,0.18)";
-  const accentBg   = cat.accent === "amber" ? "rgba(245,163,58,0.07)" : "rgba(42,157,244,0.07)";
+  const accentVar  = cat.accent === "amber" ? "var(--amber)" : cat.accent === "green" ? "var(--green)" : "var(--blue-2)";
+  const accentGlow = cat.accent === "amber" ? "rgba(245,163,58,0.18)" : cat.accent === "green" ? "rgba(91,214,138,0.18)" : "rgba(42,157,244,0.18)";
+  const accentBg   = cat.accent === "amber" ? "rgba(245,163,58,0.07)" : cat.accent === "green" ? "rgba(91,214,138,0.07)" : "rgba(42,157,244,0.07)";
 
   useEffect(() => {
     if (isFirstRender.current) { isFirstRender.current = false; return; }
@@ -100,7 +102,7 @@ export default function PackagesPage() {
             {/* Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.35)", borderRadius: 999, background: "rgba(245,163,58,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--amber)", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>TRANSPARENT PRICING · 12 PACKAGES · PKR</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>TRANSPARENT PRICING · 18 PACKAGES · PKR</span>
             </div>
 
             <h1 className="display" style={{ fontSize: "clamp(48px, 8vw, 108px)", lineHeight: 0.93, margin: "0 0 28px", letterSpacing: "-0.038em" }}>
@@ -148,7 +150,7 @@ export default function PackagesPage() {
                       fontWeight: 600,
                       textTransform: "uppercase",
                       background: isActive ? tabAccent : "rgba(255,255,255,0.04)",
-                      color: isActive ? (c.accent === "amber" ? "var(--night)" : "#fff") : "var(--ink-mute)",
+                      color: isActive ? (c.accent === "amber" ? "var(--night)" : c.accent === "green" ? "#0A1628" : "#fff") : "var(--ink-mute)",
                       border: `1px solid ${isActive ? tabAccent : "var(--line-2)"}`,
                       cursor: "pointer",
                       whiteSpace: "nowrap",
@@ -235,7 +237,7 @@ export default function PackagesPage() {
                     {(isPopular || pkg.saleBadge) && (
                       <div style={{ position: "absolute", top: 20, right: 20, display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
                         {isPopular && (
-                          <div className="mono" style={{ background: accentVar, color: cat.accent === "amber" ? "var(--night)" : "#fff", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                          <div className="mono" style={{ background: accentVar, color: cat.accent === "amber" ? "var(--night)" : cat.accent === "green" ? "#0A1628" : "#fff", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
                             Most Popular
                           </div>
                         )}
@@ -331,7 +333,7 @@ export default function PackagesPage() {
                       style={{
                         marginTop: 32,
                         background: isPopular ? accentVar : "rgba(255,255,255,0.04)",
-                        color: isPopular ? (cat.accent === "amber" ? "var(--night)" : "#fff") : "var(--ink)",
+                        color: isPopular ? (cat.accent === "amber" ? "var(--night)" : cat.accent === "green" ? "#0A1628" : "#fff") : "var(--ink)",
                         border: `1px solid ${isPopular ? accentVar : "var(--line-2)"}`,
                         justifyContent: "center",
                         fontSize: 14,
