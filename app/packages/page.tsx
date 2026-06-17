@@ -197,7 +197,7 @@ export default function PackagesPage() {
                   features: string[]; waKey: string; originalPrice?: number;
                   originalPriceDisplay?: string; priceDisplay?: string; monthlyFee?: number;
                   paymentNote?: string; saleBadge?: string; notIncluded?: string[];
-                  photoSubLabel?: string; perPhotoLabel?: string;
+                  photoSubLabel?: string; perPhotoLabel?: string; pricePrefix?: string;
                 };
                 const isPopular = pkg.popular;
                 const waMsg = encodeURIComponent(
@@ -269,13 +269,18 @@ export default function PackagesPage() {
                           <span style={{ fontSize: 10, color: "#5BD68A", fontWeight: 700, background: "rgba(91,214,138,0.1)", padding: "2px 7px", borderRadius: 999 }}>Launch Price</span>
                         </p>
                       )}
+                      {pkg.pricePrefix && (
+                        <p style={{ fontSize: 14, fontWeight: 600, color: accentVar, margin: "0 0 6px", letterSpacing: "0.01em" }}>
+                          {pkg.pricePrefix}
+                        </p>
+                      )}
                       <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
                         <span className="display" style={{ fontSize: 34, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}>{pkg.priceDisplay || fmtPKR(pkg.price)}</span>
                         {pkg.period !== "one-time" && (
                           <span style={{ fontSize: 14, color: "var(--ink-mute)" }}>{periodSuffix(pkg.period)}</span>
                         )}
                       </div>
-                      {pkg.period === "one-time" && (
+                      {pkg.period === "one-time" && !pkg.pricePrefix && (
                         <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>one-time setup fee</p>
                       )}
                       {pkg.photoSubLabel && (

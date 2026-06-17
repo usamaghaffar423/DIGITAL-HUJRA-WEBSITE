@@ -177,6 +177,7 @@ export function Pricing() {
               notIncluded?: string[];
               photoSubLabel?: string;
               perPhotoLabel?: string;
+              pricePrefix?: string;
             };
             const isPopular = pkg.popular;
             const waMsg = encodeURIComponent(
@@ -302,6 +303,11 @@ export function Pricing() {
                       </span>
                     </div>
                   )}
+                  {pkg.pricePrefix && (
+                    <p style={{ fontSize: 14, fontWeight: 600, color: accentVar, margin: "0 0 6px", letterSpacing: "0.01em" }}>
+                      {pkg.pricePrefix}
+                    </p>
+                  )}
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
                     <span
                       className="display"
@@ -315,7 +321,7 @@ export function Pricing() {
                       </span>
                     )}
                   </div>
-                  {pkg.period === "one-time" && (
+                  {pkg.period === "one-time" && !pkg.pricePrefix && (
                     <p
                       className="mono"
                       style={{ fontSize: 10, color: "var(--ink-mute)", margin: "5px 0 0", letterSpacing: "0.1em" }}
