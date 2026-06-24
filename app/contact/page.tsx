@@ -211,7 +211,7 @@ export default function ContactPage() {
               backdropFilter: "blur(8px)",
             }}
           >
-            <div style={{
+            <div className="contact-chips-strip" style={{
               maxWidth: 1360,
               margin: "0 auto",
               padding: "0 36px",
@@ -258,6 +258,7 @@ export default function ContactPage() {
               ].map((item, i) => (
                 <div
                   key={item.label}
+                  className="contact-chip"
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -292,7 +293,7 @@ export default function ContactPage() {
           }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, alignItems: "start" }}>
+            <div className="contact-main-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, alignItems: "start" }}>
 
               {/* Form */}
               <div>
@@ -326,7 +327,7 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+                    <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
                       <div>
                         <label htmlFor="name" style={labelStyle}>Your name *</label>
                         <input
@@ -358,7 +359,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+                    <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
                       <div>
                         <label htmlFor="business" style={labelStyle}>Business name</label>
                         <input
@@ -388,7 +389,7 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+                    <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
                       <div>
                         <label htmlFor="city" style={labelStyle}>City / District</label>
                         <input
@@ -577,7 +578,7 @@ export default function ContactPage() {
               <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
               <span className="eyebrow" style={{ color: "var(--amber)" }}>Common questions</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+            <div className="contact-faq-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
               {FAQ.map((item) => (
                 <div key={item.q} className="card" style={{ padding: "28px 28px" }}>
                   <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 14px", letterSpacing: "-0.015em" }}>{item.q}</h3>

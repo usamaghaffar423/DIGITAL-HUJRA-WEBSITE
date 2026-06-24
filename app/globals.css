@@ -164,6 +164,21 @@ button { font-family: inherit; cursor: pointer; }
 
   .pricing-grid     { grid-template-columns: repeat(2, 1fr) !important; }
   .pricing-grid > article:nth-child(3) { grid-column: span 2 !important; max-width: 520px !important; margin: 0 auto !important; width: 100% !important; }
+
+  /* Services page */
+  .services-chip-strip  { grid-template-columns: repeat(3, 1fr) !important; }
+  .services-chip:nth-child(3n) { border-right: none !important; }
+  .services-detail-article { grid-template-columns: 1fr !important; gap: 40px !important; direction: ltr !important; padding-top: 48px !important; }
+  .services-detail-callouts { grid-template-columns: 1fr !important; }
+  /* Contact page */
+  .contact-main-grid    { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .contact-faq-grid     { grid-template-columns: 1fr !important; }
+  /* About page */
+  .about-story-grid     { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .about-values-grid    { grid-template-columns: 1fr !important; }
+  .about-stats-bar      { grid-template-columns: repeat(2, 1fr) !important; }
+  .about-stat-item      { border-right: none !important; border-bottom: 1px solid var(--line) !important; padding: 24px 16px !important; }
+  .about-stat-item:nth-child(odd) { border-right: 1px solid var(--line) !important; }
 }
 
 /* ============================================================
@@ -248,6 +263,25 @@ button { font-family: inherit; cursor: pointer; }
   /* ── Global layout ── */
   .section-pad      { padding: 72px 0 !important; }
   .wrap-mobile      { padding: 0 20px !important; }
+
+  /* Services page */
+  .services-chip-strip  { grid-template-columns: repeat(3, 1fr) !important; }
+  .services-chip:nth-child(3n) { border-right: none !important; }
+  .services-detail-article { grid-template-columns: 1fr !important; gap: 28px !important; direction: ltr !important; padding-top: 36px !important; }
+  .services-detail-callouts { grid-template-columns: 1fr !important; }
+  /* Contact page */
+  .contact-chips-strip  { grid-template-columns: repeat(2, 1fr) !important; }
+  .contact-chip         { border-right: none !important; }
+  .contact-chip:nth-child(odd) { border-right: 1px solid var(--line) !important; }
+  .contact-main-grid    { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .contact-form-row     { grid-template-columns: 1fr !important; }
+  .contact-faq-grid     { grid-template-columns: 1fr !important; }
+  /* About page */
+  .about-story-grid     { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .about-stats-bar      { grid-template-columns: repeat(2, 1fr) !important; }
+  .about-stat-item      { border-right: none !important; border-bottom: 1px solid var(--line) !important; padding: 20px 16px !important; }
+  .about-stat-item:nth-child(odd) { border-right: 1px solid var(--line) !important; }
+  .about-values-grid    { grid-template-columns: 1fr !important; }
 }
 
 /* ── Case Study pages ──────────────────────────────────── */

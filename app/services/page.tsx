@@ -165,7 +165,7 @@ export default function ServicesPage() {
               overflow: "hidden",
             }}
           >
-            <div style={{
+            <div className="services-chip-strip" style={{
               maxWidth: 1360,
               margin: "0 auto",
               padding: "0 36px",
@@ -173,10 +173,11 @@ export default function ServicesPage() {
               gridTemplateColumns: "repeat(6, 1fr)",
             }}>
               {SERVICES.map((s, i) => {
-                const accentColor = s.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
+                const accentColor = s.accent === "amber" ? "var(--amber)" : s.accent === "green" ? "var(--green)" : "var(--blue-2)";
                 return (
                   <div
                     key={s.n}
+                    className="services-chip"
                     style={{
                       display: "flex",
                       flexDirection: "column",
@@ -203,13 +204,14 @@ export default function ServicesPage() {
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 80 }}>
               {SERVICES.map((s, i) => {
-                const accentColor = s.accent === "amber" ? "var(--amber)" : "var(--blue-2)";
-                const accentBg = s.accent === "amber" ? "rgba(245,163,58,0.10)" : "rgba(42,157,244,0.10)";
+                const accentColor = s.accent === "amber" ? "var(--amber)" : s.accent === "green" ? "var(--green)" : "var(--blue-2)";
+                const accentBg = s.accent === "amber" ? "rgba(245,163,58,0.10)" : s.accent === "green" ? "rgba(91,214,138,0.10)" : "rgba(42,157,244,0.10)";
                 const extra = SERVICE_EXTRAS[s.n];
                 const isReversed = i % 2 === 1;
                 return (
                   <article
                     key={s.n}
+                    className="services-detail-article"
                     style={{
                       display: "grid",
                       gridTemplateColumns: "1fr 1fr",
@@ -235,7 +237,7 @@ export default function ServicesPage() {
                       <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--ink-soft)", margin: "0 0 32px" }}>
                         {extra?.details || s.blurb}
                       </p>
-                      <ul style={{ listStyle: "none", margin: "0 0 36px", padding: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 20px" }}>
+                      <ul className="services-detail-callouts" style={{ listStyle: "none", margin: "0 0 36px", padding: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 20px" }}>
                         {(extra?.callouts || s.bullets).map((b) => (
                           <li key={b} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "var(--ink-soft)" }}>
                             <span aria-hidden="true" style={{ width: 18, height: 18, borderRadius: "50%", background: accentBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>

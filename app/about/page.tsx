@@ -122,7 +122,7 @@ export default function AboutPage() {
               backdropFilter: "blur(8px)",
             }}
           >
-            <div style={{
+            <div className="about-stats-bar" style={{
               maxWidth: 1360,
               margin: "0 auto",
               padding: "0 36px",
@@ -132,6 +132,7 @@ export default function AboutPage() {
               {STATS.map((s, i) => (
                 <div
                   key={s.l}
+                  className="about-stat-item"
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -166,7 +167,7 @@ export default function AboutPage() {
           }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+            <div className="about-story-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
                   <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
@@ -252,7 +253,7 @@ export default function AboutPage() {
               Not just a vendor. <span style={{ color: "var(--blue-2)" }}>A partner.</span>
             </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+            <div className="about-values-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
               {VALUES.map((v) => (
                 <article key={v.n} className="card" style={{ padding: "36px 32px", display: "flex", flexDirection: "column", gap: 20 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 14 }}>

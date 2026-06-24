@@ -128,11 +128,8 @@ export function Nav() {
           </a>
         </div>
 
-        {/* Mobile right: compact CTA + hamburger */}
-        <div className="nav-mobile-right" style={{ alignItems: "center", gap: 10 }}>
-          <a href="/contact" className="btn btn-amber" style={{ padding: "10px 16px", fontSize: 13 }}>
-            Get started
-          </a>
+        {/* Mobile: hamburger only */}
+        <div className="nav-mobile-right" style={{ alignItems: "center" }}>
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
