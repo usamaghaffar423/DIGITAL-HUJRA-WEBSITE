@@ -10,6 +10,22 @@ export const metadata: Metadata = {
   title: "Services — Digital Hujra | POS, E-commerce, Software & Photography",
   description:
     "Digital Hujra — focused digital studio in Batkhela, KP. POS systems, e-commerce stores, custom software, and product photography for local businesses across KP.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Services — Digital Hujra | POS, E-commerce, Software & Photography",
+    description: "Digital Hujra — focused digital studio in Batkhela, KP. POS systems, e-commerce stores, custom software, and product photography for local businesses across KP.",
+    url: "https://www.digitalhujra.com/services",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.digitalhujra.com/services" },
+  ],
 };
 
 function ServiceIcon({ kind, color }: { kind: string; color?: string }) {
@@ -82,6 +98,7 @@ export default function ServicesPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Digital Hujra services">
 

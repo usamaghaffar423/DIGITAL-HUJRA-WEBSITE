@@ -8,6 +8,23 @@ export const metadata: Metadata = {
   title: "Classyfitters Case Study — Digital Hujra",
   description:
     "How Digital Hujra delivered an e-commerce store, product shoot, WhatsApp Business setup, and Google Business profile for Classyfitters in Batkhela, KP.",
+  alternates: { canonical: "/work/classyfitters" },
+  openGraph: {
+    title: "Classyfitters Case Study — Digital Hujra",
+    description: "How Digital Hujra delivered an e-commerce store, product shoot, WhatsApp Business setup, and Google Business profile for Classyfitters in Batkhela, KP.",
+    url: "https://www.digitalhujra.com/work/classyfitters",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",         "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Work",         "item": "https://www.digitalhujra.com/work" },
+    { "@type": "ListItem", "position": 3, "name": "Classyfitters","item": "https://www.digitalhujra.com/work/classyfitters" },
+  ],
 };
 
 const SERVICES = [
@@ -50,6 +67,7 @@ export default function ClassyfittersPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Classyfitters case study">
 

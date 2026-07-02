@@ -1,17 +1,24 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { Arrow, HujraMark } from "@/components/atoms";
+import { HujraMark } from "@/components/atoms";
+import { ContactForm } from "@/components/ContactForm";
 
-const SERVICES_LIST = [
-  "POS System",
-  "E-commerce Store",
-  "Custom Software",
-  "Product Photography",
-  "Not sure yet",
-];
+export const metadata: Metadata = {
+  title: "Contact — Digital Hujra | Free Consultation, Batkhela KP",
+  description:
+    "Book a free consultation with Digital Hujra in Batkhela. WhatsApp, call, or fill the form — we reply within a few hours. No pressure, no pitch.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact — Digital Hujra | Free Consultation, Batkhela KP",
+    description:
+      "Book a free consultation with Digital Hujra in Batkhela. WhatsApp, call, or fill the form — we reply within a few hours.",
+    url: "https://www.digitalhujra.com/contact",
+    type: "website",
+  },
+};
 
 function WhatsAppIcon() {
   return (
@@ -21,106 +28,71 @@ function WhatsAppIcon() {
   );
 }
 
+const FAQ = [
+  {
+    q: "Do I need to come to your office?",
+    a: "No — we can handle everything over WhatsApp, phone, or video call. But you're always welcome at our studio in Amandara, Batkhela. Chai is on us.",
+  },
+  {
+    q: "How long does a project take?",
+    a: "A logo takes 5–7 days. A basic website takes 2–3 weeks. A full POS installation takes 1–2 days on-site. We give you a timeline before we start.",
+  },
+  {
+    q: "What's the payment process?",
+    a: "50% upfront, 50% on delivery. We accept bank transfer, Easypaisa, JazzCash, and cash at the office.",
+  },
+  {
+    q: "Do you work outside Batkhela?",
+    a: "Yes — we serve clients across all 8 major KP districts. On-site visits are available across Malakand Division at no extra charge.",
+  },
+];
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.digitalhujra.com/contact" },
+  ],
+};
+
+const localBusinessLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Digital Hujra",
+  "description": "Digital studio in Batkhela, KP — POS systems, e-commerce, custom software, and product photography for local KP businesses.",
+  "url": "https://www.digitalhujra.com",
+  "telephone": "+92-371-5868088",
+  "email": "info@digitalhujra.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Popular Shopping Mall Plaza, Near Gul Rang Khadi Hall, Amandara Batkhela",
+    "addressLocality": "Batkhela",
+    "addressRegion": "Khyber Pakhtunkhwa",
+    "postalCode": "23200",
+    "addressCountry": "PK",
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:00",
+      "closes": "18:00",
+    },
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "34.6039",
+    "longitude": "71.9641",
+  },
+};
+
 export default function ContactPage() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    business: "",
-    city: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [apiError, setApiError] = useState<string | null>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setApiError(null);
-
-    const fullMessage = [
-      form.message,
-      form.business && `Business: ${form.business}`,
-      form.city     && `City: ${form.city}`,
-    ].filter(Boolean).join("\n");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name:    form.name,
-          email:   form.email,
-          phone:   form.phone   || undefined,
-          service: form.service || undefined,
-          message: fullMessage,
-        }),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error ? JSON.stringify(data.error) : `Server error ${res.status}`);
-      }
-
-      setSubmitted(true);
-    } catch (err) {
-      setApiError(err instanceof Error ? err.message : "Something went wrong. Please try WhatsApp instead.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "14px 18px",
-    background: "rgba(255,255,255,0.04)",
-    border: "1px solid var(--line-2)",
-    borderRadius: 10,
-    color: "var(--ink)",
-    fontSize: 15,
-    fontFamily: "inherit",
-    outline: "none",
-    transition: "border-color .25s",
-    boxSizing: "border-box",
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: 13,
-    fontWeight: 600,
-    color: "var(--ink-mute)",
-    marginBottom: 8,
-    letterSpacing: "0.03em",
-  };
-
-  const FAQ = [
-    {
-      q: "Do I need to come to your office?",
-      a: "No — we can handle everything over WhatsApp, phone, or video call. But you're always welcome at our studio in Amandara, Batkhela. Chai is on us.",
-    },
-    {
-      q: "How long does a project take?",
-      a: "A logo takes 5–7 days. A basic website takes 2–3 weeks. A full POS installation takes 1–2 days on-site. We give you a timeline before we start.",
-    },
-    {
-      q: "What's the payment process?",
-      a: "50% upfront, 50% on delivery. We accept bank transfer, Easypaisa, JazzCash, and cash at the office.",
-    },
-    {
-      q: "Do you work outside Batkhela?",
-      a: "Yes — we serve clients across all 8 major KP districts. On-site visits are available across Malakand Division at no extra charge.",
-    },
-  ];
-
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }} />
       <Nav />
       <main id="main-content" aria-label="Contact Digital Hujra">
 
@@ -135,14 +107,12 @@ export default function ContactPage() {
             overflow: "hidden",
           }}
         >
-          {/* Amber glow center */}
           <div aria-hidden="true" style={{
             position: "absolute", left: "50%", top: "0%", transform: "translateX(-50%)",
             width: "60vw", height: "50vw", borderRadius: "50%",
             background: "radial-gradient(circle, rgba(245,163,58,0.10) 0%, transparent 60%)",
             pointerEvents: "none",
           }} />
-          {/* Blue glow bottom */}
           <div aria-hidden="true" style={{
             position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%)",
             width: "40vw", height: "20vw", borderRadius: "50%",
@@ -156,14 +126,12 @@ export default function ContactPage() {
           }} />
 
           <div className="wrap-mobile" style={{ maxWidth: 860, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
-            {/* Breadcrumb */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
               <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>CONTACT</span>
             </div>
 
-            {/* Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(91,214,138,0.3)", borderRadius: 999, background: "rgba(91,214,138,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "#5BD68A", display: "inline-block", boxShadow: "0 0 0 4px rgba(91,214,138,0.2)" }} />
               <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "#5BD68A" }}>FREE CONSULTATION · NO COMMITMENT</span>
@@ -171,12 +139,7 @@ export default function ContactPage() {
 
             <h1
               className="display"
-              style={{
-                fontSize: "clamp(52px, 8.5vw, 128px)",
-                lineHeight: 0.93,
-                margin: "0 0 28px",
-                letterSpacing: "-0.038em",
-              }}
+              style={{ fontSize: "clamp(52px, 8.5vw, 128px)", lineHeight: 0.93, margin: "0 0 28px", letterSpacing: "-0.038em" }}
             >
               <span style={{ color: "var(--amber)" }}>Let&apos;s sit</span>
               <br />
@@ -187,7 +150,6 @@ export default function ContactPage() {
               No pitch, no pressure. Tell us about your business and we&apos;ll tell you what&apos;s possible. First consultation is always free.
             </p>
 
-            {/* Primary CTA cluster */}
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 72 }}>
               <a
                 href="https://wa.me/923715868088"
@@ -199,18 +161,12 @@ export default function ContactPage() {
                 <WhatsAppIcon />
                 Chat on WhatsApp
               </a>
-              <a href="#contact-form" className="btn btn-primary">Fill the form below <Arrow /></a>
+              <a href="#contact-form" className="btn btn-primary">Fill the form below</a>
             </div>
           </div>
 
-          {/* Contact chips strip — unique to Contact hero */}
-          <div
-            style={{
-              borderTop: "1px solid var(--line)",
-              background: "rgba(255,255,255,0.015)",
-              backdropFilter: "blur(8px)",
-            }}
-          >
+          {/* Contact chips strip */}
+          <div style={{ borderTop: "1px solid var(--line)", background: "rgba(255,255,255,0.015)", backdropFilter: "blur(8px)" }}>
             <div className="contact-chips-strip" style={{
               maxWidth: 1360,
               margin: "0 auto",
@@ -286,178 +242,18 @@ export default function ContactPage() {
         <section
           id="contact-form"
           aria-label="Contact form and details"
-          style={{
-            padding: "80px 0 120px",
-            borderTop: "1px solid var(--line)",
-            background: "var(--night)",
-          }}
+          style={{ padding: "80px 0 120px", borderTop: "1px solid var(--line)", background: "var(--night)" }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div className="contact-main-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, alignItems: "start" }}>
 
-              {/* Form */}
+              {/* Form — client component */}
               <div>
-                <h2 className="display" style={{ fontSize: "clamp(28px, 3.5vw, 48px)", lineHeight: 1.05, margin: "0 0 10px", letterSpacing: "-0.025em" }}>
-                  Book a free hujra session
-                </h2>
-                <p style={{ fontSize: 15, color: "var(--ink-mute)", margin: "0 0 36px" }}>
-                  Fill in the details below — we&apos;ll reply on WhatsApp within a few hours.
-                </p>
-
-                {submitted ? (
-                  <div className="card" style={{
-                    padding: "48px 36px",
-                    textAlign: "center",
-                    background: "linear-gradient(135deg, rgba(91,214,138,0.06), rgba(10,22,40,0.4))",
-                    borderColor: "rgba(91,214,138,0.3)",
-                  }}>
-                    <div style={{ fontSize: 48, marginBottom: 16 }} aria-hidden="true">✓</div>
-                    <h3 style={{ fontSize: 24, fontWeight: 700, margin: "0 0 12px", color: "#5BD68A" }}>Message received!</h3>
-                    <p style={{ fontSize: 15, color: "var(--ink-soft)", margin: "0 0 24px" }}>
-                      We&apos;ve got your details and will reply within a few hours. You can also reach us instantly on WhatsApp.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setSubmitted(false)}
-                      className="btn btn-ghost"
-                      style={{ fontSize: 13 }}
-                    >
-                      Send another message
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                    <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-                      <div>
-                        <label htmlFor="name" style={labelStyle}>Your name *</label>
-                        <input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          placeholder="e.g. Zubair Khan"
-                          value={form.name}
-                          onChange={handleChange}
-                          style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" style={labelStyle}>Email address *</label>
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          placeholder="e.g. zubair@example.com"
-                          value={form.email}
-                          onChange={handleChange}
-                          style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
-                        />
-                      </div>
-                    </div>
-                    <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-                      <div>
-                        <label htmlFor="business" style={labelStyle}>Business name</label>
-                        <input
-                          id="business"
-                          name="business"
-                          type="text"
-                          placeholder="e.g. Khan Pharmacy"
-                          value={form.business}
-                          onChange={handleChange}
-                          style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" style={labelStyle}>Phone / WhatsApp</label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+92 3XX XXXXXXX"
-                          value={form.phone}
-                          onChange={handleChange}
-                          style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
-                        />
-                      </div>
-                    </div>
-                    <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-                      <div>
-                        <label htmlFor="city" style={labelStyle}>City / District</label>
-                        <input
-                          id="city"
-                          name="city"
-                          type="text"
-                          placeholder="e.g. Mardan"
-                          value={form.city}
-                          onChange={handleChange}
-                          style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = "var(--line-2)"; }}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="service" style={labelStyle}>Service you need</label>
-                        <select
-                          id="service"
-                          name="service"
-                          value={form.service}
-                          onChange={handleChange}
-                          style={{ ...inputStyle, cursor: "pointer" }}
-                          onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = "var(--blue-2)"; }}
-                          onBlur={(e) => { (e.target as HTMLSelectElement).style.borderColor = "var(--line-2)"; }}
-                        >
-                          <option value="">Select a service...</option>
-                          {SERVICES_LIST.map((s) => (
-                            <option key={s} value={s} style={{ background: "#0A1628", color: "#F4F7FB" }}>{s}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="message" style={labelStyle}>Tell us about your business</label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        placeholder="What does your business do? What's the biggest challenge you're facing online?"
-                        value={form.message}
-                        onChange={handleChange}
-                        style={{ ...inputStyle, resize: "vertical", minHeight: 120 }}
-                        onFocus={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = "var(--blue-2)"; }}
-                        onBlur={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = "var(--line-2)"; }}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="btn btn-primary"
-                      style={{ alignSelf: "flex-start", gap: 12 }}
-                    >
-                      {loading ? "Sending…" : <>Send enquiry <Arrow /></>}
-                    </button>
-                    {apiError && (
-                      <p style={{ fontSize: 13, color: "#ff6b6b", margin: 0 }}>{apiError}</p>
-                    )}
-                    <p style={{ fontSize: 12, color: "var(--ink-mute)", margin: 0 }}>
-                      We&apos;ll reply within a few hours. Your data is never shared.
-                    </p>
-                  </form>
-                )}
+                <ContactForm />
               </div>
 
-              {/* Contact details */}
+              {/* Contact details — static */}
               <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-
-                {/* Office card */}
                 <div className="card" style={{ padding: "32px 28px", display: "flex", flexDirection: "column", gap: 22 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                     <HujraMark size={36} />
@@ -525,7 +321,6 @@ export default function ContactPage() {
                   </address>
                 </div>
 
-                {/* Hours card */}
                 <div className="card" style={{ padding: "28px 28px" }}>
                   <div className="mono" style={{ fontSize: 10, letterSpacing: "0.18em", color: "var(--ink-mute)", marginBottom: 16 }}>OFFICE HOURS</div>
                   {[
@@ -540,21 +335,12 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                {/* WhatsApp CTA */}
                 <a
                   href="https://wa.me/923715868088"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn"
-                  style={{
-                    justifyContent: "center",
-                    background: "#25D366",
-                    color: "#fff",
-                    border: "none",
-                    gap: 10,
-                    boxShadow: "0 8px 24px -8px rgba(37,211,102,0.4)",
-                    fontSize: 15,
-                  }}
+                  style={{ justifyContent: "center", background: "#25D366", color: "#fff", border: "none", gap: 10, boxShadow: "0 8px 24px -8px rgba(37,211,102,0.4)", fontSize: 15 }}
                 >
                   <WhatsAppIcon />
                   Message us on WhatsApp
@@ -567,11 +353,7 @@ export default function ContactPage() {
         {/* ── FAQ ───────────────────────────────────────── */}
         <section
           aria-label="Frequently asked questions"
-          style={{
-            padding: "80px 0 100px",
-            borderTop: "1px solid var(--line)",
-            background: "linear-gradient(180deg, var(--night-2), var(--night))",
-          }}
+          style={{ padding: "80px 0 100px", borderTop: "1px solid var(--line)", background: "linear-gradient(180deg, var(--night-2), var(--night))" }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 48 }}>

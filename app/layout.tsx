@@ -12,15 +12,12 @@ export const metadata: Metadata = {
   },
   description:
     "Digital Hujra, based in Batkhela, Malakand — helping local KP businesses with POS systems, e-commerce stores, custom software, and product photography.",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Digital Hujra — KP Digital Agency",
     description:
       "Digital Hujra in Batkhela, KP. POS systems, e-commerce stores, custom software, and product photography — all under one roof.",
     type: "website",
-    url: "https://digitalhujra.com",
+    url: "https://www.digitalhujra.com",
     locale: "en_PK",
     siteName: "Digital Hujra",
     images: [
@@ -47,49 +44,10 @@ export const viewport: Viewport = {
   themeColor: "#0A1628",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Digital Hujra",
-  "description": "Digital studio in Batkhela, KP — POS systems, e-commerce stores, custom software, and product photography for local businesses.",
-  "url": "https://digitalhujra.com",
-  "logo": "https://digitalhujra.com/logo.png",
-  "image": "https://digitalhujra.com/cover.png",
-  "telephone": "+92-371-5868088",
-  "email": "info@digitalhujra.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Popular Shopping Mall Plaza, Near Gul Rang Khadi Hall, Amandara Batkhela",
-    "addressLocality": "Batkhela",
-    "addressRegion": "Khyber Pakhtunkhwa",
-    "postalCode": "23200",
-    "addressCountry": "PK",
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "09:00",
-      "closes": "18:00",
-    },
-  ],
-  "areaServed": {
-    "@type": "State",
-    "name": "Khyber Pakhtunkhwa",
-  },
-  "priceRange": "$$",
-  "sameAs": [],
-};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${manrope.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body>
         {children}
         <WhatsAppFAB />

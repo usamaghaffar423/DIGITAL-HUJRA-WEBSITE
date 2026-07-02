@@ -10,12 +10,29 @@ export const metadata: Metadata = {
   title: "Our Team — Digital Hujra | The People Behind Every Project",
   description:
     "Meet the designers, developers, photographers, and strategists who make Digital Hujra run. A local KP team based in Batkhela, Malakand.",
+  alternates: { canonical: "/team" },
+  openGraph: {
+    title: "Our Team — Digital Hujra | The People Behind Every Project",
+    description: "Meet the designers, developers, photographers, and strategists who make Digital Hujra run. A local KP team based in Batkhela, Malakand.",
+    url: "https://www.digitalhujra.com/team",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Team", "item": "https://www.digitalhujra.com/team" },
+  ],
 };
 
 export default function TeamPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Digital Hujra team">
 

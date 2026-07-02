@@ -5,6 +5,22 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy — Digital Hujra",
   description: "Privacy Policy for Digital Hujra — how we collect, use, and protect your information.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy Policy — Digital Hujra",
+    description: "Privacy Policy for Digital Hujra — how we collect, use, and protect your information.",
+    url: "https://www.digitalhujra.com/privacy",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Privacy", "item": "https://www.digitalhujra.com/privacy" },
+  ],
 };
 
 const SECTIONS = [
@@ -46,6 +62,7 @@ export default function PrivacyPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Privacy Policy">
         <section

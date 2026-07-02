@@ -8,6 +8,23 @@ export const metadata: Metadata = {
   title: "Al Ansar Abaya Case Study — Digital Hujra",
   description:
     "How Digital Hujra delivered a complete digital presence for Al Ansar Abaya in Chakdara — e-commerce store, product shoot, WhatsApp verified badge, and Google Business.",
+  alternates: { canonical: "/work/al-ansar-abaya" },
+  openGraph: {
+    title: "Al Ansar Abaya Case Study — Digital Hujra",
+    description: "How Digital Hujra delivered a complete digital presence for Al Ansar Abaya in Chakdara — e-commerce store, product shoot, WhatsApp verified badge, and Google Business.",
+    url: "https://www.digitalhujra.com/work/al-ansar-abaya",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",          "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Work",          "item": "https://www.digitalhujra.com/work" },
+    { "@type": "ListItem", "position": 3, "name": "Al Ansar Abaya","item": "https://www.digitalhujra.com/work/al-ansar-abaya" },
+  ],
 };
 
 const SERVICES = [
@@ -62,6 +79,7 @@ export default function AlAnsarAbayaPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Al Ansar Abaya case study">
 

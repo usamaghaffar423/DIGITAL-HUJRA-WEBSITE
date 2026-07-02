@@ -8,6 +8,23 @@ export const metadata: Metadata = {
   title: "Raazina Essence Case Study — Digital Hujra",
   description:
     "How Digital Hujra delivered 50+ professional perfume product shots across two studio shoot sessions for Raazina Essence, Swat, KP.",
+  alternates: { canonical: "/work/raazina-essence" },
+  openGraph: {
+    title: "Raazina Essence Case Study — Digital Hujra",
+    description: "How Digital Hujra delivered 50+ professional perfume product shots across two studio shoot sessions for Raazina Essence, Swat, KP.",
+    url: "https://www.digitalhujra.com/work/raazina-essence",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",            "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Work",            "item": "https://www.digitalhujra.com/work" },
+    { "@type": "ListItem", "position": 3, "name": "Raazina Essence", "item": "https://www.digitalhujra.com/work/raazina-essence" },
+  ],
 };
 
 const SERVICES = [
@@ -38,6 +55,7 @@ export default function RaazinaEssencePage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Raazina Essence case study">
 

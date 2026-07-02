@@ -9,6 +9,22 @@ export const metadata: Metadata = {
   title: "About Us — Digital Hujra | Batkhela, KP",
   description:
     "Founded in 2026 in Batkhela, Malakand — Digital Hujra helps local KP businesses get online. Our story, values, and the team behind every project.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us — Digital Hujra | Batkhela, KP",
+    description: "Founded in 2026 in Batkhela, Malakand — Digital Hujra helps local KP businesses get online. Our story, values, and the team behind every project.",
+    url: "https://www.digitalhujra.com/about",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.digitalhujra.com/about" },
+  ],
 };
 
 const VALUES = [
@@ -42,6 +58,7 @@ export default function AboutPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="About Digital Hujra">
 

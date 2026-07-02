@@ -8,6 +8,23 @@ export const metadata: Metadata = {
   title: "Bayan Cafe Case Study — Digital Hujra",
   description:
     "How Digital Hujra built a complete visual identity for Bayan Cafe — color system, typography, brand guidelines, stationery, and print collateral.",
+  alternates: { canonical: "/work/bayan-cafe" },
+  openGraph: {
+    title: "Bayan Cafe Case Study — Digital Hujra",
+    description: "How Digital Hujra built a complete visual identity for Bayan Cafe — color system, typography, brand guidelines, stationery, and print collateral.",
+    url: "https://www.digitalhujra.com/work/bayan-cafe",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Work",       "item": "https://www.digitalhujra.com/work" },
+    { "@type": "ListItem", "position": 3, "name": "Bayan Cafe", "item": "https://www.digitalhujra.com/work/bayan-cafe" },
+  ],
 };
 
 const SERVICES = [
@@ -60,6 +77,7 @@ export default function BayanCafePage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Bayan Cafe case study">
 

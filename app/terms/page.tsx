@@ -5,6 +5,22 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Terms of Service — Digital Hujra",
   description: "Terms of Service for Digital Hujra — the conditions under which we provide our digital services.",
+  alternates: { canonical: "/terms" },
+  openGraph: {
+    title: "Terms of Service — Digital Hujra",
+    description: "Terms of Service for Digital Hujra — the conditions under which we provide our digital services.",
+    url: "https://www.digitalhujra.com/terms",
+    type: "website",
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://www.digitalhujra.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Terms", "item": "https://www.digitalhujra.com/terms" },
+  ],
 };
 
 const SECTIONS = [
@@ -54,6 +70,7 @@ export default function TermsPage() {
   return (
     <>
       <a href="#main-content" className="skip-link">Skip to main content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Nav />
       <main id="main-content" aria-label="Terms of Service">
         <section
