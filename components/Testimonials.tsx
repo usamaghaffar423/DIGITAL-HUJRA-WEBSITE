@@ -95,7 +95,7 @@ export function Testimonials() {
           >
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div
-                aria-label={t.name}
+                aria-hidden="true"
                 style={{
                   width: 48,
                   height: 48,

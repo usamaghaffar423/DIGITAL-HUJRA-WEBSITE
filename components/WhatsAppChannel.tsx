@@ -118,7 +118,7 @@ export function WhatsAppChannel() {
                 alignItems: "center",
                 gap: 12,
                 padding: "16px 28px",
-                background: "#25D366",
+                background: "#0F7A36",
                 color: "#fff",
                 borderRadius: 14,
                 textDecoration: "none",
@@ -166,7 +166,7 @@ export function WhatsAppChannel() {
               }}>
                 <div style={{
                   width: 54, height: 54, borderRadius: "50%",
-                  background: "#25D366",
+                  background: "#0F7A36",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   flexShrink: 0,
                   boxShadow: "0 4px 16px rgba(37,211,102,0.4)",
@@ -213,7 +213,7 @@ export function WhatsAppChannel() {
                     justifyContent: "center",
                     gap: 10,
                     padding: "13px 0",
-                    background: "#25D366",
+                    background: "#0F7A36",
                     color: "#fff",
                     borderRadius: 12,
                     textDecoration: "none",

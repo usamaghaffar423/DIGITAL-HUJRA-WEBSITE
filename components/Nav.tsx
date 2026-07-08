@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { Arrow } from "@/components/atoms";
 import { NAV_ITEMS } from "@/lib/data";
 
@@ -48,10 +49,13 @@ export function Nav() {
         }}
       >
         <a href="/" aria-label="Digital Hujra — home" style={{ display: "flex", alignItems: "center" }}>
-          <img
+          <Image
             src="/logo.png"
             alt="Digital Hujra"
-            loading="eager"
+            width={4003}
+            height={943}
+            priority
+            sizes="200px"
             style={{ height: 44, width: "auto", display: "block" }}
           />
         </a>

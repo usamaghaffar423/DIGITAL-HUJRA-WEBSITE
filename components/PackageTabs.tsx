@@ -266,6 +266,7 @@ export function PackageTabs() {
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Get Quote on WhatsApp for ${pkg.name}`}
                 className="btn"
                 style={{
                   marginTop: 32,

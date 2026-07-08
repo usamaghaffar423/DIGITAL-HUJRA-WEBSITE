@@ -1,5 +1,3 @@
-"use client";
-
 import { MARQUEE_WORDS } from "@/lib/data";
 
 export function Marquee() {

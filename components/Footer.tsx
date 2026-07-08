@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { SITE } from "@/lib/data";
 
 const SERVICES_LINKS = [
@@ -47,11 +48,13 @@ export function Footer() {
           {/* Brand column */}
           <div>
             <a href="/" aria-label="Digital Hujra — back to top" style={{ display: "inline-flex", marginBottom: 18 }}>
-              <img
+              <Image
                 src="/logo.png"
                 alt="Digital Hujra"
+                width={4003}
+                height={943}
                 loading="lazy"
-                className="footer-logo"
+                sizes="180px"
                 style={{ height: 44, width: "auto", display: "block", maxWidth: "180px" }}
               />
             </a>
