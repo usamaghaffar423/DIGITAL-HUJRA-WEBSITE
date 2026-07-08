@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Arrow } from "@/components/atoms";
 import { NAV_ITEMS } from "@/lib/data";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +31,7 @@ export function Nav() {
         right: 0,
         zIndex: 60,
         padding: scrolled ? "12px 0" : "20px 0",
-        background: scrolled ? "rgba(10,22,40,0.92)" : "transparent",
+        background: scrolled ? "var(--nav-bg-scrolled)" : "transparent",
         backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
@@ -70,7 +71,7 @@ export function Nav() {
             padding: "6px 8px",
             border: "1px solid var(--line-2)",
             borderRadius: 999,
-            background: "rgba(10,22,40,0.5)",
+            background: "var(--nav-pill-bg)",
             backdropFilter: "blur(8px)",
           }}
         >
@@ -88,12 +89,12 @@ export function Nav() {
                   fontWeight: isActive ? 600 : 500,
                   borderRadius: 999,
                   color: isActive ? "var(--ink)" : "var(--ink-soft)",
-                  background: isActive ? "rgba(255,255,255,0.09)" : "transparent",
+                  background: isActive ? "var(--nav-link-active-bg)" : "transparent",
                   transition: "all .25s",
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
+                    (e.currentTarget as HTMLElement).style.background = "var(--nav-link-hover-bg)";
                     (e.currentTarget as HTMLElement).style.color = "var(--ink)";
                   }
                 }}
@@ -127,6 +128,7 @@ export function Nav() {
             />
             ACCEPTING WORK
           </span>
+          <ThemeToggle />
           <a href="/contact" className="btn btn-amber">
             Start a project <Arrow />
           </a>
@@ -141,7 +143,7 @@ export function Nav() {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             style={{
-              background: "rgba(255,255,255,0.06)",
+              background: "var(--nav-btn-subtle)",
               border: "1px solid var(--line-2)",
               borderRadius: 10,
               width: 42,
@@ -178,7 +180,7 @@ export function Nav() {
         style={{
           maxHeight: menuOpen ? 480 : 0,
           transition: "max-height .35s cubic-bezier(.2,.7,.2,1)",
-          background: "rgba(5,11,23,0.97)",
+          background: "var(--nav-mobile-bg)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           borderTop: menuOpen ? "1px solid var(--line)" : "none",
@@ -218,6 +220,9 @@ export function Nav() {
           >
             Start a project <Arrow />
           </a>
+          <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
+            <ThemeToggle />
+          </div>
           <div
             className="mono"
             style={{ marginTop: 16, fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.15em", textAlign: "center" }}

@@ -24,7 +24,7 @@ export function WhatsAppChannel() {
       style={{
         position: "relative",
         padding: "100px 0",
-        background: "linear-gradient(180deg, var(--night) 0%, #061A0E 50%, var(--night) 100%)",
+        background: "linear-gradient(180deg, var(--night) 0%, var(--wa-mid-bg) 50%, var(--night) 100%)",
         borderTop: "1px solid var(--line)",
         overflow: "hidden",
       }}

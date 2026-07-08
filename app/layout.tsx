@@ -3,6 +3,7 @@ import "./globals.css";
 import { manrope, newsreader, jetbrainsMono } from "./fonts";
 import { WhatsAppFAB } from "@/components/WhatsAppFAB";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeSync } from "@/components/ThemeSync";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.digitalhujra.com"),
@@ -45,11 +46,17 @@ export const viewport: Viewport = {
 };
 
 
+const themeScript = `(function(){try{var s=localStorage.getItem('theme-override');if(s==='light'||s==='dark'){document.documentElement.setAttribute('data-theme',s);return;}var h=parseInt(new Intl.DateTimeFormat('en-PK',{timeZone:'Asia/Karachi',hour:'numeric',hour12:false}).format(new Date()),10);document.documentElement.setAttribute('data-theme',h>=6&&h<19?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         {children}
+        <ThemeSync />
         <WhatsAppFAB />
         <Analytics />
       </body>

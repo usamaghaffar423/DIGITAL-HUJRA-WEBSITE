@@ -54,7 +54,7 @@ export function Work() {
                       </div>
                     </>
                   )}
-                  <div aria-hidden="true" style={{ position: "absolute", left: 16, top: 16, background: "rgba(10,22,40,0.85)", backdropFilter: "blur(8px)", padding: "5px 12px", borderRadius: 999, fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: 10, letterSpacing: "0.12em", color: "var(--amber)", border: "1px solid rgba(245,163,58,0.3)" }}>
+                  <div aria-hidden="true" style={{ position: "absolute", left: 16, top: 16, background: "var(--work-badge-bg)", backdropFilter: "blur(8px)", padding: "5px 12px", borderRadius: 999, fontFamily: "var(--font-jetbrains-mono), monospace", fontSize: 10, letterSpacing: "0.12em", color: "var(--amber)", border: "1px solid var(--work-badge-border)" }}>
                     📍 {w.city.toUpperCase()}
                   </div>
                   <div aria-hidden="true" className="display work-num" style={{ position: "absolute", right: 18, bottom: 8, fontSize: big ? 140 : 90, color: "rgba(255,255,255,0.12)", lineHeight: 1, letterSpacing: "-0.04em", fontStyle: "italic", fontFamily: "var(--font-newsreader), serif", fontWeight: 400 }}>

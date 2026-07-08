@@ -18,6 +18,63 @@
   --line-2: rgba(255,255,255,0.14);
   --green: #5BD68A;
   --nav-height: 72px;
+  /* theme-specific helper tokens */
+  --nav-bg-scrolled:    rgba(10,22,40,0.92);
+  --nav-pill-bg:        rgba(10,22,40,0.5);
+  --nav-btn-subtle:     rgba(255,255,255,0.06);
+  --nav-link-active-bg: rgba(255,255,255,0.09);
+  --nav-link-hover-bg:  rgba(255,255,255,0.07);
+  --nav-mobile-bg:      rgba(5,11,23,0.97);
+  --hero-section-bg:    linear-gradient(180deg, #0A1628 0%, #050B17 100%);
+  --wa-mid-bg:          #061A0E;
+  --work-badge-bg:      rgba(10,22,40,0.85);
+  --work-badge-border:  rgba(245,163,58,0.3);
+}
+
+/* ── Light theme (active when <html data-theme="light">) ─── */
+[data-theme="light"] {
+  --night:   #FBF3E7;
+  --night-2: #FDF6EC;
+  --night-3: #F5EBDA;
+  --ink:     #16233A;
+  --ink-mute: #5B6B82;
+  --ink-soft: #33465E;
+  --line:    rgba(10,22,40,0.08);
+  --line-2:  rgba(10,22,40,0.14);
+  --nav-bg-scrolled:    rgba(253,246,236,0.95);
+  --nav-pill-bg:        rgba(10,22,40,0.06);
+  --nav-btn-subtle:     rgba(10,22,40,0.06);
+  --nav-link-active-bg: rgba(10,22,40,0.08);
+  --nav-link-hover-bg:  rgba(10,22,40,0.05);
+  --nav-mobile-bg:      rgba(253,246,236,0.98);
+  --hero-section-bg:    linear-gradient(180deg, #FBF3E7 0%, #FDF6EC 100%);
+  --wa-mid-bg:          #E8F5EC;
+  --work-badge-bg:      rgba(10,22,40,0.07);
+  --work-badge-border:  rgba(245,163,58,0.35);
+}
+
+/* ── Light theme class overrides ──────────────────────────── */
+[data-theme="light"] ::selection { color: #16233A; }
+[data-theme="light"] .card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  border-color: var(--line);
+  box-shadow: 0 2px 8px rgba(10,22,40,0.05);
+}
+[data-theme="light"] .card:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(250,248,244,0.9));
+  border-color: var(--line-2);
+}
+[data-theme="light"] .btn-ghost {
+  background: rgba(10,22,40,0.04);
+  border-color: var(--line-2);
+}
+[data-theme="light"] .btn-ghost:hover {
+  background: rgba(10,22,40,0.08);
+  border-color: rgba(10,22,40,0.25);
+}
+[data-theme="light"] .testimonial-card {
+  background: linear-gradient(180deg, rgba(42,157,244,0.06), rgba(255,255,255,0.6)) !important;
+  box-shadow: 0 4px 24px rgba(10,22,40,0.06);
 }
 
 * { box-sizing: border-box; }

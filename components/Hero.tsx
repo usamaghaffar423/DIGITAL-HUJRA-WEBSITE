@@ -35,7 +35,7 @@ export function Hero() {
         minHeight: "100vh",
         paddingTop: "calc(118px + 2vh)",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
+        background: "var(--hero-section-bg)",
       }}
     >
       {/* Decorative glows */}
