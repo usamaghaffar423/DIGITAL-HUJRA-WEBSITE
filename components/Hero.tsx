@@ -72,12 +72,21 @@ export function Hero() {
           pointerEvents: "none",
         }}
       />
-      {/* ── Dark navy overlay — 55% opacity for readability ── */}
+      {/* ── Brand gradient overlay — deep navy with directional blue tone ── */}
       <div
         aria-hidden="true"
         style={{
           position: "absolute", inset: 0,
-          background: "rgba(10,22,40,0.62)",
+          background: "linear-gradient(155deg, rgba(3,8,20,0.93) 0%, rgba(6,18,48,0.80) 50%, rgba(4,14,38,0.88) 100%)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* ── Top vignette for headline readability ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: "55%",
+          background: "linear-gradient(180deg, rgba(3,8,20,0.55) 0%, transparent 100%)",
           pointerEvents: "none",
         }}
       />
