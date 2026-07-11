@@ -31,10 +31,10 @@ export function Nav() {
         right: 0,
         zIndex: 60,
         padding: scrolled ? "12px 0" : "20px 0",
-        background: scrolled ? "var(--nav-bg-scrolled)" : "var(--nav-bg-top)",
+        background: "rgba(245, 163, 58, 0.12)",
         backdropFilter: "blur(14px) saturate(140%)",
         WebkitBackdropFilter: "blur(14px) saturate(140%)",
-        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid var(--nav-border-top)",
+        borderBottom: "1px solid rgba(245, 163, 58, 0.18)",
         transition: "all .35s cubic-bezier(.2,.7,.2,1)",
       }}
     >
