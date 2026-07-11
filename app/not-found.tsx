@@ -14,7 +14,7 @@ export default function NotFound() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
+          background: "var(--hero-section-bg)",
           overflow: "hidden",
         }}
       >

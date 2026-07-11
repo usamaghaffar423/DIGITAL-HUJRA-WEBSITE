@@ -37,7 +37,7 @@ export function Work() {
                     position: "relative",
                     aspectRatio: big ? "1.2/1" : "16/11",
                     borderRadius: 14, overflow: "hidden",
-                    background: `linear-gradient(135deg, ${w.swatch} 0%, #050B17 100%)`,
+                    background: `linear-gradient(135deg, ${w.swatch} 0%, var(--card-dark-stop) 100%)`,
                     border: "1px solid var(--line)",
                     transition: "border-color .35s, transform .35s",
                   }}

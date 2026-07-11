@@ -66,7 +66,7 @@ export default function RaazinaEssencePage() {
             position: "relative",
             paddingTop: "calc(var(--nav-height) + 80px)",
             paddingBottom: 80,
-            background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
+            background: "var(--hero-section-bg)",
             overflow: "hidden",
           }}
         >
@@ -155,7 +155,7 @@ export default function RaazinaEssencePage() {
                     aspectRatio: "4/3",
                     borderRadius: 12,
                     overflow: "hidden",
-                    background: `linear-gradient(135deg, ${g.swatch} 0%, #050B17 100%)`,
+                    background: `linear-gradient(135deg, ${g.swatch} 0%, var(--card-dark-stop) 100%)`,
                     border: "1px solid var(--line)",
                   }}
                 >

@@ -109,7 +109,7 @@ export default function ServicesPage() {
             position: "relative",
             paddingTop: "calc(var(--nav-height) + 80px)",
             paddingBottom: 0,
-            background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
+            background: "var(--hero-section-bg)",
             overflow: "hidden",
           }}
         >

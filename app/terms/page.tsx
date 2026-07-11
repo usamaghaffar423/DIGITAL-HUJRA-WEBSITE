@@ -77,7 +77,7 @@ export default function TermsPage() {
           style={{
             paddingTop: "calc(var(--nav-height) + 80px)",
             paddingBottom: 100,
-            background: "linear-gradient(180deg, #0A1628 0%, #050B17 100%)",
+            background: "var(--hero-section-bg)",
           }}
         >
           <div className="wrap-mobile" style={{ maxWidth: 780, margin: "0 auto", padding: "0 36px" }}>
