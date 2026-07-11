@@ -49,8 +49,9 @@ export function Hero() {
       aria-label="Hero — Digital Hujra, Batkhela KP"
       style={{
         position: "relative",
-        minHeight: "100vh",
-        paddingTop: "calc(var(--nav-height) + 64px)",
+        marginTop: "var(--nav-height)",
+        minHeight: "calc(100vh - var(--nav-height))",
+        paddingTop: 64,
         paddingBottom: 140,
         background: "#0A1628",
         display: "flex",
