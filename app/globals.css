@@ -20,6 +20,8 @@
   --nav-height: 72px;
   /* theme-specific helper tokens */
   --nav-bg-scrolled:    rgba(10,22,40,0.92);
+  --nav-bg-top:         transparent;
+  --nav-border-top:     transparent;
   --nav-pill-bg:        rgba(10,22,40,0.5);
   --nav-btn-subtle:     rgba(255,255,255,0.06);
   --nav-link-active-bg: rgba(255,255,255,0.09);
@@ -49,10 +51,12 @@
   --line:    rgba(10,22,40,0.08);
   --line-2:  rgba(10,22,40,0.14);
   --nav-bg-scrolled:    rgba(253,246,236,0.95);
-  --nav-pill-bg:        rgba(10,22,40,0.06);
-  --nav-btn-subtle:     rgba(10,22,40,0.06);
-  --nav-link-active-bg: rgba(10,22,40,0.08);
-  --nav-link-hover-bg:  rgba(10,22,40,0.05);
+  --nav-bg-top:         rgba(253,246,236,0.68);
+  --nav-border-top:     rgba(10,22,40,0.10);
+  --nav-pill-bg:        rgba(10,22,40,0.08);
+  --nav-btn-subtle:     rgba(10,22,40,0.10);
+  --nav-link-active-bg: rgba(10,22,40,0.10);
+  --nav-link-hover-bg:  rgba(10,22,40,0.07);
   --nav-mobile-bg:      rgba(253,246,236,0.98);
   --hero-section-bg:    linear-gradient(180deg, #FBF3E7 0%, #FDF6EC 100%);
   --wa-mid-bg:          #E8F5EC;

@@ -31,10 +31,10 @@ export function Nav() {
         right: 0,
         zIndex: 60,
         padding: scrolled ? "12px 0" : "20px 0",
-        background: scrolled ? "var(--nav-bg-scrolled)" : "transparent",
-        backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
-        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
+        background: scrolled ? "var(--nav-bg-scrolled)" : "var(--nav-bg-top)",
+        backdropFilter: "blur(14px) saturate(140%)",
+        WebkitBackdropFilter: "blur(14px) saturate(140%)",
+        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid var(--nav-border-top)",
         transition: "all .35s cubic-bezier(.2,.7,.2,1)",
       }}
     >
@@ -112,24 +112,21 @@ export function Nav() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="nav-cta-desktop" style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <span className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.1em" }}>
+        <div className="nav-cta-desktop" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <ThemeToggle />
+          <a href="/contact" className="btn btn-amber" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
             <span
+              aria-hidden="true"
               style={{
                 display: "inline-block",
-                width: 7,
-                height: 7,
+                width: 6,
+                height: 6,
                 borderRadius: "50%",
                 background: "#5BD68A",
-                marginRight: 8,
-                verticalAlign: 1,
-                boxShadow: "0 0 0 4px rgba(91,214,138,0.18)",
+                boxShadow: "0 0 0 3px rgba(91,214,138,0.22)",
+                flexShrink: 0,
               }}
             />
-            ACCEPTING WORK
-          </span>
-          <ThemeToggle />
-          <a href="/contact" className="btn btn-amber">
             Start a project <Arrow />
           </a>
         </div>
