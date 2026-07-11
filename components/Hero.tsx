@@ -1,375 +1,463 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { MountainRange } from "@/components/atoms/MountainRange";
-import { HujraFortress } from "@/components/atoms/HujraFortress";
-import { NetworkField } from "@/components/atoms/NetworkField";
-import { Arrow } from "@/components/atoms";
+import { useEffect, useState } from "react";
+
+const SLIDES = [
+  { src: "/work/classyfitters/Hero%20Section.webp",             label: "E-Commerce Website"  },
+  { src: "/services/pos/pos%20System%20Service.webp",           label: "POS System"          },
+  { src: "/work/al-ansar-abaya/Website.webp",                   label: "Client Website"      },
+  { src: "/services/custom-softwares/Custom%20Softwares.webp",  label: "Custom Software"     },
+  { src: "/services/ecommerce/E-Commerce%20Service.webp",       label: "E-Commerce Store"    },
+];
+
+const AVATARS = [
+  { i: "R", bg: "#F6A33B", name: "Raazina Essence" },
+  { i: "C", bg: "#50B2FB", name: "Classyfitters"   },
+  { i: "A", bg: "#5BD68A", name: "Al Ansar Abaya"  },
+];
 
 export function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
+  const [active, setActive]   = useState(0);
+  const [hovering, setHovering] = useState(false);
 
+  /* ── GSAP entrance ── */
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const init = async () => {
       const { gsap } = await import("gsap");
-      const tl = gsap.timeline({ delay: 0.1 });
-      tl.from(".hero-eyebrow", { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" })
-        // h1 animates transform only — opacity stays 1 so LCP registers immediately
-        .from(".hero-h1", { y: 40, duration: 1, ease: "power3.out" }, "-=0.4")
-        .from(".hero-desc", { y: 24, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.5")
-        .from(".hero-ctas", { y: 20, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
-        .from(".hero-chips", { y: 16, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
-        .from(".hero-chart", { x: 40, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8");
+      gsap.timeline({ delay: 0.1 })
+        .from(".hero-eyebrow",  { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" })
+        .from(".hero-h1",       { y: 40,             duration: 1,   ease: "power3.out" }, "-=0.4")
+        .from(".hero-desc",     { y: 24, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.5")
+        .from(".hero-ctas",     { y: 20, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
+        .from(".hero-chips",    { y: 16, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
+        .from(".hero-showcase", { y: 40, opacity: 0, duration: 1,   ease: "power2.out" }, "-=0.3");
     };
     init();
   }, []);
 
+  /* ── Auto-slide (pauses on hover) ── */
+  useEffect(() => {
+    if (hovering) return;
+    const id = setInterval(() => setActive(p => (p + 1) % SLIDES.length), 3500);
+    return () => clearInterval(id);
+  }, [hovering]);
+
   return (
     <section
       id="top"
-      ref={heroRef}
       aria-label="Hero — Digital Hujra, Batkhela KP"
       style={{
         position: "relative",
         minHeight: "100vh",
-        paddingTop: "calc(118px + 2vh)",
+        paddingTop: "calc(var(--nav-height) + 64px)",
+        paddingBottom: 140,
+        background: "#0A1628",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
         overflow: "hidden",
-        background: "var(--hero-section-bg)",
       }}
     >
-      {/* Decorative glows */}
-      <div aria-hidden="true" style={{
-        position: "absolute", right: "-12vw", top: "-10vw",
-        width: "60vw", height: "60vw", borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(245,163,58,0.26) 0%, rgba(245,163,58,0.08) 35%, rgba(245,163,58,0) 65%)",
-        pointerEvents: "none",
-      }} />
-      <div aria-hidden="true" style={{
-        position: "absolute", left: "-10vw", bottom: "10vh",
-        width: "44vw", height: "44vw", borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(42,157,244,0.22) 0%, rgba(42,157,244,0.05) 40%, rgba(42,157,244,0) 70%)",
-        pointerEvents: "none",
-      }} />
-      {/* Decorative grid */}
-      <div aria-hidden="true" className="grid-bg" style={{
-        position: "absolute", inset: 0, opacity: 0.5, pointerEvents: "none",
-        maskImage: "radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%)",
-        WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%)",
-      }} />
-      {/* Animated network — decorative */}
-      <div aria-hidden="true" style={{ position: "absolute", inset: 0, opacity: 0.55 }}>
-        <NetworkField count={38} />
-      </div>
-      {/* Decorative mountains */}
-      <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "44vh", maxHeight: 480, pointerEvents: "none" }}>
-        <MountainRange height="100%" />
-      </div>
-      {/* Decorative fortress */}
-      <div aria-hidden="true" className="animate-float-y" style={{ position: "absolute", right: "6vw", bottom: "20vh", opacity: 0.55, pointerEvents: "none" }}>
-        <HujraFortress width={240} />
-      </div>
+      {/* ── Mountain photo background ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", inset: 0,
+          backgroundImage: "url('/backgrounds/background-1.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 60%",
+          backgroundRepeat: "no-repeat",
+          pointerEvents: "none",
+        }}
+      />
+      {/* ── Dark navy overlay — 55% opacity for readability ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", inset: 0,
+          background: "rgba(10,22,40,0.62)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* ── Bottom gradient so showcase cards blend in ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "38%",
+          background: "linear-gradient(transparent, rgba(10,22,40,0.90) 70%, #0A1628 100%)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* ── Ambient blue glow — top right ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", top: "4%", right: "-6vw",
+          width: "38vw", height: "38vw", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(80,178,251,0.14) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* ── Amber glow — bottom center ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", bottom: "28%", left: "50%", transform: "translateX(-50%)",
+          width: "80vw", height: "30vw", borderRadius: "50%",
+          background: "radial-gradient(ellipse, rgba(246,163,59,0.10) 0%, transparent 60%)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2 }}>
-        {/* Title + chart */}
-        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", gap: 60, alignItems: "start" }}>
-          {/* LEFT */}
-          <div>
-            <div className="hero-eyebrow" style={{
-              display: "inline-flex", alignItems: "center", gap: 10,
-              padding: "8px 14px", border: "1px solid rgba(42,157,244,0.4)",
-              borderRadius: 999, background: "rgba(42,157,244,0.08)", marginBottom: 28,
-            }}>
-              <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--blue-2)", animation: "pulse 2s ease-in-out infinite" }} />
-              <span style={{ fontSize: 12, color: "var(--blue-soft)", fontWeight: 500, letterSpacing: "0.04em" }}>
-                Bringing KP business to the digital world
-              </span>
-            </div>
-
-            <h1 className="display hero-h1" style={{
-              fontSize: "clamp(56px, 9.5vw, 156px)", lineHeight: 0.92,
-              margin: "0 0 28px", letterSpacing: "-0.035em",
-            }}>
-              <span style={{ color: "var(--blue-2)" }}>Digital</span>
-              <span style={{ color: "var(--amber)" }}>Hujra</span>
-              <span style={{
-                display: "block", fontSize: "0.32em",
-                fontFamily: "var(--font-newsreader), serif", fontStyle: "italic", fontWeight: 400,
-                color: "var(--ink-soft)", marginTop: 18, letterSpacing: "-0.01em",
-              }}>
-                where mountains meet the modern web.
-              </span>
-            </h1>
-
-            <p className="hero-desc" style={{
-              maxWidth: 560, fontSize: 19, lineHeight: 1.55,
-              color: "var(--ink-soft)", margin: "0 0 36px",
-            }}>
-              We help local KP businesses get online, look professional, and{" "}
-              <span style={{ color: "var(--amber)", fontWeight: 600 }}>grow</span>.
-              POS systems, custom software, e-commerce, photography — all under one warm roof in Batkhela.
-            </p>
-
-            <div className="hero-ctas" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 44 }}>
-              <a href="/contact" className="btn btn-primary">Book a free hujra session <Arrow /></a>
-              <a href="/services" className="btn btn-ghost">See what we do</a>
-            </div>
-
-            {/* Pill chips */}
-            <div className="hero-chips" style={{
-              display: "inline-flex", alignItems: "center",
-              padding: "10px 8px", border: "1px solid var(--line-2)", borderRadius: 999,
-              background: "rgba(255,255,255,0.03)", backdropFilter: "blur(10px)", gap: 4,
-            }}>
-              {[
-                { i: "📍", l: "Local-first" },
-                { i: "✓", l: "Honest" },
-                { i: "👤", l: "Accessible" },
-                { i: "↗", l: "Growth-minded" },
-              ].map((c, i, arr) => (
-                <span key={c.l} style={{ display: "inline-flex", alignItems: "center" }}>
-                  <span style={{
-                    display: "inline-flex", alignItems: "center", gap: 8,
-                    padding: "6px 14px", fontSize: 13, fontWeight: 500, color: "var(--ink)",
-                  }}>
-                    <span aria-hidden="true" style={{
-                      width: 22, height: 22, borderRadius: "50%",
-                      background: i % 2 === 0 ? "rgba(42,157,244,0.18)" : "rgba(245,163,58,0.18)",
-                      color: i % 2 === 0 ? "var(--blue-2)" : "var(--amber)",
-                      display: "inline-flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 12, fontWeight: 700,
-                    }}>{c.i}</span>
-                    {c.l}
-                  </span>
-                  {i < arr.length - 1 && (
-                    <span aria-hidden="true" style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--amber)", opacity: 0.7 }} />
-                  )}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT — Digital Hujra Dokan display */}
-          <div className="hero-chart hero-chart-panel" aria-hidden="true" style={{ position: "relative", paddingTop: 40 }}>
-            <div style={{
-              position: "relative",
-              border: "1px solid rgba(245,163,58,0.22)",
-              borderRadius: 22,
-              background: "var(--hero-panel-bg)",
-              backdropFilter: "blur(14px)",
-              overflow: "hidden",
-              height: 460,
-            }}>
-              {/* Ambient network field */}
-              <div style={{ position: "absolute", inset: 0, opacity: 0.5 }}>
-                <NetworkField count={22} />
-              </div>
-
-              {/* Warm overhead amber lamp — dokan light */}
-              <div style={{
-                position: "absolute", top: -70, left: "50%", transform: "translateX(-50%)",
-                width: 320, height: 200,
-                background: "radial-gradient(ellipse, rgba(245,163,58,0.14) 0%, transparent 68%)",
-                pointerEvents: "none",
-              }} />
-              <div style={{
-                position: "absolute", bottom: -30, right: -30,
-                width: 180, height: 180,
-                background: "radial-gradient(circle, rgba(42,157,244,0.1) 0%, transparent 70%)",
-                pointerEvents: "none",
-              }} />
-
-              {/* ── Dokan signboard ── */}
-              <div style={{
-                position: "absolute", top: 16, left: "50%", transform: "translateX(-50%)",
-                zIndex: 10, display: "flex", alignItems: "center", gap: 9,
-                padding: "7px 18px",
-                background: "var(--hero-sign-bg)",
-                border: "1px solid rgba(245,163,58,0.5)",
-                borderRadius: 10,
-                animation: "sign-glow 3.5s ease-in-out infinite",
-                whiteSpace: "nowrap",
-              }}>
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--amber)", animation: "pulse 1.8s ease-in-out infinite", display: "block" }} />
-                <img src="/logo.png" alt="" style={{ height: 22, width: "auto" }} />
-                <span className="mono" style={{ fontSize: 9, letterSpacing: "0.16em", color: "var(--amber)", opacity: 0.85 }}>OPEN · ہر وقت</span>
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--amber)", animation: "pulse 1.8s ease-in-out 0.9s infinite", display: "block" }} />
-              </div>
-
-              {/* ── Website mockup card — top-left, slightly tilted ── */}
-              <div style={{
-                position: "absolute", top: 68, left: 14,
-                animation: "drift-a 13s ease-in-out 0s infinite",
-              }}>
-                <div style={{
-                  width: 138, transform: "rotate(-1.5deg)",
-                  background: "var(--hero-minicard-bg)",
-                  border: "1px solid rgba(42,157,244,0.3)",
-                  borderRadius: 10, overflow: "hidden",
-                  boxShadow: "0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(42,157,244,0.06)",
-                }}>
-                  <div style={{ padding: "5px 8px", background: "rgba(42,157,244,0.1)", display: "flex", alignItems: "center", gap: 4 }}>
-                    {["rgba(255,80,80,0.55)","rgba(255,190,0,0.55)","rgba(60,200,60,0.55)"].map((c,i) => (
-                      <span key={i} style={{ width: 5, height: 5, borderRadius: "50%", background: c, display: "block" }} />
-                    ))}
-                    <div style={{ flex: 1, height: 3, background: "rgba(255,255,255,0.07)", borderRadius: 2, marginLeft: 4 }} />
-                  </div>
-                  <div style={{ padding: "8px 10px" }}>
-                    <div style={{ height: 3, background: "var(--amber)", width: "52%", borderRadius: 2, marginBottom: 5 }} />
-                    <div style={{ height: 30, background: "linear-gradient(135deg,rgba(42,157,244,0.1),rgba(245,163,58,0.06))", borderRadius: 5, marginBottom: 5, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <img src="/logo.png" alt="" style={{ height: 14, width: "auto", opacity: 0.6 }} />
-                    </div>
-                    <div style={{ height: 2, background: "rgba(255,255,255,0.1)", width: "90%", borderRadius: 2, marginBottom: 3 }} />
-                    <div style={{ height: 2, background: "rgba(255,255,255,0.07)", width: "68%", borderRadius: 2 }} />
-                  </div>
-                  <div style={{ padding: "2px 10px 7px" }}>
-                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)", opacity: 0.8 }}>E-COMMERCE</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* ── Social media card — top-right, opposite tilt ── */}
-              <div style={{
-                position: "absolute", top: 58, right: 10,
-                animation: "drift-b 10s ease-in-out 1.6s infinite",
-              }}>
-                <div style={{
-                  width: 110, transform: "rotate(1.8deg)",
-                  background: "var(--hero-minicard-bg)",
-                  border: "1px solid rgba(245,163,58,0.22)",
-                  borderRadius: 12, padding: "10px",
-                  boxShadow: "0 6px 22px rgba(0,0,0,0.3)",
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5, marginBottom: 7 }}>
-                    <div style={{ width: 16, height: 16, borderRadius: "50%", background: "linear-gradient(135deg,#f5a33a,#e0174a)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ fontSize: 7, color: "#fff", fontWeight: 700 }}>ig</span>
-                    </div>
-                    <div>
-                      <div style={{ height: 2, width: 36, background: "rgba(255,255,255,0.22)", borderRadius: 2, marginBottom: 2 }} />
-                      <div style={{ height: 2, width: 22, background: "rgba(255,255,255,0.1)", borderRadius: 2 }} />
-                    </div>
-                  </div>
-                  <div style={{ height: 52, background: "linear-gradient(135deg,rgba(245,163,58,0.1),rgba(42,157,244,0.07))", borderRadius: 7, marginBottom: 6, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, opacity: 0.6 }}>📸</div>
-                  <div style={{ display: "flex", gap: 8, marginBottom: 5 }}>
-                    {["♥ 24","💬 3"].map(t => <span key={t} style={{ fontSize: 7, fontFamily: "monospace", color: "rgba(255,255,255,0.3)" }}>{t}</span>)}
-                  </div>
-                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--amber)", opacity: 0.85 }}>PHOTOGRAPHY</span>
-                </div>
-              </div>
-
-              {/* ── Brand hub — center, deliberately off-axis ── */}
-              <div style={{
-                position: "absolute", top: "40%", left: "50%",
-                transform: "translate(-55%, -50%)",
-                animation: "drift-c 15s ease-in-out 0.5s infinite",
-                zIndex: 6,
-              }}>
-                <div style={{
-                  width: 106,
-                  background: "var(--hero-minicard-bg)",
-                  border: "2px solid rgba(245,163,58,0.55)",
-                  borderRadius: 16, padding: "14px 10px 10px", textAlign: "center",
-                  boxShadow: "0 0 34px rgba(245,163,58,0.16), 0 8px 28px rgba(0,0,0,0.45)",
-                }}>
-                  <img src="/logo.png" alt="" style={{ height: 32, width: "auto", display: "block", margin: "0 auto 8px" }} />
-                  <div style={{ height: 1, background: "rgba(245,163,58,0.35)", margin: "0 0 7px" }} />
-                  <span className="mono" style={{ fontSize: 7, letterSpacing: "0.14em", color: "var(--amber)" }}>DIGITAL HUJRA</span>
-                </div>
-              </div>
-
-              {/* ── POS system card — lower-left, slight CW tilt ── */}
-              <div style={{
-                position: "absolute", bottom: 60, left: 12,
-                animation: "drift-b 14s ease-in-out 3.2s infinite",
-              }}>
-                <div style={{
-                  width: 128, transform: "rotate(1.2deg)",
-                  background: "var(--hero-minicard-bg)",
-                  border: "1px solid rgba(91,214,138,0.28)",
-                  borderRadius: 10, overflow: "hidden",
-                  boxShadow: "0 6px 22px rgba(0,0,0,0.32)",
-                }}>
-                  <div style={{ background: "rgba(91,214,138,0.1)", padding: "5px 9px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--green)" }}>POS SYSTEM</span>
-                    <span style={{ fontSize: 8, color: "var(--green)" }}>●</span>
-                  </div>
-                  <div style={{ padding: "7px 9px" }}>
-                    {[["Nihari","₨180"],["Chapli","₨120"],["Pulao","₨160"]].map(([n,p]) => (
-                      <div key={n} style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-                        <span className="mono" style={{ fontSize: 7, color: "var(--hero-fg-muted)" }}>{n}</span>
-                        <span className="mono" style={{ fontSize: 7, color: "var(--amber)" }}>{p}</span>
-                      </div>
-                    ))}
-                    <div style={{ marginTop: 5, height: 14, background: "rgba(91,214,138,0.15)", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span className="mono" style={{ fontSize: 7, color: "var(--green)", letterSpacing: "0.06em" }}>TOTAL ₨460</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* ── Video / photography card — lower-right, opposite tilt ── */}
-              <div style={{
-                position: "absolute", bottom: 56, right: 10,
-                animation: "drift-a 11s ease-in-out 5s infinite",
-              }}>
-                <div style={{
-                  width: 108, transform: "rotate(-2deg)",
-                  background: "var(--hero-minicard-bg)",
-                  border: "1px solid rgba(42,157,244,0.2)",
-                  borderRadius: 10, overflow: "hidden",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.28)",
-                }}>
-                  <div style={{ height: 54, background: "linear-gradient(135deg,rgba(42,157,244,0.12),rgba(7,16,29,0.5))", position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <div style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(42,157,244,0.22)", border: "1px solid rgba(42,157,244,0.45)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ fontSize: 9, marginLeft: 2, color: "var(--blue-soft)" }}>▶</span>
-                    </div>
-                    <span className="mono" style={{ position: "absolute", top: 5, right: 7, fontSize: 7, color: "rgba(255,255,255,0.3)" }}>01:24</span>
-                    <span className="mono" style={{ position: "absolute", bottom: 5, left: 7, fontSize: 7, color: "rgba(255,255,255,0.25)" }}>HD</span>
-                  </div>
-                  <div style={{ padding: "6px 9px" }}>
-                    <span className="mono" style={{ fontSize: 7, letterSpacing: "0.12em", color: "var(--blue-soft)" }}>CUSTOM SOFTWARE</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* ── Floating micro-badges — scattered freely ── */}
-              <div style={{ position: "absolute", top: "37%", left: 5, animation: "drift-c 8s ease-in-out 2s infinite", zIndex: 5 }}>
-                <div style={{ padding: "4px 9px", background: "var(--hero-badge-bg)", border: "1px solid rgba(42,157,244,0.2)", borderRadius: 99 }}>
-                  <span className="mono" style={{ fontSize: 8, color: "var(--blue-soft)", letterSpacing: "0.1em" }}>🛒 E-COMMERCE</span>
-                </div>
-              </div>
-              <div style={{ position: "absolute", top: "28%", right: 5, animation: "drift-a 7s ease-in-out 4s infinite", zIndex: 5 }}>
-                <div style={{ padding: "4px 9px", background: "var(--hero-badge-bg)", border: "1px solid rgba(245,163,58,0.18)", borderRadius: 99 }}>
-                  <span className="mono" style={{ fontSize: 8, color: "var(--amber-soft)", letterSpacing: "0.1em" }}>📍 KP LOCAL</span>
-                </div>
-              </div>
-              <div style={{ position: "absolute", top: "54%", right: 12, animation: "drift-b 9s ease-in-out 1s infinite", zIndex: 5 }}>
-                <div style={{ padding: "4px 9px", background: "var(--hero-badge-bg)", border: "1px solid rgba(91,214,138,0.18)", borderRadius: 99 }}>
-                  <span className="mono" style={{ fontSize: 8, color: "var(--green)", letterSpacing: "0.1em", opacity: 0.85 }}>48h DELIVERY</span>
-                </div>
-              </div>
-
-              {/* ── Thin stats strip — translucent at bottom ── */}
-              <div style={{
-                position: "absolute", bottom: 0, left: 0, right: 0,
-                display: "flex", justifyContent: "space-around", alignItems: "center",
-                padding: "10px 16px",
-                borderTop: "1px solid var(--line)",
-                background: "var(--hero-stats-bg)",
-                backdropFilter: "blur(10px)",
-              }}>
-                {[["6+","Services"],["5+","Cities"],["48h","Delivery"],["✓","Trusted"]].map(([v,l]) => (
-                  <div key={l} style={{ textAlign: "center" }}>
-                    <div className="display" style={{ fontSize: 14, fontWeight: 800, color: "var(--amber)", lineHeight: 1 }}>{v}</div>
-                    <div className="mono" style={{ fontSize: 7, letterSpacing: "0.1em", color: "var(--ink-mute)", marginTop: 2 }}>{l.toUpperCase()}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* ── Main content column ── */}
+      <div
+        className="wrap-mobile"
+        style={{
+          maxWidth: 800,
+          margin: "0 auto",
+          padding: "0 24px",
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        {/* Eyebrow pill */}
+        <div
+          className="hero-eyebrow"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            padding: "7px 16px", marginBottom: 24,
+            border: "1px solid rgba(80,178,251,0.38)",
+            borderRadius: 999,
+            background: "rgba(80,178,251,0.09)",
+          }}
+        >
+          <span
+            aria-hidden="true"
+            style={{
+              width: 6, height: 6, borderRadius: "50%",
+              background: "#50B2FB", display: "inline-block",
+              animation: "pulse 2s ease-in-out infinite",
+            }}
+          />
+          <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "#50B2FB" }}>
+            DIGITAL STUDIO · BATKHELA, KP
+          </span>
         </div>
 
+        {/* Headline */}
+        <h1
+          className="display hero-h1"
+          style={{
+            fontSize: "clamp(2.8rem, 8vw, 7rem)",
+            lineHeight: 1.07,
+            fontWeight: 900,
+            letterSpacing: "-0.03em",
+            margin: "0 0 24px",
+            color: "#ffffff",
+          }}
+        >
+          Bringing KP Business<br />
+          to the{" "}
+          <span style={{ color: "#50B2FB" }}>Digital</span>{" "}
+          <span style={{ color: "#F6A33B" }}>World</span>
+        </h1>
+
+        {/* Subtitle */}
+        <p
+          className="hero-desc"
+          style={{
+            maxWidth: 560,
+            fontSize: "clamp(1rem, 1.8vw, 1.2rem)",
+            lineHeight: 1.65,
+            color: "#E5E7EB",
+            margin: "0 auto 36px",
+          }}
+        >
+          POS systems, e-commerce, custom software, photography, WhatsApp &amp; Google —
+          all under one roof in Batkhela.
+        </p>
+
+        {/* CTA buttons */}
+        <div
+          className="hero-ctas"
+          style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginBottom: 28 }}
+        >
+          <a
+            href="/contact"
+            className="btn"
+            style={{
+              background: "#F6A33B",
+              color: "#0A1628",
+              borderRadius: 999,
+              fontWeight: 700,
+              fontSize: 15,
+              padding: "14px 28px",
+              border: "1px solid transparent",
+              boxShadow: "0 8px 28px -6px rgba(246,163,59,0.5)",
+              transition: "transform .25s, box-shadow .25s",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              textDecoration: "none",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 14px 36px -6px rgba(246,163,59,0.6)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.transform = "";
+              (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px -6px rgba(246,163,59,0.5)";
+            }}
+          >
+            Get Started
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="/#work"
+            className="btn"
+            style={{
+              background: "transparent",
+              color: "#ffffff",
+              borderRadius: 999,
+              fontWeight: 600,
+              fontSize: 15,
+              padding: "14px 28px",
+              border: "1px solid rgba(255,255,255,0.38)",
+              transition: "border-color .25s, background .25s",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              textDecoration: "none",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.7)";
+              (e.currentTarget as HTMLElement).style.background  = "rgba(255,255,255,0.07)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.38)";
+              (e.currentTarget as HTMLElement).style.background  = "transparent";
+            }}
+          >
+            See Our Work
+          </a>
+        </div>
+
+        {/* Social proof strip */}
+        <div
+          className="hero-chips"
+          style={{ display: "flex", alignItems: "center", gap: 12, justifyContent: "center", flexWrap: "wrap" }}
+        >
+          {/* Stacked avatars */}
+          <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+            {AVATARS.map((a, i) => (
+              <span
+                key={a.i}
+                title={a.name}
+                style={{
+                  width: 32, height: 32, borderRadius: "50%",
+                  background: a.bg,
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  fontWeight: 700, fontSize: 12, color: "#0A1628",
+                  marginLeft: i > 0 ? -10 : 0,
+                  border: "2px solid rgba(10,22,40,0.9)",
+                  position: "relative",
+                  zIndex: AVATARS.length - i,
+                  flexShrink: 0,
+                }}
+              >
+                {a.i}
+              </span>
+            ))}
+          </div>
+
+          {/* Stars */}
+          <div style={{ display: "flex", alignItems: "center", gap: 2 }} aria-label="4.5 out of 5 stars">
+            {Array.from({ length: 4 }, (_, n) => (
+              <svg key={n} width="14" height="14" viewBox="0 0 24 24" fill="#F6A33B" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            ))}
+            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+              <defs>
+                <linearGradient id="hs-grad">
+                  <stop offset="50%" stopColor="#F6A33B" />
+                  <stop offset="50%" stopColor="rgba(255,255,255,0.2)" />
+                </linearGradient>
+              </defs>
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#hs-grad)" />
+            </svg>
+          </div>
+
+          {/* Text */}
+          <span style={{ fontSize: "0.85rem", color: "#E5E7EB" }}>
+            Trusted by businesses across{" "}
+            <strong style={{ color: "#F6A33B", fontWeight: 600 }}>18+</strong> KP districts
+          </span>
+        </div>
       </div>
+
+      {/* ── Image showcase slider ── */}
+      <div
+        className="hero-showcase"
+        style={{
+          position: "relative",
+          zIndex: 3,
+          marginTop: 60,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+      >
+        {/* Cards row */}
+        <div
+          style={{ position: "relative", width: "min(1100px, 100%)", height: 220 }}
+        >
+          {SLIDES.map((slide, i) => {
+            let off = i - active;
+            const half = Math.floor(SLIDES.length / 2);
+            if (off > half)  off -= SLIDES.length;
+            if (off < -half) off += SLIDES.length;
+            const abs     = Math.abs(off);
+            const visible = abs <= 2;
+            return (
+              <div
+                key={slide.src}
+                className={abs === 0 ? "hero-slide-center" : "hero-slide-side"}
+                onClick={() => abs > 0 && setActive(i)}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  width: 260,
+                  height: 178,
+                  borderRadius: 12,
+                  overflow: "hidden",
+                  transform: `translate(calc(-50% + ${off * 200}px), calc(-50% + ${abs > 0 ? abs * 8 : 0}px)) rotate(${off * 6}deg) scale(${1 - abs * 0.09})`,
+                  zIndex: visible ? (10 - abs) : 0,
+                  opacity: !visible ? 0 : abs === 2 ? 0.55 : 1,
+                  transition: "transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s ease, box-shadow .3s",
+                  cursor: abs > 0 ? "pointer" : "default",
+                  boxShadow: abs === 0
+                    ? "0 28px 70px -10px rgba(0,0,0,0.7), 0 0 0 1px rgba(80,178,251,0.28)"
+                    : "0 14px 36px -8px rgba(0,0,0,0.55)",
+                  background: "#1a2d46",
+                  pointerEvents: visible ? "auto" : "none",
+                }}
+              >
+                <img
+                  src={slide.src}
+                  alt={slide.label}
+                  loading="lazy"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+                <div style={{
+                  position: "absolute", bottom: 0, left: 0, right: 0,
+                  padding: "10px 12px 8px",
+                  background: "linear-gradient(transparent, rgba(10,22,40,0.88))",
+                }}>
+                  <span className="mono" style={{ fontSize: 9, letterSpacing: "0.12em", color: "#F6A33B" }}>
+                    {slide.label.toUpperCase()}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Left arrow */}
+          <button
+            type="button"
+            onClick={() => setActive(p => (p - 1 + SLIDES.length) % SLIDES.length)}
+            aria-label="Previous project"
+            style={{
+              position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)",
+              zIndex: 20,
+              background: "rgba(10,22,40,0.78)", border: "1px solid rgba(80,178,251,0.3)",
+              borderRadius: "50%", width: 40, height: 40,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", color: "#fff", padding: 0,
+              transition: "background .2s, border-color .2s",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background    = "rgba(80,178,251,0.2)";
+              (e.currentTarget as HTMLElement).style.borderColor   = "#50B2FB";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background    = "rgba(10,22,40,0.78)";
+              (e.currentTarget as HTMLElement).style.borderColor   = "rgba(80,178,251,0.3)";
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Right arrow */}
+          <button
+            type="button"
+            onClick={() => setActive(p => (p + 1) % SLIDES.length)}
+            aria-label="Next project"
+            style={{
+              position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)",
+              zIndex: 20,
+              background: "rgba(10,22,40,0.78)", border: "1px solid rgba(80,178,251,0.3)",
+              borderRadius: "50%", width: 40, height: 40,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", color: "#fff", padding: 0,
+              transition: "background .2s, border-color .2s",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background    = "rgba(80,178,251,0.2)";
+              (e.currentTarget as HTMLElement).style.borderColor   = "#50B2FB";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background    = "rgba(10,22,40,0.78)";
+              (e.currentTarget as HTMLElement).style.borderColor   = "rgba(80,178,251,0.3)";
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dot indicators */}
+        <div style={{ display: "flex", gap: 6, marginTop: 20, zIndex: 10, position: "relative" }}>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              aria-current={active === i ? "true" : undefined}
+              style={{
+                width: active === i ? 20 : 6, height: 6,
+                borderRadius: 3, border: "none",
+                background: active === i ? "#F6A33B" : "rgba(255,255,255,0.3)",
+                cursor: "pointer", padding: 0,
+                transition: "width .3s ease, background .3s ease",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-slide-side  { display: none !important; }
+          .hero-chips       { gap: 10px !important; }
+        }
+      `}</style>
     </section>
   );
 }
