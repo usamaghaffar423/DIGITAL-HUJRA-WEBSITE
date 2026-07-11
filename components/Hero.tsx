@@ -82,15 +82,6 @@ export function Hero() {
           pointerEvents: "none",
         }}
       />
-      {/* ── Top vignette for headline readability ── */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute", top: 0, left: 0, right: 0, height: "55%",
-          background: "linear-gradient(180deg, rgba(3,8,20,0.55) 0%, transparent 100%)",
-          pointerEvents: "none",
-        }}
-      />
       {/* ── Bottom gradient so showcase cards blend in ── */}
       <div
         aria-hidden="true"
