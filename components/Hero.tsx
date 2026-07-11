@@ -65,7 +65,7 @@ export function Hero() {
         aria-hidden="true"
         style={{
           position: "absolute", inset: 0,
-          backgroundImage: "url('/backgrounds/background-1.jpg')",
+          backgroundImage: "url('/backgrounds/background-2.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center 60%",
           backgroundRepeat: "no-repeat",
