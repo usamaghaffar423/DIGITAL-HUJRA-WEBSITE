@@ -155,7 +155,7 @@ export function Hero() {
               position: "relative",
               border: "1px solid rgba(245,163,58,0.22)",
               borderRadius: 22,
-              background: "linear-gradient(160deg, rgba(15,27,48,0.65) 0%, rgba(5,11,23,0.93) 100%)",
+              background: "var(--hero-panel-bg)",
               backdropFilter: "blur(14px)",
               overflow: "hidden",
               height: 460,
@@ -184,7 +184,7 @@ export function Hero() {
                 position: "absolute", top: 16, left: "50%", transform: "translateX(-50%)",
                 zIndex: 10, display: "flex", alignItems: "center", gap: 9,
                 padding: "7px 18px",
-                background: "rgba(8,17,30,0.9)",
+                background: "var(--hero-sign-bg)",
                 border: "1px solid rgba(245,163,58,0.5)",
                 borderRadius: 10,
                 animation: "sign-glow 3.5s ease-in-out infinite",
@@ -203,7 +203,7 @@ export function Hero() {
               }}>
                 <div style={{
                   width: 138, transform: "rotate(-1.5deg)",
-                  background: "rgba(7,16,29,0.84)",
+                  background: "var(--hero-minicard-bg)",
                   border: "1px solid rgba(42,157,244,0.3)",
                   borderRadius: 10, overflow: "hidden",
                   boxShadow: "0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(42,157,244,0.06)",
@@ -235,7 +235,7 @@ export function Hero() {
               }}>
                 <div style={{
                   width: 110, transform: "rotate(1.8deg)",
-                  background: "rgba(7,16,29,0.8)",
+                  background: "var(--hero-minicard-bg)",
                   border: "1px solid rgba(245,163,58,0.22)",
                   borderRadius: 12, padding: "10px",
                   boxShadow: "0 6px 22px rgba(0,0,0,0.3)",
@@ -266,7 +266,7 @@ export function Hero() {
               }}>
                 <div style={{
                   width: 106,
-                  background: "rgba(7,16,29,0.94)",
+                  background: "var(--hero-minicard-bg)",
                   border: "2px solid rgba(245,163,58,0.55)",
                   borderRadius: 16, padding: "14px 10px 10px", textAlign: "center",
                   boxShadow: "0 0 34px rgba(245,163,58,0.16), 0 8px 28px rgba(0,0,0,0.45)",
@@ -284,7 +284,7 @@ export function Hero() {
               }}>
                 <div style={{
                   width: 128, transform: "rotate(1.2deg)",
-                  background: "rgba(5,12,22,0.9)",
+                  background: "var(--hero-minicard-bg)",
                   border: "1px solid rgba(91,214,138,0.28)",
                   borderRadius: 10, overflow: "hidden",
                   boxShadow: "0 6px 22px rgba(0,0,0,0.32)",
@@ -296,7 +296,7 @@ export function Hero() {
                   <div style={{ padding: "7px 9px" }}>
                     {[["Nihari","₨180"],["Chapli","₨120"],["Pulao","₨160"]].map(([n,p]) => (
                       <div key={n} style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-                        <span className="mono" style={{ fontSize: 7, color: "rgba(255,255,255,0.4)" }}>{n}</span>
+                        <span className="mono" style={{ fontSize: 7, color: "var(--hero-fg-muted)" }}>{n}</span>
                         <span className="mono" style={{ fontSize: 7, color: "var(--amber)" }}>{p}</span>
                       </div>
                     ))}
@@ -314,7 +314,7 @@ export function Hero() {
               }}>
                 <div style={{
                   width: 108, transform: "rotate(-2deg)",
-                  background: "rgba(7,16,29,0.82)",
+                  background: "var(--hero-minicard-bg)",
                   border: "1px solid rgba(42,157,244,0.2)",
                   borderRadius: 10, overflow: "hidden",
                   boxShadow: "0 6px 20px rgba(0,0,0,0.28)",
@@ -334,17 +334,17 @@ export function Hero() {
 
               {/* ── Floating micro-badges — scattered freely ── */}
               <div style={{ position: "absolute", top: "37%", left: 5, animation: "drift-c 8s ease-in-out 2s infinite", zIndex: 5 }}>
-                <div style={{ padding: "4px 9px", background: "rgba(7,16,29,0.76)", border: "1px solid rgba(42,157,244,0.2)", borderRadius: 99 }}>
+                <div style={{ padding: "4px 9px", background: "var(--hero-badge-bg)", border: "1px solid rgba(42,157,244,0.2)", borderRadius: 99 }}>
                   <span className="mono" style={{ fontSize: 8, color: "var(--blue-soft)", letterSpacing: "0.1em" }}>🛒 E-COMMERCE</span>
                 </div>
               </div>
               <div style={{ position: "absolute", top: "28%", right: 5, animation: "drift-a 7s ease-in-out 4s infinite", zIndex: 5 }}>
-                <div style={{ padding: "4px 9px", background: "rgba(7,16,29,0.72)", border: "1px solid rgba(245,163,58,0.18)", borderRadius: 99 }}>
+                <div style={{ padding: "4px 9px", background: "var(--hero-badge-bg)", border: "1px solid rgba(245,163,58,0.18)", borderRadius: 99 }}>
                   <span className="mono" style={{ fontSize: 8, color: "var(--amber-soft)", letterSpacing: "0.1em" }}>📍 KP LOCAL</span>
                 </div>
               </div>
               <div style={{ position: "absolute", top: "54%", right: 12, animation: "drift-b 9s ease-in-out 1s infinite", zIndex: 5 }}>
-                <div style={{ padding: "4px 9px", background: "rgba(7,16,29,0.7)", border: "1px solid rgba(91,214,138,0.18)", borderRadius: 99 }}>
+                <div style={{ padding: "4px 9px", background: "var(--hero-badge-bg)", border: "1px solid rgba(91,214,138,0.18)", borderRadius: 99 }}>
                   <span className="mono" style={{ fontSize: 8, color: "var(--green)", letterSpacing: "0.1em", opacity: 0.85 }}>48h DELIVERY</span>
                 </div>
               </div>
@@ -354,8 +354,8 @@ export function Hero() {
                 position: "absolute", bottom: 0, left: 0, right: 0,
                 display: "flex", justifyContent: "space-around", alignItems: "center",
                 padding: "10px 16px",
-                borderTop: "1px solid rgba(255,255,255,0.05)",
-                background: "rgba(5,11,23,0.78)",
+                borderTop: "1px solid var(--line)",
+                background: "var(--hero-stats-bg)",
                 backdropFilter: "blur(10px)",
               }}>
                 {[["6+","Services"],["5+","Cities"],["48h","Delivery"],["✓","Trusted"]].map(([v,l]) => (

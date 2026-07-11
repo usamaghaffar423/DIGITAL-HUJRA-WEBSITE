@@ -30,6 +30,12 @@
   --work-badge-bg:      rgba(10,22,40,0.85);
   --work-badge-border:  rgba(245,163,58,0.3);
   --card-dark-stop:     #050B17;
+  --hero-panel-bg:      linear-gradient(160deg, rgba(15,27,48,0.65) 0%, rgba(5,11,23,0.93) 100%);
+  --hero-minicard-bg:   rgba(7,16,29,0.84);
+  --hero-sign-bg:       rgba(8,17,30,0.9);
+  --hero-stats-bg:      rgba(5,11,23,0.78);
+  --hero-badge-bg:      rgba(7,16,29,0.76);
+  --hero-fg-muted:      rgba(255,255,255,0.4);
 }
 
 /* ── Light theme (active when <html data-theme="light">) ─── */
@@ -53,6 +59,12 @@
   --work-badge-bg:      rgba(10,22,40,0.07);
   --work-badge-border:  rgba(245,163,58,0.35);
   --card-dark-stop:     #F5EBDA;
+  --hero-panel-bg:      linear-gradient(160deg, rgba(255,248,237,0.88) 0%, rgba(253,246,236,0.96) 100%);
+  --hero-minicard-bg:   rgba(255,255,255,0.9);
+  --hero-sign-bg:       rgba(255,255,255,0.92);
+  --hero-stats-bg:      rgba(251,243,231,0.9);
+  --hero-badge-bg:      rgba(255,255,255,0.82);
+  --hero-fg-muted:      rgba(10,22,40,0.45);
 }
 
 /* ── Light theme class overrides ──────────────────────────── */
