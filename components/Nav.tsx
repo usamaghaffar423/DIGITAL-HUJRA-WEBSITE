@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Arrow } from "@/components/atoms";
 import { NAV_ITEMS } from "@/lib/data";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -113,7 +112,6 @@ export function Nav() {
 
         {/* Desktop CTA */}
         <div className="nav-cta-desktop" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <ThemeToggle />
           <a href="/contact" className="btn btn-amber" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
             <span
               aria-hidden="true"
@@ -217,9 +215,6 @@ export function Nav() {
           >
             Start a project <Arrow />
           </a>
-          <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
-            <ThemeToggle />
-          </div>
           <div
             className="mono"
             style={{ marginTop: 16, fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.15em", textAlign: "center" }}
