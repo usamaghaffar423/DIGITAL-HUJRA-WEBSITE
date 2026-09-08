@@ -129,7 +129,7 @@ export const WORK = [
   { id: 2, slug: 'classyfitters',   name: 'Classyfitters',   cat: 'E-Commerce · Product Shoot · WhatsApp · Google', city: 'Batkhela', swatch: 'rgba(245,163,58,0.6)', preview: '/work/classyfitters/Main%20Preview%20Image.webp' },
   { id: 3, slug: 'al-ansar-abaya',  name: 'Al Ansar Abaya',  cat: 'E-Commerce · Photography · WhatsApp · Google',  city: 'Chakdara', swatch: 'rgba(91,214,138,0.5)', preview: '/work/al-ansar-abaya/Preview%20Image%20Al%20Ansar%20Abaya.webp' },
   { id: 4, slug: 'bayan-cafe',      name: 'Bayan Cafe',      cat: 'Design & Print',                                city: 'Batkhela', swatch: 'rgba(180,120,60,0.6)', preview: '/work/bayan-cafe/Preview%20Image.webp' },
-  { id: 5, slug: 'order-studio-tailor', name: 'Top Man Tailor', cat: 'Custom Software · Order & Retail Management',   city: 'Batkhela', swatch: 'rgba(229,9,20,0.55)',  preview: '/work/order-studio-tailor/retail-dashboard.webp' },
+  { id: 5, slug: 'order-studio-tailor', name: 'Top Man Tailor', cat: 'Custom Software · Order & Retail Management',   city: 'Batkhela', swatch: 'rgba(79,179,255,0.5)',  preview: '/work/order-studio-tailor/retail-dashboard.webp' },
 ]
 
 export const PROCESS = [

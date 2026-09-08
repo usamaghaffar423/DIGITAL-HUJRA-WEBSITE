@@ -40,8 +40,8 @@ const softwareLd = {
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PKR" },
 };
 
-const ACCENT = "#E4002B";
-const ACCENT_SOFT = "#FF5C7A";
+const ACCENT = "var(--amber)";
+const ACCENT_SOFT = "var(--amber-soft)";
 
 const SERVICES = [
   {
@@ -95,14 +95,14 @@ const SERVICES = [
 ];
 
 const GALLERY: { label: string; emoji: string; swatch: string; image?: string }[] = [
-  { label: "Retail Dashboard · Revenue & Analytics",   emoji: "📊", swatch: "rgba(229,9,20,0.42)",  image: "/work/order-studio-tailor/retail-dashboard.webp" },
-  { label: "Orders · Customer Records",                emoji: "👥", swatch: "rgba(229,9,20,0.34)",  image: "/work/order-studio-tailor/customers.webp" },
+  { label: "Retail Dashboard · Revenue & Analytics",   emoji: "📊", swatch: "rgba(245,163,58,0.42)",  image: "/work/order-studio-tailor/retail-dashboard.webp" },
+  { label: "Orders · Customer Records",                emoji: "👥", swatch: "rgba(245,163,58,0.34)",  image: "/work/order-studio-tailor/customers.webp" },
   { label: "Karigars · Workshop Roster",              emoji: "✂️", swatch: "rgba(42,157,244,0.32)", image: "/work/order-studio-tailor/karigars.webp" },
-  { label: "Payments · Order Balances & History",      emoji: "💰", swatch: "rgba(229,9,20,0.30)",  image: "/work/order-studio-tailor/payments.webp" },
+  { label: "Payments · Order Balances & History",      emoji: "💰", swatch: "rgba(245,163,58,0.30)",  image: "/work/order-studio-tailor/payments.webp" },
   { label: "Settings · Shop & Measurement Templates",  emoji: "📏", swatch: "rgba(42,157,244,0.30)", image: "/work/order-studio-tailor/settings-measurement-templates.webp" },
-  { label: "Shop · Retail Products & Variants",        emoji: "🛍️", swatch: "rgba(229,9,20,0.28)",  image: "/work/order-studio-tailor/retail-products.webp" },
+  { label: "Shop · Retail Products & Variants",        emoji: "🛍️", swatch: "rgba(245,163,58,0.28)",  image: "/work/order-studio-tailor/retail-products.webp" },
   { label: "Shop · Inventory & Low-Stock Alerts",      emoji: "📦", swatch: "rgba(42,157,244,0.26)", image: "/work/order-studio-tailor/inventory.webp" },
-  { label: "Order Studio · Sign In",                   emoji: "🔐", swatch: "rgba(229,9,20,0.24)",  image: "/work/order-studio-tailor/sign-in.webp" },
+  { label: "Order Studio · Sign In",                   emoji: "🔐", swatch: "rgba(245,163,58,0.24)",  image: "/work/order-studio-tailor/sign-in.webp" },
 ];
 
 const STACK = [
@@ -133,7 +133,7 @@ export default function OrderStudioTailorPage() {
             overflow: "hidden",
           }}
         >
-          <div aria-hidden="true" style={{ position: "absolute", left: "5%", top: "8%", width: "50vw", height: "50vw", borderRadius: "50%", background: "radial-gradient(circle, rgba(229,9,20,0.12) 0%, transparent 65%)", pointerEvents: "none" }} />
+          <div aria-hidden="true" style={{ position: "absolute", left: "5%", top: "8%", width: "50vw", height: "50vw", borderRadius: "50%", background: "radial-gradient(circle, rgba(245,163,58,0.12) 0%, transparent 65%)", pointerEvents: "none" }} />
           <div aria-hidden="true" style={{ position: "absolute", right: "8%", bottom: "6%", width: "32vw", height: "32vw", borderRadius: "50%", background: "radial-gradient(circle, rgba(42,157,244,0.07) 0%, transparent 65%)", pointerEvents: "none" }} />
           <div aria-hidden="true" className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.3, pointerEvents: "none", maskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)", WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 25%, transparent 72%)" }} />
 
@@ -146,7 +146,7 @@ export default function OrderStudioTailorPage() {
               <span className="mono" style={{ fontSize: 11, color: ACCENT_SOFT, letterSpacing: "0.12em" }}>TOP MAN TAILOR</span>
             </div>
 
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(229,9,20,0.4)", borderRadius: 999, background: "rgba(229,9,20,0.08)", marginBottom: 28 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.4)", borderRadius: 999, background: "rgba(245,163,58,0.08)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: ACCENT, display: "inline-block" }} />
               <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: ACCENT_SOFT }}>🧵 BATKHELA, MALAKAND · CUSTOM SOFTWARE · DELIVERED &amp; LIVE</span>
             </div>
@@ -170,7 +170,7 @@ export default function OrderStudioTailorPage() {
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 48, justifyContent: "center" }}>
               {["Custom Software", "Order Management", "Measurement Templates", "Retail POS", "Inventory", "Analytics"].map(tag => (
-                <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(229,9,20,0.1)", border: "1px solid rgba(229,9,20,0.28)", color: ACCENT_SOFT }}>{tag}</span>
+                <span key={tag} style={{ padding: "6px 14px", borderRadius: 999, fontSize: 13, fontWeight: 500, background: "rgba(245,163,58,0.1)", border: "1px solid rgba(245,163,58,0.28)", color: ACCENT_SOFT }}>{tag}</span>
               ))}
             </div>
 
@@ -183,7 +183,7 @@ export default function OrderStudioTailorPage() {
                 borderRadius: 16,
                 overflow: "hidden",
                 border: "1px solid var(--line-2)",
-                boxShadow: "0 40px 90px -30px rgba(229,9,20,0.35), 0 0 0 1px rgba(255,255,255,0.03)",
+                boxShadow: "0 40px 90px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(245,163,58,0.18)",
               }}
             >
               <img
