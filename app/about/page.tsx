@@ -37,7 +37,7 @@ const VALUES = [
   {
     n: "02",
     title: "Honest pricing",
-    body: "No surprise bills, no locked-in retainers you didn't need. We give you a fixed price before work begins — and we stick to it. Plain language, every time.",
+    body: "No surprise bills, no locked-in retainers you didn't need. We agree a price with you before work begins — face to face, in plain language — and then we stick to it.",
     color: "var(--amber)",
   },
   {

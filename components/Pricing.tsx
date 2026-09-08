@@ -22,16 +22,6 @@ function XIcon() {
   );
 }
 
-function fmtPKR(n: number) {
-  return "PKR " + n.toLocaleString();
-}
-
-function periodSuffix(p: string) {
-  if (p === "month") return "/ month";
-  if (p === "shoot") return "/ shoot";
-  return "";
-}
-
 export function Pricing() {
   const [activeTab, setActiveTab] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -83,19 +73,20 @@ export function Pricing() {
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
           <p className="eyebrow section-eyebrow" style={{ color: "var(--amber)", marginBottom: 16 }}>
-            Transparent pricing · 18 packages
+            Service packages · 18 options
           </p>
           <h2
             className="display section-title"
             style={{ fontSize: "clamp(40px, 5.4vw, 76px)", lineHeight: 1.02, margin: "0 0 20px" }}
           >
-            Pick a plan,{" "}
+            Pick a service,{" "}
             <span className="serif-italic" style={{ color: "var(--blue-2)" }}>
-              start today.
+              let&apos;s talk.
             </span>
           </h2>
           <p style={{ margin: 0, fontSize: 17, color: "var(--ink-soft)", maxWidth: 540, lineHeight: 1.55 }}>
-            Fixed prices, no hidden fees. Every package includes WhatsApp support and is quoted in PKR.
+            Every package lists exactly what&apos;s included. Final pricing is agreed after a free
+            consultation — face to face or on WhatsApp — so it fits your budget.
           </p>
         </div>
 
@@ -170,20 +161,11 @@ export function Pricing() {
         >
           {cat.packages.map((_pkg) => {
             const pkg = _pkg as typeof _pkg & {
-              originalPrice?: number;
-              priceDisplay?: string;
-              originalPriceDisplay?: string;
-              monthlyFee?: number;
-              paymentNote?: string;
-              saleBadge?: string;
               notIncluded?: string[];
-              photoSubLabel?: string;
-              perPhotoLabel?: string;
-              pricePrefix?: string;
             };
             const isPopular = pkg.popular;
             const waMsg = encodeURIComponent(
-              `Assalam o Alaikum! ${pkg.name} (${cat.tab}) package ke baare mein enquire karna tha. Pricing: ${fmtPKR(pkg.price)}.`
+              `Assalam o Alaikum! Mujhe ${pkg.name} (${cat.tab}) package chahiye. Pricing discuss karni thi.`
             );
             const waLink = `https://wa.me/${SITE.whatsapp}?text=${waMsg}`;
 
@@ -217,8 +199,8 @@ export function Pricing() {
                 />
 
                 {/* Badges */}
-                <div style={{ position: "absolute", top: 18, right: 18, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
-                  {isPopular && (
+                {isPopular && (
+                  <div style={{ position: "absolute", top: 18, right: 18, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
                     <div
                       className="mono"
                       style={{
@@ -234,25 +216,8 @@ export function Pricing() {
                     >
                       Most Popular
                     </div>
-                  )}
-                  {pkg.saleBadge && (
-                    <div
-                      className="mono"
-                      style={{
-                        background: "#5BD68A",
-                        color: "#0A1628",
-                        padding: "3px 10px",
-                        borderRadius: 999,
-                        fontSize: 9,
-                        fontWeight: 700,
-                        letterSpacing: "0.14em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {pkg.saleBadge}
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {/* Category label */}
                 <p
@@ -293,64 +258,20 @@ export function Pricing() {
 
                 <hr className="rule" style={{ margin: "0 0 22px" }} />
 
-                {/* Price */}
+                {/* Pricing — quote on request */}
                 <div style={{ marginBottom: 26 }}>
-                  {pkg.originalPrice && (
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      <span style={{ fontSize: 13, color: "var(--ink-mute)", textDecoration: "line-through" }}>
-                        {pkg.originalPriceDisplay ?? fmtPKR(pkg.originalPrice)}
-                      </span>
-                      <span className="mono" style={{ fontSize: 9, padding: "2px 8px", borderRadius: 999, background: "rgba(91,214,138,0.15)", color: "#5BD68A", letterSpacing: "0.1em" }}>
-                        LAUNCH PRICE
-                      </span>
-                    </div>
-                  )}
-                  {pkg.pricePrefix && (
-                    <p style={{ fontSize: 14, fontWeight: 600, color: accentVar, margin: "0 0 6px", letterSpacing: "0.01em" }}>
-                      {pkg.pricePrefix}
-                    </p>
-                  )}
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-                    <span
-                      className="display"
-                      style={{ fontSize: 32, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}
-                    >
-                      {pkg.priceDisplay ?? fmtPKR(pkg.price)}
-                    </span>
-                    {pkg.period !== "one-time" && (
-                      <span style={{ fontSize: 14, color: "var(--ink-mute)" }}>
-                        {periodSuffix(pkg.period)}
-                      </span>
-                    )}
-                  </div>
-                  {pkg.period === "one-time" && !pkg.pricePrefix && (
-                    <p
-                      className="mono"
-                      style={{ fontSize: 10, color: "var(--ink-mute)", margin: "5px 0 0", letterSpacing: "0.1em" }}
-                    >
-                      one-time setup fee
-                    </p>
-                  )}
-                  {pkg.photoSubLabel && (
-                    <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "3px 0 0", letterSpacing: "0.1em" }}>
-                      {pkg.photoSubLabel}
-                    </p>
-                  )}
-                  {pkg.perPhotoLabel && (
-                    <span className="mono" style={{ display: "inline-block", marginTop: 6, fontSize: 9, padding: "2px 10px", borderRadius: 999, background: "rgba(245,163,58,0.12)", color: "var(--amber)", letterSpacing: "0.1em" }}>
-                      {pkg.perPhotoLabel}
-                    </span>
-                  )}
-                  {pkg.monthlyFee && (
-                    <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "8px 0 0" }}>
-                      + PKR {pkg.monthlyFee.toLocaleString()} / month support fee
-                    </p>
-                  )}
-                  {pkg.paymentNote && (
-                    <p className="mono" style={{ fontSize: 10, color: "var(--amber)", margin: "6px 0 0", letterSpacing: "0.06em" }}>
-                      {pkg.paymentNote}
-                    </p>
-                  )}
+                  <span
+                    className="display"
+                    style={{ fontSize: 28, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}
+                  >
+                    Custom quote
+                  </span>
+                  <p
+                    className="mono"
+                    style={{ fontSize: 10, color: "var(--ink-mute)", margin: "7px 0 0", letterSpacing: "0.1em" }}
+                  >
+                    PRICED AFTER A FREE CONSULTATION
+                  </p>
                 </div>
 
                 {/* Features */}
@@ -439,7 +360,7 @@ export function Pricing() {
             textTransform: "uppercase",
           }}
         >
-          {catEx.footerNote ?? "All prices in PKR · VAT not included · Custom quotes available on request"}
+          Every project is quoted after a free consultation — in the hujra, face to face, or on WhatsApp
         </p>
       </div>
     </section>

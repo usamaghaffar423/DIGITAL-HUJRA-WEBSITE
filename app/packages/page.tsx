@@ -5,16 +5,16 @@ import { CtaBanner } from "@/components/CtaBanner";
 import { PackageTabs } from "@/components/PackageTabs";
 
 export const metadata: Metadata = {
-  title: "Packages — Digital Hujra | Fixed-Price POS, E-Commerce & Software Packages",
+  title: "Packages — Digital Hujra | POS, E-Commerce, Software & Photography for KP Businesses",
   description:
-    "18 transparent, fixed-price packages for KP businesses — POS systems, e-commerce stores, custom software, and product photography. All prices in PKR, no hidden fees.",
+    "Service packages for KP businesses — POS systems, e-commerce stores, custom software, and product photography. Each package lists exactly what's included; pricing is agreed after a free consultation.",
   alternates: {
     canonical: "/packages",
   },
   openGraph: {
-    title: "Packages — Digital Hujra | Fixed-Price Packages for KP Businesses",
+    title: "Packages — Digital Hujra | Services for KP Businesses",
     description:
-      "18 transparent, fixed-price packages for KP businesses — POS systems, e-commerce stores, custom software, and product photography. All prices in PKR.",
+      "Service packages for KP businesses — POS systems, e-commerce stores, custom software, and product photography. Pricing is agreed after a free consultation.",
     url: "https://www.digitalhujra.com/packages",
     type: "website",
   },
@@ -61,16 +61,17 @@ export default function PackagesPage() {
 
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 16px", border: "1px solid rgba(245,163,58,0.35)", borderRadius: 999, background: "rgba(245,163,58,0.07)", marginBottom: 28 }}>
               <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--amber)", display: "inline-block" }} />
-              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>TRANSPARENT PRICING · 18 PACKAGES · PKR</span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--amber-soft)" }}>18 PACKAGES · QUOTED PER PROJECT</span>
             </div>
 
             <h1 className="display" style={{ fontSize: "clamp(48px, 8vw, 108px)", lineHeight: 0.93, margin: "0 0 28px", letterSpacing: "-0.038em" }}>
-              Fixed prices.<br />
-              <span style={{ color: "var(--amber)" }}>Zero surprises.</span>
+              Pick your service.<br />
+              <span style={{ color: "var(--amber)" }}>Then let&apos;s talk.</span>
             </h1>
 
             <p style={{ maxWidth: 560, fontSize: 19, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 auto 0" }}>
-              Every package is a flat rate — quoted in PKR, no hidden fees, no locked-in retainers. Pick what you need and we get started.
+              Every package below lists exactly what&apos;s included. Pricing is agreed after a free
+              consultation — in the hujra, face to face, or on WhatsApp — so it fits your budget.
             </p>
           </div>
         </section>
@@ -98,9 +99,9 @@ export default function PackagesPage() {
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
               {[
-                { n: "01", title: "50% Advance",        body: "Pay half upfront to confirm your project. We start work the same day — no delays, no waiting.", color: "var(--amber)" },
-                { n: "02", title: "Monthly Support Fee", body: "Small monthly fee for WhatsApp support, system updates, and remote monitoring throughout the year.", color: "var(--blue-2)" },
-                { n: "03", title: "50% After 3 Months", body: "Once you're fully satisfied — pay the remaining 50%. No pressure, just results you're happy with.", color: "var(--amber)" },
+                { n: "01", title: "Advance to Start",   body: "A part-payment upfront confirms your project. We start work the same day — no delays, no waiting.", color: "var(--amber)" },
+                { n: "02", title: "Ongoing Support",     body: "A small agreed fee covers WhatsApp support, system updates, and remote monitoring through the year.", color: "var(--blue-2)" },
+                { n: "03", title: "Balance When Happy",  body: "Once you're fully satisfied — you settle the balance. No pressure, just results you're happy with.", color: "var(--amber)" },
               ].map((item) => (
                 <article key={item.n} className="card" style={{ padding: "32px 28px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: item.color }}>{item.n}</span>
@@ -112,23 +113,23 @@ export default function PackagesPage() {
           </div>
         </section>
 
-        {/* ── Why Fixed Pricing ────────────────────────────── */}
-        <section aria-label="Why fixed pricing" style={{ padding: "100px 0", borderTop: "1px solid var(--line)", background: "var(--night)" }}>
+        {/* ── Why we quote in person ───────────────────────── */}
+        <section aria-label="Why we quote in person" style={{ padding: "100px 0", borderTop: "1px solid var(--line)", background: "var(--night)" }}>
           <div className="wrap-mobile" style={{ maxWidth: 1360, margin: "0 auto", padding: "0 36px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <span style={{ width: 28, height: 1, background: "var(--amber)" }} />
-              <span className="eyebrow" style={{ color: "var(--amber)" }}>Why fixed pricing</span>
+              <span className="eyebrow" style={{ color: "var(--amber)" }}>Why we quote in person</span>
             </div>
             <h2 className="display" style={{ fontSize: "clamp(32px, 4vw, 58px)", lineHeight: 1.05, margin: "0 0 56px", letterSpacing: "-0.025em" }}>
-              No surprises. <span style={{ color: "var(--blue-2)" }}>Just work.</span>
+              No pressure. <span style={{ color: "var(--blue-2)" }}>Just a conversation.</span>
             </h2>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
               {[
-                { n: "01", title: "Agreed upfront",   body: "We agree on price and scope before a single pixel moves. No scope creep, no surprise invoices at the end.", color: "var(--amber)" },
-                { n: "02", title: "In PKR, always",   body: "Every quote is in Pakistani Rupees. No dollar conversions, no rate fluctuations hitting your budget.", color: "var(--blue-2)" },
-                { n: "03", title: "Custom is OK too", body: "Don't see what you need? Message us. We build custom quotes for projects that don't fit a package.", color: "var(--amber)" },
-                { n: "04", title: "WhatsApp support", body: "Every package includes WhatsApp support throughout the project. We answer in Urdu, Pashto, or English.", color: "var(--blue-2)" },
+                { n: "01", title: "Agreed before we start", body: "We settle on scope and price together before a single pixel moves — then it's fixed. No scope creep, no surprise invoice at the end.", color: "var(--amber)" },
+                { n: "02", title: "Sized to a KP budget",   body: "We quote in Pakistani Rupees, matched to what a local business can spend — not a Western agency rate card.", color: "var(--blue-2)" },
+                { n: "03", title: "Room to negotiate",      body: "Talk it through with us in the hujra or on WhatsApp. Trim the scope, adjust the plan — we'll find a number that works for both sides.", color: "var(--amber)" },
+                { n: "04", title: "WhatsApp support",       body: "Every package includes WhatsApp support throughout the project. We answer in Urdu, Pashto, or English.", color: "var(--blue-2)" },
               ].map((item) => (
                 <article key={item.n} className="card" style={{ padding: "32px 28px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: item.color }}>{item.n}</span>

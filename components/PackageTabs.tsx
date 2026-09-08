@@ -22,16 +22,6 @@ function XIcon() {
   );
 }
 
-function fmtPKR(n: number) {
-  return "PKR " + n.toLocaleString();
-}
-
-function periodSuffix(p: string) {
-  if (p === "month") return "/ month";
-  if (p === "shoot") return "/ shoot";
-  return "";
-}
-
 const SERVICE_ICONS: Record<string, string> = {
   pos:      "🖥️",
   cart:     "🛒",
@@ -139,15 +129,13 @@ export function PackageTabs() {
       >
         {cat.packages.map((_pkg) => {
           const pkg = _pkg as {
-            name: string; price: number; period: string; popular: boolean; tagline: string;
-            features: string[]; waKey: string; originalPrice?: number;
-            originalPriceDisplay?: string; priceDisplay?: string; monthlyFee?: number;
-            paymentNote?: string; saleBadge?: string; notIncluded?: string[];
-            photoSubLabel?: string; perPhotoLabel?: string; pricePrefix?: string;
+            name: string; period: string; popular: boolean; tagline: string;
+            features: string[]; waKey: string;
+            notIncluded?: string[];
           };
           const isPopular = pkg.popular;
           const waMsg = encodeURIComponent(
-            `Assalam o Alaikum! ${pkg.name} (${cat.tab}) package ke baare mein enquire karna tha. Pricing: ${fmtPKR(pkg.price)}.`
+            `Assalam o Alaikum! Mujhe ${pkg.name} (${cat.tab}) package chahiye. Pricing discuss karni thi.`
           );
           const waLink = `https://wa.me/${SITE.whatsapp}?text=${waMsg}`;
 
@@ -176,18 +164,11 @@ export function PackageTabs() {
             >
               <div aria-hidden="true" style={{ position: "absolute", top: -50, right: -50, width: 180, height: 180, borderRadius: "50%", background: `radial-gradient(circle, ${accentGlow} 0%, transparent 70%)`, pointerEvents: "none" }} />
 
-              {(isPopular || pkg.saleBadge) && (
+              {isPopular && (
                 <div style={{ position: "absolute", top: 20, right: 20, display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
-                  {isPopular && (
-                    <div className="mono" style={{ background: accentVar, color: cat.accent === "amber" ? "var(--night)" : cat.accent === "green" ? "#0A1628" : "#fff", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                      Most Popular
-                    </div>
-                  )}
-                  {pkg.saleBadge && (
-                    <div className="mono" style={{ background: "rgba(91,214,138,0.12)", color: "#5BD68A", border: "1px solid rgba(91,214,138,0.25)", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                      {pkg.saleBadge}
-                    </div>
-                  )}
+                  <div className="mono" style={{ background: accentVar, color: cat.accent === "amber" ? "var(--night)" : cat.accent === "green" ? "#0A1628" : "#fff", padding: "4px 12px", borderRadius: 999, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                    Most Popular
+                  </div>
                 </div>
               )}
 
@@ -204,42 +185,12 @@ export function PackageTabs() {
               <hr className="rule" style={{ margin: "0 0 24px" }} />
 
               <div style={{ marginBottom: 28 }}>
-                {pkg.originalPrice && (
-                  <p style={{ fontSize: 13, color: "var(--ink-mute)", margin: "0 0 6px", display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ textDecoration: "line-through" }}>{pkg.originalPriceDisplay || fmtPKR(pkg.originalPrice)}</span>
-                    <span style={{ fontSize: 10, color: "#5BD68A", fontWeight: 700, background: "rgba(91,214,138,0.1)", padding: "2px 7px", borderRadius: 999 }}>Launch Price</span>
-                  </p>
-                )}
-                {pkg.pricePrefix && (
-                  <p style={{ fontSize: 14, fontWeight: 600, color: accentVar, margin: "0 0 6px", letterSpacing: "0.01em" }}>
-                    {pkg.pricePrefix}
-                  </p>
-                )}
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-                  <span className="display" style={{ fontSize: 34, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}>{pkg.priceDisplay || fmtPKR(pkg.price)}</span>
-                  {pkg.period !== "one-time" && (
-                    <span style={{ fontSize: 14, color: "var(--ink-mute)" }}>{periodSuffix(pkg.period)}</span>
-                  )}
-                </div>
-                {pkg.period === "one-time" && !pkg.pricePrefix && (
-                  <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>one-time setup fee</p>
-                )}
-                {pkg.photoSubLabel && (
-                  <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "6px 0 0", letterSpacing: "0.1em" }}>{pkg.photoSubLabel}</p>
-                )}
-                {pkg.perPhotoLabel && (
-                  <div style={{ display: "inline-flex", alignItems: "center", marginTop: 8, padding: "3px 10px", borderRadius: 999, background: accentBg, border: `1px solid ${accentVar}28` }}>
-                    <span className="mono" style={{ fontSize: 10, color: accentVar, letterSpacing: "0.08em", fontWeight: 700 }}>{pkg.perPhotoLabel}</span>
-                  </div>
-                )}
-                {pkg.monthlyFee && (
-                  <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "8px 0 0" }}>
-                    + <strong>{fmtPKR(pkg.monthlyFee)}</strong><span style={{ color: "var(--ink-mute)" }}>/month</span>
-                  </p>
-                )}
-                {pkg.paymentNote && (
-                  <p className="mono" style={{ fontSize: 10, color: accentVar, margin: "8px 0 0", letterSpacing: "0.06em", lineHeight: 1.5 }}>{pkg.paymentNote}</p>
-                )}
+                <span className="display" style={{ fontSize: 30, lineHeight: 1, color: "var(--ink)", letterSpacing: "-0.03em" }}>
+                  Custom quote
+                </span>
+                <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: "8px 0 0", letterSpacing: "0.1em", lineHeight: 1.5 }}>
+                  PRICED AFTER A FREE CONSULTATION — SIZED TO YOUR BUDGET
+                </p>
               </div>
 
               <ul style={{ listStyle: "none", margin: "0 0 auto", padding: 0, display: "flex", flexDirection: "column", gap: 11 }}>
@@ -289,7 +240,7 @@ export function PackageTabs() {
       {/* Footer note */}
       <div style={{ marginTop: 56, paddingTop: 24, borderTop: "1px solid var(--line)" }}>
         <p className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", margin: 0, letterSpacing: "0.12em", textAlign: "center", textTransform: "uppercase" }}>
-          {(cat as { footerNote?: string }).footerNote ?? "All prices in PKR · VAT not included · Custom quotes available on request"}
+          No fixed list price · Every project quoted after a free consultation · WhatsApp support on every package
         </p>
       </div>
     </>

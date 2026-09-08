@@ -134,7 +134,7 @@ export const WORK = [
 
 export const PROCESS = [
   { n: '01', t: 'Discovery',  d: 'We sit with you — in the hujra or on a call — and listen. Your business, your customers, your goals. No forms, no jargon.' },
-  { n: '02', t: 'Proposal',   d: 'A fixed-price quote in plain language. Scope, timeline, and deliverables — all agreed before a single pixel is moved.' },
+  { n: '02', t: 'Proposal',   d: 'A clear quote in plain language, agreed face to face. Scope, timeline, and deliverables — all settled before a single pixel is moved.' },
   { n: '03', t: 'Build',      d: 'Design, develop, shoot, or install — depending on the service. You get regular updates and can give feedback at every stage.' },
   { n: '04', t: 'Handover',   d: 'We deliver, train your team, and stay available for 90 days. You own everything — files, accounts, passwords.' },
 ]
