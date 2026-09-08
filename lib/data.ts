@@ -93,6 +93,62 @@ export const TESTIMONIALS = [
     role: 'Product Photography Client',
     city: 'Swat, KP',
   },
+  {
+    id: 'classyfitters',
+    client: 'Classyfitters',
+    business: 'Classyfitters',
+    location: 'Batkhela, KP',
+    service: 'E-Commerce · Product Shoot · WhatsApp Business · Google Business',
+    review: 'Digital Hujra ne hamari poori online shop bana ke di — website, product shoot, WhatsApp Business aur Google Business, sab kuch ek hi jagah se. Ab customers ghar baithe order karte hain. Kaam waqt par hua aur team ne humein sab kuch khud chalana bhi sikha diya.',
+    rating: 5,
+    // component-compatibility aliases
+    q: 'Digital Hujra ne hamari poori online shop bana ke di — website, product shoot, WhatsApp Business aur Google Business, sab kuch ek hi jagah se. Ab customers ghar baithe order karte hain. Kaam waqt par hua aur team ne humein sab kuch khud chalana bhi sikha diya.',
+    name: 'Classyfitters',
+    role: 'E-Commerce Client',
+    city: 'Batkhela, KP',
+  },
+  {
+    id: 'edenrobe-batkhela',
+    client: 'Edenrobe Batkhela',
+    business: 'Edenrobe Batkhela',
+    location: 'Batkhela, KP',
+    service: 'Google Business · Social Media',
+    review: 'Edenrobe Batkhela ke liye Digital Hujra ne Google Business profile set ki aur social media handle kiya. Ab log Google aur Maps par humein asani se dhoond lete hain, aur shop par walk-in customers pehle se zyada aate hain. Local team hai, response bhi foran dete hain.',
+    rating: 5,
+    // component-compatibility aliases
+    q: 'Edenrobe Batkhela ke liye Digital Hujra ne Google Business profile set ki aur social media handle kiya. Ab log Google aur Maps par humein asani se dhoond lete hain, aur shop par walk-in customers pehle se zyada aate hain. Local team hai, response bhi foran dete hain.',
+    name: 'Edenrobe Batkhela',
+    role: 'Retail Outlet',
+    city: 'Batkhela, KP',
+  },
+  {
+    id: 'al-ansar-abaya',
+    client: 'Al Ansar Abaya',
+    business: 'Al Ansar Abaya',
+    location: 'Chakdara, KP',
+    service: 'E-Commerce · Photography · WhatsApp Verified · Google Business',
+    review: 'Humara abaya brand online bilkul naya tha. Digital Hujra ne e-commerce store, product shoot, WhatsApp green tick aur Google Business — sab ek saath deliver kiya. Har cheez live hai aur ab hum khud manage kar rahe hain. Nateeje se bohot khush hain.',
+    rating: 5,
+    // component-compatibility aliases
+    q: 'Humara abaya brand online bilkul naya tha. Digital Hujra ne e-commerce store, product shoot, WhatsApp green tick aur Google Business — sab ek saath deliver kiya. Har cheez live hai aur ab hum khud manage kar rahe hain. Nateeje se bohot khush hain.',
+    name: 'Al Ansar Abaya',
+    role: 'E-Commerce Client',
+    city: 'Chakdara, KP',
+  },
+  {
+    id: 'top-man-tailor',
+    client: 'Top Man Tailor',
+    business: 'Top Man Tailor',
+    location: 'Batkhela, Malakand, KP',
+    service: 'Custom Software — Order Studio',
+    review: 'Pehle sab kuch parchi aur measurement copy par chalta tha. Digital Hujra ne humein Order Studio bana ke diya — orders, customers, karigar, measurements aur payments sab ek hi system mein. Ab dukan bohot asani se chalti hai. Staff ko training bhi di aur support hamesha available hota hai.',
+    rating: 5,
+    // component-compatibility aliases
+    q: 'Pehle sab kuch parchi aur measurement copy par chalta tha. Digital Hujra ne humein Order Studio bana ke diya — orders, customers, karigar, measurements aur payments sab ek hi system mein. Ab dukan bohot asani se chalti hai. Staff ko training bhi di aur support hamesha available hota hai.',
+    name: 'Top Man Tailor',
+    role: 'Custom Software Client',
+    city: 'Batkhela, KP',
+  },
 ]
 
 export const WA_MESSAGES: Record<string, string> = {
