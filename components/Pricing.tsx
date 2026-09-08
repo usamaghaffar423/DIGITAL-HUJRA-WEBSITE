@@ -354,7 +354,10 @@ export function Pricing() {
           style={{
             fontSize: 10,
             color: "var(--ink-mute)",
-            marginTop: 32,
+            margin: 0,
+            paddingTop: 28,
+            marginTop: 40,
+            borderTop: "1px solid var(--line)",
             letterSpacing: "0.12em",
             textAlign: "center",
             textTransform: "uppercase",
