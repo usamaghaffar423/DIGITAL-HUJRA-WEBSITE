@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 
 const SLIDES = [
-  { src: "/work/classyfitters/Hero%20Section.webp",             label: "E-Commerce Website"  },
-  { src: "/services/pos/pos%20System%20Service.webp",           label: "POS System"          },
-  { src: "/work/al-ansar-abaya/Website.webp",                   label: "Client Website"      },
-  { src: "/services/custom-softwares/Custom%20Softwares.webp",  label: "Custom Software"     },
-  { src: "/services/ecommerce/E-Commerce%20Service.webp",       label: "E-Commerce Store"    },
+  { src: "/work/classyfitters/Hero%20Section.webp",                    label: "E-Commerce Website"       },
+  { src: "/work/order-studio-tailor/retail-dashboard.webp",           label: "Tailor Order System"      },
+  { src: "/services/pos/pos%20System%20Service.webp",                 label: "POS System"               },
+  { src: "/work/al-ansar-abaya/Website.webp",                         label: "Client Website"           },
+  { src: "/services/custom-softwares/Custom%20Softwares.webp",        label: "Custom Software"          },
+  { src: "/services/ecommerce/E-Commerce%20Service.webp",             label: "E-Commerce Store"         },
 ];
 
 const AVATARS = [

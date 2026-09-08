@@ -66,6 +66,16 @@ export const PORTFOLIO = [
     coverImage: '',
     featured: false,
   },
+  {
+    id: 'order-studio-tailor',
+    client: 'Top Man Tailor',
+    service: 'Custom Software · Order & Retail Management System',
+    location: 'Batkhela, Malakand, KP',
+    tagline: 'Order Studio — a full order-management and retail POS system for a menswear tailor: orders, customers, karigars, measurements, payments, inventory & analytics',
+    coverEmoji: '🧵',
+    coverImage: '/work/order-studio-tailor/retail-dashboard.webp',
+    featured: true,
+  },
 ]
 
 export const TESTIMONIALS = [
@@ -119,6 +129,7 @@ export const WORK = [
   { id: 2, slug: 'classyfitters',   name: 'Classyfitters',   cat: 'E-Commerce · Product Shoot · WhatsApp · Google', city: 'Batkhela', swatch: 'rgba(245,163,58,0.6)', preview: '/work/classyfitters/Main%20Preview%20Image.webp' },
   { id: 3, slug: 'al-ansar-abaya',  name: 'Al Ansar Abaya',  cat: 'E-Commerce · Photography · WhatsApp · Google',  city: 'Chakdara', swatch: 'rgba(91,214,138,0.5)', preview: '/work/al-ansar-abaya/Preview%20Image%20Al%20Ansar%20Abaya.webp' },
   { id: 4, slug: 'bayan-cafe',      name: 'Bayan Cafe',      cat: 'Design & Print',                                city: 'Batkhela', swatch: 'rgba(180,120,60,0.6)', preview: '/work/bayan-cafe/Preview%20Image.webp' },
+  { id: 5, slug: 'order-studio-tailor', name: 'Top Man Tailor', cat: 'Custom Software · Order & Retail Management',   city: 'Batkhela', swatch: 'rgba(229,9,20,0.55)',  preview: '/work/order-studio-tailor/retail-dashboard.webp' },
 ]
 
 export const PROCESS = [

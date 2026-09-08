@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/work/classyfitters`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/work/al-ansar-abaya`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/work/bayan-cafe`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/work/order-studio-tailor`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/contact`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/team`,                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/privacy`,              lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },

@@ -29,6 +29,7 @@ All packages are fixed-price in PKR with no hidden fees. Payment is split: 50% u
 - **Al Ansar Abaya** (Chakdara) — Full digital presence: e-commerce, product shoot, WhatsApp verified badge, Google Business.
 - **Raazina Essence** (Swat) — 50+ professional perfume product images across two studio sessions.
 - **Bayan Cafe** — Complete visual identity: logo, color system, typography, brand guidelines, and print collateral.
+- **Top Man Tailor** (Batkhela) — Order Studio: a custom order-management and retail POS web app covering orders, customers, karigars, measurement templates, payments, inventory, and analytics.
 
 ## About
 
