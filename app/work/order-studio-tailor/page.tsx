@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -139,9 +141,9 @@ export default function OrderStudioTailorPage() {
 
           <div className="wrap-mobile" style={{ maxWidth: 1000, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 40, justifyContent: "center" }}>
-              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
+              <Link href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
-              <a href="/#work" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>WORK</a>
+              <Link href="/#work" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>WORK</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: ACCENT_SOFT, letterSpacing: "0.12em" }}>TOP MAN TAILOR</span>
             </div>
@@ -186,18 +188,20 @@ export default function OrderStudioTailorPage() {
                 boxShadow: "0 40px 90px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(245,163,58,0.18)",
               }}
             >
-              <img
+              <Image
                 src="/work/order-studio-tailor/retail-dashboard.webp"
                 alt="Order Studio retail dashboard for Top Man Tailor, shown on desktop and mobile"
-                width={1600}
-                height={1223}
-                style={{ display: "block", width: "100%", height: "auto" }}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                quality={75}
+                loading="lazy"
+                style={{ objectFit: "cover" }}
               />
             </div>
 
             <div className="cs-hero-ctas" style={{ marginTop: 44 }}>
-              <a href="/contact" className="btn btn-primary">Get software for your business <Arrow /></a>
-              <a href="/#work" className="btn btn-ghost">View all work <Arrow /></a>
+              <Link href="/contact" className="btn btn-primary">Get software for your business <Arrow /></Link>
+              <Link href="/#work" className="btn btn-ghost">View all work <Arrow /></Link>
             </div>
           </div>
         </section>
@@ -273,7 +277,7 @@ export default function OrderStudioTailorPage() {
                   }}
                 >
                   {g.image ? (
-                    <img src={g.image} alt={g.label} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                    <Image src={g.image} alt={g.label} fill sizes="(max-width: 768px) 100vw, 33vw" quality={75} loading="lazy" style={{ objectFit: "cover" }} />
                   ) : (
                     <>
                       <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 18px)" }} />

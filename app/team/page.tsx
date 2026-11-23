@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -63,7 +64,7 @@ export default function TeamPage() {
           <div className="wrap-mobile" style={{ maxWidth: 900, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
             {/* Breadcrumb */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
-              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em" }}>HOME</a>
+              <Link href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em" }}>HOME</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>TEAM</span>
             </div>

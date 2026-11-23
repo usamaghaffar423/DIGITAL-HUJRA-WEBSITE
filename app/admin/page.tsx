@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const VERCEL_ANALYTICS_URL = "https://vercel.com/usamaghaffar423/digital-hujra-website/analytics";
 const VERCEL_DASHBOARD_URL  = "https://vercel.com/usamaghaffar423/digital-hujra-website";
@@ -55,7 +57,7 @@ export default function AdminPage() {
       <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--night)", padding: "0 24px" }}>
         <form onSubmit={login} style={{ width: "100%", maxWidth: 360 }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <img src="/logo.png" alt="Digital Hujra" style={{ height: 44, margin: "0 auto 20px", display: "block" }} />
+            <Image src="/logo.png" alt="Digital Hujra" width={4003} height={943} sizes="200px" style={{ height: 44, width: "auto", margin: "0 auto 20px", display: "block" }} />
             <h1 className="display" style={{ fontSize: 28, margin: "0 0 8px", letterSpacing: "-0.02em" }}>Admin Dashboard</h1>
             <p style={{ color: "var(--ink-mute)", fontSize: 14 }}>Enter your admin password to continue</p>
           </div>
@@ -89,12 +91,12 @@ export default function AdminPage() {
       {/* Header */}
       <header style={{ borderBottom: "1px solid var(--line)", padding: "16px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <a href="/"><img src="/logo.png" alt="Digital Hujra" style={{ height: 36 }} /></a>
+          <Link href="/"><Image src="/logo.png" alt="Digital Hujra" width={4003} height={943} sizes="180px" style={{ height: 36, width: "auto" }} /></Link>
           <span style={{ width: 1, height: 24, background: "var(--line)" }} />
           <span className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--ink-mute)" }}>ADMIN DASHBOARD</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <a href="/" className="btn btn-ghost" style={{ padding: "8px 16px", fontSize: 12 }}>← Back to site</a>
+          <Link href="/" className="btn btn-ghost" style={{ padding: "8px 16px", fontSize: 12 }}>← Back to site</Link>
           <button
             onClick={() => { sessionStorage.removeItem("dh_admin_pwd"); setAuthed(false); }}
             className="btn btn-ghost"

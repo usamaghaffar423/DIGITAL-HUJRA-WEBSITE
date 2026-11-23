@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -100,9 +102,9 @@ export default function AlAnsarAbayaPage() {
 
           <div className="wrap-mobile" style={{ maxWidth: 960, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 40, justifyContent: "center" }}>
-              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
+              <Link href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
-              <a href="/#work" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>WORK</a>
+              <Link href="/#work" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>WORK</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>AL ANSAR ABAYA</span>
             </div>
@@ -130,8 +132,8 @@ export default function AlAnsarAbayaPage() {
             </div>
 
             <div className="cs-hero-ctas">
-              <a href="/contact" className="btn btn-primary">Start a similar project <Arrow /></a>
-              <a href="/#work" className="btn btn-ghost">View all work <Arrow /></a>
+              <Link href="/contact" className="btn btn-primary">Start a similar project <Arrow /></Link>
+              <Link href="/#work" className="btn btn-ghost">View all work <Arrow /></Link>
             </div>
           </div>
         </section>
@@ -184,7 +186,7 @@ export default function AlAnsarAbayaPage() {
                   }}
                 >
                   {g.image ? (
-                    <img src={g.image} alt={g.label} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                    <Image src={g.image} alt={g.label} fill sizes="(max-width: 768px) 100vw, 33vw" quality={75} loading="lazy" style={{ objectFit: "cover" }} />
                   ) : (
                     <>
                       <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 8px, transparent 8px 18px)" }} />

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_PK",
     siteName: "Digital Hujra",
-    images: [{ url: "/cover.png", width: 1200, height: 630, alt: "Digital Hujra — Batkhela, KP" }],
+    images: [{ url: "/cover-1920.webp", width: 1920, height: 1080, alt: "Digital Hujra — Batkhela, KP" }],
   },
   twitter: {
     card: "summary_large_image",

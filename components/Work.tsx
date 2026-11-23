@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { WORK } from "@/lib/data";
 import { MountainRange } from "@/components/atoms/MountainRange";
 import { SectionHead, Arrow } from "@/components/atoms";
@@ -13,7 +15,7 @@ export function Work() {
             eyebrow="Already Worked With Businesses"
             title={<>Real businesses, <span style={{ color: "var(--blue-2)" }}>real growth.</span></>}
           />
-          <a href="/contact" className="btn btn-ghost">View full archive <Arrow /></a>
+          <Link href="/contact" className="btn btn-ghost">View full archive <Arrow /></Link>
         </div>
 
         <div className="work-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
@@ -45,7 +47,15 @@ export function Work() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--line)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
                 >
                   {w.preview ? (
-                    <img src={w.preview} alt={w.name} loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }} />
+                    <Image
+                      src={w.preview}
+                      alt={w.name}
+                      fill
+                      sizes={big ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                      quality={75}
+                      loading="lazy"
+                      style={{ objectFit: "cover", opacity: 0.85 }}
+                    />
                   ) : (
                     <>
                       <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 8px, transparent 8px 18px)" }} />

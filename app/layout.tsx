@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     siteName: "Digital Hujra",
     images: [
       {
-        url: "/cover.png",
-        width: 1200,
-        height: 630,
+        url: "/cover-1920.webp",
+        width: 1920,
+        height: 1080,
         alt: "Digital Hujra — KP Digital Agency, Batkhela",
       },
     ],
@@ -52,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preload" href="/backgrounds/hero-1920.webp" as="image" fetchPriority="high" />
       </head>
       <body>
         {children}

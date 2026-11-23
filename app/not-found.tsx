@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Arrow } from "@/components/atoms";
@@ -57,7 +58,7 @@ export default function NotFound() {
           </p>
 
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="/" className="btn btn-amber">Back to home <Arrow /></a>
+            <Link href="/" className="btn btn-amber">Back to home <Arrow /></Link>
             <a href="/contact" className="btn btn-ghost">Contact us <Arrow /></a>
           </div>
         </div>

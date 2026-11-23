@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { GsapAnimations } from "@/components/GsapAnimations";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
@@ -11,6 +10,7 @@ import { Pricing } from "@/components/Pricing";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Footer } from "@/components/Footer";
 import { ClientSections } from "@/components/ClientSections";
+import GsapAnimations from "@/components/GsapAnimationsClient";
 
 export const metadata: Metadata = {
   alternates: {

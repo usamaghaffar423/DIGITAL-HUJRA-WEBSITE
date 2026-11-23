@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { SITE } from "@/lib/data";
 
 const SERVICES_LINKS = [
@@ -47,7 +48,7 @@ export function Footer() {
         >
           {/* Brand column */}
           <div>
-            <a href="/" aria-label="Digital Hujra — back to top" style={{ display: "inline-flex", marginBottom: 18 }}>
+            <Link href="/" aria-label="Digital Hujra — back to top" style={{ display: "inline-flex", marginBottom: 18 }}>
               <Image
                 src="/logo.png"
                 alt="Digital Hujra"
@@ -57,7 +58,7 @@ export function Footer() {
                 sizes="180px"
                 style={{ height: 44, width: "auto", display: "block", maxWidth: "180px" }}
               />
-            </a>
+            </Link>
             <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--ink-soft)", maxWidth: 320, margin: "0 0 20px" }}>
               Digital Hujra — bringing KP businesses online. POS systems, e-commerce stores,
               custom software, and product photography for local businesses.

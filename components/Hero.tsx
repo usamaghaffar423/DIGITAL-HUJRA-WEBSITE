@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const SLIDES = [
   { src: "/work/classyfitters/Hero%20Section.webp",                    label: "E-Commerce Website"       },
@@ -21,18 +23,20 @@ export function Hero() {
   const [active, setActive]   = useState(0);
   const [hovering, setHovering] = useState(false);
 
-  /* ── GSAP entrance ── */
+  /* ── GSAP entrance (transform-only on LCP elements so content is never
+     hidden from the first paint — opacity is kept at 1 for h1/desc/ctas so
+     Largest Contentful Paint is not delayed waiting for JS) ── */
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const init = async () => {
       const { gsap } = await import("gsap");
       gsap.timeline({ delay: 0.1 })
-        .from(".hero-eyebrow",  { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" })
-        .from(".hero-h1",       { y: 40,             duration: 1,   ease: "power3.out" }, "-=0.4")
-        .from(".hero-desc",     { y: 24, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.5")
-        .from(".hero-ctas",     { y: 20, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
-        .from(".hero-chips",    { y: 16, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
-        .from(".hero-showcase", { y: 40, opacity: 0, duration: 1,   ease: "power2.out" }, "-=0.3");
+        .from(".hero-eyebrow",  { y: 20, duration: 0.7, ease: "power3.out", clearProps: "transform" })
+        .from(".hero-h1",       { y: 40, duration: 1,   ease: "power3.out", clearProps: "transform" }, "-=0.4")
+        .from(".hero-desc",     { y: 24, duration: 0.8, ease: "power2.out", clearProps: "transform" }, "-=0.5")
+        .from(".hero-ctas",     { y: 20, duration: 0.7, ease: "power2.out", clearProps: "transform" }, "-=0.4")
+        .from(".hero-chips",    { y: 16, duration: 0.6, ease: "power2.out", clearProps: "transform" }, "-=0.3")
+        .from(".hero-showcase", { y: 40, duration: 1,   ease: "power2.out", clearProps: "transform" }, "-=0.3");
     };
     init();
   }, []);
@@ -62,15 +66,19 @@ export function Hero() {
         overflow: "hidden",
       }}
     >
-      {/* ── Mountain photo background ── */}
-      <div
+      {/* ── Mountain photo background — LCP element, priority-loaded ── */}
+      <Image
+        src="/backgrounds/hero-1920.webp"
+        alt=""
         aria-hidden="true"
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={75}
         style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "url('/backgrounds/background-2.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center 60%",
-          backgroundRepeat: "no-repeat",
+          objectFit: "cover",
+          objectPosition: "center 60%",
           pointerEvents: "none",
         }}
       />
@@ -190,7 +198,7 @@ export function Hero() {
           className="hero-ctas"
           style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginBottom: 28 }}
         >
-          <a
+          <Link
             href="/contact"
             className="btn"
             style={{
@@ -221,8 +229,8 @@ export function Hero() {
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#work"
             className="btn"
             style={{
@@ -249,7 +257,7 @@ export function Hero() {
             }}
           >
             See Our Work
-          </a>
+          </Link>
         </div>
 
         {/* Social proof strip */}
@@ -281,7 +289,7 @@ export function Hero() {
           </div>
 
           {/* Stars */}
-          <div style={{ display: "flex", alignItems: "center", gap: 2 }} aria-label="4.5 out of 5 stars">
+          <div role="img" style={{ display: "flex", alignItems: "center", gap: 2 }} aria-label="4.5 out of 5 stars">
             {Array.from({ length: 4 }, (_, n) => (
               <svg key={n} width="14" height="14" viewBox="0 0 24 24" fill="#F6A33B" aria-hidden="true">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -357,11 +365,14 @@ export function Hero() {
                   pointerEvents: visible ? "auto" : "none",
                 }}
               >
-                <img
+                <Image
                   src={slide.src}
                   alt={slide.label}
+                  fill
+                  sizes="260px"
+                  quality={75}
                   loading="lazy"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  style={{ objectFit: "cover", display: "block" }}
                 />
                 <div style={{
                   position: "absolute", bottom: 0, left: 0, right: 0,
@@ -385,16 +396,16 @@ export function Hero() {
               position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)",
               zIndex: 20,
               background: "rgba(10,22,40,0.78)", border: "1px solid rgba(80,178,251,0.3)",
-              borderRadius: "50%", width: 40, height: 40,
+              borderRadius: "50%", width: 48, height: 48,
               display: "flex", alignItems: "center", justifyContent: "center",
               cursor: "pointer", color: "#fff", padding: 0,
               transition: "background .2s, border-color .2s",
             }}
-            onMouseEnter={e => {
+            onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.background    = "rgba(80,178,251,0.2)";
               (e.currentTarget as HTMLElement).style.borderColor   = "#50B2FB";
             }}
-            onMouseLeave={e => {
+            onMouseLeave={(e) => {
               (e.currentTarget as HTMLElement).style.background    = "rgba(10,22,40,0.78)";
               (e.currentTarget as HTMLElement).style.borderColor   = "rgba(80,178,251,0.3)";
             }}
@@ -413,7 +424,7 @@ export function Hero() {
               position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)",
               zIndex: 20,
               background: "rgba(10,22,40,0.78)", border: "1px solid rgba(80,178,251,0.3)",
-              borderRadius: "50%", width: 40, height: 40,
+              borderRadius: "50%", width: 48, height: 48,
               display: "flex", alignItems: "center", justifyContent: "center",
               cursor: "pointer", color: "#fff", padding: 0,
               transition: "background .2s, border-color .2s",
@@ -434,7 +445,7 @@ export function Hero() {
         </div>
 
         {/* Dot indicators */}
-        <div style={{ display: "flex", gap: 6, marginTop: 20, zIndex: 10, position: "relative" }}>
+        <div style={{ display: "flex", gap: 6, marginTop: 12, zIndex: 10, position: "relative" }}>
           {SLIDES.map((_, i) => (
             <button
               key={i}
@@ -443,13 +454,23 @@ export function Hero() {
               aria-label={`Go to slide ${i + 1}`}
               aria-current={active === i ? "true" : undefined}
               style={{
-                width: active === i ? 20 : 6, height: 6,
-                borderRadius: 3, border: "none",
-                background: active === i ? "#F6A33B" : "rgba(255,255,255,0.3)",
+                width: 48, height: 48,
+                borderRadius: 12, border: "none",
+                background: "transparent",
                 cursor: "pointer", padding: 0,
-                transition: "width .3s ease, background .3s ease",
+                display: "flex", alignItems: "center", justifyContent: "center",
               }}
-            />
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: active === i ? 20 : 6, height: 6,
+                  borderRadius: 3,
+                  background: active === i ? "#F6A33B" : "rgba(255,255,255,0.3)",
+                  transition: "width .3s ease, background .3s ease",
+                }}
+              />
+            </button>
           ))}
         </div>
       </div>

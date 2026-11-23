@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -136,7 +138,7 @@ export default function ServicesPage() {
           <div className="wrap-mobile" style={{ maxWidth: 1100, margin: "0 auto", padding: "0 36px", position: "relative", zIndex: 2, textAlign: "center" }}>
             {/* Breadcrumb */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 32, justifyContent: "center" }}>
-              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
+              <Link href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--amber)", letterSpacing: "0.12em" }}>SERVICES</span>
             </div>
@@ -287,11 +289,14 @@ export default function ServicesPage() {
                         overflow: "hidden",
                       }}>
                         {SERVICE_IMAGES[s.n] ? (
-                          <img
+                          <Image
                             src={SERVICE_IMAGES[s.n]}
                             alt={s.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={75}
                             loading="lazy"
-                            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                            style={{ objectFit: "cover" }}
                           />
                         ) : (
                           <>

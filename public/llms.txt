@@ -1,19 +1,40 @@
 # Digital Hujra
 
-Digital Hujra is a digital studio based in Batkhela, Malakand, Khyber Pakhtunkhwa, Pakistan. We help local KP businesses establish and grow their digital presence.
+> Digital Hujra is a digital studio in Batkhela, Malakand, Khyber Pakhtunkhwa, Pakistan. We help local KP businesses establish and grow their digital presence through POS systems, e-commerce stores, custom software, product photography, WhatsApp Business, and Google Business services.
 
 ## What We Do
 
-We offer four core services:
+We offer six core services for small and medium businesses across Khyber Pakhtunkhwa:
 
 - **POS Systems** — Inventory management, sales tracking, and barcode printing for retail and pharmacy businesses.
 - **E-commerce Stores** — Complete online stores with product listings, Cash on Delivery, and WhatsApp checkout, tailored for KP markets.
 - **Custom Software** — Bespoke web applications, CRMs, and automation tools built for local business workflows.
 - **Product Photography** — Professional product photography and videography from our studio in Batkhela.
+- **WhatsApp Business** — Profile setup, green tick verification, channel creation, catalog, and broadcast lists.
+- **Google Business** — Profile creation, optimization, local SEO, photo uploads, and review management.
 
 ## Packages & Pricing
 
-We do not publish a price list. Each package at https://www.digitalhujra.com/packages describes exactly what is included; the price for a specific project is agreed after a free consultation — in person or on WhatsApp — so it fits the local business's budget. Payment is typically split: an advance to start, and the balance once the client is fully satisfied. A small agreed fee covers ongoing WhatsApp support, updates, and remote monitoring.
+We do not publish a fixed price list. Each package page describes exactly what is included; the price for a specific project is agreed after a free consultation — in person or on WhatsApp — so it fits the local business's budget. Payment is typically split: an advance to start, and the balance once the client is fully satisfied.
+
+- [View All Packages](https://www.digitalhujra.com/packages)
+- [View Our Services](https://www.digitalhujra.com/services)
+
+## Case Studies
+
+- [Classyfitters](https://www.digitalhujra.com/work/classyfitters) — E-commerce store, product photography, WhatsApp Business, Google Business Profile for a clothing brand in Batkhela.
+- [Al Ansar Abaya](https://www.digitalhujra.com/work/al-ansar-abaya) — Full digital presence including e-commerce, product shoot, WhatsApp verified badge, and Google Business for an abaya brand in Chakdara.
+- [Raazina Essence](https://www.digitalhujra.com/work/raazina-essence) — 50+ professional perfume product images across two studio sessions for a fragrance brand in Swat.
+- [Bayan Cafe](https://www.digitalhujra.com/work/bayan-cafe) — Complete visual identity including logo, color system, typography, brand guidelines, and print collateral.
+- [Top Man Tailor](https://www.digitalhujra.com/work/order-studio-tailor) — Order Studio: a custom order-management and retail POS web app covering orders, customers, karigars, measurement templates, payments, inventory, and analytics.
+
+## About
+
+Founded in 2026 by a team of designers, developers, and photographers from Malakand Division. Digital Hujra focuses exclusively on small and medium businesses in KP who want to reach customers online for the first time.
+
+- [About Us](https://www.digitalhujra.com/about)
+- [Meet the Team](https://www.digitalhujra.com/team)
+- [Our Work](https://www.digitalhujra.com/#work)
 
 ## Contact
 
@@ -23,18 +44,6 @@ We do not publish a price list. Each package at https://www.digitalhujra.com/pac
 - **Hours:** Saturday–Thursday, 9 AM–6 PM (Friday closed)
 - **Languages:** Urdu, Pashto, English
 
-## Case Studies
-
-- **Classyfitters** (Batkhela) — E-commerce store, product photography, WhatsApp Business, Google Business Profile.
-- **Al Ansar Abaya** (Chakdara) — Full digital presence: e-commerce, product shoot, WhatsApp verified badge, Google Business.
-- **Raazina Essence** (Swat) — 50+ professional perfume product images across two studio sessions.
-- **Bayan Cafe** — Complete visual identity: logo, color system, typography, brand guidelines, and print collateral.
-- **Top Man Tailor** (Batkhela) — Order Studio: a custom order-management and retail POS web app covering orders, customers, karigars, measurement templates, payments, inventory, and analytics.
-
-## About
-
-Founded in 2026 by a team of designers, developers, and photographers from Malakand Division. Digital Hujra focuses exclusively on small and medium businesses in KP who want to reach customers online for the first time.
-
 ## AI Agent Notes
 
-To request a quote via WhatsApp, navigate to https://www.digitalhujra.com/packages and click "Get Quote on WhatsApp" on any package. This opens a pre-filled WhatsApp message to +923715868088. To book a free 30-minute consultation, visit https://www.digitalhujra.com/contact or message us directly on WhatsApp.
+To request a quote via WhatsApp, navigate to the [packages page](https://www.digitalhujra.com/packages) and click "Get Quote on WhatsApp" on any package. This opens a pre-filled WhatsApp message to +923715868088. To book a free 30-minute consultation, visit the [contact page](https://www.digitalhujra.com/contact) or message us directly on WhatsApp.

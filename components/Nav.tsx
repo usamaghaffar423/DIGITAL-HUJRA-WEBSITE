@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import { Arrow } from "@/components/atoms";
 import { NAV_ITEMS } from "@/lib/data";
@@ -48,17 +49,17 @@ export function Nav() {
           justifyContent: "space-between",
         }}
       >
-        <a href="/" aria-label="Digital Hujra — home" style={{ display: "flex", alignItems: "center" }}>
+        <Link href="/" aria-label="Digital Hujra — home" style={{ display: "flex", alignItems: "center", minHeight: 48 }}>
           <Image
             src="/logo.png"
             alt="Digital Hujra"
             width={4003}
             height={943}
-            priority
+            preload
             sizes="200px"
             style={{ height: 44, width: "auto", display: "block" }}
           />
-        </a>
+        </Link>
 
         {/* Desktop nav pill */}
         <nav
@@ -141,8 +142,8 @@ export function Nav() {
               background: "var(--nav-btn-subtle)",
               border: "1px solid var(--line-2)",
               borderRadius: 10,
-              width: 42,
-              height: 42,
+              width: 48,
+              height: 48,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -172,6 +173,7 @@ export function Nav() {
         id="mobile-nav"
         className="nav-mobile-menu"
         aria-hidden={!menuOpen}
+        inert={!menuOpen}
         style={{
           maxHeight: menuOpen ? 480 : 0,
           transition: "max-height .35s cubic-bezier(.2,.7,.2,1)",
@@ -189,6 +191,7 @@ export function Nav() {
               onClick={() => setMenuOpen(false)}
               style={{
                 padding: "15px 8px",
+                minHeight: 48,
                 fontSize: 17,
                 fontWeight: 500,
                 color: "var(--ink-soft)",

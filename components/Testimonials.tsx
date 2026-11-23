@@ -134,15 +134,26 @@ export function Testimonials() {
                   aria-label={`Show testimonial from ${item.name}`}
                   aria-pressed={i === idx}
                   style={{
-                    width: i === idx ? 28 : 8,
-                    height: 8,
-                    borderRadius: 999,
-                    background: i === idx ? "var(--amber)" : "rgba(255,255,255,0.2)",
+                    width: 48, height: 48,
+                    borderRadius: 12,
+                    background: "transparent",
                     border: "none",
-                    transition: "all .3s",
                     cursor: "pointer",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    padding: 0,
                   }}
-                />
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: i === idx ? 28 : 8,
+                      height: 8,
+                      borderRadius: 999,
+                      background: i === idx ? "var(--amber)" : "rgba(255,255,255,0.2)",
+                      transition: "all .3s",
+                    }}
+                  />
+                </button>
               ))}
             </div>
           </div>

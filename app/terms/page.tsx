@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
@@ -83,7 +84,7 @@ export default function TermsPage() {
           <div className="wrap-mobile" style={{ maxWidth: 780, margin: "0 auto", padding: "0 36px" }}>
             {/* Breadcrumb */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 40 }}>
-              <a href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</a>
+              <Link href="/" className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.12em", textDecoration: "none" }}>HOME</Link>
               <span style={{ color: "var(--line-2)" }}>/</span>
               <span className="mono" style={{ fontSize: 11, color: "var(--blue-2)", letterSpacing: "0.12em" }}>TERMS OF SERVICE</span>
             </div>
